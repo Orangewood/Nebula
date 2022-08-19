@@ -18,12 +18,12 @@ export enum Composition {
 }
 
 export enum Resource {
-  FUEL = "fuel",
-  METAL = "metal",
-  LIFE = "life",
-  RUINS = "ruins",
   DISCOVERY = "discovery",
   ENERGY = "energy",
+  FUEL = "fuel",
+  LIFE = "life",
+  METAL = "metal",
+  RUINS = "ruins",
 }
 
 export interface Planet {

@@ -4,10 +4,10 @@ export enum Harvest {
 }
 
 export interface HarvestObj {
-  fuel?: number;
-  metal?: number;
-  life?: number;
-  ruins?: number;
   discovery?: number;
   energy?: number;
+  fuel?: number;
+  life?: number;
+  metal?: number;
+  ruins?: number;
 }

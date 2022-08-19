@@ -77,9 +77,8 @@ export default function PlayerClass(planetStack: Planet[]) {
     resources: HarvestPlanets(planetStack),
     research: currentResearch,
     explore: PlayerExplore(currentResearch),
-    engineer: PlayerEngineer({machinery: 5}),
+    engineer: PlayerEngineer({ machinery: 5 }),
     production: PlayerProduction(),
-  } as Player; 
+  } as Player;
 }
 
-console.log(PlayerClass(PlanetGenerator(10)));

@@ -38,3 +38,15 @@ Explore -
 		Move: Moves planet from observe to terraform zone.
 	
 
+
+
+// Increasing value of economic resources
+
+-- updating planet or changing
+-- change win condition with resources 
+-- game loop of  
+-- display drafting, start with planets
+-- build change win condition
+-- strip away everything except resources/planets/harvest star
+-- gin/rummy/deduction
+-- all observed

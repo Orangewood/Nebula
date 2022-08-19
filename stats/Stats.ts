@@ -35,11 +35,7 @@ export function PlanetStats(
       (countData[key] / currentPlanetArray.length) * 100
     );
   }
-  console.log({
-    total: reducedData,
-    count: countData,
-    percent: percentData,
-  });
+
   return {
     total: reducedData,
     count: countData,
