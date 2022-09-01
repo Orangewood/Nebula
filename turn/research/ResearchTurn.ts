@@ -1,3 +1,4 @@
+import { HarvestObj } from "../../models/actions/harvest/Harvest";
 import { Research } from "../../models/actions/research/Research";
 import { Player } from "../../models/player/Player";
 import { TestPlayer } from "../../models/player/TestPlayer";
@@ -16,43 +17,78 @@ export default function ResearchTurn(
     return fibo[currentLevel];
   };
 
-  console.log(playerStats);
+  // console.log(playerStats);
 
-  const requiredCost = currentLevelUpCost(currentResearchLevel!);
+  const requiredCost = currentLevelUpCost(currentResearchLevel);
+  console.log(requiredCost);
+  const createErrorMesseage = (resource: (keyof HarvestObj)[]): void => {
+    resource.forEach((key, index) => {
+      console.log(
+        `${
+          requiredCost - playerStats.resources[resource[index]]
+        } ${key} needed to level ${researchAttribute} from level ${currentResearchLevel} to ${
+          currentResearchLevel + 1
+        }`
+      );
+    });
+  };
   switch (researchAttribute) {
     case Research.PHYSICS: {
-      if (playerStats.resources.discovery! >= requiredCost) {
+      let hasDiscovery = playerStats.resources.discovery! >= requiredCost;
+      if (hasDiscovery) {
         playerStats.research.physics += 1;
-      }
+        playerStats.resources.discovery -= requiredCost;
+      } else createErrorMesseage(["discovery"]);
+
+      break;
     }
     case Research.CHEMISTRY: {
-      if (playerStats.resources.discovery! >= requiredCost) {
+      let hasDiscovery = playerStats.resources.discovery! >= requiredCost;
+      if (hasDiscovery) {
         playerStats.research.chemistry += 1;
-      }
+        playerStats.resources.discovery -= requiredCost;
+      } else createErrorMesseage(["discovery"]);
+      break;
     }
     case Research.ASTRONOMY: {
-      if (playerStats.resources.discovery! >= requiredCost) {
+      let hasDiscovery = playerStats.resources.discovery! >= requiredCost;
+      if (hasDiscovery) {
         playerStats.research.astronomy += 1;
-      }
+        playerStats.resources.discovery -= requiredCost;
+      } else createErrorMesseage(["discovery"]);
+      break;
     }
     case Research.ROBOTICS: {
-      if (
-        playerStats.resources.metal! >= requiredCost &&
-        playerStats.resources.energy! >= requiredCost
-      ) {
+      let hasMetal = playerStats.resources.metal! >= requiredCost;
+      let hasEnergy = playerStats.resources.energy! >= requiredCost;
+
+      if (hasMetal && hasEnergy) {
         playerStats.research.robotics += 1;
-      }
+        playerStats.resources.metal -= requiredCost;
+        playerStats.resources.energy -= requiredCost;
+      } else
+        createErrorMesseage(
+          !hasMetal && !hasEnergy
+            ? ["metal", "energy"]
+            : !hasMetal
+            ? ["metal"]
+            : ["energy"]
+        );
+      break;
     }
     case Research.BIOLOGY: {
-      if (playerStats.resources.life! >= requiredCost) {
+      let hasLife = playerStats.resources.life! >= requiredCost;
+      if (hasLife) {
         playerStats.research.biology += 1;
-      }
+        playerStats.resources.life -= requiredCost;
+      } else createErrorMesseage(["life"]);
+      break;
     }
     default:
       break;
   }
 
-  console.log(playerStats);
+  // console.log(playerStats);
 }
 
-ResearchTurn(TestPlayer, Research.BIOLOGY);
+ResearchTurn(TestPlayer, Research.ROBOTICS);
