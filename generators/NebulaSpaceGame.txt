@@ -1,0 +1,52 @@
+Each turn 
+First round goal: Harvest home star. 
+
+Can hold up to 5 different cards. 
+
+Each card provides passive resource collected at start of harvest. 
+
+Turn order: 
+
+Harvest - performs passively: 
+	Consumes resources from planets. Increased with machinery, efficiency, robotics.
+
+Research - Each level maxes at 10.
+	Select 1 by consuming Discovery:
+		Physics:  Gas, Ice, Lava, Desert 
+		Chemistry: Gas, Organic, Scillicate, Ice
+		Astronomy: Level corresponds to amount of cards one can observe to draw.
+		Robotics: ?
+		Biology: Life, Organic, Ocean
+	  			
+Engineer - 
+	Select by consuming Metal: 
+
+		1 Metal: Weaponry -  
+			Increase millitary might. 	
+		2 Metal: Machinery - Increases movement. 
+		3 Metal: Efficiency - Increases actions per turn.
+
+
+Production - 
+	Select by consuming Energy: 	
+		Build: Alows for production of ships, buildings, armament. 
+		Conscript: Amass millitary force.
+	
+Explore - 
+	Perform both by consuming Fuel: 
+		Observe/Draw: Allows to peer into deck x (Astronomy level) deep.
+		Move: Moves planet from observe to terraform zone.
+	
+
+
+
+// Increasing value of economic resources
+
+-- updating planet or changing
+-- change win condition with resources 
+-- game loop of  
+-- display drafting, start with planets
+-- build change win condition
+-- strip away everything except resources/planets/harvest star
+-- gin/rummy/deduction
+-- all observed

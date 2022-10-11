@@ -26,7 +26,7 @@ export enum Resource {
   RUINS = "ruins",
 }
 
-export interface Planet {
+export interface  Planet {
   name: string;
   temperature: number;
   type: PlanetType;
