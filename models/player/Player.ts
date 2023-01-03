@@ -8,6 +8,7 @@ import { Research, ResearchObj } from "../actions/research/Research";
 import { Planet, Resource } from "../planets/Planet";
 
 export interface Player {
+  playerId?: number;
   currentPlanet: Planet[];
   resources: HarvestObj;
   research: ResearchObj;
@@ -81,4 +82,3 @@ export default function PlayerClass(planetStack: Planet[]) {
     production: PlayerProduction(),
   } as Player;
 }
-

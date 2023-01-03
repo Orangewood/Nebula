@@ -2,6 +2,7 @@ import React from "react";
 import { Planet } from "../../models/planets/Planet";
 import { CardName, CardImage, GameCard } from "./styles";
 import test from "../../images/planets/gaseous/20.png";
+import CardResources from "./resources/CardResources";
 
 interface CardProps {
   user?: any;
@@ -14,11 +15,7 @@ export default function Card(props: CardProps) {
     <GameCard>
       <CardImage src={test} />
       <CardName>{planet.name}</CardName>
-      <ul>
-        {planet.resources.map((a) => {
-          return <li>{a}</li>;
-        })}
-      </ul>
+      <CardResources resources={planet.resources}></CardResources>
     </GameCard>
   );
 }
