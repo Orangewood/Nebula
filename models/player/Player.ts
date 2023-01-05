@@ -9,7 +9,7 @@ import { Planet, Resource } from "../planets/Planet";
 
 export interface Player {
   playerId?: number;
-  currentPlanet: Planet[];
+  currentPlanetStack: Planet[];
   resources: HarvestObj;
   research: ResearchObj;
   explore: ExploreObj;
@@ -74,7 +74,7 @@ const PlayerExplore = (research: ResearchObj): ExploreObj => {
 export default function PlayerClass(planetStack: Planet[]) {
   let currentResearch = PlayerResearch();
   return {
-    currentPlanet: planetStack,
+    currentPlanetStack: planetStack,
     resources: HarvestPlanets(planetStack),
     research: currentResearch,
     explore: PlayerExplore(currentResearch),

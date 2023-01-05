@@ -27063,16 +27063,15 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _card = require("./components/card/Card");
-var _cardDefault = parcelHelpers.interopDefault(_card);
+var _cardContainer = require("./components/card/card-container/CardContainer");
+var _cardContainerDefault = parcelHelpers.interopDefault(_cardContainer);
 var _planetGenerator = require("./generators/PlanetGenerator");
 var _planetGeneratorDefault = parcelHelpers.interopDefault(_planetGenerator);
+const testPlanets = (0, _planetGeneratorDefault.default)(5);
 function App() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
-        planet: (0, _planetGeneratorDefault.default)(1)[0]
-    }, void 0, false, {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardContainerDefault.default), {}, void 0, false, {
         fileName: "App.tsx",
-        lineNumber: 6,
+        lineNumber: 9,
         columnNumber: 10
     }, this);
 }
@@ -27086,7 +27085,637 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./components/card/Card":"hDfxY","./generators/PlanetGenerator":"4BayG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hDfxY":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./generators/PlanetGenerator":"4BayG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./components/card/card-container/CardContainer":"iziV0"}],"4BayG":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _randomEnumKey = require("./RandomEnumKey");
+var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
+var _planetNames = require("../models/planets/PlanetNames");
+var _planet = require("../models/planets/Planet");
+var _nameGenerator = require("./NameGenerator");
+var _nameGeneratorDefault = parcelHelpers.interopDefault(_nameGenerator);
+var _planetaryCompositionGenerator = require("./PlanetaryCompositionGenerator");
+var _planetaryCompositionGeneratorDefault = parcelHelpers.interopDefault(_planetaryCompositionGenerator);
+var _temperatureGenerator = require("./TemperatureGenerator");
+var _temperatureGeneratorDefault = parcelHelpers.interopDefault(_temperatureGenerator);
+var _resourceGenerator = require("./ResourceGenerator");
+var _resourceGeneratorDefault = parcelHelpers.interopDefault(_resourceGenerator);
+var _stabilityGenerator = require("./StabilityGenerator");
+var _stabilityGeneratorDefault = parcelHelpers.interopDefault(_stabilityGenerator);
+function PlanetGenerator(planetAmount) {
+    const PlanetList = [];
+    for(var i = 0; i < planetAmount; i++){
+        const generatedPlanetType = (0, _planet.PlanetType)[(0, _randomEnumKeyDefault.default)((0, _planet.PlanetType))];
+        const generatedComposition = (0, _planetaryCompositionGeneratorDefault.default)(generatedPlanetType);
+        let newPlanet = {
+            name: (0, _nameGeneratorDefault.default)((0, _planetNames.planetNames)),
+            temperature: (0, _temperatureGeneratorDefault.default)(generatedComposition),
+            type: generatedPlanetType,
+            composition: generatedComposition,
+            resources: (0, _resourceGeneratorDefault.default)(generatedComposition, planetAmount),
+            stability: (0, _stabilityGeneratorDefault.default)(generatedPlanetType)
+        };
+        PlanetList.push(newPlanet);
+    }
+    return PlanetList;
+}
+exports.default = PlanetGenerator;
+
+},{"./RandomEnumKey":"d89k0","../models/planets/PlanetNames":"7Ll3g","../models/planets/Planet":"fbCJI","./NameGenerator":"cei1n","./PlanetaryCompositionGenerator":"8MrB1","./TemperatureGenerator":"bsEZP","./ResourceGenerator":"7rum1","./StabilityGenerator":"1rcyi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d89k0":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function randomEnumKey(enumObj) {
+    let keys = Object.keys(enumObj);
+    let enumKey = keys[Math.floor(Math.random() * keys.length)];
+    return enumKey;
+}
+exports.default = randomEnumKey;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
+exports.interopDefault = function(a) {
+    return a && a.__esModule ? a : {
+        default: a
+    };
+};
+exports.defineInteropFlag = function(a) {
+    Object.defineProperty(a, "__esModule", {
+        value: true
+    });
+};
+exports.exportAll = function(source, dest) {
+    Object.keys(source).forEach(function(key) {
+        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
+        Object.defineProperty(dest, key, {
+            enumerable: true,
+            get: function() {
+                return source[key];
+            }
+        });
+    });
+    return dest;
+};
+exports.export = function(dest, destName, get) {
+    Object.defineProperty(dest, destName, {
+        enumerable: true,
+        get: get
+    });
+};
+
+},{}],"7Ll3g":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "planetNames", ()=>planetNames);
+const planetNames = [
+    "Apollo",
+    "Saros",
+    "Phoenix",
+    "Cosmos",
+    "Ceilo",
+    "Comet",
+    "Meteor",
+    "Phoebus",
+    "Sky",
+    "Starr",
+    "Zenith",
+    "Vulcan",
+    "Jupiter",
+    "Mercury",
+    "Aerglo",
+    "Pluto",
+    "Janus",
+    "Mars",
+    "Oberon",
+    "Jericho",
+    "Holmes",
+    "Neptune",
+    "Aelius",
+    "Aku",
+    "Aibek",
+    "Astennu",
+    "Aten",
+    "Arche",
+    "Badar",
+    "Badru",
+    "Blaze",
+    "Chan",
+    "Cupid",
+    "Deimos",
+    "Donati",
+    "Eos",
+    "Hang",
+    "Hesperos",
+    "Hilal",
+    "Iah",
+    "Ilkay",
+    "Io",
+    "Kale",
+    "Koray",
+    "Kuiper",
+    "Mahruk",
+    "Maramma",
+    "Mayank",
+    "Meztli",
+    "Muraco",
+    "Nanna",
+    "Neil",
+    "Pallas",
+    "Proteus",
+    "Pulan",
+    "Purnama",
+    "Qamar",
+    "Saturn",
+    "Sol",
+    "Themis",
+    "Thule",
+    "Titan",
+    "Triton",
+    "Orion",
+    "Aries",
+    "Atlas",
+    "Perseus",
+    "Leo",
+    "Archer",
+    "Sirius",
+    "Castor",
+    "Columba",
+    "Hunter",
+    "Nash",
+    "Rigel",
+    "Solar",
+    "Taurus",
+    "Hercules",
+    "Alioth",
+    "Aster",
+    "Astrophel",
+    "Altair",
+    "Danica",
+    "Draco",
+    "Elio",
+    "Hamal",
+    "Hoku",
+    "Izar",
+    "Lintang",
+    "Namid",
+    "Pollux",
+    "Rasalas",
+    "Regulus",
+    "Samson",
+    "Wolf",
+    "Galexia",
+    "Andromeda",
+    "Ophelia",
+    "Titania",
+    "Portia",
+    "Venus",
+    "Pandora",
+    "Phoebe",
+    "Halley",
+    "Astrid",
+    "Miranda",
+    "Juliet",
+    "Bianca",
+    "Aurora",
+    "Ariel",
+    "Elara",
+    "Luna",
+    "Cordelia",
+    "Calypso",
+    "Callisto",
+    "Cressida",
+    "Aina",
+    "Alcmene",
+    "Amaris",
+    "Arianrhod",
+    "Arpina",
+    "Aylin",
+    "Aysu",
+    "Aysun",
+    "Belinda",
+    "Bellatrix",
+    "Carina",
+    "Cassini",
+    "Chandra",
+    "Chara",
+    "Charon",
+    "Crescent",
+    "Cynthia",
+    "Despina",
+    "Diana",
+    "Dione",
+    "Eris",
+    "Flora",
+    "Gaia",
+    "Galatea",
+    "Hala",
+    "Helene",
+    "Helia",
+    "Hilda",
+    "Hoshi",
+    "Indu",
+    "Jaci",
+    "Kamaria",
+    "Larissa",
+    "Leda",
+    "Lucine",
+    "Maha",
+    "Mahina",
+    "Mahtab",
+    "Mona",
+    "Neoma",
+    "Nevaeh",
+    "Nokomis",
+    "Pensri",
+    "Rhea",
+    "Thebe",
+    "Larissa",
+    "Rosalind",
+    "Soleil",
+    "Solstice",
+    "Solveig",
+    "Thalassa",
+    "Titania",
+    "Vesta",
+    "Zelenia",
+    "Cassiopeia",
+    "Lyra",
+    "Vega",
+    "Libra",
+    "Estella",
+    "Alya",
+    "Alula",
+    "Nova",
+    "Adhara",
+    "Alcyone",
+    "Alpha",
+    "Amalthea",
+    "Aquarius",
+    "Ascella",
+    "Astra",
+    "Capella",
+    "Celestia",
+    "Electra",
+    "Esther",
+    "Etoile",
+    "Europa",
+    "Gomeisa",
+    "Juno",
+    "Maia",
+    "Nashira",
+    "Norma",
+    "Polaris",
+    "Starling",
+    "Zaniah", 
+];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fbCJI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "PlanetType", ()=>PlanetType);
+parcelHelpers.export(exports, "Composition", ()=>Composition);
+parcelHelpers.export(exports, "Resource", ()=>Resource);
+let PlanetType;
+(function(PlanetType) {
+    PlanetType["GASGIANT"] = "gasGiant";
+    PlanetType["ICEGIANT"] = "iceGiant";
+    PlanetType["GASEOUS"] = "gaseous";
+    PlanetType["TERRESTRIAL"] = "terrestrial";
+    PlanetType["DWARFPLANET"] = "dwarfPlanet";
+})(PlanetType || (PlanetType = {}));
+let Composition;
+(function(Composition) {
+    Composition["ORGANIC"] = "organic";
+    Composition["SCILLICATE"] = "scillicate";
+    Composition["DESERT"] = "desert";
+    Composition["GAS"] = "gas";
+    Composition["ICE"] = "ice";
+    Composition["LAVA"] = "lava";
+    Composition["OCEAN"] = "ocean";
+    Composition["ROCKY"] = "rocky";
+})(Composition || (Composition = {}));
+let Resource;
+(function(Resource) {
+    Resource["DISCOVERY"] = "discovery";
+    Resource["ENERGY"] = "energy";
+    Resource["FUEL"] = "fuel";
+    Resource["LIFE"] = "life";
+    Resource["METAL"] = "metal";
+    Resource["RUINS"] = "ruins";
+})(Resource || (Resource = {}));
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cei1n":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function NameGenerator(nameList) {
+    let randomIndex = Math.floor(Math.random() * nameList.length);
+    let randomNumber = Math.floor(Math.random() * 5);
+    let randomSuffix = Math.random().toString().slice(2, randomNumber + 1);
+    if (randomNumber > 1) return `${nameList[randomIndex]}-${randomSuffix}`;
+    return nameList[randomIndex];
+}
+exports.default = NameGenerator;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8MrB1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+var _randomEnumKey = require("./RandomEnumKey");
+var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
+function PlanetaryCompositionGenerator(type) {
+    const composition = [];
+    function generator(filteredComposition) {
+        var randomTotal = Math.floor(Math.random() * (filteredComposition.length - 1) + 1);
+        let randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
+        for(randomTotal; randomTotal--;){
+            filteredComposition = Object.values(filteredComposition).filter((a)=>a != filteredComposition[randomIndex]);
+            randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
+            composition.push(filteredComposition[randomIndex]);
+        }
+    }
+    switch(type){
+        case (0, _planet.PlanetType).GASGIANT:
+            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).ROCKY && a != (0, _planet.Composition).DESERT && a != (0, _planet.Composition).LAVA && a != (0, _planet.Composition).OCEAN);
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
+            break;
+        case (0, _planet.PlanetType).ICEGIANT:
+            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).DESERT);
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).ICE)) composition.push((0, _planet.Composition).ICE);
+            break;
+        case (0, _planet.PlanetType).GASEOUS:
+            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).OCEAN && a != (0, _planet.Composition).DESERT);
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
+            break;
+        case (0, _planet.PlanetType).TERRESTRIAL:
+            var filteredComposition = Object.values((0, _planet.Composition));
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) composition.push((0, _planet.Composition).SCILLICATE);
+            break;
+        case (0, _planet.PlanetType).DWARFPLANET:
+            var filteredComposition = Object.values((0, _planet.Composition));
+            generator(filteredComposition);
+            break;
+        default:
+            break;
+    }
+    return composition.sort();
+}
+exports.default = PlanetaryCompositionGenerator;
+
+},{"../models/planets/Planet":"fbCJI","./RandomEnumKey":"d89k0","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bsEZP":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+function TemperatureGenerator(composition) {
+    var maxTemp = 1000;
+    var maxLavaTemp = 1500;
+    var maxIceTemp = 273;
+    var maxOrganicTemp = 323;
+    var minTemp = 50;
+    var minLavaTemp = 700;
+    var minimumTemp = 10;
+    var temperature = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp);
+    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && !composition.some((a)=>a === (0, _planet.Composition).ICE) && !composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
+        temperature = Math.floor(Math.random() * (maxLavaTemp - minLavaTemp) + minLavaTemp);
+        return temperature;
+    }
+    if (composition.some((a)=>a === (0, _planet.Composition).ICE)) {
+        temperature = Math.floor(Math.random() * (maxIceTemp - minimumTemp) + minimumTemp);
+        return temperature;
+    }
+    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
+        temperature = Math.floor(Math.random() * (maxOrganicTemp - minimumTemp) + minimumTemp);
+        return temperature;
+    } else return temperature;
+}
+exports.default = TemperatureGenerator;
+
+},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7rum1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+function ResourceGeneartor(composition, planetAmount) {
+    const resources = [];
+    var randomTotal = Math.floor(Math.random() * (planetAmount - 1) + 1);
+    if (composition.some((a)=>a === (0, _planet.Composition).GAS) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) resources.push((0, _planet.Resource).FUEL);
+    if (composition.some((a)=>a === (0, _planet.Composition).ROCKY) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE) && composition.some((a)=>a !== (0, _planet.Composition).GAS)) resources.push((0, _planet.Resource).METAL);
+    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC && composition.some((a)=>a === (0, _planet.Composition).OCEAN))) resources.push((0, _planet.Resource).LIFE);
+    if (composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) resources.push((0, _planet.Resource).RUINS);
+    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && composition.some((a)=>a === (0, _planet.Composition).GAS) || composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ROCKY)) resources.push((0, _planet.Resource).ENERGY);
+    if (resources.length < 1) resources.push((0, _planet.Resource).DISCOVERY);
+    return resources.sort();
+}
+exports.default = ResourceGeneartor;
+
+},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1rcyi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+function StabilityGenerator(planet) {
+    var stability = 0;
+    var maxGasGiantHp = 350;
+    var maxIcePlanetHp = 250;
+    var maxPlanetHp = 200;
+    var maxDwarfHp = 100;
+    var minGasGiantHp = 200;
+    var minIcePlanetHp = 150;
+    var minPlanetHp = 100;
+    var minDwarfHp = 50;
+    function stabilityOutput(min, max) {
+        let randomNumber = Math.floor(Math.random() * (max - min) + min);
+        return Math.ceil(randomNumber / 10) * 10;
+    }
+    switch(planet){
+        case (0, _planet.PlanetType).GASGIANT:
+            stability = stabilityOutput(minGasGiantHp, maxGasGiantHp);
+            break;
+        case (0, _planet.PlanetType).ICEGIANT:
+            stability = stabilityOutput(minIcePlanetHp, maxIcePlanetHp);
+            break;
+        case (0, _planet.PlanetType).GASEOUS:
+        case (0, _planet.PlanetType).TERRESTRIAL:
+            stability = stabilityOutput(minPlanetHp, maxPlanetHp);
+            break;
+        case (0, _planet.PlanetType).DWARFPLANET:
+            stability = stabilityOutput(minDwarfHp, maxDwarfHp);
+            break;
+        default:
+            break;
+    }
+    return stability;
+}
+exports.default = StabilityGenerator;
+
+},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"km3Ru":[function(require,module,exports) {
+"use strict";
+var Refresh = require("react-refresh/runtime");
+function debounce(func, delay) {
+    var args;
+    var timeout = undefined;
+    return function(args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(function() {
+            timeout = undefined;
+            func.call(null, args);
+        }, delay);
+    };
+}
+var enqueueUpdate = debounce(function() {
+    Refresh.performReactRefresh();
+}, 30); // Everthing below is either adapted or copied from
+// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
+// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
+module.exports.prelude = function(module1) {
+    window.$RefreshReg$ = function(type, id) {
+        Refresh.register(type, module1.id + " " + id);
+    };
+    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
+};
+module.exports.postlude = function(module1) {
+    if (isReactRefreshBoundary(module1.exports)) {
+        registerExportsForReactRefresh(module1);
+        if (module1.hot) {
+            module1.hot.dispose(function(data) {
+                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
+                data.prevExports = module1.exports;
+            });
+            module1.hot.accept(function(getParents) {
+                var prevExports = module1.hot.data.prevExports;
+                var nextExports = module1.exports; // Since we just executed the code for it, it's possible
+                // that the new exports make it ineligible for being a boundary.
+                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
+                // with the previous exports.
+                // For example, if you add/remove/change exports, we'll want
+                // to re-execute the importing modules, and force those components
+                // to re-render. Similarly, if you convert a class component
+                // to a function, we want to invalidate the boundary.
+                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
+                if (isNoLongerABoundary || didInvalidate) {
+                    // We'll be conservative. The only case in which we won't do a full
+                    // reload is if all parent modules are also refresh boundaries.
+                    // In that case we'll add them to the current queue.
+                    var parents = getParents();
+                    if (parents.length === 0) {
+                        // Looks like we bubbled to the root. Can't recover from that.
+                        window.location.reload();
+                        return;
+                    }
+                    return parents;
+                }
+                enqueueUpdate();
+            });
+        }
+    }
+};
+function isReactRefreshBoundary(exports) {
+    if (Refresh.isLikelyComponentType(exports)) return true;
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    return false;
+    var hasExports = false;
+    var areAllExportsComponents = true;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        hasExports = true;
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
+        return false;
+        var exportValue = exports[key];
+        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
+    }
+    return hasExports && areAllExportsComponents;
+}
+function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
+    var prevSignature = getRefreshBoundarySignature(prevExports);
+    var nextSignature = getRefreshBoundarySignature(nextExports);
+    if (prevSignature.length !== nextSignature.length) return true;
+    for(var i = 0; i < nextSignature.length; i++){
+        if (prevSignature[i] !== nextSignature[i]) return true;
+    }
+    return false;
+} // When this signature changes, it's unsafe to stop at this refresh boundary.
+function getRefreshBoundarySignature(exports) {
+    var signature = [];
+    signature.push(Refresh.getFamilyByType(exports));
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return signature;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        if (key === "__esModule") continue;
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        signature.push(key);
+        signature.push(Refresh.getFamilyByType(exportValue));
+    }
+    return signature;
+}
+function registerExportsForReactRefresh(module1) {
+    var exports = module1.exports, id = module1.id;
+    Refresh.register(exports, id + " %exports%");
+    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
+    // (This is important for legacy environments.)
+    return;
+    let isESM = "__esModule" in exports;
+    for(var key in exports){
+        var desc = Object.getOwnPropertyDescriptor(exports, key);
+        if (desc && desc.get && !isESM) continue;
+        var exportValue = exports[key];
+        Refresh.register(exportValue, id + " %exports% " + key);
+    }
+}
+
+},{"react-refresh/runtime":"786KC"}],"iziV0":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$49ea = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$49ea.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _planetGenerator = require("../../../generators/PlanetGenerator");
+var _planetGeneratorDefault = parcelHelpers.interopDefault(_planetGenerator);
+var _card = require("../Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _styles = require("./styles");
+const testPlanets = (0, _planetGeneratorDefault.default)(5);
+function CardContainer() {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledCardContainer), {
+        children: [
+            testPlanets.map((planet)=>{
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
+                    planet: planet
+                }, void 0, false, {
+                    fileName: "components/card/card-container/CardContainer.tsx",
+                    lineNumber: 12,
+                    columnNumber: 16
+                }, this);
+            }),
+            ";"
+        ]
+    }, void 0, true, {
+        fileName: "components/card/card-container/CardContainer.tsx",
+        lineNumber: 10,
+        columnNumber: 5
+    }, this);
+}
+exports.default = CardContainer;
+_c = CardContainer;
+var _c;
+$RefreshReg$(_c, "CardContainer");
+
+  $parcel$ReactRefreshHelpers$49ea.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../generators/PlanetGenerator":"4BayG","../Card":"hDfxY","./styles":"e6xLf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hDfxY":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$6db5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -27101,6 +27730,8 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _styles = require("./styles");
 var _20Png = require("../../images/planets/gaseous/20.png");
 var _20PngDefault = parcelHelpers.interopDefault(_20Png);
+var _cardResources = require("./resources/CardResources");
+var _cardResourcesDefault = parcelHelpers.interopDefault(_cardResources);
 function Card(props) {
     const { planet  } = props;
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.GameCard), {
@@ -27109,35 +27740,27 @@ function Card(props) {
                 src: (0, _20PngDefault.default)
             }, void 0, false, {
                 fileName: "components/card/Card.tsx",
-                lineNumber: 15,
+                lineNumber: 16,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CardName), {
                 children: planet.name
             }, void 0, false, {
                 fileName: "components/card/Card.tsx",
-                lineNumber: 16,
+                lineNumber: 17,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                children: planet.resources.map((a)=>{
-                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        children: a
-                    }, void 0, false, {
-                        fileName: "components/card/Card.tsx",
-                        lineNumber: 19,
-                        columnNumber: 18
-                    }, this);
-                })
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardResourcesDefault.default), {
+                resources: planet.resources
             }, void 0, false, {
                 fileName: "components/card/Card.tsx",
-                lineNumber: 17,
+                lineNumber: 18,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "components/card/Card.tsx",
-        lineNumber: 14,
+        lineNumber: 15,
         columnNumber: 5
     }, this);
 }
@@ -27151,7 +27774,7 @@ $RefreshReg$(_c, "Card");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"7nCum","../../images/planets/gaseous/20.png":"h6r36","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7nCum":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"7nCum","../../images/planets/gaseous/20.png":"h6r36","./resources/CardResources":"5IM5H","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7nCum":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "GameCard", ()=>GameCard);
@@ -28724,37 +29347,7 @@ function stylis_min(W) {
 }
 exports.default = stylis_min;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"pVndT":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"pVndT":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var unitlessKeys = {
@@ -29111,558 +29704,158 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"km3Ru":[function(require,module,exports) {
-"use strict";
-var Refresh = require("react-refresh/runtime");
-function debounce(func, delay) {
-    var args;
-    var timeout = undefined;
-    return function(args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(function() {
-            timeout = undefined;
-            func.call(null, args);
-        }, delay);
-    };
-}
-var enqueueUpdate = debounce(function() {
-    Refresh.performReactRefresh();
-}, 30); // Everthing below is either adapted or copied from
-// https://github.com/facebook/metro/blob/61de16bd1edd7e738dd0311c89555a644023ab2d/packages/metro/src/lib/polyfills/require.js
-// MIT License - Copyright (c) Facebook, Inc. and its affiliates.
-module.exports.prelude = function(module1) {
-    window.$RefreshReg$ = function(type, id) {
-        Refresh.register(type, module1.id + " " + id);
-    };
-    window.$RefreshSig$ = Refresh.createSignatureFunctionForTransform;
-};
-module.exports.postlude = function(module1) {
-    if (isReactRefreshBoundary(module1.exports)) {
-        registerExportsForReactRefresh(module1);
-        if (module1.hot) {
-            module1.hot.dispose(function(data) {
-                if (Refresh.hasUnrecoverableErrors()) window.location.reload();
-                data.prevExports = module1.exports;
-            });
-            module1.hot.accept(function(getParents) {
-                var prevExports = module1.hot.data.prevExports;
-                var nextExports = module1.exports; // Since we just executed the code for it, it's possible
-                // that the new exports make it ineligible for being a boundary.
-                var isNoLongerABoundary = !isReactRefreshBoundary(nextExports); // It can also become ineligible if its exports are incompatible
-                // with the previous exports.
-                // For example, if you add/remove/change exports, we'll want
-                // to re-execute the importing modules, and force those components
-                // to re-render. Similarly, if you convert a class component
-                // to a function, we want to invalidate the boundary.
-                var didInvalidate = shouldInvalidateReactRefreshBoundary(prevExports, nextExports);
-                if (isNoLongerABoundary || didInvalidate) {
-                    // We'll be conservative. The only case in which we won't do a full
-                    // reload is if all parent modules are also refresh boundaries.
-                    // In that case we'll add them to the current queue.
-                    var parents = getParents();
-                    if (parents.length === 0) {
-                        // Looks like we bubbled to the root. Can't recover from that.
-                        window.location.reload();
-                        return;
-                    }
-                    return parents;
-                }
-                enqueueUpdate();
-            });
+},{}],"5IM5H":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$7099 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$7099.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _discoveryPng = require("../../../images/resource/Discovery.png");
+var _discoveryPngDefault = parcelHelpers.interopDefault(_discoveryPng);
+var _energyPng = require("../../../images/resource/Energy.png");
+var _energyPngDefault = parcelHelpers.interopDefault(_energyPng);
+var _fuelPng = require("../../../images/resource/Fuel.png");
+var _fuelPngDefault = parcelHelpers.interopDefault(_fuelPng);
+var _lifePng = require("../../../images/resource/Life.png");
+var _lifePngDefault = parcelHelpers.interopDefault(_lifePng);
+var _metalPng = require("../../../images/resource/Metal.png");
+var _metalPngDefault = parcelHelpers.interopDefault(_metalPng);
+var _ruinsPng = require("../../../images/resource/Ruins.png");
+var _ruinsPngDefault = parcelHelpers.interopDefault(_ruinsPng);
+var _planet = require("../../../models/planets/Planet");
+var _styles = require("./styles");
+function CardResources(props) {
+    const { resources  } = props;
+    const AssignImage = (currentResource)=>{
+        switch(currentResource){
+            case (0, _planet.Resource).DISCOVERY:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _discoveryPngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 21,
+                    columnNumber: 16
+                }, this);
+            case (0, _planet.Resource).ENERGY:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _energyPngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 23,
+                    columnNumber: 16
+                }, this);
+            case (0, _planet.Resource).FUEL:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _fuelPngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 25,
+                    columnNumber: 16
+                }, this);
+            case (0, _planet.Resource).LIFE:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _lifePngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 27,
+                    columnNumber: 16
+                }, this);
+            case (0, _planet.Resource).METAL:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _metalPngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 29,
+                    columnNumber: 16
+                }, this);
+            case (0, _planet.Resource).RUINS:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _ruinsPngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 31,
+                    columnNumber: 16
+                }, this);
+            default:
+                break;
         }
-    }
-};
-function isReactRefreshBoundary(exports) {
-    if (Refresh.isLikelyComponentType(exports)) return true;
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    return false;
-    var hasExports = false;
-    var areAllExportsComponents = true;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        hasExports = true;
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) // Don't invoke getters for CJS as they may have side effects.
-        return false;
-        var exportValue = exports[key];
-        if (!Refresh.isLikelyComponentType(exportValue)) areAllExportsComponents = false;
-    }
-    return hasExports && areAllExportsComponents;
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceList), {
+        children: resources.map((a)=>{
+            return AssignImage(a);
+        })
+    }, void 0, false, {
+        fileName: "components/card/resources/CardResources.tsx",
+        lineNumber: 38,
+        columnNumber: 5
+    }, this);
 }
-function shouldInvalidateReactRefreshBoundary(prevExports, nextExports) {
-    var prevSignature = getRefreshBoundarySignature(prevExports);
-    var nextSignature = getRefreshBoundarySignature(nextExports);
-    if (prevSignature.length !== nextSignature.length) return true;
-    for(var i = 0; i < nextSignature.length; i++){
-        if (prevSignature[i] !== nextSignature[i]) return true;
-    }
-    return false;
-} // When this signature changes, it's unsafe to stop at this refresh boundary.
-function getRefreshBoundarySignature(exports) {
-    var signature = [];
-    signature.push(Refresh.getFamilyByType(exports));
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return signature;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        if (key === "__esModule") continue;
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        signature.push(key);
-        signature.push(Refresh.getFamilyByType(exportValue));
-    }
-    return signature;
-}
-function registerExportsForReactRefresh(module1) {
-    var exports = module1.exports, id = module1.id;
-    Refresh.register(exports, id + " %exports%");
-    if (exports == null || typeof exports !== "object") // Exit if we can't iterate over exports.
-    // (This is important for legacy environments.)
-    return;
-    let isESM = "__esModule" in exports;
-    for(var key in exports){
-        var desc = Object.getOwnPropertyDescriptor(exports, key);
-        if (desc && desc.get && !isESM) continue;
-        var exportValue = exports[key];
-        Refresh.register(exportValue, id + " %exports% " + key);
-    }
-}
+exports.default = CardResources;
+_c = CardResources;
+var _c;
+$RefreshReg$(_c, "CardResources");
 
-},{"react-refresh/runtime":"786KC"}],"4BayG":[function(require,module,exports) {
+  $parcel$ReactRefreshHelpers$7099.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../images/resource/Discovery.png":"feeAW","../../../images/resource/Energy.png":"eqBN8","../../../images/resource/Fuel.png":"4AbgL","../../../images/resource/Life.png":"27v9M","../../../images/resource/Metal.png":"7ziIc","../../../images/resource/Ruins.png":"kucG6","../../../models/planets/Planet":"fbCJI","./styles":"kst05","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"feeAW":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Discovery.ebafcd28.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"eqBN8":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Energy.73e6a639.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"4AbgL":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Fuel.8f114fdd.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"27v9M":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Life.2827e445.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"7ziIc":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Metal.a56a790d.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"kucG6":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Ruins.7634ea7e.png" + "?" + Date.now();
+
+},{"./helpers/bundle-url":"lgJ39"}],"kst05":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _randomEnumKey = require("./RandomEnumKey");
-var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
-var _planetNames = require("../models/planets/PlanetNames");
-var _planet = require("../models/planets/Planet");
-var _nameGenerator = require("./NameGenerator");
-var _nameGeneratorDefault = parcelHelpers.interopDefault(_nameGenerator);
-var _planetaryCompositionGenerator = require("./PlanetaryCompositionGenerator");
-var _planetaryCompositionGeneratorDefault = parcelHelpers.interopDefault(_planetaryCompositionGenerator);
-var _temperatureGenerator = require("./TemperatureGenerator");
-var _temperatureGeneratorDefault = parcelHelpers.interopDefault(_temperatureGenerator);
-var _resourceGenerator = require("./ResourceGenerator");
-var _resourceGeneratorDefault = parcelHelpers.interopDefault(_resourceGenerator);
-var _stabilityGenerator = require("./StabilityGenerator");
-var _stabilityGeneratorDefault = parcelHelpers.interopDefault(_stabilityGenerator);
-function PlanetGenerator(planetAmount) {
-    const PlanetList = [];
-    for(var i = 0; i < planetAmount; i++){
-        const generatedPlanetType = (0, _planet.PlanetType)[(0, _randomEnumKeyDefault.default)((0, _planet.PlanetType))];
-        const generatedComposition = (0, _planetaryCompositionGeneratorDefault.default)(generatedPlanetType);
-        let newPlanet = {
-            name: (0, _nameGeneratorDefault.default)((0, _planetNames.planetNames)),
-            temperature: (0, _temperatureGeneratorDefault.default)(generatedComposition),
-            type: generatedPlanetType,
-            composition: generatedComposition,
-            resources: (0, _resourceGeneratorDefault.default)(generatedComposition, planetAmount),
-            stability: (0, _stabilityGeneratorDefault.default)(generatedPlanetType)
-        };
-        PlanetList.push(newPlanet);
-    }
-    return PlanetList;
-}
-exports.default = PlanetGenerator;
+parcelHelpers.export(exports, "ResourceList", ()=>ResourceList);
+parcelHelpers.export(exports, "ResourceImage", ()=>ResourceImage);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const ResourceList = (0, _styledComponentsDefault.default).div`
+  display: flex;
+  flex-direction: row;
+  height: 200rem;
+  min-width: 100%;
+  flex: 1;
+`;
+const ResourceImage = (0, _styledComponentsDefault.default).img`
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+`;
 
-},{"./RandomEnumKey":"d89k0","../models/planets/PlanetNames":"7Ll3g","../models/planets/Planet":"fbCJI","./NameGenerator":"cei1n","./PlanetaryCompositionGenerator":"8MrB1","./TemperatureGenerator":"bsEZP","./ResourceGenerator":"7rum1","./StabilityGenerator":"1rcyi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d89k0":[function(require,module,exports) {
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e6xLf":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-function randomEnumKey(enumObj) {
-    let keys = Object.keys(enumObj);
-    let enumKey = keys[Math.floor(Math.random() * keys.length)];
-    return enumKey;
-}
-exports.default = randomEnumKey;
+parcelHelpers.export(exports, "StyledCardContainer", ()=>StyledCardContainer);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const StyledCardContainer = (0, _styledComponentsDefault.default).div`
+  display: flex;
+  flex-direction: row;
+  min-width: 100%;
+`;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7Ll3g":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "planetNames", ()=>planetNames);
-const planetNames = [
-    "Apollo",
-    "Saros",
-    "Phoenix",
-    "Cosmos",
-    "Ceilo",
-    "Comet",
-    "Meteor",
-    "Phoebus",
-    "Sky",
-    "Starr",
-    "Zenith",
-    "Vulcan",
-    "Jupiter",
-    "Mercury",
-    "Aerglo",
-    "Pluto",
-    "Janus",
-    "Mars",
-    "Oberon",
-    "Jericho",
-    "Holmes",
-    "Neptune",
-    "Aelius",
-    "Aku",
-    "Aibek",
-    "Astennu",
-    "Aten",
-    "Arche",
-    "Badar",
-    "Badru",
-    "Blaze",
-    "Chan",
-    "Cupid",
-    "Deimos",
-    "Donati",
-    "Eos",
-    "Hang",
-    "Hesperos",
-    "Hilal",
-    "Iah",
-    "Ilkay",
-    "Io",
-    "Kale",
-    "Koray",
-    "Kuiper",
-    "Mahruk",
-    "Maramma",
-    "Mayank",
-    "Meztli",
-    "Muraco",
-    "Nanna",
-    "Neil",
-    "Pallas",
-    "Proteus",
-    "Pulan",
-    "Purnama",
-    "Qamar",
-    "Saturn",
-    "Sol",
-    "Themis",
-    "Thule",
-    "Titan",
-    "Triton",
-    "Orion",
-    "Aries",
-    "Atlas",
-    "Perseus",
-    "Leo",
-    "Archer",
-    "Sirius",
-    "Castor",
-    "Columba",
-    "Hunter",
-    "Nash",
-    "Rigel",
-    "Solar",
-    "Taurus",
-    "Hercules",
-    "Alioth",
-    "Aster",
-    "Astrophel",
-    "Altair",
-    "Danica",
-    "Draco",
-    "Elio",
-    "Hamal",
-    "Hoku",
-    "Izar",
-    "Lintang",
-    "Namid",
-    "Pollux",
-    "Rasalas",
-    "Regulus",
-    "Samson",
-    "Wolf",
-    "Galexia",
-    "Andromeda",
-    "Ophelia",
-    "Titania",
-    "Portia",
-    "Venus",
-    "Pandora",
-    "Phoebe",
-    "Halley",
-    "Astrid",
-    "Miranda",
-    "Juliet",
-    "Bianca",
-    "Aurora",
-    "Ariel",
-    "Elara",
-    "Luna",
-    "Cordelia",
-    "Calypso",
-    "Callisto",
-    "Cressida",
-    "Aina",
-    "Alcmene",
-    "Amaris",
-    "Arianrhod",
-    "Arpina",
-    "Aylin",
-    "Aysu",
-    "Aysun",
-    "Belinda",
-    "Bellatrix",
-    "Carina",
-    "Cassini",
-    "Chandra",
-    "Chara",
-    "Charon",
-    "Crescent",
-    "Cynthia",
-    "Despina",
-    "Diana",
-    "Dione",
-    "Eris",
-    "Flora",
-    "Gaia",
-    "Galatea",
-    "Hala",
-    "Helene",
-    "Helia",
-    "Hilda",
-    "Hoshi",
-    "Indu",
-    "Jaci",
-    "Kamaria",
-    "Larissa",
-    "Leda",
-    "Lucine",
-    "Maha",
-    "Mahina",
-    "Mahtab",
-    "Mona",
-    "Neoma",
-    "Nevaeh",
-    "Nokomis",
-    "Pensri",
-    "Rhea",
-    "Thebe",
-    "Larissa",
-    "Rosalind",
-    "Soleil",
-    "Solstice",
-    "Solveig",
-    "Thalassa",
-    "Titania",
-    "Vesta",
-    "Zelenia",
-    "Cassiopeia",
-    "Lyra",
-    "Vega",
-    "Libra",
-    "Estella",
-    "Alya",
-    "Alula",
-    "Nova",
-    "Adhara",
-    "Alcyone",
-    "Alpha",
-    "Amalthea",
-    "Aquarius",
-    "Ascella",
-    "Astra",
-    "Capella",
-    "Celestia",
-    "Electra",
-    "Esther",
-    "Etoile",
-    "Europa",
-    "Gomeisa",
-    "Juno",
-    "Maia",
-    "Nashira",
-    "Norma",
-    "Polaris",
-    "Starling",
-    "Zaniah", 
-];
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fbCJI":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "PlanetType", ()=>PlanetType);
-parcelHelpers.export(exports, "Composition", ()=>Composition);
-parcelHelpers.export(exports, "Resource", ()=>Resource);
-let PlanetType;
-(function(PlanetType) {
-    PlanetType["GASGIANT"] = "gasGiant";
-    PlanetType["ICEGIANT"] = "iceGiant";
-    PlanetType["GASEOUS"] = "gaseous";
-    PlanetType["TERRESTRIAL"] = "terrestrial";
-    PlanetType["DWARFPLANET"] = "dwarfPlanet";
-})(PlanetType || (PlanetType = {}));
-let Composition;
-(function(Composition) {
-    Composition["ORGANIC"] = "organic";
-    Composition["SCILLICATE"] = "scillicate";
-    Composition["DESERT"] = "desert";
-    Composition["GAS"] = "gas";
-    Composition["ICE"] = "ice";
-    Composition["LAVA"] = "lava";
-    Composition["OCEAN"] = "ocean";
-    Composition["ROCKY"] = "rocky";
-})(Composition || (Composition = {}));
-let Resource;
-(function(Resource) {
-    Resource["DISCOVERY"] = "discovery";
-    Resource["ENERGY"] = "energy";
-    Resource["FUEL"] = "fuel";
-    Resource["LIFE"] = "life";
-    Resource["METAL"] = "metal";
-    Resource["RUINS"] = "ruins";
-})(Resource || (Resource = {}));
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cei1n":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-function NameGenerator(nameList) {
-    let randomIndex = Math.floor(Math.random() * nameList.length);
-    let randomNumber = Math.floor(Math.random() * 5);
-    let randomSuffix = Math.random().toString().slice(2, randomNumber + 1);
-    if (randomNumber > 1) return `${nameList[randomIndex]}-${randomSuffix}`;
-    return nameList[randomIndex];
-}
-exports.default = NameGenerator;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8MrB1":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-var _randomEnumKey = require("./RandomEnumKey");
-var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
-function PlanetaryCompositionGenerator(type) {
-    const composition = [];
-    function generator(filteredComposition) {
-        var randomTotal = Math.floor(Math.random() * (filteredComposition.length - 1) + 1);
-        let randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
-        for(randomTotal; randomTotal--;){
-            filteredComposition = Object.values(filteredComposition).filter((a)=>a != filteredComposition[randomIndex]);
-            randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
-            composition.push(filteredComposition[randomIndex]);
-        }
-    }
-    switch(type){
-        case (0, _planet.PlanetType).GASGIANT:
-            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).ROCKY && a != (0, _planet.Composition).DESERT && a != (0, _planet.Composition).LAVA && a != (0, _planet.Composition).OCEAN);
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
-            break;
-        case (0, _planet.PlanetType).ICEGIANT:
-            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).DESERT);
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).ICE)) composition.push((0, _planet.Composition).ICE);
-            break;
-        case (0, _planet.PlanetType).GASEOUS:
-            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).OCEAN && a != (0, _planet.Composition).DESERT);
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
-            break;
-        case (0, _planet.PlanetType).TERRESTRIAL:
-            var filteredComposition = Object.values((0, _planet.Composition));
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) composition.push((0, _planet.Composition).SCILLICATE);
-            break;
-        case (0, _planet.PlanetType).DWARFPLANET:
-            var filteredComposition = Object.values((0, _planet.Composition));
-            generator(filteredComposition);
-            break;
-        default:
-            break;
-    }
-    return composition.sort();
-}
-exports.default = PlanetaryCompositionGenerator;
-
-},{"../models/planets/Planet":"fbCJI","./RandomEnumKey":"d89k0","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bsEZP":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-function TemperatureGenerator(composition) {
-    var maxTemp = 1000;
-    var maxLavaTemp = 1500;
-    var maxIceTemp = 273;
-    var maxOrganicTemp = 323;
-    var minTemp = 50;
-    var minLavaTemp = 700;
-    var minimumTemp = 10;
-    var temperature = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp);
-    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && !composition.some((a)=>a === (0, _planet.Composition).ICE) && !composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
-        temperature = Math.floor(Math.random() * (maxLavaTemp - minLavaTemp) + minLavaTemp);
-        return temperature;
-    }
-    if (composition.some((a)=>a === (0, _planet.Composition).ICE)) {
-        temperature = Math.floor(Math.random() * (maxIceTemp - minimumTemp) + minimumTemp);
-        return temperature;
-    }
-    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
-        temperature = Math.floor(Math.random() * (maxOrganicTemp - minimumTemp) + minimumTemp);
-        return temperature;
-    } else return temperature;
-}
-exports.default = TemperatureGenerator;
-
-},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7rum1":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-function ResourceGeneartor(composition, planetAmount) {
-    const resources = [];
-    var randomTotal = Math.floor(Math.random() * (planetAmount - 1) + 1);
-    if (composition.some((a)=>a === (0, _planet.Composition).GAS) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) resources.push((0, _planet.Resource).FUEL);
-    if (composition.some((a)=>a === (0, _planet.Composition).ROCKY) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE) && composition.some((a)=>a !== (0, _planet.Composition).GAS)) resources.push((0, _planet.Resource).METAL);
-    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC && composition.some((a)=>a === (0, _planet.Composition).OCEAN))) resources.push((0, _planet.Resource).LIFE);
-    if (composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) resources.push((0, _planet.Resource).RUINS);
-    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && composition.some((a)=>a === (0, _planet.Composition).GAS) || composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ROCKY)) resources.push((0, _planet.Resource).ENERGY);
-    if (resources.length < 1) resources.push((0, _planet.Resource).DISCOVERY);
-    return resources.sort();
-}
-exports.default = ResourceGeneartor;
-
-},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1rcyi":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-function StabilityGenerator(planet) {
-    var stability = 0;
-    var maxGasGiantHp = 350;
-    var maxIcePlanetHp = 250;
-    var maxPlanetHp = 200;
-    var maxDwarfHp = 100;
-    var minGasGiantHp = 200;
-    var minIcePlanetHp = 150;
-    var minPlanetHp = 100;
-    var minDwarfHp = 50;
-    function stabilityOutput(min, max) {
-        let randomNumber = Math.floor(Math.random() * (max - min) + min);
-        return Math.ceil(randomNumber / 10) * 10;
-    }
-    switch(planet){
-        case (0, _planet.PlanetType).GASGIANT:
-            stability = stabilityOutput(minGasGiantHp, maxGasGiantHp);
-            break;
-        case (0, _planet.PlanetType).ICEGIANT:
-            stability = stabilityOutput(minIcePlanetHp, maxIcePlanetHp);
-            break;
-        case (0, _planet.PlanetType).GASEOUS:
-        case (0, _planet.PlanetType).TERRESTRIAL:
-            stability = stabilityOutput(minPlanetHp, maxPlanetHp);
-            break;
-        case (0, _planet.PlanetType).DWARFPLANET:
-            stability = stabilityOutput(minDwarfHp, maxDwarfHp);
-            break;
-        default:
-            break;
-    }
-    return stability;
-}
-exports.default = StabilityGenerator;
-
-},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1xC6H","hi2Fo","kjLP2"], "kjLP2", "parcelRequirec9a6")
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1xC6H","hi2Fo","kjLP2"], "kjLP2", "parcelRequirec9a6")
 
 //# sourceMappingURL=index.js.map
