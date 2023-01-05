@@ -27215,15 +27215,18 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "store", ()=>store);
 var _toolkit = require("@reduxjs/toolkit");
+var _deckSlice = require("./slices/DeckSlice");
+var _deckSliceDefault = parcelHelpers.interopDefault(_deckSlice);
 var _playerSlice = require("./slices/PlayerSlice");
 var _playerSliceDefault = parcelHelpers.interopDefault(_playerSlice);
 const store = (0, _toolkit.configureStore)({
     reducer: {
-        player: (0, _playerSliceDefault.default)
+        player: (0, _playerSliceDefault.default),
+        deck: (0, _deckSliceDefault.default)
     }
 });
 
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./slices/PlayerSlice":"cMhzB"}],"lL1Ef":[function(require,module,exports) {
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./slices/PlayerSlice":"cMhzB","./slices/DeckSlice":"d2BvN"}],"lL1Ef":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MiddlewareArray", ()=>MiddlewareArray);
@@ -31055,7 +31058,472 @@ const PlayerSlice = (0, _toolkit.createSlice)({
 const { addPlanets  } = PlayerSlice.actions;
 exports.default = PlayerSlice.reducer;
 
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bdVon":[function(require,module,exports) {
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d2BvN":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DeckSlice", ()=>DeckSlice);
+parcelHelpers.export(exports, "drawCard", ()=>drawCard);
+var _toolkit = require("@reduxjs/toolkit");
+var _planetGenerator = require("../../generators/PlanetGenerator");
+var _planetGeneratorDefault = parcelHelpers.interopDefault(_planetGenerator);
+const DeckSlice = (0, _toolkit.createSlice)({
+    name: "Deck",
+    initialState: {
+        deck: (0, _planetGeneratorDefault.default)(100),
+        drawnStack: []
+    },
+    reducers: {
+        drawCard: {
+            reducer: (state, action)=>{
+                action.payload.forEach((number)=>{
+                    state.drawnStack.push(state.deck[number]);
+                    state.deck = state.deck.filter((card)=>card !== state.deck[number - 1]);
+                });
+            },
+            prepare: (selectedIndecies)=>{
+                return {
+                    payload: selectedIndecies
+                };
+            }
+        }
+    }
+});
+const { drawCard  } = DeckSlice.actions;
+exports.default = DeckSlice.reducer;
+
+},{"@reduxjs/toolkit":"lL1Ef","../../generators/PlanetGenerator":"4BayG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4BayG":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _randomEnumKey = require("./RandomEnumKey");
+var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
+var _planetNames = require("../models/planets/PlanetNames");
+var _planet = require("../models/planets/Planet");
+var _nameGenerator = require("./NameGenerator");
+var _nameGeneratorDefault = parcelHelpers.interopDefault(_nameGenerator);
+var _planetaryCompositionGenerator = require("./PlanetaryCompositionGenerator");
+var _planetaryCompositionGeneratorDefault = parcelHelpers.interopDefault(_planetaryCompositionGenerator);
+var _temperatureGenerator = require("./TemperatureGenerator");
+var _temperatureGeneratorDefault = parcelHelpers.interopDefault(_temperatureGenerator);
+var _resourceGenerator = require("./ResourceGenerator");
+var _resourceGeneratorDefault = parcelHelpers.interopDefault(_resourceGenerator);
+var _stabilityGenerator = require("./StabilityGenerator");
+var _stabilityGeneratorDefault = parcelHelpers.interopDefault(_stabilityGenerator);
+function PlanetGenerator(planetAmount) {
+    const PlanetList = [];
+    for(var i = 0; i < planetAmount; i++){
+        const generatedPlanetType = (0, _planet.PlanetType)[(0, _randomEnumKeyDefault.default)((0, _planet.PlanetType))];
+        const generatedComposition = (0, _planetaryCompositionGeneratorDefault.default)(generatedPlanetType);
+        let newPlanet = {
+            name: (0, _nameGeneratorDefault.default)((0, _planetNames.planetNames)),
+            temperature: (0, _temperatureGeneratorDefault.default)(generatedComposition),
+            type: generatedPlanetType,
+            composition: generatedComposition,
+            resources: (0, _resourceGeneratorDefault.default)(generatedComposition, planetAmount),
+            stability: (0, _stabilityGeneratorDefault.default)(generatedPlanetType)
+        };
+        PlanetList.push(newPlanet);
+    }
+    return PlanetList;
+}
+exports.default = PlanetGenerator;
+
+},{"./RandomEnumKey":"d89k0","../models/planets/PlanetNames":"7Ll3g","../models/planets/Planet":"fbCJI","./NameGenerator":"cei1n","./PlanetaryCompositionGenerator":"8MrB1","./TemperatureGenerator":"bsEZP","./ResourceGenerator":"7rum1","./StabilityGenerator":"1rcyi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d89k0":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function randomEnumKey(enumObj) {
+    let keys = Object.keys(enumObj);
+    let enumKey = keys[Math.floor(Math.random() * keys.length)];
+    return enumKey;
+}
+exports.default = randomEnumKey;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7Ll3g":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "planetNames", ()=>planetNames);
+const planetNames = [
+    "Apollo",
+    "Saros",
+    "Phoenix",
+    "Cosmos",
+    "Ceilo",
+    "Comet",
+    "Meteor",
+    "Phoebus",
+    "Sky",
+    "Starr",
+    "Zenith",
+    "Vulcan",
+    "Jupiter",
+    "Mercury",
+    "Aerglo",
+    "Pluto",
+    "Janus",
+    "Mars",
+    "Oberon",
+    "Jericho",
+    "Holmes",
+    "Neptune",
+    "Aelius",
+    "Aku",
+    "Aibek",
+    "Astennu",
+    "Aten",
+    "Arche",
+    "Badar",
+    "Badru",
+    "Blaze",
+    "Chan",
+    "Cupid",
+    "Deimos",
+    "Donati",
+    "Eos",
+    "Hang",
+    "Hesperos",
+    "Hilal",
+    "Iah",
+    "Ilkay",
+    "Io",
+    "Kale",
+    "Koray",
+    "Kuiper",
+    "Mahruk",
+    "Maramma",
+    "Mayank",
+    "Meztli",
+    "Muraco",
+    "Nanna",
+    "Neil",
+    "Pallas",
+    "Proteus",
+    "Pulan",
+    "Purnama",
+    "Qamar",
+    "Saturn",
+    "Sol",
+    "Themis",
+    "Thule",
+    "Titan",
+    "Triton",
+    "Orion",
+    "Aries",
+    "Atlas",
+    "Perseus",
+    "Leo",
+    "Archer",
+    "Sirius",
+    "Castor",
+    "Columba",
+    "Hunter",
+    "Nash",
+    "Rigel",
+    "Solar",
+    "Taurus",
+    "Hercules",
+    "Alioth",
+    "Aster",
+    "Astrophel",
+    "Altair",
+    "Danica",
+    "Draco",
+    "Elio",
+    "Hamal",
+    "Hoku",
+    "Izar",
+    "Lintang",
+    "Namid",
+    "Pollux",
+    "Rasalas",
+    "Regulus",
+    "Samson",
+    "Wolf",
+    "Galexia",
+    "Andromeda",
+    "Ophelia",
+    "Titania",
+    "Portia",
+    "Venus",
+    "Pandora",
+    "Phoebe",
+    "Halley",
+    "Astrid",
+    "Miranda",
+    "Juliet",
+    "Bianca",
+    "Aurora",
+    "Ariel",
+    "Elara",
+    "Luna",
+    "Cordelia",
+    "Calypso",
+    "Callisto",
+    "Cressida",
+    "Aina",
+    "Alcmene",
+    "Amaris",
+    "Arianrhod",
+    "Arpina",
+    "Aylin",
+    "Aysu",
+    "Aysun",
+    "Belinda",
+    "Bellatrix",
+    "Carina",
+    "Cassini",
+    "Chandra",
+    "Chara",
+    "Charon",
+    "Crescent",
+    "Cynthia",
+    "Despina",
+    "Diana",
+    "Dione",
+    "Eris",
+    "Flora",
+    "Gaia",
+    "Galatea",
+    "Hala",
+    "Helene",
+    "Helia",
+    "Hilda",
+    "Hoshi",
+    "Indu",
+    "Jaci",
+    "Kamaria",
+    "Larissa",
+    "Leda",
+    "Lucine",
+    "Maha",
+    "Mahina",
+    "Mahtab",
+    "Mona",
+    "Neoma",
+    "Nevaeh",
+    "Nokomis",
+    "Pensri",
+    "Rhea",
+    "Thebe",
+    "Larissa",
+    "Rosalind",
+    "Soleil",
+    "Solstice",
+    "Solveig",
+    "Thalassa",
+    "Titania",
+    "Vesta",
+    "Zelenia",
+    "Cassiopeia",
+    "Lyra",
+    "Vega",
+    "Libra",
+    "Estella",
+    "Alya",
+    "Alula",
+    "Nova",
+    "Adhara",
+    "Alcyone",
+    "Alpha",
+    "Amalthea",
+    "Aquarius",
+    "Ascella",
+    "Astra",
+    "Capella",
+    "Celestia",
+    "Electra",
+    "Esther",
+    "Etoile",
+    "Europa",
+    "Gomeisa",
+    "Juno",
+    "Maia",
+    "Nashira",
+    "Norma",
+    "Polaris",
+    "Starling",
+    "Zaniah", 
+];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fbCJI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "PlanetType", ()=>PlanetType);
+parcelHelpers.export(exports, "Composition", ()=>Composition);
+parcelHelpers.export(exports, "Resource", ()=>Resource);
+let PlanetType;
+(function(PlanetType) {
+    PlanetType["GASGIANT"] = "gasGiant";
+    PlanetType["ICEGIANT"] = "iceGiant";
+    PlanetType["GASEOUS"] = "gaseous";
+    PlanetType["TERRESTRIAL"] = "terrestrial";
+    PlanetType["DWARFPLANET"] = "dwarfPlanet";
+})(PlanetType || (PlanetType = {}));
+let Composition;
+(function(Composition) {
+    Composition["ORGANIC"] = "organic";
+    Composition["SCILLICATE"] = "scillicate";
+    Composition["DESERT"] = "desert";
+    Composition["GAS"] = "gas";
+    Composition["ICE"] = "ice";
+    Composition["LAVA"] = "lava";
+    Composition["OCEAN"] = "ocean";
+    Composition["ROCKY"] = "rocky";
+})(Composition || (Composition = {}));
+let Resource;
+(function(Resource) {
+    Resource["DISCOVERY"] = "discovery";
+    Resource["ENERGY"] = "energy";
+    Resource["FUEL"] = "fuel";
+    Resource["LIFE"] = "life";
+    Resource["METAL"] = "metal";
+    Resource["RUINS"] = "ruins";
+})(Resource || (Resource = {}));
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cei1n":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function NameGenerator(nameList) {
+    let randomIndex = Math.floor(Math.random() * nameList.length);
+    let randomNumber = Math.floor(Math.random() * 5);
+    let randomSuffix = Math.random().toString().slice(2, randomNumber + 1);
+    if (randomNumber > 1) return `${nameList[randomIndex]}-${randomSuffix}`;
+    return nameList[randomIndex];
+}
+exports.default = NameGenerator;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8MrB1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+var _randomEnumKey = require("./RandomEnumKey");
+var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
+function PlanetaryCompositionGenerator(type) {
+    const composition = [];
+    function generator(filteredComposition) {
+        var randomTotal = Math.floor(Math.random() * (filteredComposition.length - 1) + 1);
+        let randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
+        for(randomTotal; randomTotal--;){
+            filteredComposition = Object.values(filteredComposition).filter((a)=>a != filteredComposition[randomIndex]);
+            randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
+            composition.push(filteredComposition[randomIndex]);
+        }
+    }
+    switch(type){
+        case (0, _planet.PlanetType).GASGIANT:
+            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).ROCKY && a != (0, _planet.Composition).DESERT && a != (0, _planet.Composition).LAVA && a != (0, _planet.Composition).OCEAN);
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
+            break;
+        case (0, _planet.PlanetType).ICEGIANT:
+            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).DESERT);
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).ICE)) composition.push((0, _planet.Composition).ICE);
+            break;
+        case (0, _planet.PlanetType).GASEOUS:
+            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).OCEAN && a != (0, _planet.Composition).DESERT);
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
+            break;
+        case (0, _planet.PlanetType).TERRESTRIAL:
+            var filteredComposition = Object.values((0, _planet.Composition));
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) composition.push((0, _planet.Composition).SCILLICATE);
+            break;
+        case (0, _planet.PlanetType).DWARFPLANET:
+            var filteredComposition = Object.values((0, _planet.Composition));
+            generator(filteredComposition);
+            break;
+        default:
+            break;
+    }
+    return composition.sort();
+}
+exports.default = PlanetaryCompositionGenerator;
+
+},{"../models/planets/Planet":"fbCJI","./RandomEnumKey":"d89k0","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bsEZP":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+function TemperatureGenerator(composition) {
+    var maxTemp = 1000;
+    var maxLavaTemp = 1500;
+    var maxIceTemp = 273;
+    var maxOrganicTemp = 323;
+    var minTemp = 50;
+    var minLavaTemp = 700;
+    var minimumTemp = 10;
+    var temperature = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp);
+    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && !composition.some((a)=>a === (0, _planet.Composition).ICE) && !composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
+        temperature = Math.floor(Math.random() * (maxLavaTemp - minLavaTemp) + minLavaTemp);
+        return temperature;
+    }
+    if (composition.some((a)=>a === (0, _planet.Composition).ICE)) {
+        temperature = Math.floor(Math.random() * (maxIceTemp - minimumTemp) + minimumTemp);
+        return temperature;
+    }
+    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
+        temperature = Math.floor(Math.random() * (maxOrganicTemp - minimumTemp) + minimumTemp);
+        return temperature;
+    } else return temperature;
+}
+exports.default = TemperatureGenerator;
+
+},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7rum1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+function ResourceGeneartor(composition, planetAmount) {
+    const resources = [];
+    var randomTotal = Math.floor(Math.random() * (planetAmount - 1) + 1);
+    if (composition.some((a)=>a === (0, _planet.Composition).GAS) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) resources.push((0, _planet.Resource).FUEL);
+    if (composition.some((a)=>a === (0, _planet.Composition).ROCKY) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE) && composition.some((a)=>a !== (0, _planet.Composition).GAS)) resources.push((0, _planet.Resource).METAL);
+    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC && composition.some((a)=>a === (0, _planet.Composition).OCEAN))) resources.push((0, _planet.Resource).LIFE);
+    if (composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) resources.push((0, _planet.Resource).RUINS);
+    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && composition.some((a)=>a === (0, _planet.Composition).GAS) || composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ROCKY)) resources.push((0, _planet.Resource).ENERGY);
+    if (resources.length < 1) resources.push((0, _planet.Resource).DISCOVERY);
+    return resources.sort();
+}
+exports.default = ResourceGeneartor;
+
+},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1rcyi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+function StabilityGenerator(planet) {
+    var stability = 0;
+    var maxGasGiantHp = 350;
+    var maxIcePlanetHp = 250;
+    var maxPlanetHp = 200;
+    var maxDwarfHp = 100;
+    var minGasGiantHp = 200;
+    var minIcePlanetHp = 150;
+    var minPlanetHp = 100;
+    var minDwarfHp = 50;
+    function stabilityOutput(min, max) {
+        let randomNumber = Math.floor(Math.random() * (max - min) + min);
+        return Math.ceil(randomNumber / 10) * 10;
+    }
+    switch(planet){
+        case (0, _planet.PlanetType).GASGIANT:
+            stability = stabilityOutput(minGasGiantHp, maxGasGiantHp);
+            break;
+        case (0, _planet.PlanetType).ICEGIANT:
+            stability = stabilityOutput(minIcePlanetHp, maxIcePlanetHp);
+            break;
+        case (0, _planet.PlanetType).GASEOUS:
+        case (0, _planet.PlanetType).TERRESTRIAL:
+            stability = stabilityOutput(minPlanetHp, maxPlanetHp);
+            break;
+        case (0, _planet.PlanetType).DWARFPLANET:
+            stability = stabilityOutput(minDwarfHp, maxDwarfHp);
+            break;
+        default:
+            break;
+    }
+    return stability;
+}
+exports.default = StabilityGenerator;
+
+},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bdVon":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "batch", ()=>(0, _reactBatchedUpdates.unstable_batchedUpdates));
@@ -32855,31 +33323,73 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _planetGenerator = require("../../../generators/PlanetGenerator");
 var _planetGeneratorDefault = parcelHelpers.interopDefault(_planetGenerator);
+var _hooks = require("../../../redux/hooks");
+var _deckSlice = require("../../../redux/slices/DeckSlice");
+var _playerSlice = require("../../../redux/slices/PlayerSlice");
 var _card = require("../Card");
 var _cardDefault = parcelHelpers.interopDefault(_card);
 var _styles = require("./styles");
+var _s = $RefreshSig$();
 const testPlanets = (0, _planetGeneratorDefault.default)(5);
 function CardContainer() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledCardContainer), {
+    _s();
+    const dispatch = (0, _hooks.useAppDispatch)();
+    const useSelector = (0, _hooks.useAppSelector)((state)=>state);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
-            testPlanets.map((planet)=>{
-                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
-                    planet: planet
-                }, void 0, false, {
-                    fileName: "components/card/card-container/CardContainer.tsx",
-                    lineNumber: 12,
-                    columnNumber: 16
-                }, this);
-            }),
-            ";"
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledCardContainer), {
+                children: [
+                    testPlanets.map((planet)=>{
+                        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
+                            planet: planet
+                        }, void 0, false, {
+                            fileName: "components/card/card-container/CardContainer.tsx",
+                            lineNumber: 18,
+                            columnNumber: 18
+                        }, this);
+                    }),
+                    ";"
+                ]
+            }, void 0, true, {
+                fileName: "components/card/card-container/CardContainer.tsx",
+                lineNumber: 16,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                style: {
+                    width: "20rem"
+                },
+                onClick: ()=>dispatch((0, _deckSlice.drawCard)([
+                        0,
+                        3
+                    ])),
+                children: "Draw"
+            }, void 0, false, {
+                fileName: "components/card/card-container/CardContainer.tsx",
+                lineNumber: 22,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                style: {
+                    width: "20rem"
+                },
+                onClick: ()=>dispatch((0, _playerSlice.addPlanets)(useSelector.deck.drawnStack)),
+                children: "ADD TO PLAYER"
+            }, void 0, false, {
+                fileName: "components/card/card-container/CardContainer.tsx",
+                lineNumber: 28,
+                columnNumber: 7
+            }, this)
         ]
-    }, void 0, true, {
-        fileName: "components/card/card-container/CardContainer.tsx",
-        lineNumber: 10,
-        columnNumber: 5
-    }, this);
+    }, void 0, true);
 }
 exports.default = CardContainer;
+_s(CardContainer, "9t9ZDKnBVMl+n28cY79Ke8529fo=", false, function() {
+    return [
+        (0, _hooks.useAppDispatch),
+        (0, _hooks.useAppSelector)
+    ];
+});
 _c = CardContainer;
 var _c;
 $RefreshReg$(_c, "CardContainer");
@@ -32889,439 +33399,7 @@ $RefreshReg$(_c, "CardContainer");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../generators/PlanetGenerator":"4BayG","../Card":"hDfxY","./styles":"e6xLf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"4BayG":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _randomEnumKey = require("./RandomEnumKey");
-var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
-var _planetNames = require("../models/planets/PlanetNames");
-var _planet = require("../models/planets/Planet");
-var _nameGenerator = require("./NameGenerator");
-var _nameGeneratorDefault = parcelHelpers.interopDefault(_nameGenerator);
-var _planetaryCompositionGenerator = require("./PlanetaryCompositionGenerator");
-var _planetaryCompositionGeneratorDefault = parcelHelpers.interopDefault(_planetaryCompositionGenerator);
-var _temperatureGenerator = require("./TemperatureGenerator");
-var _temperatureGeneratorDefault = parcelHelpers.interopDefault(_temperatureGenerator);
-var _resourceGenerator = require("./ResourceGenerator");
-var _resourceGeneratorDefault = parcelHelpers.interopDefault(_resourceGenerator);
-var _stabilityGenerator = require("./StabilityGenerator");
-var _stabilityGeneratorDefault = parcelHelpers.interopDefault(_stabilityGenerator);
-function PlanetGenerator(planetAmount) {
-    const PlanetList = [];
-    for(var i = 0; i < planetAmount; i++){
-        const generatedPlanetType = (0, _planet.PlanetType)[(0, _randomEnumKeyDefault.default)((0, _planet.PlanetType))];
-        const generatedComposition = (0, _planetaryCompositionGeneratorDefault.default)(generatedPlanetType);
-        let newPlanet = {
-            name: (0, _nameGeneratorDefault.default)((0, _planetNames.planetNames)),
-            temperature: (0, _temperatureGeneratorDefault.default)(generatedComposition),
-            type: generatedPlanetType,
-            composition: generatedComposition,
-            resources: (0, _resourceGeneratorDefault.default)(generatedComposition, planetAmount),
-            stability: (0, _stabilityGeneratorDefault.default)(generatedPlanetType)
-        };
-        PlanetList.push(newPlanet);
-    }
-    return PlanetList;
-}
-exports.default = PlanetGenerator;
-
-},{"./RandomEnumKey":"d89k0","../models/planets/PlanetNames":"7Ll3g","../models/planets/Planet":"fbCJI","./NameGenerator":"cei1n","./PlanetaryCompositionGenerator":"8MrB1","./TemperatureGenerator":"bsEZP","./ResourceGenerator":"7rum1","./StabilityGenerator":"1rcyi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d89k0":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-function randomEnumKey(enumObj) {
-    let keys = Object.keys(enumObj);
-    let enumKey = keys[Math.floor(Math.random() * keys.length)];
-    return enumKey;
-}
-exports.default = randomEnumKey;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7Ll3g":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "planetNames", ()=>planetNames);
-const planetNames = [
-    "Apollo",
-    "Saros",
-    "Phoenix",
-    "Cosmos",
-    "Ceilo",
-    "Comet",
-    "Meteor",
-    "Phoebus",
-    "Sky",
-    "Starr",
-    "Zenith",
-    "Vulcan",
-    "Jupiter",
-    "Mercury",
-    "Aerglo",
-    "Pluto",
-    "Janus",
-    "Mars",
-    "Oberon",
-    "Jericho",
-    "Holmes",
-    "Neptune",
-    "Aelius",
-    "Aku",
-    "Aibek",
-    "Astennu",
-    "Aten",
-    "Arche",
-    "Badar",
-    "Badru",
-    "Blaze",
-    "Chan",
-    "Cupid",
-    "Deimos",
-    "Donati",
-    "Eos",
-    "Hang",
-    "Hesperos",
-    "Hilal",
-    "Iah",
-    "Ilkay",
-    "Io",
-    "Kale",
-    "Koray",
-    "Kuiper",
-    "Mahruk",
-    "Maramma",
-    "Mayank",
-    "Meztli",
-    "Muraco",
-    "Nanna",
-    "Neil",
-    "Pallas",
-    "Proteus",
-    "Pulan",
-    "Purnama",
-    "Qamar",
-    "Saturn",
-    "Sol",
-    "Themis",
-    "Thule",
-    "Titan",
-    "Triton",
-    "Orion",
-    "Aries",
-    "Atlas",
-    "Perseus",
-    "Leo",
-    "Archer",
-    "Sirius",
-    "Castor",
-    "Columba",
-    "Hunter",
-    "Nash",
-    "Rigel",
-    "Solar",
-    "Taurus",
-    "Hercules",
-    "Alioth",
-    "Aster",
-    "Astrophel",
-    "Altair",
-    "Danica",
-    "Draco",
-    "Elio",
-    "Hamal",
-    "Hoku",
-    "Izar",
-    "Lintang",
-    "Namid",
-    "Pollux",
-    "Rasalas",
-    "Regulus",
-    "Samson",
-    "Wolf",
-    "Galexia",
-    "Andromeda",
-    "Ophelia",
-    "Titania",
-    "Portia",
-    "Venus",
-    "Pandora",
-    "Phoebe",
-    "Halley",
-    "Astrid",
-    "Miranda",
-    "Juliet",
-    "Bianca",
-    "Aurora",
-    "Ariel",
-    "Elara",
-    "Luna",
-    "Cordelia",
-    "Calypso",
-    "Callisto",
-    "Cressida",
-    "Aina",
-    "Alcmene",
-    "Amaris",
-    "Arianrhod",
-    "Arpina",
-    "Aylin",
-    "Aysu",
-    "Aysun",
-    "Belinda",
-    "Bellatrix",
-    "Carina",
-    "Cassini",
-    "Chandra",
-    "Chara",
-    "Charon",
-    "Crescent",
-    "Cynthia",
-    "Despina",
-    "Diana",
-    "Dione",
-    "Eris",
-    "Flora",
-    "Gaia",
-    "Galatea",
-    "Hala",
-    "Helene",
-    "Helia",
-    "Hilda",
-    "Hoshi",
-    "Indu",
-    "Jaci",
-    "Kamaria",
-    "Larissa",
-    "Leda",
-    "Lucine",
-    "Maha",
-    "Mahina",
-    "Mahtab",
-    "Mona",
-    "Neoma",
-    "Nevaeh",
-    "Nokomis",
-    "Pensri",
-    "Rhea",
-    "Thebe",
-    "Larissa",
-    "Rosalind",
-    "Soleil",
-    "Solstice",
-    "Solveig",
-    "Thalassa",
-    "Titania",
-    "Vesta",
-    "Zelenia",
-    "Cassiopeia",
-    "Lyra",
-    "Vega",
-    "Libra",
-    "Estella",
-    "Alya",
-    "Alula",
-    "Nova",
-    "Adhara",
-    "Alcyone",
-    "Alpha",
-    "Amalthea",
-    "Aquarius",
-    "Ascella",
-    "Astra",
-    "Capella",
-    "Celestia",
-    "Electra",
-    "Esther",
-    "Etoile",
-    "Europa",
-    "Gomeisa",
-    "Juno",
-    "Maia",
-    "Nashira",
-    "Norma",
-    "Polaris",
-    "Starling",
-    "Zaniah", 
-];
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fbCJI":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "PlanetType", ()=>PlanetType);
-parcelHelpers.export(exports, "Composition", ()=>Composition);
-parcelHelpers.export(exports, "Resource", ()=>Resource);
-let PlanetType;
-(function(PlanetType) {
-    PlanetType["GASGIANT"] = "gasGiant";
-    PlanetType["ICEGIANT"] = "iceGiant";
-    PlanetType["GASEOUS"] = "gaseous";
-    PlanetType["TERRESTRIAL"] = "terrestrial";
-    PlanetType["DWARFPLANET"] = "dwarfPlanet";
-})(PlanetType || (PlanetType = {}));
-let Composition;
-(function(Composition) {
-    Composition["ORGANIC"] = "organic";
-    Composition["SCILLICATE"] = "scillicate";
-    Composition["DESERT"] = "desert";
-    Composition["GAS"] = "gas";
-    Composition["ICE"] = "ice";
-    Composition["LAVA"] = "lava";
-    Composition["OCEAN"] = "ocean";
-    Composition["ROCKY"] = "rocky";
-})(Composition || (Composition = {}));
-let Resource;
-(function(Resource) {
-    Resource["DISCOVERY"] = "discovery";
-    Resource["ENERGY"] = "energy";
-    Resource["FUEL"] = "fuel";
-    Resource["LIFE"] = "life";
-    Resource["METAL"] = "metal";
-    Resource["RUINS"] = "ruins";
-})(Resource || (Resource = {}));
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cei1n":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-function NameGenerator(nameList) {
-    let randomIndex = Math.floor(Math.random() * nameList.length);
-    let randomNumber = Math.floor(Math.random() * 5);
-    let randomSuffix = Math.random().toString().slice(2, randomNumber + 1);
-    if (randomNumber > 1) return `${nameList[randomIndex]}-${randomSuffix}`;
-    return nameList[randomIndex];
-}
-exports.default = NameGenerator;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8MrB1":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-var _randomEnumKey = require("./RandomEnumKey");
-var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
-function PlanetaryCompositionGenerator(type) {
-    const composition = [];
-    function generator(filteredComposition) {
-        var randomTotal = Math.floor(Math.random() * (filteredComposition.length - 1) + 1);
-        let randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
-        for(randomTotal; randomTotal--;){
-            filteredComposition = Object.values(filteredComposition).filter((a)=>a != filteredComposition[randomIndex]);
-            randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
-            composition.push(filteredComposition[randomIndex]);
-        }
-    }
-    switch(type){
-        case (0, _planet.PlanetType).GASGIANT:
-            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).ROCKY && a != (0, _planet.Composition).DESERT && a != (0, _planet.Composition).LAVA && a != (0, _planet.Composition).OCEAN);
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
-            break;
-        case (0, _planet.PlanetType).ICEGIANT:
-            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).DESERT);
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).ICE)) composition.push((0, _planet.Composition).ICE);
-            break;
-        case (0, _planet.PlanetType).GASEOUS:
-            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).OCEAN && a != (0, _planet.Composition).DESERT);
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
-            break;
-        case (0, _planet.PlanetType).TERRESTRIAL:
-            var filteredComposition = Object.values((0, _planet.Composition));
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) composition.push((0, _planet.Composition).SCILLICATE);
-            break;
-        case (0, _planet.PlanetType).DWARFPLANET:
-            var filteredComposition = Object.values((0, _planet.Composition));
-            generator(filteredComposition);
-            break;
-        default:
-            break;
-    }
-    return composition.sort();
-}
-exports.default = PlanetaryCompositionGenerator;
-
-},{"../models/planets/Planet":"fbCJI","./RandomEnumKey":"d89k0","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bsEZP":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-function TemperatureGenerator(composition) {
-    var maxTemp = 1000;
-    var maxLavaTemp = 1500;
-    var maxIceTemp = 273;
-    var maxOrganicTemp = 323;
-    var minTemp = 50;
-    var minLavaTemp = 700;
-    var minimumTemp = 10;
-    var temperature = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp);
-    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && !composition.some((a)=>a === (0, _planet.Composition).ICE) && !composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
-        temperature = Math.floor(Math.random() * (maxLavaTemp - minLavaTemp) + minLavaTemp);
-        return temperature;
-    }
-    if (composition.some((a)=>a === (0, _planet.Composition).ICE)) {
-        temperature = Math.floor(Math.random() * (maxIceTemp - minimumTemp) + minimumTemp);
-        return temperature;
-    }
-    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
-        temperature = Math.floor(Math.random() * (maxOrganicTemp - minimumTemp) + minimumTemp);
-        return temperature;
-    } else return temperature;
-}
-exports.default = TemperatureGenerator;
-
-},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7rum1":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-function ResourceGeneartor(composition, planetAmount) {
-    const resources = [];
-    var randomTotal = Math.floor(Math.random() * (planetAmount - 1) + 1);
-    if (composition.some((a)=>a === (0, _planet.Composition).GAS) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) resources.push((0, _planet.Resource).FUEL);
-    if (composition.some((a)=>a === (0, _planet.Composition).ROCKY) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE) && composition.some((a)=>a !== (0, _planet.Composition).GAS)) resources.push((0, _planet.Resource).METAL);
-    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC && composition.some((a)=>a === (0, _planet.Composition).OCEAN))) resources.push((0, _planet.Resource).LIFE);
-    if (composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) resources.push((0, _planet.Resource).RUINS);
-    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && composition.some((a)=>a === (0, _planet.Composition).GAS) || composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ROCKY)) resources.push((0, _planet.Resource).ENERGY);
-    if (resources.length < 1) resources.push((0, _planet.Resource).DISCOVERY);
-    return resources.sort();
-}
-exports.default = ResourceGeneartor;
-
-},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1rcyi":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-function StabilityGenerator(planet) {
-    var stability = 0;
-    var maxGasGiantHp = 350;
-    var maxIcePlanetHp = 250;
-    var maxPlanetHp = 200;
-    var maxDwarfHp = 100;
-    var minGasGiantHp = 200;
-    var minIcePlanetHp = 150;
-    var minPlanetHp = 100;
-    var minDwarfHp = 50;
-    function stabilityOutput(min, max) {
-        let randomNumber = Math.floor(Math.random() * (max - min) + min);
-        return Math.ceil(randomNumber / 10) * 10;
-    }
-    switch(planet){
-        case (0, _planet.PlanetType).GASGIANT:
-            stability = stabilityOutput(minGasGiantHp, maxGasGiantHp);
-            break;
-        case (0, _planet.PlanetType).ICEGIANT:
-            stability = stabilityOutput(minIcePlanetHp, maxIcePlanetHp);
-            break;
-        case (0, _planet.PlanetType).GASEOUS:
-        case (0, _planet.PlanetType).TERRESTRIAL:
-            stability = stabilityOutput(minPlanetHp, maxPlanetHp);
-            break;
-        case (0, _planet.PlanetType).DWARFPLANET:
-            stability = stabilityOutput(minDwarfHp, maxDwarfHp);
-            break;
-        default:
-            break;
-    }
-    return stability;
-}
-exports.default = StabilityGenerator;
-
-},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hDfxY":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../generators/PlanetGenerator":"4BayG","../Card":"hDfxY","./styles":"e6xLf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../redux/hooks":"iu5Bi","../../../redux/slices/DeckSlice":"d2BvN","../../../redux/slices/PlayerSlice":"cMhzB"}],"hDfxY":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$6db5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -35035,6 +35113,15 @@ const StyledCardContainer = (0, _styledComponentsDefault.default).div`
   min-width: 100%;
 `;
 
-},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1xC6H","hi2Fo","kjLP2"], "kjLP2", "parcelRequirec9a6")
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iu5Bi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useAppDispatch", ()=>useAppDispatch);
+parcelHelpers.export(exports, "useAppSelector", ()=>useAppSelector);
+var _reactRedux = require("react-redux");
+const useAppDispatch = (0, _reactRedux.useDispatch);
+const useAppSelector = (0, _reactRedux.useSelector);
+
+},{"react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1xC6H","hi2Fo","kjLP2"], "kjLP2", "parcelRequirec9a6")
 
 //# sourceMappingURL=index.6fa4ea68.js.map

@@ -14,13 +14,14 @@ export const DeckSlice = createSlice({
     drawnStack: [],
   } as DeckType,
   reducers: {
-    draw: {
+    drawCard: {
       reducer: (state, action: PayloadAction<number[]>) => {
-        action.payload.forEach((number, index) => {
+        action.payload.forEach((number) => {
           state.drawnStack.push(state.deck[number]);
-          delete state.deck[(!index && number) || number - 1];
+          state.deck = state.deck.filter(
+            (card) => card !== state.deck[(!number && 0) || number - 1]
+          );
         });
-        return;
       },
       prepare: (selectedIndecies: number[]) => {
         return { payload: selectedIndecies };
@@ -29,6 +30,6 @@ export const DeckSlice = createSlice({
   },
 });
 
-export const { draw } = DeckSlice.actions;
+export const { drawCard } = DeckSlice.actions;
 
 export default DeckSlice.reducer;
