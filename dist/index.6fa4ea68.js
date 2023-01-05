@@ -2905,14 +2905,13 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
-var _store = require("./redux/store");
-var _storeDefault = parcelHelpers.interopDefault(_store);
 var _reactRedux = require("react-redux");
 var _app = require("./main/App");
 var _appDefault = parcelHelpers.interopDefault(_app);
+var _store = require("./redux/store");
 const app = document.getElementById("app");
 (0, _reactDomDefault.default).render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRedux.Provider), {
-    store: (0, _storeDefault.default),
+    store: (0, _store.store),
     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
         fileName: "index.tsx",
         lineNumber: 10,
@@ -27214,12 +27213,17 @@ function registerExportsForReactRefresh(module1) {
 },{"react-refresh/runtime":"786KC"}],"ktNEj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "store", ()=>store);
 var _toolkit = require("@reduxjs/toolkit");
-exports.default = (0, _toolkit.configureStore)({
-    reducer: {}
+var _playerSlice = require("./slices/PlayerSlice");
+var _playerSliceDefault = parcelHelpers.interopDefault(_playerSlice);
+const store = (0, _toolkit.configureStore)({
+    reducer: {
+        player: (0, _playerSliceDefault.default)
+    }
 });
 
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lL1Ef":[function(require,module,exports) {
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./slices/PlayerSlice":"cMhzB"}],"lL1Ef":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MiddlewareArray", ()=>MiddlewareArray);
@@ -31011,7 +31015,47 @@ var thunk = createThunkMiddleware(); // Attach the factory function so users can
 thunk.withExtraArgument = createThunkMiddleware;
 exports.default = thunk;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bdVon":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cMhzB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "PlayerSlice", ()=>PlayerSlice);
+parcelHelpers.export(exports, "addPlanets", ()=>addPlanets);
+var _toolkit = require("@reduxjs/toolkit");
+const PlayerSlice = (0, _toolkit.createSlice)({
+    name: "Player",
+    initialState: {
+        playerId: 0,
+        currentPlanetStack: [],
+        resources: {},
+        research: {},
+        explore: {},
+        engineer: {},
+        production: {}
+    },
+    reducers: {
+        addPlanets: {
+            reducer: (state, action)=>{
+                if (Array.isArray(action.payload)) {
+                    state.currentPlanetStack = [
+                        ...state.currentPlanetStack,
+                        ...action.payload, 
+                    ];
+                    return;
+                }
+                state.currentPlanetStack.push(action.payload);
+            },
+            prepare: (planet)=>{
+                return {
+                    payload: planet
+                };
+            }
+        }
+    }
+});
+const { addPlanets  } = PlayerSlice.actions;
+exports.default = PlayerSlice.reducer;
+
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bdVon":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "batch", ()=>(0, _reactBatchedUpdates.unstable_batchedUpdates));

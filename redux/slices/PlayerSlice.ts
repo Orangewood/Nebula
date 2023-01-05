@@ -16,10 +16,17 @@ export const PlayerSlice = createSlice({
   } as Player,
   reducers: {
     addPlanets: {
-      reducer: (state, action: PayloadAction<Planet>) => {
+      reducer: (state, action: PayloadAction<Planet | Planet[]>) => {
+        if (Array.isArray(action.payload)) {
+          state.currentPlanetStack = [
+            ...state.currentPlanetStack,
+            ...action.payload,
+          ];
+          return;
+        }
         state.currentPlanetStack.push(action.payload);
       },
-      prepare: (planet: Planet) => {
+      prepare: (planet: Planet | Planet[]) => {
         return { payload: planet };
       },
     },
