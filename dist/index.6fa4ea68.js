@@ -27279,8 +27279,8 @@ var _redux = require("redux");
 var _reduxThunk = require("redux-thunk");
 var _reduxThunkDefault = parcelHelpers.interopDefault(_reduxThunk);
 parcelHelpers.exportAll(_redux, exports);
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 var __extends = undefined && undefined.__extends || function() {
     var extendStatics = function(d, b) {
         extendStatics = Object.setPrototypeOf || ({
@@ -31062,7 +31062,7 @@ exports.default = PlayerSlice.reducer;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "DeckSlice", ()=>DeckSlice);
-parcelHelpers.export(exports, "drawCard", ()=>drawCard);
+parcelHelpers.export(exports, "drawCards", ()=>drawCards);
 var _toolkit = require("@reduxjs/toolkit");
 var _planetGenerator = require("../../generators/PlanetGenerator");
 var _planetGeneratorDefault = parcelHelpers.interopDefault(_planetGenerator);
@@ -31073,7 +31073,7 @@ const DeckSlice = (0, _toolkit.createSlice)({
         drawnStack: []
     },
     reducers: {
-        drawCard: {
+        drawCards: {
             reducer: (state, action)=>{
                 let pointer = 0;
                 action.payload.forEach((number, index)=>{
@@ -31092,7 +31092,7 @@ const DeckSlice = (0, _toolkit.createSlice)({
         }
     }
 });
-const { drawCard  } = DeckSlice.actions;
+const { drawCards  } = DeckSlice.actions;
 exports.default = DeckSlice.reducer;
 
 },{"@reduxjs/toolkit":"lL1Ef","../../generators/PlanetGenerator":"4BayG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4BayG":[function(require,module,exports) {
@@ -33294,12 +33294,12 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _cardContainer = require("../components/card/card-container/CardContainer");
-var _cardContainerDefault = parcelHelpers.interopDefault(_cardContainer);
+var _welcomeScreen = require("./welcome-screen/WelcomeScreen");
+var _welcomeScreenDefault = parcelHelpers.interopDefault(_welcomeScreen);
 function App() {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardContainerDefault.default), {}, void 0, false, {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _welcomeScreenDefault.default), {}, void 0, false, {
         fileName: "main/App.tsx",
-        lineNumber: 7,
+        lineNumber: 5,
         columnNumber: 10
     }, this);
 }
@@ -33313,101 +33313,11 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../components/card/card-container/CardContainer":"iziV0","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"iziV0":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$49ea = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./welcome-screen/WelcomeScreen":"jmiu7"}],"jmiu7":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$a763 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$49ea.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _planetGenerator = require("../../../generators/PlanetGenerator");
-var _planetGeneratorDefault = parcelHelpers.interopDefault(_planetGenerator);
-var _hooks = require("../../../redux/hooks");
-var _deckSlice = require("../../../redux/slices/DeckSlice");
-var _playerSlice = require("../../../redux/slices/PlayerSlice");
-var _card = require("../Card");
-var _cardDefault = parcelHelpers.interopDefault(_card);
-var _styles = require("./styles");
-var _s = $RefreshSig$();
-const testPlanets = (0, _planetGeneratorDefault.default)(5);
-function CardContainer() {
-    _s();
-    const dispatch = (0, _hooks.useAppDispatch)();
-    const useSelector = (0, _hooks.useAppSelector)((state)=>state);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledCardContainer), {
-                children: [
-                    testPlanets.map((planet)=>{
-                        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
-                            planet: planet
-                        }, void 0, false, {
-                            fileName: "components/card/card-container/CardContainer.tsx",
-                            lineNumber: 18,
-                            columnNumber: 18
-                        }, this);
-                    }),
-                    ";"
-                ]
-            }, void 0, true, {
-                fileName: "components/card/card-container/CardContainer.tsx",
-                lineNumber: 16,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                style: {
-                    width: "20rem"
-                },
-                onClick: ()=>dispatch((0, _deckSlice.drawCard)([
-                        0,
-                        3
-                    ])),
-                children: "Draw"
-            }, void 0, false, {
-                fileName: "components/card/card-container/CardContainer.tsx",
-                lineNumber: 22,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                style: {
-                    width: "20rem"
-                },
-                onClick: ()=>dispatch((0, _playerSlice.addPlanets)(useSelector.deck.drawnStack)),
-                children: "ADD TO PLAYER"
-            }, void 0, false, {
-                fileName: "components/card/card-container/CardContainer.tsx",
-                lineNumber: 28,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true);
-}
-exports.default = CardContainer;
-_s(CardContainer, "9t9ZDKnBVMl+n28cY79Ke8529fo=", false, function() {
-    return [
-        (0, _hooks.useAppDispatch),
-        (0, _hooks.useAppSelector)
-    ];
-});
-_c = CardContainer;
-var _c;
-$RefreshReg$(_c, "CardContainer");
-
-  $parcel$ReactRefreshHelpers$49ea.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../generators/PlanetGenerator":"4BayG","../Card":"hDfxY","./styles":"e6xLf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../redux/hooks":"iu5Bi","../../../redux/slices/DeckSlice":"d2BvN","../../../redux/slices/PlayerSlice":"cMhzB"}],"hDfxY":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$6db5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$6db5.prelude(module);
+$parcel$ReactRefreshHelpers$a763.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -33416,83 +33326,82 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _styles = require("./styles");
-var _20Png = require("../../images/planets/gaseous/20.png");
-var _20PngDefault = parcelHelpers.interopDefault(_20Png);
-var _cardResources = require("./resources/CardResources");
-var _cardResourcesDefault = parcelHelpers.interopDefault(_cardResources);
-function Card(props) {
-    const { planet  } = props;
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.GameCard), {
+var _mainLogoPng = require("../../images/MainLogo.png");
+var _mainLogoPngDefault = parcelHelpers.interopDefault(_mainLogoPng);
+function WelcomeScreen(props) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.WelcomeScreenContainer), {
         children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CardImage), {
-                src: (0, _20PngDefault.default)
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.HomeLogo), {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+                    src: (0, _mainLogoPngDefault.default)
+                }, void 0, false, {
+                    fileName: "main/welcome-screen/WelcomeScreen.tsx",
+                    lineNumber: 11,
+                    columnNumber: 9
+                }, this)
             }, void 0, false, {
-                fileName: "components/card/Card.tsx",
-                lineNumber: 16,
+                fileName: "main/welcome-screen/WelcomeScreen.tsx",
+                lineNumber: 10,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CardName), {
-                children: planet.name
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.NebulaText), {
+                children: "Nebula"
             }, void 0, false, {
-                fileName: "components/card/Card.tsx",
-                lineNumber: 17,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardResourcesDefault.default), {
-                resources: planet.resources
-            }, void 0, false, {
-                fileName: "components/card/Card.tsx",
-                lineNumber: 18,
+                fileName: "main/welcome-screen/WelcomeScreen.tsx",
+                lineNumber: 13,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
-        fileName: "components/card/Card.tsx",
-        lineNumber: 15,
+        fileName: "main/welcome-screen/WelcomeScreen.tsx",
+        lineNumber: 9,
         columnNumber: 5
     }, this);
 }
-exports.default = Card;
-_c = Card;
+exports.default = WelcomeScreen;
+_c = WelcomeScreen;
 var _c;
-$RefreshReg$(_c, "Card");
+$RefreshReg$(_c, "WelcomeScreen");
 
-  $parcel$ReactRefreshHelpers$6db5.postlude(module);
+  $parcel$ReactRefreshHelpers$a763.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"7nCum","../../images/planets/gaseous/20.png":"h6r36","./resources/CardResources":"5IM5H","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7nCum":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"aLp1U","../../images/MainLogo.png":"1FGH4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"aLp1U":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "GameCard", ()=>GameCard);
-parcelHelpers.export(exports, "CardImage", ()=>CardImage);
-parcelHelpers.export(exports, "CardName", ()=>CardName);
-parcelHelpers.export(exports, "CardComposition", ()=>CardComposition);
+parcelHelpers.export(exports, "WelcomeScreenContainer", ()=>WelcomeScreenContainer);
+parcelHelpers.export(exports, "HomeLogo", ()=>HomeLogo);
+parcelHelpers.export(exports, "NebulaText", ()=>NebulaText);
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
-const GameCard = (0, _styledComponentsDefault.default).div`
+const WelcomeScreenContainer = (0, _styledComponentsDefault.default).div`
   display: flex;
-  flex-direction: column;
-  width: ${30}rem;
-  height: 45rem;
-  box-shadow: 0 ${0.25}rem ${0.5}rem 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  min-width: 100%;
+  height: 100vh;
 `;
-const CardImage = (0, _styledComponentsDefault.default).img`
+const HomeLogo = (0, _styledComponentsDefault.default).div`
   display: flex;
-  height: ${30}rem;
-`;
-const CardName = (0, _styledComponentsDefault.default).div`
-  display: flex;
-  justify-content: center;
   width: 100%;
-  font-family: "Turret Road", cursive;
-  font-size: 1.5rem;
-`;
-const CardComposition = (0, _styledComponentsDefault.default).div`
-  display: flex;
+  height: 100%;
   justify-content: center;
-  width: 100%;
+  img {
+    width: 50%;
+    height: 100%;
+  }
+`;
+const NebulaText = (0, _styledComponentsDefault.default).span`
+  display: flex;
+  color: #faf0dd;
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  z-index: 999;
+  font-size: 9vw;
+  font-family: "Cinzel Decorative", cursive;
 `;
 
 },{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1U3k6":[function(require,module,exports) {
@@ -34928,8 +34837,8 @@ function memoize(fn) {
 }
 exports.default = memoize;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h6r36":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "20.9611ed76.png" + "?" + Date.now();
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1FGH4":[function(require,module,exports) {
+module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "MainLogo.d5b16484.png" + "?" + Date.now();
 
 },{"./helpers/bundle-url":"lgJ39"}],"lgJ39":[function(require,module,exports) {
 "use strict";
@@ -34965,167 +34874,6 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"5IM5H":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$7099 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$7099.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _discoveryPng = require("../../../images/resource/Discovery.png");
-var _discoveryPngDefault = parcelHelpers.interopDefault(_discoveryPng);
-var _energyPng = require("../../../images/resource/Energy.png");
-var _energyPngDefault = parcelHelpers.interopDefault(_energyPng);
-var _fuelPng = require("../../../images/resource/Fuel.png");
-var _fuelPngDefault = parcelHelpers.interopDefault(_fuelPng);
-var _lifePng = require("../../../images/resource/Life.png");
-var _lifePngDefault = parcelHelpers.interopDefault(_lifePng);
-var _metalPng = require("../../../images/resource/Metal.png");
-var _metalPngDefault = parcelHelpers.interopDefault(_metalPng);
-var _ruinsPng = require("../../../images/resource/Ruins.png");
-var _ruinsPngDefault = parcelHelpers.interopDefault(_ruinsPng);
-var _planet = require("../../../models/planets/Planet");
-var _styles = require("./styles");
-function CardResources(props) {
-    const { resources  } = props;
-    const AssignImage = (currentResource)=>{
-        switch(currentResource){
-            case (0, _planet.Resource).DISCOVERY:
-                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
-                    src: (0, _discoveryPngDefault.default)
-                }, void 0, false, {
-                    fileName: "components/card/resources/CardResources.tsx",
-                    lineNumber: 21,
-                    columnNumber: 16
-                }, this);
-            case (0, _planet.Resource).ENERGY:
-                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
-                    src: (0, _energyPngDefault.default)
-                }, void 0, false, {
-                    fileName: "components/card/resources/CardResources.tsx",
-                    lineNumber: 23,
-                    columnNumber: 16
-                }, this);
-            case (0, _planet.Resource).FUEL:
-                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
-                    src: (0, _fuelPngDefault.default)
-                }, void 0, false, {
-                    fileName: "components/card/resources/CardResources.tsx",
-                    lineNumber: 25,
-                    columnNumber: 16
-                }, this);
-            case (0, _planet.Resource).LIFE:
-                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
-                    src: (0, _lifePngDefault.default)
-                }, void 0, false, {
-                    fileName: "components/card/resources/CardResources.tsx",
-                    lineNumber: 27,
-                    columnNumber: 16
-                }, this);
-            case (0, _planet.Resource).METAL:
-                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
-                    src: (0, _metalPngDefault.default)
-                }, void 0, false, {
-                    fileName: "components/card/resources/CardResources.tsx",
-                    lineNumber: 29,
-                    columnNumber: 16
-                }, this);
-            case (0, _planet.Resource).RUINS:
-                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
-                    src: (0, _ruinsPngDefault.default)
-                }, void 0, false, {
-                    fileName: "components/card/resources/CardResources.tsx",
-                    lineNumber: 31,
-                    columnNumber: 16
-                }, this);
-            default:
-                break;
-        }
-    };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceList), {
-        children: resources.map((a)=>{
-            return AssignImage(a);
-        })
-    }, void 0, false, {
-        fileName: "components/card/resources/CardResources.tsx",
-        lineNumber: 38,
-        columnNumber: 5
-    }, this);
-}
-exports.default = CardResources;
-_c = CardResources;
-var _c;
-$RefreshReg$(_c, "CardResources");
-
-  $parcel$ReactRefreshHelpers$7099.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../images/resource/Discovery.png":"feeAW","../../../images/resource/Energy.png":"eqBN8","../../../images/resource/Fuel.png":"4AbgL","../../../images/resource/Life.png":"27v9M","../../../images/resource/Metal.png":"7ziIc","../../../images/resource/Ruins.png":"kucG6","../../../models/planets/Planet":"fbCJI","./styles":"kst05","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"feeAW":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Discovery.ebafcd28.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"eqBN8":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Energy.73e6a639.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"4AbgL":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Fuel.8f114fdd.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"27v9M":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Life.2827e445.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"7ziIc":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Metal.a56a790d.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"kucG6":[function(require,module,exports) {
-module.exports = require("./helpers/bundle-url").getBundleURL("au4zy") + "Ruins.7634ea7e.png" + "?" + Date.now();
-
-},{"./helpers/bundle-url":"lgJ39"}],"kst05":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ResourceList", ()=>ResourceList);
-parcelHelpers.export(exports, "ResourceImage", ()=>ResourceImage);
-var _styledComponents = require("styled-components");
-var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
-const ResourceList = (0, _styledComponentsDefault.default).div`
-  display: flex;
-  flex-direction: row;
-  height: 200rem;
-  min-width: 100%;
-  flex: 1;
-`;
-const ResourceImage = (0, _styledComponentsDefault.default).img`
-  display: flex;
-  max-width: 100%;
-  max-height: 100%;
-`;
-
-},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e6xLf":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "StyledCardContainer", ()=>StyledCardContainer);
-var _styledComponents = require("styled-components");
-var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
-const StyledCardContainer = (0, _styledComponentsDefault.default).div`
-  display: flex;
-  flex-direction: row;
-  min-width: 100%;
-`;
-
-},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iu5Bi":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "useAppDispatch", ()=>useAppDispatch);
-parcelHelpers.export(exports, "useAppSelector", ()=>useAppSelector);
-var _reactRedux = require("react-redux");
-const useAppDispatch = (0, _reactRedux.useDispatch);
-const useAppSelector = (0, _reactRedux.useSelector);
-
-},{"react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1xC6H","hi2Fo","kjLP2"], "kjLP2", "parcelRequirec9a6")
+},{}]},["1xC6H","hi2Fo","kjLP2"], "kjLP2", "parcelRequirec9a6")
 
 //# sourceMappingURL=index.6fa4ea68.js.map

@@ -1,8 +1,6 @@
 import React from "react";
-import CardContainer from "../components/card/card-container/CardContainer";
-import PlanetGenerator from "../generators/PlanetGenerator";
-import { Planet } from "../models/planets/Planet";
+import WelcomeScreen from "./welcome-screen/WelcomeScreen";
 
 export default function App() {
-  return <CardContainer />;
+  return <WelcomeScreen />;
 }

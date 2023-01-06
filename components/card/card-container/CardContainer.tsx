@@ -1,7 +1,7 @@
 import React from "react";
 import PlanetGenerator from "../../../generators/PlanetGenerator";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { drawCard } from "../../../redux/slices/DeckSlice";
+import { drawCards } from "../../../redux/slices/DeckSlice";
 import { addPlanets } from "../../../redux/slices/PlayerSlice";
 import Card from "../Card";
 import { StyledCardContainer } from "./styles";
@@ -21,7 +21,7 @@ export default function CardContainer() {
       </StyledCardContainer>
       <button
         style={{ width: "20rem" }}
-        onClick={() => dispatch(drawCard([0, 3]))}
+        onClick={() => dispatch(drawCards([0, 3]))}
       >
         Draw
       </button>

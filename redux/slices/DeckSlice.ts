@@ -14,7 +14,7 @@ export const DeckSlice = createSlice({
     drawnStack: [],
   } as DeckType,
   reducers: {
-    drawCard: {
+    drawCards: {
       reducer: (state, action: PayloadAction<number[]>) => {
         let pointer = 0;
         action.payload.forEach((number, index) => {
@@ -32,6 +32,6 @@ export const DeckSlice = createSlice({
   },
 });
 
-export const { drawCard } = DeckSlice.actions;
+export const { drawCards } = DeckSlice.actions;
 
 export default DeckSlice.reducer;
