@@ -31075,9 +31075,13 @@ const DeckSlice = (0, _toolkit.createSlice)({
     reducers: {
         drawCard: {
             reducer: (state, action)=>{
-                action.payload.forEach((number)=>{
-                    state.drawnStack.push(state.deck[number]);
-                    state.deck = state.deck.filter((card)=>card !== state.deck[number - 1]);
+                let pointer = 0;
+                action.payload.forEach((number, index)=>{
+                    pointer = !index ? number : number - 1;
+                    state.drawnStack.push(state.deck[pointer]);
+                    state.deck = state.deck.filter((card)=>{
+                        return card !== state.deck[pointer];
+                    });
                 });
             },
             prepare: (selectedIndecies)=>{
