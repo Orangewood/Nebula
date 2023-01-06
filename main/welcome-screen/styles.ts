@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "react-bootstrap/Button";
 
 export const WelcomeScreenContainer = styled.div`
   display: flex;
@@ -28,4 +29,17 @@ export const NebulaText = styled.span`
   z-index: 999;
   font-size: 9vw;
   font-family: "Cinzel Decorative", cursive;
+`;
+
+export const PlayButton = styled(Button)`
+  display: flex;
+  color: #faf0dd;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  z-index: 999;
+  font-size: 2vw;
+  font-family: "Cinzel Decorative", cursive;
+  opacity: 1;
 `;
