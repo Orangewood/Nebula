@@ -1,22 +1,43 @@
-import React from "react";
-import {
-  HomeLogo,
-  NebulaText,
-  PlayButton,
-  WelcomeScreenContainer,
-} from "./styles";
+import React, { useEffect, useState } from "react";
+import { HomeLogo, NebulaText, PlayButton, WelcomeText } from "./styles";
 import NebulaLogo from "../../images/MainLogo.png";
 
-interface WelcomeScreenProps {}
+interface WelcomeScreenProps {
+  loadRenderScreen: (render: boolean) => void;
+}
 
 export default function WelcomeScreen(props: WelcomeScreenProps) {
+  const { loadRenderScreen } = props;
+  const [renderPlay, setRenderPlay] = useState(true);
+  const [renderSelectScreen, setRenderSelectScreen] = useState(false);
+
+  useEffect(() => {
+    console.log("renderSelectScreen", renderSelectScreen);
+  }, [renderSelectScreen]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setRenderSelectScreen(true);
+      console.log("here!");
+    }, 5000);
+    loadRenderScreen(renderSelectScreen);
+    return () => clearTimeout(timeoutId);
+  }, [renderPlay]);
+
+  const welcomeText = "Please select your species";
+
   return (
-    <WelcomeScreenContainer>
+    <>
       <HomeLogo>
         <img src={NebulaLogo} />
       </HomeLogo>
-      <NebulaText>Nebula</NebulaText>
-      <PlayButton>Play</PlayButton>
-    </WelcomeScreenContainer>
+      {renderPlay && (
+        <>
+          <NebulaText>Nebula</NebulaText>
+          <PlayButton onClick={() => setRenderPlay(false)}>Play</PlayButton>
+        </>
+      )}
+      {!renderPlay && <WelcomeText>{welcomeText}</WelcomeText>}
+    </>
   );
 }
