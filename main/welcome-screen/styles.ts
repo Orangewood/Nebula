@@ -1,8 +1,4 @@
 import styled from "styled-components";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-
-
 
 export const HomeLogo = styled.div`
   display: flex;
@@ -27,8 +23,7 @@ export const NebulaText = styled.span`
   font-size: 8vw;
   font-family: "Cinzel Decorative", cursive;
 `;
-
-export const PlayButton = styled(Button)`
+export const PlayButton = styled.button`
   display: flex;
   color: #faf0dd;
   background-color: #181a1b;
@@ -57,7 +52,7 @@ export const Test = styled.div`
   font-size: 2vw;
 `;
 
-export const WelcomeText = styled.div`
+export const SpeciesTextContainer = styled.div`
   display: flex;
   color: #faf0dd;
   position: absolute;

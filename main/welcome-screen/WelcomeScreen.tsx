@@ -1,43 +1,45 @@
 import React, { useEffect, useState } from "react";
-import { HomeLogo, NebulaText, PlayButton, WelcomeText } from "./styles";
+import {
+  HomeLogo,
+  NebulaText,
+  PlayButton,
+  SpeciesTextContainer,
+} from "./styles";
 import NebulaLogo from "../../images/MainLogo.png";
+import { ScreenSwitch } from "../../models/screen/Screen";
 
 interface WelcomeScreenProps {
-  loadRenderScreen: (render: boolean) => void;
+  loadSpeciesScreen: (screen: ScreenSwitch | null) => void;
 }
 
 export default function WelcomeScreen(props: WelcomeScreenProps) {
-  const { loadRenderScreen } = props;
-  const [renderPlay, setRenderPlay] = useState(true);
-  const [renderSelectScreen, setRenderSelectScreen] = useState(false);
-
-  useEffect(() => {
-    console.log("renderSelectScreen", renderSelectScreen);
-  }, [renderSelectScreen]);
-
-  useEffect(() => {
-    const timeoutId = setTimeout(() => {
-      setRenderSelectScreen(true);
-      console.log("here!");
-    }, 5000);
-    loadRenderScreen(renderSelectScreen);
-    return () => clearTimeout(timeoutId);
-  }, [renderPlay]);
-
+  const { loadSpeciesScreen } = props;
+  const [showSpeciesText, setShowSpeciesText] = useState(false);
   const welcomeText = "Please select your species";
+
+  useEffect(() => {
+    if (showSpeciesText) {
+      const timeoutId = setTimeout(() => {
+        loadSpeciesScreen(ScreenSwitch.Species);
+      }, 4000);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [showSpeciesText]);
 
   return (
     <>
       <HomeLogo>
         <img src={NebulaLogo} />
       </HomeLogo>
-      {renderPlay && (
+      {!showSpeciesText && (
         <>
           <NebulaText>Nebula</NebulaText>
-          <PlayButton onClick={() => setRenderPlay(false)}>Play</PlayButton>
+          <PlayButton onClick={() => setShowSpeciesText(true)}>Play</PlayButton>
         </>
       )}
-      {!renderPlay && <WelcomeText>{welcomeText}</WelcomeText>}
+      {showSpeciesText && (
+        <SpeciesTextContainer>{welcomeText}</SpeciesTextContainer>
+      )}
     </>
   );
 }

@@ -1,55 +1,75 @@
 import React, { useState } from "react";
-import Carousel from "react-bootstrap/Carousel";
-import "bootstrap/dist/css/bootstrap.min.css";
+import Ameoba from "../../images/species/Aemoba.png";
+import Alien from "../../images/species/Alien.png";
+import Cephlapod from "../../images/species/Cephlapod.png";
+import Cloud from "../../images/species/Cloud.png";
+import Frozen from "../../images/species/Frozen.png";
+import Fungus from "../../images/species/Fungus.png";
+import Human from "../../images/species/Human.png";
+import Insect from "../../images/species/Insect.png";
+import Virus from "../../images/species/Virus.png";
+import { CarouselImage, StyledCarousel } from "./styles";
 
 interface SelectScreenProps {}
 
-export default function SelectScreen(props: SelectScreenProps) {
-  const [index, setIndex] = useState(0);
+const images = [
+  {
+    label: "Alien",
+    imgPath: Alien,
+  },
+  {
+    label: "Ameoba",
+    imgPath: Ameoba,
+  },
+  {
+    label: "Cephlapod",
+    imgPath: Cephlapod,
+  },
+  {
+    label: "Cloud",
+    imgPath: Cloud,
+  },
+  {
+    label: "Frozen",
+    imgPath: Frozen,
+  },
+  {
+    label: "Fungus",
+    imgPath: Fungus,
+  },
+  {
+    label: "Human",
+    imgPath: Human,
+  },
+  {
+    label: "Insect",
+    imgPath: Insect,
+  },
+  {
+    label: "Virus",
+    imgPath: Virus,
+  },
+];
 
-  const handleSelect = (selectedIndex: number, e: any) => {
-    setIndex(selectedIndex);
+export default function SelectScreen(props: SelectScreenProps) {
+  const [activeStep, setActiveStep] = useState(0);
+
+  const onChange = (currentSlide: number) => {
+    setActiveStep(currentSlide);
+  };
+  const handleNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   return (
-    <Carousel activeIndex={index} onSelect={handleSelect}>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
-          alt="First slide"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
-          alt="Second slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
-          alt="Third slide"
-        />
-
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+    <StyledCarousel>
+      {images.map((step, index) => (
+        <CarouselImage src={step.imgPath} alt={step.label} key={index} />
+      ))}
+    </StyledCarousel>
   );
 }

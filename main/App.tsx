@@ -1,20 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { ScreenSwitch } from "../models/screen/Screen";
 import { GameContainer } from "./game-container/styles";
 import SelectScreen from "./select-screen/SelectScreen";
 import WelcomeScreen from "./welcome-screen/WelcomeScreen";
 
 export default function App() {
-  const [loadScreen, setLoadScreen] = useState(false);
+  const [screenState, setScreenState] = useState<ScreenSwitch>(
+    ScreenSwitch.Species
+  );
 
   return (
     <GameContainer>
       <>
-        {/* <WelcomeScreen loadRenderScreen={(render) => setLoadScreen(render)} /> */}
-
-        {!loadScreen && (
-          <WelcomeScreen loadRenderScreen={(render) => setLoadScreen(render)} />
+        {screenState === ScreenSwitch.Welcome && (
+          <WelcomeScreen
+            loadSpeciesScreen={(screen) =>
+              setScreenState(screen ?? screenState)
+            }
+          />
         )}
-        {loadScreen && <SelectScreen />}
+        {screenState === ScreenSwitch.Species && <SelectScreen />}
       </>
     </GameContainer>
   );
