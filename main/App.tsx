@@ -6,7 +6,7 @@ import WelcomeScreen from "./welcome-screen/WelcomeScreen";
 
 export default function App() {
   const [screenState, setScreenState] = useState<ScreenSwitch>(
-    ScreenSwitch.Species
+    ScreenSwitch.Lifeform
   );
 
   return (
@@ -14,12 +14,12 @@ export default function App() {
       <>
         {screenState === ScreenSwitch.Welcome && (
           <WelcomeScreen
-            loadSpeciesScreen={(screen) =>
+            loadLifeformScreen={(screen) =>
               setScreenState(screen ?? screenState)
             }
           />
         )}
-        {screenState === ScreenSwitch.Species && <SelectScreen />}
+        {screenState === ScreenSwitch.Lifeform && <SelectScreen />}
       </>
     </GameContainer>
   );

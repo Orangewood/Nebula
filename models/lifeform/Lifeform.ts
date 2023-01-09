@@ -1,4 +1,4 @@
-export enum SpeciesModel {
+export enum LifeformModel {
   Aemoba = 1,
   Alein = 2,
   Cephlapod = 3,
@@ -8,4 +8,8 @@ export enum SpeciesModel {
   Human = 7,
   Insect = 8,
   Virus = 9,
+}
+
+export interface Lifeform {
+  
 }

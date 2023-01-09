@@ -52,7 +52,7 @@ export const Test = styled.div`
   font-size: 2vw;
 `;
 
-export const SpeciesTextContainer = styled.div`
+export const LifeformTextContainer = styled.div`
   display: flex;
   color: #faf0dd;
   position: absolute;

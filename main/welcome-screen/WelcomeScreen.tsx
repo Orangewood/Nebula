@@ -3,42 +3,42 @@ import {
   HomeLogo,
   NebulaText,
   PlayButton,
-  SpeciesTextContainer,
+  LifeformTextContainer,
 } from "./styles";
 import NebulaLogo from "../../images/MainLogo.png";
 import { ScreenSwitch } from "../../models/screen/Screen";
 
 interface WelcomeScreenProps {
-  loadSpeciesScreen: (screen: ScreenSwitch | null) => void;
+  loadLifeformScreen: (screen: ScreenSwitch | null) => void;
 }
 
 export default function WelcomeScreen(props: WelcomeScreenProps) {
-  const { loadSpeciesScreen } = props;
-  const [showSpeciesText, setShowSpeciesText] = useState(false);
-  const welcomeText = "Please select your species";
+  const { loadLifeformScreen } = props;
+  const [showLifeformText, setShowLifeformText] = useState(false);
+  const welcomeText = "Please select your Lifeform";
 
   useEffect(() => {
-    if (showSpeciesText) {
+    if (showLifeformText) {
       const timeoutId = setTimeout(() => {
-        loadSpeciesScreen(ScreenSwitch.Species);
+        loadLifeformScreen(ScreenSwitch.Lifeform);
       }, 4000);
       return () => clearTimeout(timeoutId);
     }
-  }, [showSpeciesText]);
+  }, [showLifeformText]);
 
   return (
     <>
       <HomeLogo>
         <img src={NebulaLogo} />
       </HomeLogo>
-      {!showSpeciesText && (
+      {!showLifeformText && (
         <>
           <NebulaText>Nebula</NebulaText>
-          <PlayButton onClick={() => setShowSpeciesText(true)}>Play</PlayButton>
+          <PlayButton onClick={() => setShowLifeformText(true)}>Play</PlayButton>
         </>
       )}
-      {showSpeciesText && (
-        <SpeciesTextContainer>{welcomeText}</SpeciesTextContainer>
+      {showLifeformText && (
+        <LifeformTextContainer>{welcomeText}</LifeformTextContainer>
       )}
     </>
   );

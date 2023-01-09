@@ -17,6 +17,31 @@ export const StyledCarousel = styled(Carousel)`
   .carousel-inner > .carousel-item {
     text-align: center;
   }
+
+  .carousel-control-prev {
+    margin-left: 25%;
+    width: 5%;
+    .carousel-control-prev-icon {
+      height: 7rem;
+      width: 60%;
+      border: 1px solid #faf0dd;
+      border-radius: 15px 15px 15px;
+      background-color: black;
+      opacity: 0.7;
+    }
+  }
+  .carousel-control-next {
+    margin-right: 25%;
+    width: 5%;
+    .carousel-control-next-icon {
+      height: 7rem;
+      width: 60%;
+      border: 1px solid #faf0dd;
+      border-radius: 15px 15px 15px;
+      background-color: black;
+      opacity: 0.7;
+    }
+  }
 `;
 
 export const CarouselItem = styled(Carousel.Item)``;
@@ -25,15 +50,18 @@ export const CarouselCaption = styled(Carousel.Caption)`
   font-size: 4vw;
   font-family: "Cinzel Decorative", cursive;
   color: #faf0dd;
-  /* color: red; */
   display: flex;
   justify-content: center;
-  button {
-    background-color: black;
-    color: #faf0dd;
-    opacity: 0.5;
-    height: 10rem;
-    width: 30rem;
-    border-radius: 15px 15px 15px;
+`;
+
+export const CarouselButton = styled.button`
+  background-color: #181a1b;
+  color: #faf0dd;
+  opacity: 0.6;
+  height: 10rem;
+  width: 30rem;
+  border-radius: 15px 15px 15px;
+  &:hover {
+    opacity: 1;
   }
 `;
