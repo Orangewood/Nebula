@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import { Lifeform } from "../../models/lifeform/Lifeform";
+import { LifeformEnum } from "../../models/lifeform/properties/LifeformEnum";
 import { StyledLifeformCanvas } from "./styles";
 
 interface LifeformCanvasProps {
   showCanvas: boolean;
   onClose: (close: boolean) => void;
+  currentLifeForm?: Lifeform;
 }
 
 export default function LifeformCanvas(props: LifeformCanvasProps) {
-  const { showCanvas, onClose } = props;
+  const { showCanvas, onClose, currentLifeForm } = props;
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -31,12 +34,12 @@ export default function LifeformCanvas(props: LifeformCanvasProps) {
         backdrop={false}
         placement="start"
       >
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+        <Offcanvas.Header>
+          <Offcanvas.Title>
+            {LifeformEnum[currentLifeForm?.lifeformId ?? -1]}
+          </Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
-          I will not close if you click outside of me.
-        </Offcanvas.Body>
+        <Offcanvas.Body>{currentLifeForm?.text}</Offcanvas.Body>
       </StyledLifeformCanvas>
     </>
   );

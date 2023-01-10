@@ -30414,110 +30414,39 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-var _aemobaPng = require("../../images/lifeform/Aemoba.png");
-var _aemobaPngDefault = parcelHelpers.interopDefault(_aemobaPng);
-var _alienPng = require("../../images/lifeform/Alien.png");
-var _alienPngDefault = parcelHelpers.interopDefault(_alienPng);
-var _cephlapodPng = require("../../images/lifeform/Cephlapod.png");
-var _cephlapodPngDefault = parcelHelpers.interopDefault(_cephlapodPng);
-var _cloudPng = require("../../images/lifeform/Cloud.png");
-var _cloudPngDefault = parcelHelpers.interopDefault(_cloudPng);
-var _frozenPng = require("../../images/lifeform/Frozen.png");
-var _frozenPngDefault = parcelHelpers.interopDefault(_frozenPng);
-var _fungusPng = require("../../images/lifeform/Fungus.png");
-var _fungusPngDefault = parcelHelpers.interopDefault(_fungusPng);
-var _humanPng = require("../../images/lifeform/Human.png");
-var _humanPngDefault = parcelHelpers.interopDefault(_humanPng);
-var _insectPng = require("../../images/lifeform/Insect.png");
-var _insectPngDefault = parcelHelpers.interopDefault(_insectPng);
-var _virusPng = require("../../images/lifeform/Virus.png");
-var _virusPngDefault = parcelHelpers.interopDefault(_virusPng);
-var _treePng = require("../../images/lifeform/Tree.png");
-var _treePngDefault = parcelHelpers.interopDefault(_treePng);
 var _styles = require("./styles");
 var _lifeformCanvas = require("../../components/off-canvas/LifeformCanvas");
 var _lifeformCanvasDefault = parcelHelpers.interopDefault(_lifeformCanvas);
+var _lifeform = require("../../models/lifeform/Lifeform");
 var _s = $RefreshSig$();
-const images = [
-    {
-        label: "Alien",
-        imgPath: (0, _alienPngDefault.default),
-        text: "test"
-    },
-    {
-        label: "Ameoba",
-        imgPath: (0, _aemobaPngDefault.default),
-        text: "test"
-    },
-    {
-        label: "Cephlapod",
-        imgPath: (0, _cephlapodPngDefault.default),
-        text: "test"
-    },
-    {
-        label: "Cloud",
-        imgPath: (0, _cloudPngDefault.default),
-        text: "test"
-    },
-    {
-        label: "Frozen",
-        imgPath: (0, _frozenPngDefault.default),
-        text: "test"
-    },
-    {
-        label: "Fungus",
-        imgPath: (0, _fungusPngDefault.default),
-        text: "test"
-    },
-    {
-        label: "Human",
-        imgPath: (0, _humanPngDefault.default),
-        text: "test"
-    },
-    {
-        label: "Insect",
-        imgPath: (0, _insectPngDefault.default),
-        text: "test"
-    },
-    {
-        label: "Virus",
-        imgPath: (0, _virusPngDefault.default),
-        text: "test"
-    },
-    {
-        label: "Tree",
-        imgPath: (0, _treePngDefault.default),
-        text: "test"
-    }
-];
 function SelectScreen(props) {
     _s();
     const [activeStep, setActiveStep] = (0, _react.useState)(0);
     const [showMenu, setShowMenu] = (0, _react.useState)(false);
-    const ref = (0, _react.useRef)(null);
+    const currentLifeFormId = activeStep + 1;
     const onChange = (currentSlide)=>{
         setActiveStep(currentSlide);
     };
     const handleClickIcon = ()=>{
         if (showMenu) setShowMenu(false);
     };
+    const getCurrentLifeForm = (0, _lifeform.LifeformList).find((lifeform)=>lifeform.lifeformId === currentLifeFormId);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledCarousel), {
-                ref: ref,
                 activeIndex: activeStep,
                 onSelect: onChange,
                 interval: null,
                 touch: true,
                 onSlide: handleClickIcon,
-                children: images.map((step, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CarouselItem), {
+                children: (0, _lifeform.LifeformList).map((lifeform)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CarouselItem), {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
-                                src: step.imgPath,
-                                alt: step.label
-                            }, index, false, {
+                                src: lifeform.imgPath,
+                                alt: lifeform.text
+                            }, lifeform.lifeformId, false, {
                                 fileName: "main/select-screen/SelectScreen.tsx",
-                                lineNumber: 100,
+                                lineNumber: 40,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CarouselCaption), {
@@ -30526,38 +30455,39 @@ function SelectScreen(props) {
                                     children: "Select"
                                 }, void 0, false, {
                                     fileName: "main/select-screen/SelectScreen.tsx",
-                                    lineNumber: 102,
+                                    lineNumber: 46,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "main/select-screen/SelectScreen.tsx",
-                                lineNumber: 101,
+                                lineNumber: 45,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "main/select-screen/SelectScreen.tsx",
-                        lineNumber: 99,
+                        lineNumber: 39,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "main/select-screen/SelectScreen.tsx",
-                lineNumber: 90,
+                lineNumber: 31,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lifeformCanvasDefault.default), {
                 showCanvas: showMenu,
-                onClose: ()=>setShowMenu(false)
+                onClose: ()=>setShowMenu(false),
+                currentLifeForm: getCurrentLifeForm
             }, void 0, false, {
                 fileName: "main/select-screen/SelectScreen.tsx",
-                lineNumber: 109,
+                lineNumber: 53,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
 exports.default = SelectScreen;
-_s(SelectScreen, "yY/W17ZdO5aCUPgv+Vx60olWQWQ=");
+_s(SelectScreen, "YHty5dP5R6OLJavT4bo5iDPwWw8=");
 _c = SelectScreen;
 var _c;
 $RefreshReg$(_c, "SelectScreen");
@@ -30567,7 +30497,7 @@ $RefreshReg$(_c, "SelectScreen");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles":"4p8P4","../../images/lifeform/Aemoba.png":"6LVxN","../../images/lifeform/Alien.png":"eiFsF","../../images/lifeform/Cephlapod.png":"lnRWk","../../images/lifeform/Cloud.png":"jpV8q","../../images/lifeform/Frozen.png":"3NIXj","../../images/lifeform/Fungus.png":"gK1mH","../../images/lifeform/Human.png":"6K5n5","../../images/lifeform/Insect.png":"iBcl8","../../images/lifeform/Virus.png":"dNKa1","../../images/lifeform/Tree.png":"z6Lj4","../../components/off-canvas/LifeformCanvas":"9TbRh"}],"km3Ru":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles":"4p8P4","../../components/off-canvas/LifeformCanvas":"9TbRh","../../models/lifeform/Lifeform":"iWBIG"}],"km3Ru":[function(require,module,exports) {
 "use strict";
 var Refresh = require("cf6d6283277f4def");
 function debounce(func, delay) {
@@ -34968,71 +34898,7 @@ function safeFindDOMNode(componentOrElement) {
 }
 exports.default = safeFindDOMNode;
 
-},{"react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6LVxN":[function(require,module,exports) {
-module.exports = require("73cc243c3a1ae1f4").getBundleURL("au4zy") + "Aemoba.ffefa3f8.png" + "?" + Date.now();
-
-},{"73cc243c3a1ae1f4":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
-}
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
-}
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"eiFsF":[function(require,module,exports) {
-module.exports = require("8918d0c4ef7a5da4").getBundleURL("au4zy") + "Alien.ef09d560.png" + "?" + Date.now();
-
-},{"8918d0c4ef7a5da4":"lgJ39"}],"lnRWk":[function(require,module,exports) {
-module.exports = require("bbbe04058c8a52ee").getBundleURL("au4zy") + "Cephlapod.45dc7e9d.png" + "?" + Date.now();
-
-},{"bbbe04058c8a52ee":"lgJ39"}],"jpV8q":[function(require,module,exports) {
-module.exports = require("9d39aa80ff4c4c90").getBundleURL("au4zy") + "Cloud.9e69ef11.png" + "?" + Date.now();
-
-},{"9d39aa80ff4c4c90":"lgJ39"}],"3NIXj":[function(require,module,exports) {
-module.exports = require("ab701b45e18d0c46").getBundleURL("au4zy") + "Frozen.54c50a44.png" + "?" + Date.now();
-
-},{"ab701b45e18d0c46":"lgJ39"}],"gK1mH":[function(require,module,exports) {
-module.exports = require("12bfb122c03f815a").getBundleURL("au4zy") + "Fungus.039ff0d7.png" + "?" + Date.now();
-
-},{"12bfb122c03f815a":"lgJ39"}],"6K5n5":[function(require,module,exports) {
-module.exports = require("bc54d0a8dd1e15a7").getBundleURL("au4zy") + "Human.501fc66a.png" + "?" + Date.now();
-
-},{"bc54d0a8dd1e15a7":"lgJ39"}],"iBcl8":[function(require,module,exports) {
-module.exports = require("78991f50a7a1efdd").getBundleURL("au4zy") + "Insect.48381a42.png" + "?" + Date.now();
-
-},{"78991f50a7a1efdd":"lgJ39"}],"dNKa1":[function(require,module,exports) {
-module.exports = require("5c1598ef7fb811be").getBundleURL("au4zy") + "Virus.2db34344.png" + "?" + Date.now();
-
-},{"5c1598ef7fb811be":"lgJ39"}],"z6Lj4":[function(require,module,exports) {
-module.exports = require("5932bed0511d83d0").getBundleURL("au4zy") + "Tree.1220f292.png" + "?" + Date.now();
-
-},{"5932bed0511d83d0":"lgJ39"}],"9TbRh":[function(require,module,exports) {
+},{"react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9TbRh":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$b863 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -35046,11 +34912,12 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _offcanvas = require("react-bootstrap/Offcanvas");
 var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
+var _lifeformEnum = require("../../models/lifeform/properties/LifeformEnum");
 var _styles = require("./styles");
 var _s = $RefreshSig$();
 function LifeformCanvas(props) {
     _s();
-    const { showCanvas , onClose  } = props;
+    const { showCanvas , onClose , currentLifeForm  } = props;
     const [show, setShow] = (0, _react.useState)(false);
     const handleClose = ()=>{
         setShow(false);
@@ -35071,30 +34938,29 @@ function LifeformCanvas(props) {
             placement: "start",
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Header, {
-                    closeButton: true,
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Title, {
-                        children: "Offcanvas"
+                        children: (0, _lifeformEnum.LifeformEnum)[currentLifeForm?.lifeformId ?? -1]
                     }, void 0, false, {
                         fileName: "components/off-canvas/LifeformCanvas.tsx",
-                        lineNumber: 35,
+                        lineNumber: 38,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "components/off-canvas/LifeformCanvas.tsx",
-                    lineNumber: 34,
+                    lineNumber: 37,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {
-                    children: "I will not close if you click outside of me."
+                    children: currentLifeForm?.text
                 }, void 0, false, {
                     fileName: "components/off-canvas/LifeformCanvas.tsx",
-                    lineNumber: 37,
+                    lineNumber: 42,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "components/off-canvas/LifeformCanvas.tsx",
-            lineNumber: 27,
+            lineNumber: 30,
             columnNumber: 7
         }, this)
     }, void 0, false);
@@ -35110,7 +34976,7 @@ $RefreshReg$(_c, "LifeformCanvas");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Offcanvas":"eC3RS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles":"iG5qi"}],"eC3RS":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Offcanvas":"eC3RS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles":"iG5qi","../../models/lifeform/properties/LifeformEnum":"7CD6C"}],"eC3RS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -36215,7 +36081,403 @@ const StyledLifeformCanvas = (0, _styledComponentsDefault.default)((0, _offcanva
   color: #faf0dd;
 `;
 
-},{"styled-components":"1U3k6","react-bootstrap/Offcanvas":"eC3RS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jmiu7":[function(require,module,exports) {
+},{"styled-components":"1U3k6","react-bootstrap/Offcanvas":"eC3RS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7CD6C":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "LifeformEnum", ()=>LifeformEnum);
+let LifeformEnum;
+(function(LifeformEnum) {
+    LifeformEnum[LifeformEnum["Amoeba"] = 1] = "Amoeba";
+    LifeformEnum[LifeformEnum["Alien"] = 2] = "Alien";
+    LifeformEnum[LifeformEnum["Cephlapod"] = 3] = "Cephlapod";
+    LifeformEnum[LifeformEnum["Cloud"] = 4] = "Cloud";
+    LifeformEnum[LifeformEnum["Frozen"] = 5] = "Frozen";
+    LifeformEnum[LifeformEnum["Fungus"] = 6] = "Fungus";
+    LifeformEnum[LifeformEnum["Human"] = 7] = "Human";
+    LifeformEnum[LifeformEnum["Insect"] = 8] = "Insect";
+    LifeformEnum[LifeformEnum["Virus"] = 9] = "Virus";
+    LifeformEnum[LifeformEnum["Tree"] = 10] = "Tree";
+})(LifeformEnum || (LifeformEnum = {}));
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iWBIG":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "LifeformList", ()=>LifeformList);
+var _amoeba = require("./properties/Amoeba");
+var _alien = require("./properties/Alien");
+var _cephlapod = require("./properties/Cephlapod");
+var _cloud = require("./properties/Cloud");
+var _frozen = require("./properties/Frozen");
+var _fungus = require("./properties/Fungus");
+var _human = require("./properties/Human");
+var _insect = require("./properties/Insect");
+var _virus = require("./properties/Virus");
+var _tree = require("./properties/Tree");
+const LifeformList = [
+    (0, _amoeba.AmoebaModel),
+    (0, _alien.AlienModel),
+    (0, _cephlapod.CephlapodModel),
+    (0, _cloud.CloudModel),
+    (0, _frozen.FrozenModel),
+    (0, _fungus.FungusModel),
+    (0, _human.HumanModel),
+    (0, _insect.InsectModel),
+    (0, _virus.VirusModel),
+    (0, _tree.TreeModel)
+];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./properties/Amoeba":"7YCD4","./properties/Alien":"euNim","./properties/Cephlapod":"iV43h","./properties/Cloud":"2YglV","./properties/Frozen":"fvjRR","./properties/Fungus":"a1nUW","./properties/Human":"3ZAeU","./properties/Insect":"2Q3Dn","./properties/Virus":"4cD1z","./properties/Tree":"b935Y"}],"7YCD4":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "AmoebaModel", ()=>AmoebaModel);
+var _amoebaPng = require("../../../images/lifeform/Amoeba.png");
+var _amoebaPngDefault = parcelHelpers.interopDefault(_amoebaPng);
+var _lifeformEnum = require("./LifeformEnum");
+const AmoebaText = "Amoeba text here";
+const AmoebaModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Amoeba,
+    imgPath: (0, _amoebaPngDefault.default),
+    text: AmoebaText,
+    resources: {
+        energy: 1,
+        life: 1
+    },
+    research: {
+        biology: 1,
+        chemistry: 1
+    },
+    explore: {},
+    engineer: {
+        efficiency: 1
+    },
+    production: {
+        reproduce: 1
+    }
+};
+
+},{"../../../images/lifeform/Amoeba.png":"lPpE7","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"lPpE7":[function(require,module,exports) {
+module.exports = require("8e35f7aabe89e593").getBundleURL("au4zy") + "Amoeba.f670143c.png" + "?" + Date.now();
+
+},{"8e35f7aabe89e593":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"euNim":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "AlienModel", ()=>AlienModel);
+var _alienPng = require("../../../images/lifeform/Alien.png");
+var _alienPngDefault = parcelHelpers.interopDefault(_alienPng);
+var _lifeformEnum = require("./LifeformEnum");
+const AlienText = "Alien text here";
+const AlienModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Alien,
+    imgPath: (0, _alienPngDefault.default),
+    text: AlienText,
+    resources: {
+        life: 1
+    },
+    research: {
+        physics: 1,
+        robotics: 1,
+        biology: 1
+    },
+    explore: {
+        movement: 1
+    },
+    engineer: {
+        weaponry: 1
+    },
+    production: {}
+};
+
+},{"../../../images/lifeform/Alien.png":"eiFsF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"eiFsF":[function(require,module,exports) {
+module.exports = require("8918d0c4ef7a5da4").getBundleURL("au4zy") + "Alien.ef09d560.png" + "?" + Date.now();
+
+},{"8918d0c4ef7a5da4":"lgJ39"}],"iV43h":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "CephlapodModel", ()=>CephlapodModel);
+var _cephlapodPng = require("../../../images/lifeform/Cephlapod.png");
+var _cephlapodPngDefault = parcelHelpers.interopDefault(_cephlapodPng);
+var _lifeformEnum = require("./LifeformEnum");
+const CephlapodText = "Cephlapod text here";
+const CephlapodModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Cephlapod,
+    imgPath: (0, _cephlapodPngDefault.default),
+    text: CephlapodText,
+    resources: {
+        life: 1,
+        ruins: 1,
+        fuel: 1
+    },
+    research: {
+        biology: 1
+    },
+    explore: {
+        observe: 1
+    },
+    engineer: {},
+    production: {
+        reproduce: 1
+    }
+};
+
+},{"../../../images/lifeform/Cephlapod.png":"lnRWk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"lnRWk":[function(require,module,exports) {
+module.exports = require("bbbe04058c8a52ee").getBundleURL("au4zy") + "Cephlapod.45dc7e9d.png" + "?" + Date.now();
+
+},{"bbbe04058c8a52ee":"lgJ39"}],"2YglV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "CloudModel", ()=>CloudModel);
+var _cloudPng = require("../../../images/lifeform/Cloud.png");
+var _cloudPngDefault = parcelHelpers.interopDefault(_cloudPng);
+var _lifeformEnum = require("./LifeformEnum");
+const CloudText = "Cloud text here";
+const CloudModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Cloud,
+    imgPath: (0, _cloudPngDefault.default),
+    text: CloudText,
+    resources: {
+        life: 1,
+        fuel: 1,
+        metal: 1
+    },
+    research: {
+        astronomy: 1,
+        chemistry: 1
+    },
+    explore: {
+        movement: 1
+    },
+    engineer: {},
+    production: {}
+};
+
+},{"../../../images/lifeform/Cloud.png":"jpV8q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"jpV8q":[function(require,module,exports) {
+module.exports = require("9d39aa80ff4c4c90").getBundleURL("au4zy") + "Cloud.9e69ef11.png" + "?" + Date.now();
+
+},{"9d39aa80ff4c4c90":"lgJ39"}],"fvjRR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "FrozenModel", ()=>FrozenModel);
+var _frozenPng = require("../../../images/lifeform/Frozen.png");
+var _frozenPngDefault = parcelHelpers.interopDefault(_frozenPng);
+var _lifeformEnum = require("./LifeformEnum");
+const FrozenText = "Frozen text here";
+const FrozenModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Frozen,
+    imgPath: (0, _frozenPngDefault.default),
+    text: FrozenText,
+    resources: {
+        life: 1,
+        fuel: 1,
+        ruins: 1
+    },
+    research: {},
+    explore: {},
+    engineer: {
+        weaponry: 1
+    },
+    production: {
+        reproduce: 1,
+        build: 1
+    }
+};
+
+},{"../../../images/lifeform/Frozen.png":"3NIXj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"3NIXj":[function(require,module,exports) {
+module.exports = require("ab701b45e18d0c46").getBundleURL("au4zy") + "Frozen.54c50a44.png" + "?" + Date.now();
+
+},{"ab701b45e18d0c46":"lgJ39"}],"a1nUW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "FungusModel", ()=>FungusModel);
+var _fungusPng = require("../../../images/lifeform/Fungus.png");
+var _fungusPngDefault = parcelHelpers.interopDefault(_fungusPng);
+var _lifeformEnum = require("./LifeformEnum");
+const FungusText = "Fungus text here";
+const FungusModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Fungus,
+    imgPath: (0, _fungusPngDefault.default),
+    text: FungusText,
+    resources: {
+        energy: 1,
+        life: 1
+    },
+    research: {
+        biology: 1,
+        chemistry: 1
+    },
+    explore: {},
+    engineer: {
+        efficiency: 1
+    },
+    production: {
+        build: 1
+    }
+};
+
+},{"../../../images/lifeform/Fungus.png":"gK1mH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"gK1mH":[function(require,module,exports) {
+module.exports = require("12bfb122c03f815a").getBundleURL("au4zy") + "Fungus.039ff0d7.png" + "?" + Date.now();
+
+},{"12bfb122c03f815a":"lgJ39"}],"3ZAeU":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "HumanModel", ()=>HumanModel);
+var _humanPng = require("../../../images/lifeform/Human.png");
+var _humanPngDefault = parcelHelpers.interopDefault(_humanPng);
+var _lifeformEnum = require("./LifeformEnum");
+const HumanText = "Human text here";
+const HumanModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Human,
+    imgPath: (0, _humanPngDefault.default),
+    text: HumanText,
+    resources: {
+        life: 1
+    },
+    research: {
+        biology: 1,
+        chemistry: 1,
+        physics: 1
+    },
+    explore: {},
+    engineer: {
+        weaponry: 1
+    },
+    production: {
+        build: 1
+    }
+};
+
+},{"../../../images/lifeform/Human.png":"6K5n5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"6K5n5":[function(require,module,exports) {
+module.exports = require("bc54d0a8dd1e15a7").getBundleURL("au4zy") + "Human.501fc66a.png" + "?" + Date.now();
+
+},{"bc54d0a8dd1e15a7":"lgJ39"}],"2Q3Dn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "InsectModel", ()=>InsectModel);
+var _insectPng = require("../../../images/lifeform/Insect.png");
+var _insectPngDefault = parcelHelpers.interopDefault(_insectPng);
+var _lifeformEnum = require("./LifeformEnum");
+const InsectText = "Insect text here";
+const InsectModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Insect,
+    imgPath: (0, _insectPngDefault.default),
+    text: InsectText,
+    resources: {
+        life: 1
+    },
+    research: {
+        biology: 1
+    },
+    explore: {
+        movement: 1
+    },
+    engineer: {
+        efficiency: 1
+    },
+    production: {
+        conscript: 1
+    }
+};
+
+},{"../../../images/lifeform/Insect.png":"iBcl8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"iBcl8":[function(require,module,exports) {
+module.exports = require("78991f50a7a1efdd").getBundleURL("au4zy") + "Insect.48381a42.png" + "?" + Date.now();
+
+},{"78991f50a7a1efdd":"lgJ39"}],"4cD1z":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "VirusModel", ()=>VirusModel);
+var _virusPng = require("../../../images/lifeform/Virus.png");
+var _virusPngDefault = parcelHelpers.interopDefault(_virusPng);
+var _lifeformEnum = require("./LifeformEnum");
+const VirusText = "Virus text here";
+const VirusModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Virus,
+    imgPath: (0, _virusPngDefault.default),
+    text: VirusText,
+    resources: {
+        life: 1
+    },
+    research: {
+        biology: 1
+    },
+    explore: {},
+    engineer: {
+        weaponry: 1,
+        efficiency: 1
+    },
+    production: {
+        reproduce: 1,
+        conscript: 1
+    }
+};
+
+},{"../../../images/lifeform/Virus.png":"dNKa1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"dNKa1":[function(require,module,exports) {
+module.exports = require("5c1598ef7fb811be").getBundleURL("au4zy") + "Virus.2db34344.png" + "?" + Date.now();
+
+},{"5c1598ef7fb811be":"lgJ39"}],"b935Y":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "TreeModel", ()=>TreeModel);
+var _treePng = require("../../../images/lifeform/Tree.png");
+var _treePngDefault = parcelHelpers.interopDefault(_treePng);
+var _lifeformEnum = require("./LifeformEnum");
+const TreeText = "Tree text here";
+const TreeModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Tree,
+    imgPath: (0, _treePngDefault.default),
+    text: TreeText,
+    resources: {
+        fuel: 1,
+        energy: 1,
+        life: 1
+    },
+    research: {
+        chemistry: 1,
+        biology: 1
+    },
+    explore: {},
+    engineer: {},
+    production: {
+        reproduce: 1
+    }
+};
+
+},{"../../../images/lifeform/Tree.png":"z6Lj4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"z6Lj4":[function(require,module,exports) {
+module.exports = require("5932bed0511d83d0").getBundleURL("au4zy") + "Tree.1220f292.png" + "?" + Date.now();
+
+},{"5932bed0511d83d0":"lgJ39"}],"jmiu7":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$a763 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
