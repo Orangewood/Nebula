@@ -28901,6 +28901,8 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _cardContainer = require("../components/card/card-container/CardContainer");
+var _cardContainerDefault = parcelHelpers.interopDefault(_cardContainer);
 var _screen = require("../models/screen/Screen");
 var _styles = require("./game-container/styles");
 var _selectScreen = require("./select-screen/SelectScreen");
@@ -28918,19 +28920,24 @@ function App() {
                     loadLifeformScreen: (screen)=>setScreenState(screen ?? screenState)
                 }, void 0, false, {
                     fileName: "main/App.tsx",
-                    lineNumber: 16,
+                    lineNumber: 17,
                     columnNumber: 11
                 }, this),
                 screenState === (0, _screen.ScreenSwitch).Lifeform && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _selectScreenDefault.default), {}, void 0, false, {
                     fileName: "main/App.tsx",
-                    lineNumber: 22,
+                    lineNumber: 23,
+                    columnNumber: 51
+                }, this),
+                screenState === (0, _screen.ScreenSwitch).CardTest && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardContainerDefault.default), {}, void 0, false, {
+                    fileName: "main/App.tsx",
+                    lineNumber: 24,
                     columnNumber: 51
                 }, this)
             ]
         }, void 0, true)
     }, void 0, false, {
         fileName: "main/App.tsx",
-        lineNumber: 13,
+        lineNumber: 14,
         columnNumber: 5
     }, this);
 }
@@ -28945,7 +28952,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../models/screen/Screen":"7Mijn","./game-container/styles":"7wk2x","./select-screen/SelectScreen":"7tUrQ","./welcome-screen/WelcomeScreen":"jmiu7","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"7Mijn":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../models/screen/Screen":"7Mijn","./game-container/styles":"7wk2x","./select-screen/SelectScreen":"7tUrQ","./welcome-screen/WelcomeScreen":"jmiu7","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../components/card/card-container/CardContainer":"iziV0"}],"7Mijn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ScreenSwitch", ()=>ScreenSwitch);
@@ -28953,6 +28960,7 @@ let ScreenSwitch;
 (function(ScreenSwitch) {
     ScreenSwitch[ScreenSwitch["Welcome"] = 1] = "Welcome";
     ScreenSwitch[ScreenSwitch["Lifeform"] = 2] = "Lifeform";
+    ScreenSwitch[ScreenSwitch["CardTest"] = 3] = "CardTest";
 })(ScreenSwitch || (ScreenSwitch = {}));
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7wk2x":[function(require,module,exports) {
@@ -28966,7 +28974,7 @@ const GameContainer = (0, _styledComponentsDefault.default).div`
   position: relative;
   min-width: 100%;
   height: 100vh;
-  background-color: #181a1b;
+  background-color: white;
 `;
 
 },{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1U3k6":[function(require,module,exports) {
@@ -30415,9 +30423,11 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _styles = require("./styles");
-var _lifeformCanvas = require("../../components/off-canvas/LifeformCanvas");
-var _lifeformCanvasDefault = parcelHelpers.interopDefault(_lifeformCanvas);
 var _lifeform = require("../../models/lifeform/Lifeform");
+var _leftCanvas = require("./components/left-canvas/LeftCanvas");
+var _leftCanvasDefault = parcelHelpers.interopDefault(_leftCanvas);
+var _rightCanvas = require("./components/right-canvas/RightCanvas");
+var _rightCanvasDefault = parcelHelpers.interopDefault(_rightCanvas);
 var _s = $RefreshSig$();
 function SelectScreen(props) {
     _s();
@@ -30446,7 +30456,7 @@ function SelectScreen(props) {
                                 alt: lifeform.text
                             }, lifeform.lifeformId, false, {
                                 fileName: "main/select-screen/SelectScreen.tsx",
-                                lineNumber: 40,
+                                lineNumber: 41,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CarouselCaption), {
@@ -30455,33 +30465,42 @@ function SelectScreen(props) {
                                     children: "Select"
                                 }, void 0, false, {
                                     fileName: "main/select-screen/SelectScreen.tsx",
-                                    lineNumber: 46,
+                                    lineNumber: 47,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "main/select-screen/SelectScreen.tsx",
-                                lineNumber: 45,
+                                lineNumber: 46,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "main/select-screen/SelectScreen.tsx",
-                        lineNumber: 39,
+                        lineNumber: 40,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "main/select-screen/SelectScreen.tsx",
-                lineNumber: 31,
+                lineNumber: 32,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lifeformCanvasDefault.default), {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _leftCanvasDefault.default), {
                 showCanvas: showMenu,
                 onClose: ()=>setShowMenu(false),
                 currentLifeForm: getCurrentLifeForm
             }, void 0, false, {
                 fileName: "main/select-screen/SelectScreen.tsx",
-                lineNumber: 53,
+                lineNumber: 54,
                 columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rightCanvasDefault.default), {
+                showCanvas: showMenu,
+                onClose: ()=>setShowMenu(false),
+                currentLifeForm: getCurrentLifeForm
+            }, void 0, false, {
+                fileName: "main/select-screen/SelectScreen.tsx",
+                lineNumber: 59,
+                columnNumber: 8
             }, this)
         ]
     }, void 0, true);
@@ -30497,7 +30516,7 @@ $RefreshReg$(_c, "SelectScreen");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles":"4p8P4","../../components/off-canvas/LifeformCanvas":"9TbRh","../../models/lifeform/Lifeform":"iWBIG"}],"km3Ru":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles":"4p8P4","../../models/lifeform/Lifeform":"iWBIG","./components/left-canvas/LeftCanvas":"8zKV4","./components/right-canvas/RightCanvas":"lP3qs"}],"km3Ru":[function(require,module,exports) {
 "use strict";
 var Refresh = require("cf6d6283277f4def");
 function debounce(func, delay) {
@@ -34898,11 +34917,407 @@ function safeFindDOMNode(componentOrElement) {
 }
 exports.default = safeFindDOMNode;
 
-},{"react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9TbRh":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$b863 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+},{"react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iWBIG":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "LifeformList", ()=>LifeformList);
+var _amoeba = require("./properties/Amoeba");
+var _alien = require("./properties/Alien");
+var _cephlapod = require("./properties/Cephlapod");
+var _cloud = require("./properties/Cloud");
+var _frozen = require("./properties/Frozen");
+var _fungus = require("./properties/Fungus");
+var _human = require("./properties/Human");
+var _insect = require("./properties/Insect");
+var _virus = require("./properties/Virus");
+var _tree = require("./properties/Tree");
+const LifeformList = [
+    (0, _amoeba.AmoebaModel),
+    (0, _alien.AlienModel),
+    (0, _cephlapod.CephlapodModel),
+    (0, _cloud.CloudModel),
+    (0, _frozen.FrozenModel),
+    (0, _fungus.FungusModel),
+    (0, _human.HumanModel),
+    (0, _insect.InsectModel),
+    (0, _virus.VirusModel),
+    (0, _tree.TreeModel)
+];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./properties/Amoeba":"7YCD4","./properties/Alien":"euNim","./properties/Cephlapod":"iV43h","./properties/Cloud":"2YglV","./properties/Frozen":"fvjRR","./properties/Fungus":"a1nUW","./properties/Human":"3ZAeU","./properties/Insect":"2Q3Dn","./properties/Virus":"4cD1z","./properties/Tree":"b935Y"}],"7YCD4":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "AmoebaModel", ()=>AmoebaModel);
+var _amoebaPng = require("../../../images/lifeform/Amoeba.png");
+var _amoebaPngDefault = parcelHelpers.interopDefault(_amoebaPng);
+var _lifeformEnum = require("./LifeformEnum");
+const AmoebaText = "Amoeba text here";
+const AmoebaModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Amoeba,
+    imgPath: (0, _amoebaPngDefault.default),
+    text: AmoebaText,
+    resources: {
+        energy: 1,
+        life: 1
+    },
+    research: {
+        biology: 1,
+        chemistry: 1
+    },
+    explore: {},
+    engineer: {
+        efficiency: 1
+    },
+    production: {
+        reproduce: 1
+    }
+};
+
+},{"../../../images/lifeform/Amoeba.png":"lPpE7","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"lPpE7":[function(require,module,exports) {
+module.exports = require("8e35f7aabe89e593").getBundleURL("au4zy") + "Amoeba.f670143c.png" + "?" + Date.now();
+
+},{"8e35f7aabe89e593":"lgJ39"}],"lgJ39":[function(require,module,exports) {
+"use strict";
+var bundleURL = {};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return "/";
+}
+function getBaseURL(url) {
+    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
+    if (!matches) throw new Error("Origin not found");
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"7CD6C":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "LifeformEnum", ()=>LifeformEnum);
+let LifeformEnum;
+(function(LifeformEnum) {
+    LifeformEnum[LifeformEnum["Amoeba"] = 1] = "Amoeba";
+    LifeformEnum[LifeformEnum["Alien"] = 2] = "Alien";
+    LifeformEnum[LifeformEnum["Cephlapod"] = 3] = "Cephlapod";
+    LifeformEnum[LifeformEnum["Cloud"] = 4] = "Cloud";
+    LifeformEnum[LifeformEnum["Frozen"] = 5] = "Frozen";
+    LifeformEnum[LifeformEnum["Fungus"] = 6] = "Fungus";
+    LifeformEnum[LifeformEnum["Human"] = 7] = "Human";
+    LifeformEnum[LifeformEnum["Insect"] = 8] = "Insect";
+    LifeformEnum[LifeformEnum["Virus"] = 9] = "Virus";
+    LifeformEnum[LifeformEnum["Tree"] = 10] = "Tree";
+})(LifeformEnum || (LifeformEnum = {}));
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"euNim":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "AlienModel", ()=>AlienModel);
+var _alienPng = require("../../../images/lifeform/Alien.png");
+var _alienPngDefault = parcelHelpers.interopDefault(_alienPng);
+var _lifeformEnum = require("./LifeformEnum");
+const AlienText = "Alien text here";
+const AlienModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Alien,
+    imgPath: (0, _alienPngDefault.default),
+    text: AlienText,
+    resources: {
+        life: 1
+    },
+    research: {
+        physics: 1,
+        robotics: 1,
+        biology: 1
+    },
+    explore: {
+        movement: 1
+    },
+    engineer: {
+        weaponry: 1
+    },
+    production: {}
+};
+
+},{"../../../images/lifeform/Alien.png":"eiFsF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"eiFsF":[function(require,module,exports) {
+module.exports = require("8918d0c4ef7a5da4").getBundleURL("au4zy") + "Alien.ef09d560.png" + "?" + Date.now();
+
+},{"8918d0c4ef7a5da4":"lgJ39"}],"iV43h":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "CephlapodModel", ()=>CephlapodModel);
+var _cephlapodPng = require("../../../images/lifeform/Cephlapod.png");
+var _cephlapodPngDefault = parcelHelpers.interopDefault(_cephlapodPng);
+var _lifeformEnum = require("./LifeformEnum");
+const CephlapodText = "Cephlapod text here";
+const CephlapodModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Cephlapod,
+    imgPath: (0, _cephlapodPngDefault.default),
+    text: CephlapodText,
+    resources: {
+        life: 1,
+        ruins: 1,
+        fuel: 1
+    },
+    research: {
+        biology: 1
+    },
+    explore: {
+        observe: 1
+    },
+    engineer: {},
+    production: {
+        reproduce: 1
+    }
+};
+
+},{"../../../images/lifeform/Cephlapod.png":"lnRWk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"lnRWk":[function(require,module,exports) {
+module.exports = require("bbbe04058c8a52ee").getBundleURL("au4zy") + "Cephlapod.45dc7e9d.png" + "?" + Date.now();
+
+},{"bbbe04058c8a52ee":"lgJ39"}],"2YglV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "CloudModel", ()=>CloudModel);
+var _cloudPng = require("../../../images/lifeform/Cloud.png");
+var _cloudPngDefault = parcelHelpers.interopDefault(_cloudPng);
+var _lifeformEnum = require("./LifeformEnum");
+const CloudText = "Cloud text here";
+const CloudModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Cloud,
+    imgPath: (0, _cloudPngDefault.default),
+    text: CloudText,
+    resources: {
+        life: 1,
+        fuel: 1,
+        metal: 1
+    },
+    research: {
+        astronomy: 1,
+        chemistry: 1
+    },
+    explore: {
+        movement: 1
+    },
+    engineer: {},
+    production: {}
+};
+
+},{"../../../images/lifeform/Cloud.png":"jpV8q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"jpV8q":[function(require,module,exports) {
+module.exports = require("9d39aa80ff4c4c90").getBundleURL("au4zy") + "Cloud.9e69ef11.png" + "?" + Date.now();
+
+},{"9d39aa80ff4c4c90":"lgJ39"}],"fvjRR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "FrozenModel", ()=>FrozenModel);
+var _frozenPng = require("../../../images/lifeform/Frozen.png");
+var _frozenPngDefault = parcelHelpers.interopDefault(_frozenPng);
+var _lifeformEnum = require("./LifeformEnum");
+const FrozenText = "Frozen text here";
+const FrozenModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Frozen,
+    imgPath: (0, _frozenPngDefault.default),
+    text: FrozenText,
+    resources: {
+        life: 1,
+        fuel: 1,
+        ruins: 1
+    },
+    research: {},
+    explore: {},
+    engineer: {
+        weaponry: 1
+    },
+    production: {
+        reproduce: 1,
+        build: 1
+    }
+};
+
+},{"../../../images/lifeform/Frozen.png":"3NIXj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"3NIXj":[function(require,module,exports) {
+module.exports = require("ab701b45e18d0c46").getBundleURL("au4zy") + "Frozen.54c50a44.png" + "?" + Date.now();
+
+},{"ab701b45e18d0c46":"lgJ39"}],"a1nUW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "FungusModel", ()=>FungusModel);
+var _fungusPng = require("../../../images/lifeform/Fungus.png");
+var _fungusPngDefault = parcelHelpers.interopDefault(_fungusPng);
+var _lifeformEnum = require("./LifeformEnum");
+const FungusText = "Fungus text here";
+const FungusModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Fungus,
+    imgPath: (0, _fungusPngDefault.default),
+    text: FungusText,
+    resources: {
+        energy: 1,
+        life: 1
+    },
+    research: {
+        biology: 1,
+        chemistry: 1
+    },
+    explore: {},
+    engineer: {
+        efficiency: 1
+    },
+    production: {
+        build: 1
+    }
+};
+
+},{"../../../images/lifeform/Fungus.png":"gK1mH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"gK1mH":[function(require,module,exports) {
+module.exports = require("12bfb122c03f815a").getBundleURL("au4zy") + "Fungus.039ff0d7.png" + "?" + Date.now();
+
+},{"12bfb122c03f815a":"lgJ39"}],"3ZAeU":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "HumanModel", ()=>HumanModel);
+var _humanPng = require("../../../images/lifeform/Human.png");
+var _humanPngDefault = parcelHelpers.interopDefault(_humanPng);
+var _lifeformEnum = require("./LifeformEnum");
+const HumanText = "Human text here";
+const HumanModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Human,
+    imgPath: (0, _humanPngDefault.default),
+    text: HumanText,
+    resources: {
+        life: 1
+    },
+    research: {
+        biology: 1,
+        chemistry: 1,
+        physics: 1
+    },
+    explore: {},
+    engineer: {
+        weaponry: 1
+    },
+    production: {
+        build: 1
+    }
+};
+
+},{"../../../images/lifeform/Human.png":"6K5n5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"6K5n5":[function(require,module,exports) {
+module.exports = require("bc54d0a8dd1e15a7").getBundleURL("au4zy") + "Human.501fc66a.png" + "?" + Date.now();
+
+},{"bc54d0a8dd1e15a7":"lgJ39"}],"2Q3Dn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "InsectModel", ()=>InsectModel);
+var _insectPng = require("../../../images/lifeform/Insect.png");
+var _insectPngDefault = parcelHelpers.interopDefault(_insectPng);
+var _lifeformEnum = require("./LifeformEnum");
+const InsectText = "Insect text here";
+const InsectModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Insect,
+    imgPath: (0, _insectPngDefault.default),
+    text: InsectText,
+    resources: {
+        life: 1
+    },
+    research: {
+        biology: 1
+    },
+    explore: {
+        movement: 1
+    },
+    engineer: {
+        efficiency: 1
+    },
+    production: {
+        conscript: 1
+    }
+};
+
+},{"../../../images/lifeform/Insect.png":"iBcl8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"iBcl8":[function(require,module,exports) {
+module.exports = require("78991f50a7a1efdd").getBundleURL("au4zy") + "Insect.48381a42.png" + "?" + Date.now();
+
+},{"78991f50a7a1efdd":"lgJ39"}],"4cD1z":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "VirusModel", ()=>VirusModel);
+var _virusPng = require("../../../images/lifeform/Virus.png");
+var _virusPngDefault = parcelHelpers.interopDefault(_virusPng);
+var _lifeformEnum = require("./LifeformEnum");
+const VirusText = "Virus text here";
+const VirusModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Virus,
+    imgPath: (0, _virusPngDefault.default),
+    text: VirusText,
+    resources: {
+        life: 1
+    },
+    research: {
+        biology: 1
+    },
+    explore: {},
+    engineer: {
+        weaponry: 1,
+        efficiency: 1
+    },
+    production: {
+        reproduce: 1,
+        conscript: 1
+    }
+};
+
+},{"../../../images/lifeform/Virus.png":"dNKa1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"dNKa1":[function(require,module,exports) {
+module.exports = require("5c1598ef7fb811be").getBundleURL("au4zy") + "Virus.2db34344.png" + "?" + Date.now();
+
+},{"5c1598ef7fb811be":"lgJ39"}],"b935Y":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "TreeModel", ()=>TreeModel);
+var _treePng = require("../../../images/lifeform/Tree.png");
+var _treePngDefault = parcelHelpers.interopDefault(_treePng);
+var _lifeformEnum = require("./LifeformEnum");
+const TreeText = "Tree text here";
+const TreeModel = {
+    lifeformId: (0, _lifeformEnum.LifeformEnum).Tree,
+    imgPath: (0, _treePngDefault.default),
+    text: TreeText,
+    resources: {
+        fuel: 1,
+        energy: 1,
+        life: 1
+    },
+    research: {
+        chemistry: 1,
+        biology: 1
+    },
+    explore: {},
+    engineer: {},
+    production: {
+        reproduce: 1
+    }
+};
+
+},{"../../../images/lifeform/Tree.png":"z6Lj4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"z6Lj4":[function(require,module,exports) {
+module.exports = require("5932bed0511d83d0").getBundleURL("au4zy") + "Tree.1220f292.png" + "?" + Date.now();
+
+},{"5932bed0511d83d0":"lgJ39"}],"8zKV4":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$7974 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$b863.prelude(module);
+$parcel$ReactRefreshHelpers$7974.prelude(module);
 
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -34912,10 +35327,10 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _offcanvas = require("react-bootstrap/Offcanvas");
 var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
-var _lifeformEnum = require("../../models/lifeform/properties/LifeformEnum");
+var _lifeformEnum = require("../../../../models/lifeform/properties/LifeformEnum");
 var _styles = require("./styles");
 var _s = $RefreshSig$();
-function LifeformCanvas(props) {
+function LeftCanvas(props) {
     _s();
     const { showCanvas , onClose , currentLifeForm  } = props;
     const [show, setShow] = (0, _react.useState)(false);
@@ -34930,7 +35345,7 @@ function LifeformCanvas(props) {
         showCanvas
     ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledLifeformCanvas), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledLeftCanvas), {
             show: show,
             onHide: handleClose,
             scroll: false,
@@ -34941,42 +35356,42 @@ function LifeformCanvas(props) {
                     children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Title, {
                         children: (0, _lifeformEnum.LifeformEnum)[currentLifeForm?.lifeformId ?? -1]
                     }, void 0, false, {
-                        fileName: "components/off-canvas/LifeformCanvas.tsx",
+                        fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
                         lineNumber: 38,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
-                    fileName: "components/off-canvas/LifeformCanvas.tsx",
+                    fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
                     lineNumber: 37,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {
                     children: currentLifeForm?.text
                 }, void 0, false, {
-                    fileName: "components/off-canvas/LifeformCanvas.tsx",
+                    fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
                     lineNumber: 42,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
-            fileName: "components/off-canvas/LifeformCanvas.tsx",
+            fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
             lineNumber: 30,
             columnNumber: 7
         }, this)
     }, void 0, false);
 }
-exports.default = LifeformCanvas;
-_s(LifeformCanvas, "bXBd/WbmO9A8Q7bxaOKZvuJyGc0=");
-_c = LifeformCanvas;
+exports.default = LeftCanvas;
+_s(LeftCanvas, "bXBd/WbmO9A8Q7bxaOKZvuJyGc0=");
+_c = LeftCanvas;
 var _c;
-$RefreshReg$(_c, "LifeformCanvas");
+$RefreshReg$(_c, "LeftCanvas");
 
-  $parcel$ReactRefreshHelpers$b863.postlude(module);
+  $parcel$ReactRefreshHelpers$7974.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Offcanvas":"eC3RS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles":"iG5qi","../../models/lifeform/properties/LifeformEnum":"7CD6C"}],"eC3RS":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Offcanvas":"eC3RS","./styles":"bJ8Wq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../../models/lifeform/properties/LifeformEnum":"7CD6C"}],"eC3RS":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _classnames = require("classnames");
@@ -36066,418 +36481,408 @@ function removeClass(element, className) {
 }
 exports.default = removeClass;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iG5qi":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bJ8Wq":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "StyledLifeformCanvas", ()=>StyledLifeformCanvas);
+parcelHelpers.export(exports, "StyledLeftCanvas", ()=>StyledLeftCanvas);
+var _reactBootstrap = require("react-bootstrap");
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
-var _offcanvas = require("react-bootstrap/Offcanvas");
-var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
-const StyledLifeformCanvas = (0, _styledComponentsDefault.default)((0, _offcanvasDefault.default))`
+const StyledLeftCanvas = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Offcanvas))`
   display: flex;
   width: 25% !important;
   background-color: #181a1b;
   color: #faf0dd;
 `;
 
-},{"styled-components":"1U3k6","react-bootstrap/Offcanvas":"eC3RS","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7CD6C":[function(require,module,exports) {
+},{"react-bootstrap":"3AD9A","styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3AD9A":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "LifeformEnum", ()=>LifeformEnum);
-let LifeformEnum;
-(function(LifeformEnum) {
-    LifeformEnum[LifeformEnum["Amoeba"] = 1] = "Amoeba";
-    LifeformEnum[LifeformEnum["Alien"] = 2] = "Alien";
-    LifeformEnum[LifeformEnum["Cephlapod"] = 3] = "Cephlapod";
-    LifeformEnum[LifeformEnum["Cloud"] = 4] = "Cloud";
-    LifeformEnum[LifeformEnum["Frozen"] = 5] = "Frozen";
-    LifeformEnum[LifeformEnum["Fungus"] = 6] = "Fungus";
-    LifeformEnum[LifeformEnum["Human"] = 7] = "Human";
-    LifeformEnum[LifeformEnum["Insect"] = 8] = "Insect";
-    LifeformEnum[LifeformEnum["Virus"] = 9] = "Virus";
-    LifeformEnum[LifeformEnum["Tree"] = 10] = "Tree";
-})(LifeformEnum || (LifeformEnum = {}));
+parcelHelpers.export(exports, "Accordion", ()=>(0, _accordionDefault.default));
+parcelHelpers.export(exports, "AccordionContext", ()=>(0, _accordionContextDefault.default));
+parcelHelpers.export(exports, "AccordionCollapse", ()=>(0, _accordionCollapseDefault.default));
+parcelHelpers.export(exports, "AccordionButton", ()=>(0, _accordionButtonDefault.default));
+parcelHelpers.export(exports, "useAccordionButton", ()=>(0, _accordionButton.useAccordionButton));
+parcelHelpers.export(exports, "Alert", ()=>(0, _alertDefault.default));
+parcelHelpers.export(exports, "Anchor", ()=>(0, _anchorDefault.default));
+parcelHelpers.export(exports, "Badge", ()=>(0, _badgeDefault.default));
+parcelHelpers.export(exports, "Breadcrumb", ()=>(0, _breadcrumbDefault.default));
+parcelHelpers.export(exports, "BreadcrumbItem", ()=>(0, _breadcrumbItemDefault.default));
+parcelHelpers.export(exports, "Button", ()=>(0, _buttonDefault.default));
+parcelHelpers.export(exports, "ButtonGroup", ()=>(0, _buttonGroupDefault.default));
+parcelHelpers.export(exports, "ButtonToolbar", ()=>(0, _buttonToolbarDefault.default));
+parcelHelpers.export(exports, "Card", ()=>(0, _cardDefault.default));
+parcelHelpers.export(exports, "CardImg", ()=>(0, _cardImgDefault.default));
+parcelHelpers.export(exports, "CardGroup", ()=>(0, _cardGroupDefault.default));
+parcelHelpers.export(exports, "Carousel", ()=>(0, _carouselDefault.default));
+parcelHelpers.export(exports, "CarouselItem", ()=>(0, _carouselItemDefault.default));
+parcelHelpers.export(exports, "CloseButton", ()=>(0, _closeButtonDefault.default));
+parcelHelpers.export(exports, "Col", ()=>(0, _colDefault.default));
+parcelHelpers.export(exports, "Collapse", ()=>(0, _collapseDefault.default));
+parcelHelpers.export(exports, "Dropdown", ()=>(0, _dropdownDefault.default));
+parcelHelpers.export(exports, "DropdownButton", ()=>(0, _dropdownButtonDefault.default));
+parcelHelpers.export(exports, "Fade", ()=>(0, _fadeDefault.default));
+parcelHelpers.export(exports, "Form", ()=>(0, _formDefault.default));
+parcelHelpers.export(exports, "FormControl", ()=>(0, _formControlDefault.default));
+parcelHelpers.export(exports, "FormCheck", ()=>(0, _formCheckDefault.default));
+parcelHelpers.export(exports, "FormFloating", ()=>(0, _formFloatingDefault.default));
+parcelHelpers.export(exports, "FloatingLabel", ()=>(0, _floatingLabelDefault.default));
+parcelHelpers.export(exports, "FormGroup", ()=>(0, _formGroupDefault.default));
+parcelHelpers.export(exports, "FormLabel", ()=>(0, _formLabelDefault.default));
+parcelHelpers.export(exports, "FormText", ()=>(0, _formTextDefault.default));
+parcelHelpers.export(exports, "FormSelect", ()=>(0, _formSelectDefault.default));
+parcelHelpers.export(exports, "Container", ()=>(0, _containerDefault.default));
+parcelHelpers.export(exports, "Image", ()=>(0, _imageDefault.default));
+parcelHelpers.export(exports, "Figure", ()=>(0, _figureDefault.default));
+parcelHelpers.export(exports, "InputGroup", ()=>(0, _inputGroupDefault.default));
+parcelHelpers.export(exports, "ListGroup", ()=>(0, _listGroupDefault.default));
+parcelHelpers.export(exports, "ListGroupItem", ()=>(0, _listGroupItemDefault.default));
+parcelHelpers.export(exports, "Modal", ()=>(0, _modalDefault.default));
+parcelHelpers.export(exports, "ModalBody", ()=>(0, _modalBodyDefault.default));
+parcelHelpers.export(exports, "ModalDialog", ()=>(0, _modalDialogDefault.default));
+parcelHelpers.export(exports, "ModalHeader", ()=>(0, _modalHeaderDefault.default));
+parcelHelpers.export(exports, "ModalFooter", ()=>(0, _modalFooterDefault.default));
+parcelHelpers.export(exports, "ModalTitle", ()=>(0, _modalTitleDefault.default));
+parcelHelpers.export(exports, "Nav", ()=>(0, _navDefault.default));
+parcelHelpers.export(exports, "Navbar", ()=>(0, _navbarDefault.default));
+parcelHelpers.export(exports, "NavbarBrand", ()=>(0, _navbarBrandDefault.default));
+parcelHelpers.export(exports, "NavDropdown", ()=>(0, _navDropdownDefault.default));
+parcelHelpers.export(exports, "NavItem", ()=>(0, _navItemDefault.default));
+parcelHelpers.export(exports, "NavLink", ()=>(0, _navLinkDefault.default));
+parcelHelpers.export(exports, "Offcanvas", ()=>(0, _offcanvasDefault.default));
+parcelHelpers.export(exports, "OffcanvasHeader", ()=>(0, _offcanvasHeaderDefault.default));
+parcelHelpers.export(exports, "OffcanvasTitle", ()=>(0, _offcanvasTitleDefault.default));
+parcelHelpers.export(exports, "OffcanvasBody", ()=>(0, _offcanvasBodyDefault.default));
+parcelHelpers.export(exports, "Overlay", ()=>(0, _overlayDefault.default));
+parcelHelpers.export(exports, "OverlayTrigger", ()=>(0, _overlayTriggerDefault.default));
+parcelHelpers.export(exports, "PageItem", ()=>(0, _pageItemDefault.default));
+parcelHelpers.export(exports, "Pagination", ()=>(0, _paginationDefault.default));
+parcelHelpers.export(exports, "Placeholder", ()=>(0, _placeholderDefault.default));
+parcelHelpers.export(exports, "PlaceholderButton", ()=>(0, _placeholderButtonDefault.default));
+parcelHelpers.export(exports, "Popover", ()=>(0, _popoverDefault.default));
+parcelHelpers.export(exports, "PopoverHeader", ()=>(0, _popoverHeaderDefault.default));
+parcelHelpers.export(exports, "PopoverBody", ()=>(0, _popoverBodyDefault.default));
+parcelHelpers.export(exports, "ProgressBar", ()=>(0, _progressBarDefault.default));
+parcelHelpers.export(exports, "Ratio", ()=>(0, _ratioDefault.default));
+parcelHelpers.export(exports, "Row", ()=>(0, _rowDefault.default));
+parcelHelpers.export(exports, "Spinner", ()=>(0, _spinnerDefault.default));
+parcelHelpers.export(exports, "SplitButton", ()=>(0, _splitButtonDefault.default));
+parcelHelpers.export(exports, "SSRProvider", ()=>(0, _ssrproviderDefault.default));
+parcelHelpers.export(exports, "Stack", ()=>(0, _stackDefault.default));
+parcelHelpers.export(exports, "Tab", ()=>(0, _tabDefault.default));
+parcelHelpers.export(exports, "TabContainer", ()=>(0, _tabContainerDefault.default));
+parcelHelpers.export(exports, "TabContent", ()=>(0, _tabContentDefault.default));
+parcelHelpers.export(exports, "Table", ()=>(0, _tableDefault.default));
+parcelHelpers.export(exports, "TabPane", ()=>(0, _tabPaneDefault.default));
+parcelHelpers.export(exports, "Tabs", ()=>(0, _tabsDefault.default));
+parcelHelpers.export(exports, "ThemeProvider", ()=>(0, _themeProviderDefault.default));
+parcelHelpers.export(exports, "Toast", ()=>(0, _toastDefault.default));
+parcelHelpers.export(exports, "ToastBody", ()=>(0, _toastBodyDefault.default));
+parcelHelpers.export(exports, "ToastHeader", ()=>(0, _toastHeaderDefault.default));
+parcelHelpers.export(exports, "ToastContainer", ()=>(0, _toastContainerDefault.default));
+parcelHelpers.export(exports, "ToggleButton", ()=>(0, _toggleButtonDefault.default));
+parcelHelpers.export(exports, "ToggleButtonGroup", ()=>(0, _toggleButtonGroupDefault.default));
+parcelHelpers.export(exports, "Tooltip", ()=>(0, _tooltipDefault.default));
+var _accordion = require("./Accordion");
+var _accordionDefault = parcelHelpers.interopDefault(_accordion);
+var _accordionContext = require("./AccordionContext");
+var _accordionContextDefault = parcelHelpers.interopDefault(_accordionContext);
+var _accordionCollapse = require("./AccordionCollapse");
+var _accordionCollapseDefault = parcelHelpers.interopDefault(_accordionCollapse);
+var _accordionButton = require("./AccordionButton");
+var _accordionButtonDefault = parcelHelpers.interopDefault(_accordionButton);
+var _alert = require("./Alert");
+var _alertDefault = parcelHelpers.interopDefault(_alert);
+var _anchor = require("./Anchor");
+var _anchorDefault = parcelHelpers.interopDefault(_anchor);
+var _badge = require("./Badge");
+var _badgeDefault = parcelHelpers.interopDefault(_badge);
+var _breadcrumb = require("./Breadcrumb");
+var _breadcrumbDefault = parcelHelpers.interopDefault(_breadcrumb);
+var _breadcrumbItem = require("./BreadcrumbItem");
+var _breadcrumbItemDefault = parcelHelpers.interopDefault(_breadcrumbItem);
+var _button = require("./Button");
+var _buttonDefault = parcelHelpers.interopDefault(_button);
+var _buttonGroup = require("./ButtonGroup");
+var _buttonGroupDefault = parcelHelpers.interopDefault(_buttonGroup);
+var _buttonToolbar = require("./ButtonToolbar");
+var _buttonToolbarDefault = parcelHelpers.interopDefault(_buttonToolbar);
+var _card = require("./Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _cardImg = require("./CardImg");
+var _cardImgDefault = parcelHelpers.interopDefault(_cardImg);
+var _cardGroup = require("./CardGroup");
+var _cardGroupDefault = parcelHelpers.interopDefault(_cardGroup);
+var _carousel = require("./Carousel");
+var _carouselDefault = parcelHelpers.interopDefault(_carousel);
+var _carouselItem = require("./CarouselItem");
+var _carouselItemDefault = parcelHelpers.interopDefault(_carouselItem);
+var _closeButton = require("./CloseButton");
+var _closeButtonDefault = parcelHelpers.interopDefault(_closeButton);
+var _col = require("./Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
+var _collapse = require("./Collapse");
+var _collapseDefault = parcelHelpers.interopDefault(_collapse);
+var _dropdown = require("./Dropdown");
+var _dropdownDefault = parcelHelpers.interopDefault(_dropdown);
+var _dropdownButton = require("./DropdownButton");
+var _dropdownButtonDefault = parcelHelpers.interopDefault(_dropdownButton);
+var _fade = require("./Fade");
+var _fadeDefault = parcelHelpers.interopDefault(_fade);
+var _form = require("./Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _formControl = require("./FormControl");
+var _formControlDefault = parcelHelpers.interopDefault(_formControl);
+var _formCheck = require("./FormCheck");
+var _formCheckDefault = parcelHelpers.interopDefault(_formCheck);
+var _formFloating = require("./FormFloating");
+var _formFloatingDefault = parcelHelpers.interopDefault(_formFloating);
+var _floatingLabel = require("./FloatingLabel");
+var _floatingLabelDefault = parcelHelpers.interopDefault(_floatingLabel);
+var _formGroup = require("./FormGroup");
+var _formGroupDefault = parcelHelpers.interopDefault(_formGroup);
+var _formLabel = require("./FormLabel");
+var _formLabelDefault = parcelHelpers.interopDefault(_formLabel);
+var _formText = require("./FormText");
+var _formTextDefault = parcelHelpers.interopDefault(_formText);
+var _formSelect = require("./FormSelect");
+var _formSelectDefault = parcelHelpers.interopDefault(_formSelect);
+var _container = require("./Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
+var _image = require("./Image");
+var _imageDefault = parcelHelpers.interopDefault(_image);
+var _figure = require("./Figure");
+var _figureDefault = parcelHelpers.interopDefault(_figure);
+var _inputGroup = require("./InputGroup");
+var _inputGroupDefault = parcelHelpers.interopDefault(_inputGroup);
+var _listGroup = require("./ListGroup");
+var _listGroupDefault = parcelHelpers.interopDefault(_listGroup);
+var _listGroupItem = require("./ListGroupItem");
+var _listGroupItemDefault = parcelHelpers.interopDefault(_listGroupItem);
+var _modal = require("./Modal");
+var _modalDefault = parcelHelpers.interopDefault(_modal);
+var _modalBody = require("./ModalBody");
+var _modalBodyDefault = parcelHelpers.interopDefault(_modalBody);
+var _modalDialog = require("./ModalDialog");
+var _modalDialogDefault = parcelHelpers.interopDefault(_modalDialog);
+var _modalHeader = require("./ModalHeader");
+var _modalHeaderDefault = parcelHelpers.interopDefault(_modalHeader);
+var _modalFooter = require("./ModalFooter");
+var _modalFooterDefault = parcelHelpers.interopDefault(_modalFooter);
+var _modalTitle = require("./ModalTitle");
+var _modalTitleDefault = parcelHelpers.interopDefault(_modalTitle);
+var _nav = require("./Nav");
+var _navDefault = parcelHelpers.interopDefault(_nav);
+var _navbar = require("./Navbar");
+var _navbarDefault = parcelHelpers.interopDefault(_navbar);
+var _navbarBrand = require("./NavbarBrand");
+var _navbarBrandDefault = parcelHelpers.interopDefault(_navbarBrand);
+var _navDropdown = require("./NavDropdown");
+var _navDropdownDefault = parcelHelpers.interopDefault(_navDropdown);
+var _navItem = require("./NavItem");
+var _navItemDefault = parcelHelpers.interopDefault(_navItem);
+var _navLink = require("./NavLink");
+var _navLinkDefault = parcelHelpers.interopDefault(_navLink);
+var _offcanvas = require("./Offcanvas");
+var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
+var _offcanvasHeader = require("./OffcanvasHeader");
+var _offcanvasHeaderDefault = parcelHelpers.interopDefault(_offcanvasHeader);
+var _offcanvasTitle = require("./OffcanvasTitle");
+var _offcanvasTitleDefault = parcelHelpers.interopDefault(_offcanvasTitle);
+var _offcanvasBody = require("./OffcanvasBody");
+var _offcanvasBodyDefault = parcelHelpers.interopDefault(_offcanvasBody);
+var _overlay = require("./Overlay");
+var _overlayDefault = parcelHelpers.interopDefault(_overlay);
+var _overlayTrigger = require("./OverlayTrigger");
+var _overlayTriggerDefault = parcelHelpers.interopDefault(_overlayTrigger);
+var _pageItem = require("./PageItem");
+var _pageItemDefault = parcelHelpers.interopDefault(_pageItem);
+var _pagination = require("./Pagination");
+var _paginationDefault = parcelHelpers.interopDefault(_pagination);
+var _placeholder = require("./Placeholder");
+var _placeholderDefault = parcelHelpers.interopDefault(_placeholder);
+var _placeholderButton = require("./PlaceholderButton");
+var _placeholderButtonDefault = parcelHelpers.interopDefault(_placeholderButton);
+var _popover = require("./Popover");
+var _popoverDefault = parcelHelpers.interopDefault(_popover);
+var _popoverHeader = require("./PopoverHeader");
+var _popoverHeaderDefault = parcelHelpers.interopDefault(_popoverHeader);
+var _popoverBody = require("./PopoverBody");
+var _popoverBodyDefault = parcelHelpers.interopDefault(_popoverBody);
+var _progressBar = require("./ProgressBar");
+var _progressBarDefault = parcelHelpers.interopDefault(_progressBar);
+var _ratio = require("./Ratio");
+var _ratioDefault = parcelHelpers.interopDefault(_ratio);
+var _row = require("./Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+var _spinner = require("./Spinner");
+var _spinnerDefault = parcelHelpers.interopDefault(_spinner);
+var _splitButton = require("./SplitButton");
+var _splitButtonDefault = parcelHelpers.interopDefault(_splitButton);
+var _ssrprovider = require("./SSRProvider");
+var _ssrproviderDefault = parcelHelpers.interopDefault(_ssrprovider);
+var _stack = require("./Stack");
+var _stackDefault = parcelHelpers.interopDefault(_stack);
+var _tab = require("./Tab");
+var _tabDefault = parcelHelpers.interopDefault(_tab);
+var _tabContainer = require("./TabContainer");
+var _tabContainerDefault = parcelHelpers.interopDefault(_tabContainer);
+var _tabContent = require("./TabContent");
+var _tabContentDefault = parcelHelpers.interopDefault(_tabContent);
+var _table = require("./Table");
+var _tableDefault = parcelHelpers.interopDefault(_table);
+var _tabPane = require("./TabPane");
+var _tabPaneDefault = parcelHelpers.interopDefault(_tabPane);
+var _tabs = require("./Tabs");
+var _tabsDefault = parcelHelpers.interopDefault(_tabs);
+var _themeProvider = require("./ThemeProvider");
+var _themeProviderDefault = parcelHelpers.interopDefault(_themeProvider);
+var _toast = require("./Toast");
+var _toastDefault = parcelHelpers.interopDefault(_toast);
+var _toastBody = require("./ToastBody");
+var _toastBodyDefault = parcelHelpers.interopDefault(_toastBody);
+var _toastHeader = require("./ToastHeader");
+var _toastHeaderDefault = parcelHelpers.interopDefault(_toastHeader);
+var _toastContainer = require("./ToastContainer");
+var _toastContainerDefault = parcelHelpers.interopDefault(_toastContainer);
+var _toggleButton = require("./ToggleButton");
+var _toggleButtonDefault = parcelHelpers.interopDefault(_toggleButton);
+var _toggleButtonGroup = require("./ToggleButtonGroup");
+var _toggleButtonGroupDefault = parcelHelpers.interopDefault(_toggleButtonGroup);
+var _tooltip = require("./Tooltip");
+var _tooltipDefault = parcelHelpers.interopDefault(_tooltip);
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iWBIG":[function(require,module,exports) {
+},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./Alert":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":false,"./ButtonGroup":false,"./ButtonToolbar":false,"./Card":false,"./CardImg":false,"./CardGroup":false,"./Carousel":"bsGhm","./CarouselItem":"9A3DI","./CloseButton":"1wmVl","./Col":false,"./Collapse":false,"./Dropdown":false,"./DropdownButton":false,"./Fade":"aH18S","./Form":false,"./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Container":false,"./Image":false,"./Figure":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":false,"./ModalDialog":false,"./ModalHeader":false,"./ModalFooter":false,"./ModalTitle":false,"./Nav":false,"./Navbar":false,"./NavbarBrand":false,"./NavDropdown":false,"./NavItem":false,"./NavLink":false,"./Offcanvas":"eC3RS","./OffcanvasHeader":"a6xAh","./OffcanvasTitle":"77qdX","./OffcanvasBody":"fX7Bo","./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverHeader":false,"./PopoverBody":false,"./ProgressBar":false,"./Ratio":false,"./Row":false,"./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":false,"./TabContainer":false,"./TabContent":false,"./Table":false,"./TabPane":false,"./Tabs":false,"./ThemeProvider":"dVixI","./Toast":false,"./ToastBody":false,"./ToastHeader":false,"./ToastContainer":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lP3qs":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$155f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$155f.prelude(module);
+
+try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "LifeformList", ()=>LifeformList);
-var _amoeba = require("./properties/Amoeba");
-var _alien = require("./properties/Alien");
-var _cephlapod = require("./properties/Cephlapod");
-var _cloud = require("./properties/Cloud");
-var _frozen = require("./properties/Frozen");
-var _fungus = require("./properties/Fungus");
-var _human = require("./properties/Human");
-var _insect = require("./properties/Insect");
-var _virus = require("./properties/Virus");
-var _tree = require("./properties/Tree");
-const LifeformList = [
-    (0, _amoeba.AmoebaModel),
-    (0, _alien.AlienModel),
-    (0, _cephlapod.CephlapodModel),
-    (0, _cloud.CloudModel),
-    (0, _frozen.FrozenModel),
-    (0, _fungus.FungusModel),
-    (0, _human.HumanModel),
-    (0, _insect.InsectModel),
-    (0, _virus.VirusModel),
-    (0, _tree.TreeModel)
-];
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./properties/Amoeba":"7YCD4","./properties/Alien":"euNim","./properties/Cephlapod":"iV43h","./properties/Cloud":"2YglV","./properties/Frozen":"fvjRR","./properties/Fungus":"a1nUW","./properties/Human":"3ZAeU","./properties/Insect":"2Q3Dn","./properties/Virus":"4cD1z","./properties/Tree":"b935Y"}],"7YCD4":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "AmoebaModel", ()=>AmoebaModel);
-var _amoebaPng = require("../../../images/lifeform/Amoeba.png");
-var _amoebaPngDefault = parcelHelpers.interopDefault(_amoebaPng);
-var _lifeformEnum = require("./LifeformEnum");
-const AmoebaText = "Amoeba text here";
-const AmoebaModel = {
-    lifeformId: (0, _lifeformEnum.LifeformEnum).Amoeba,
-    imgPath: (0, _amoebaPngDefault.default),
-    text: AmoebaText,
-    resources: {
-        energy: 1,
-        life: 1
-    },
-    research: {
-        biology: 1,
-        chemistry: 1
-    },
-    explore: {},
-    engineer: {
-        efficiency: 1
-    },
-    production: {
-        reproduce: 1
-    }
-};
-
-},{"../../../images/lifeform/Amoeba.png":"lPpE7","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"lPpE7":[function(require,module,exports) {
-module.exports = require("8e35f7aabe89e593").getBundleURL("au4zy") + "Amoeba.f670143c.png" + "?" + Date.now();
-
-},{"8e35f7aabe89e593":"lgJ39"}],"lgJ39":[function(require,module,exports) {
-"use strict";
-var bundleURL = {};
-function getBundleURLCached(id) {
-    var value = bundleURL[id];
-    if (!value) {
-        value = getBundleURL();
-        bundleURL[id] = value;
-    }
-    return value;
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _offcanvas = require("react-bootstrap/Offcanvas");
+var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
+var _lifeformEnum = require("../../../../models/lifeform/properties/LifeformEnum");
+var _styles = require("./styles");
+var _s = $RefreshSig$();
+function RightCanvas(props) {
+    _s();
+    const { showCanvas , onClose , currentLifeForm  } = props;
+    const [show, setShow] = (0, _react.useState)(false);
+    const handleClose = ()=>{
+        setShow(false);
+        onClose(true);
+    };
+    // opens canvas from select button
+    (0, _react.useEffect)(()=>{
+        setShow(showCanvas);
+    }, [
+        showCanvas
+    ]);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledRightCanvas), {
+            show: show,
+            onHide: handleClose,
+            scroll: false,
+            backdrop: false,
+            placement: "end",
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Header, {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Title, {
+                        children: (0, _lifeformEnum.LifeformEnum)[currentLifeForm?.lifeformId ?? -1]
+                    }, void 0, false, {
+                        fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+                        lineNumber: 38,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+                    lineNumber: 37,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.DescriptionContainer), {
+                        children: currentLifeForm?.text
+                    }, void 0, false, {
+                        fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+                        lineNumber: 43,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+                    lineNumber: 42,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+            lineNumber: 30,
+            columnNumber: 7
+        }, this)
+    }, void 0, false);
 }
-function getBundleURL() {
-    try {
-        throw new Error();
-    } catch (err) {
-        var matches = ("" + err.stack).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^)\n]+/g);
-        if (matches) // The first two stack frames will be this function and getBundleURLCached.
-        // Use the 3rd one, which will be a runtime in the original bundle.
-        return getBaseURL(matches[2]);
-    }
-    return "/";
+exports.default = RightCanvas;
+_s(RightCanvas, "bXBd/WbmO9A8Q7bxaOKZvuJyGc0=");
+_c = RightCanvas;
+var _c;
+$RefreshReg$(_c, "RightCanvas");
+
+  $parcel$ReactRefreshHelpers$155f.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
 }
-function getBaseURL(url) {
-    return ("" + url).replace(/^((?:https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/.+)\/[^/]+$/, "$1") + "/";
-} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
-function getOrigin(url) {
-    var matches = ("" + url).match(/(https?|file|ftp|(chrome|moz|safari-web)-extension):\/\/[^/]+/);
-    if (!matches) throw new Error("Origin not found");
-    return matches[0];
-}
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-exports.getOrigin = getOrigin;
-
-},{}],"euNim":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Offcanvas":"eC3RS","../../../../models/lifeform/properties/LifeformEnum":"7CD6C","./styles":"bg4Ud","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bg4Ud":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "AlienModel", ()=>AlienModel);
-var _alienPng = require("../../../images/lifeform/Alien.png");
-var _alienPngDefault = parcelHelpers.interopDefault(_alienPng);
-var _lifeformEnum = require("./LifeformEnum");
-const AlienText = "Alien text here";
-const AlienModel = {
-    lifeformId: (0, _lifeformEnum.LifeformEnum).Alien,
-    imgPath: (0, _alienPngDefault.default),
-    text: AlienText,
-    resources: {
-        life: 1
-    },
-    research: {
-        physics: 1,
-        robotics: 1,
-        biology: 1
-    },
-    explore: {
-        movement: 1
-    },
-    engineer: {
-        weaponry: 1
-    },
-    production: {}
-};
-
-},{"../../../images/lifeform/Alien.png":"eiFsF","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"eiFsF":[function(require,module,exports) {
-module.exports = require("8918d0c4ef7a5da4").getBundleURL("au4zy") + "Alien.ef09d560.png" + "?" + Date.now();
-
-},{"8918d0c4ef7a5da4":"lgJ39"}],"iV43h":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "CephlapodModel", ()=>CephlapodModel);
-var _cephlapodPng = require("../../../images/lifeform/Cephlapod.png");
-var _cephlapodPngDefault = parcelHelpers.interopDefault(_cephlapodPng);
-var _lifeformEnum = require("./LifeformEnum");
-const CephlapodText = "Cephlapod text here";
-const CephlapodModel = {
-    lifeformId: (0, _lifeformEnum.LifeformEnum).Cephlapod,
-    imgPath: (0, _cephlapodPngDefault.default),
-    text: CephlapodText,
-    resources: {
-        life: 1,
-        ruins: 1,
-        fuel: 1
-    },
-    research: {
-        biology: 1
-    },
-    explore: {
-        observe: 1
-    },
-    engineer: {},
-    production: {
-        reproduce: 1
+parcelHelpers.export(exports, "StyledRightCanvas", ()=>StyledRightCanvas);
+parcelHelpers.export(exports, "DescriptionContainer", ()=>DescriptionContainer);
+var _reactBootstrap = require("react-bootstrap");
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const StyledRightCanvas = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Offcanvas))`
+  display: flex;
+  width: 25% !important;
+  background-color: #181a1b;
+  color: #faf0dd;
+`;
+const DescriptionContainer = (0, _styledComponentsDefault.default).div`
+  width: 100%;
+  margin: 2rem auto;
+  padding: 2em;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, #faf0dd 100%, #faf0dd 100%),
+    linear-gradient(to bottom, #faf0dd 100%, #faf0dd 100%),
+    linear-gradient(to right, #faf0dd 100%, #faf0dd 100%),
+    linear-gradient(to bottom, #faf0dd 100%, #faf0dd 100%);
+  background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  animation: bg 1.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
+  animation-play-state: paused;
+  @keyframes bg {
+    0% {
+      background-size: 0 3px, 3px 0, 0 3px, 3px 0;
     }
-};
-
-},{"../../../images/lifeform/Cephlapod.png":"lnRWk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"lnRWk":[function(require,module,exports) {
-module.exports = require("bbbe04058c8a52ee").getBundleURL("au4zy") + "Cephlapod.45dc7e9d.png" + "?" + Date.now();
-
-},{"bbbe04058c8a52ee":"lgJ39"}],"2YglV":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "CloudModel", ()=>CloudModel);
-var _cloudPng = require("../../../images/lifeform/Cloud.png");
-var _cloudPngDefault = parcelHelpers.interopDefault(_cloudPng);
-var _lifeformEnum = require("./LifeformEnum");
-const CloudText = "Cloud text here";
-const CloudModel = {
-    lifeformId: (0, _lifeformEnum.LifeformEnum).Cloud,
-    imgPath: (0, _cloudPngDefault.default),
-    text: CloudText,
-    resources: {
-        life: 1,
-        fuel: 1,
-        metal: 1
-    },
-    research: {
-        astronomy: 1,
-        chemistry: 1
-    },
-    explore: {
-        movement: 1
-    },
-    engineer: {},
-    production: {}
-};
-
-},{"../../../images/lifeform/Cloud.png":"jpV8q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"jpV8q":[function(require,module,exports) {
-module.exports = require("9d39aa80ff4c4c90").getBundleURL("au4zy") + "Cloud.9e69ef11.png" + "?" + Date.now();
-
-},{"9d39aa80ff4c4c90":"lgJ39"}],"fvjRR":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "FrozenModel", ()=>FrozenModel);
-var _frozenPng = require("../../../images/lifeform/Frozen.png");
-var _frozenPngDefault = parcelHelpers.interopDefault(_frozenPng);
-var _lifeformEnum = require("./LifeformEnum");
-const FrozenText = "Frozen text here";
-const FrozenModel = {
-    lifeformId: (0, _lifeformEnum.LifeformEnum).Frozen,
-    imgPath: (0, _frozenPngDefault.default),
-    text: FrozenText,
-    resources: {
-        life: 1,
-        fuel: 1,
-        ruins: 1
-    },
-    research: {},
-    explore: {},
-    engineer: {
-        weaponry: 1
-    },
-    production: {
-        reproduce: 1,
-        build: 1
+    25% {
+      background-size: 100% 3px, 3px 0, 0 3px, 3px 0;
     }
-};
-
-},{"../../../images/lifeform/Frozen.png":"3NIXj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"3NIXj":[function(require,module,exports) {
-module.exports = require("ab701b45e18d0c46").getBundleURL("au4zy") + "Frozen.54c50a44.png" + "?" + Date.now();
-
-},{"ab701b45e18d0c46":"lgJ39"}],"a1nUW":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "FungusModel", ()=>FungusModel);
-var _fungusPng = require("../../../images/lifeform/Fungus.png");
-var _fungusPngDefault = parcelHelpers.interopDefault(_fungusPng);
-var _lifeformEnum = require("./LifeformEnum");
-const FungusText = "Fungus text here";
-const FungusModel = {
-    lifeformId: (0, _lifeformEnum.LifeformEnum).Fungus,
-    imgPath: (0, _fungusPngDefault.default),
-    text: FungusText,
-    resources: {
-        energy: 1,
-        life: 1
-    },
-    research: {
-        biology: 1,
-        chemistry: 1
-    },
-    explore: {},
-    engineer: {
-        efficiency: 1
-    },
-    production: {
-        build: 1
+    50% {
+      background-size: 100% 3px, 3px 100%, 0 3px, 3px 0;
     }
-};
-
-},{"../../../images/lifeform/Fungus.png":"gK1mH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"gK1mH":[function(require,module,exports) {
-module.exports = require("12bfb122c03f815a").getBundleURL("au4zy") + "Fungus.039ff0d7.png" + "?" + Date.now();
-
-},{"12bfb122c03f815a":"lgJ39"}],"3ZAeU":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "HumanModel", ()=>HumanModel);
-var _humanPng = require("../../../images/lifeform/Human.png");
-var _humanPngDefault = parcelHelpers.interopDefault(_humanPng);
-var _lifeformEnum = require("./LifeformEnum");
-const HumanText = "Human text here";
-const HumanModel = {
-    lifeformId: (0, _lifeformEnum.LifeformEnum).Human,
-    imgPath: (0, _humanPngDefault.default),
-    text: HumanText,
-    resources: {
-        life: 1
-    },
-    research: {
-        biology: 1,
-        chemistry: 1,
-        physics: 1
-    },
-    explore: {},
-    engineer: {
-        weaponry: 1
-    },
-    production: {
-        build: 1
+    75% {
+      background-size: 100% 3px, 3px 100%, 100% 3px, 3px 0;
     }
-};
-
-},{"../../../images/lifeform/Human.png":"6K5n5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"6K5n5":[function(require,module,exports) {
-module.exports = require("bc54d0a8dd1e15a7").getBundleURL("au4zy") + "Human.501fc66a.png" + "?" + Date.now();
-
-},{"bc54d0a8dd1e15a7":"lgJ39"}],"2Q3Dn":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "InsectModel", ()=>InsectModel);
-var _insectPng = require("../../../images/lifeform/Insect.png");
-var _insectPngDefault = parcelHelpers.interopDefault(_insectPng);
-var _lifeformEnum = require("./LifeformEnum");
-const InsectText = "Insect text here";
-const InsectModel = {
-    lifeformId: (0, _lifeformEnum.LifeformEnum).Insect,
-    imgPath: (0, _insectPngDefault.default),
-    text: InsectText,
-    resources: {
-        life: 1
-    },
-    research: {
-        biology: 1
-    },
-    explore: {
-        movement: 1
-    },
-    engineer: {
-        efficiency: 1
-    },
-    production: {
-        conscript: 1
+    100% {
+      background-size: 100% 3px, 3px 100%, 100% 3px, 3px 100%;
     }
-};
+  }
+`;
 
-},{"../../../images/lifeform/Insect.png":"iBcl8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"iBcl8":[function(require,module,exports) {
-module.exports = require("78991f50a7a1efdd").getBundleURL("au4zy") + "Insect.48381a42.png" + "?" + Date.now();
-
-},{"78991f50a7a1efdd":"lgJ39"}],"4cD1z":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "VirusModel", ()=>VirusModel);
-var _virusPng = require("../../../images/lifeform/Virus.png");
-var _virusPngDefault = parcelHelpers.interopDefault(_virusPng);
-var _lifeformEnum = require("./LifeformEnum");
-const VirusText = "Virus text here";
-const VirusModel = {
-    lifeformId: (0, _lifeformEnum.LifeformEnum).Virus,
-    imgPath: (0, _virusPngDefault.default),
-    text: VirusText,
-    resources: {
-        life: 1
-    },
-    research: {
-        biology: 1
-    },
-    explore: {},
-    engineer: {
-        weaponry: 1,
-        efficiency: 1
-    },
-    production: {
-        reproduce: 1,
-        conscript: 1
-    }
-};
-
-},{"../../../images/lifeform/Virus.png":"dNKa1","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"dNKa1":[function(require,module,exports) {
-module.exports = require("5c1598ef7fb811be").getBundleURL("au4zy") + "Virus.2db34344.png" + "?" + Date.now();
-
-},{"5c1598ef7fb811be":"lgJ39"}],"b935Y":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "TreeModel", ()=>TreeModel);
-var _treePng = require("../../../images/lifeform/Tree.png");
-var _treePngDefault = parcelHelpers.interopDefault(_treePng);
-var _lifeformEnum = require("./LifeformEnum");
-const TreeText = "Tree text here";
-const TreeModel = {
-    lifeformId: (0, _lifeformEnum.LifeformEnum).Tree,
-    imgPath: (0, _treePngDefault.default),
-    text: TreeText,
-    resources: {
-        fuel: 1,
-        energy: 1,
-        life: 1
-    },
-    research: {
-        chemistry: 1,
-        biology: 1
-    },
-    explore: {},
-    engineer: {},
-    production: {
-        reproduce: 1
-    }
-};
-
-},{"../../../images/lifeform/Tree.png":"z6Lj4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"z6Lj4":[function(require,module,exports) {
-module.exports = require("5932bed0511d83d0").getBundleURL("au4zy") + "Tree.1220f292.png" + "?" + Date.now();
-
-},{"5932bed0511d83d0":"lgJ39"}],"jmiu7":[function(require,module,exports) {
+},{"react-bootstrap":"3AD9A","styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jmiu7":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$a763 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -36648,23 +37053,575 @@ const LifeformTextContainer = (0, _styledComponentsDefault.default).div`
 },{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1FGH4":[function(require,module,exports) {
 module.exports = require("4e341c8659e833bf").getBundleURL("au4zy") + "MainLogo.d5b16484.png" + "?" + Date.now();
 
-},{"4e341c8659e833bf":"lgJ39"}],"ktNEj":[function(require,module,exports) {
+},{"4e341c8659e833bf":"lgJ39"}],"iziV0":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$49ea = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$49ea.prelude(module);
+
+try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "store", ()=>store);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _planetGenerator = require("../../../generators/PlanetGenerator");
+var _planetGeneratorDefault = parcelHelpers.interopDefault(_planetGenerator);
+var _hooks = require("../../../redux/hooks");
+var _deckSlice = require("../../../redux/slices/DeckSlice");
+var _playerSlice = require("../../../redux/slices/PlayerSlice");
+var _card = require("../Card");
+var _cardDefault = parcelHelpers.interopDefault(_card);
+var _styles = require("./styles");
+var _s = $RefreshSig$();
+const testPlanets = (0, _planetGeneratorDefault.default)(5);
+function CardContainer() {
+    _s();
+    const dispatch = (0, _hooks.useAppDispatch)();
+    const useSelector = (0, _hooks.useAppSelector)((state)=>state);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledCardContainer), {
+                children: [
+                    testPlanets.map((planet)=>{
+                        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardDefault.default), {
+                            planet: planet
+                        }, void 0, false, {
+                            fileName: "components/card/card-container/CardContainer.tsx",
+                            lineNumber: 18,
+                            columnNumber: 18
+                        }, this);
+                    }),
+                    ";"
+                ]
+            }, void 0, true, {
+                fileName: "components/card/card-container/CardContainer.tsx",
+                lineNumber: 16,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                style: {
+                    width: "20rem"
+                },
+                onClick: ()=>dispatch((0, _deckSlice.drawCards)([
+                        0,
+                        3
+                    ])),
+                children: "Draw"
+            }, void 0, false, {
+                fileName: "components/card/card-container/CardContainer.tsx",
+                lineNumber: 22,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                style: {
+                    width: "20rem"
+                },
+                onClick: ()=>dispatch((0, _playerSlice.addPlanets)(useSelector.deck.drawnStack)),
+                children: "ADD TO PLAYER"
+            }, void 0, false, {
+                fileName: "components/card/card-container/CardContainer.tsx",
+                lineNumber: 28,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true);
+}
+exports.default = CardContainer;
+_s(CardContainer, "9t9ZDKnBVMl+n28cY79Ke8529fo=", false, function() {
+    return [
+        (0, _hooks.useAppDispatch),
+        (0, _hooks.useAppSelector)
+    ];
+});
+_c = CardContainer;
+var _c;
+$RefreshReg$(_c, "CardContainer");
+
+  $parcel$ReactRefreshHelpers$49ea.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../generators/PlanetGenerator":"4BayG","../../../redux/hooks":"iu5Bi","../../../redux/slices/DeckSlice":"d2BvN","../../../redux/slices/PlayerSlice":"cMhzB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../Card":"hDfxY","./styles":"e6xLf"}],"4BayG":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _randomEnumKey = require("./RandomEnumKey");
+var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
+var _planetNames = require("../models/planets/PlanetNames");
+var _planet = require("../models/planets/Planet");
+var _nameGenerator = require("./NameGenerator");
+var _nameGeneratorDefault = parcelHelpers.interopDefault(_nameGenerator);
+var _planetaryCompositionGenerator = require("./PlanetaryCompositionGenerator");
+var _planetaryCompositionGeneratorDefault = parcelHelpers.interopDefault(_planetaryCompositionGenerator);
+var _temperatureGenerator = require("./TemperatureGenerator");
+var _temperatureGeneratorDefault = parcelHelpers.interopDefault(_temperatureGenerator);
+var _resourceGenerator = require("./ResourceGenerator");
+var _resourceGeneratorDefault = parcelHelpers.interopDefault(_resourceGenerator);
+var _stabilityGenerator = require("./StabilityGenerator");
+var _stabilityGeneratorDefault = parcelHelpers.interopDefault(_stabilityGenerator);
+function PlanetGenerator(planetAmount) {
+    const PlanetList = [];
+    for(var i = 0; i < planetAmount; i++){
+        const generatedPlanetType = (0, _planet.PlanetType)[(0, _randomEnumKeyDefault.default)((0, _planet.PlanetType))];
+        const generatedComposition = (0, _planetaryCompositionGeneratorDefault.default)(generatedPlanetType);
+        let newPlanet = {
+            name: (0, _nameGeneratorDefault.default)((0, _planetNames.planetNames)),
+            temperature: (0, _temperatureGeneratorDefault.default)(generatedComposition),
+            type: generatedPlanetType,
+            composition: generatedComposition,
+            resources: (0, _resourceGeneratorDefault.default)(generatedComposition, planetAmount),
+            stability: (0, _stabilityGeneratorDefault.default)(generatedPlanetType)
+        };
+        PlanetList.push(newPlanet);
+    }
+    return PlanetList;
+}
+exports.default = PlanetGenerator;
+
+},{"./RandomEnumKey":"d89k0","../models/planets/PlanetNames":"7Ll3g","../models/planets/Planet":"fbCJI","./NameGenerator":"cei1n","./PlanetaryCompositionGenerator":"8MrB1","./TemperatureGenerator":"bsEZP","./ResourceGenerator":"7rum1","./StabilityGenerator":"1rcyi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d89k0":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function randomEnumKey(enumObj) {
+    let keys = Object.keys(enumObj);
+    let enumKey = keys[Math.floor(Math.random() * keys.length)];
+    return enumKey;
+}
+exports.default = randomEnumKey;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7Ll3g":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "planetNames", ()=>planetNames);
+const planetNames = [
+    "Apollo",
+    "Saros",
+    "Phoenix",
+    "Cosmos",
+    "Ceilo",
+    "Comet",
+    "Meteor",
+    "Phoebus",
+    "Sky",
+    "Starr",
+    "Zenith",
+    "Vulcan",
+    "Jupiter",
+    "Mercury",
+    "Aerglo",
+    "Pluto",
+    "Janus",
+    "Mars",
+    "Oberon",
+    "Jericho",
+    "Holmes",
+    "Neptune",
+    "Aelius",
+    "Aku",
+    "Aibek",
+    "Astennu",
+    "Aten",
+    "Arche",
+    "Badar",
+    "Badru",
+    "Blaze",
+    "Chan",
+    "Cupid",
+    "Deimos",
+    "Donati",
+    "Eos",
+    "Hang",
+    "Hesperos",
+    "Hilal",
+    "Iah",
+    "Ilkay",
+    "Io",
+    "Kale",
+    "Koray",
+    "Kuiper",
+    "Mahruk",
+    "Maramma",
+    "Mayank",
+    "Meztli",
+    "Muraco",
+    "Nanna",
+    "Neil",
+    "Pallas",
+    "Proteus",
+    "Pulan",
+    "Purnama",
+    "Qamar",
+    "Saturn",
+    "Sol",
+    "Themis",
+    "Thule",
+    "Titan",
+    "Triton",
+    "Orion",
+    "Aries",
+    "Atlas",
+    "Perseus",
+    "Leo",
+    "Archer",
+    "Sirius",
+    "Castor",
+    "Columba",
+    "Hunter",
+    "Nash",
+    "Rigel",
+    "Solar",
+    "Taurus",
+    "Hercules",
+    "Alioth",
+    "Aster",
+    "Astrophel",
+    "Altair",
+    "Danica",
+    "Draco",
+    "Elio",
+    "Hamal",
+    "Hoku",
+    "Izar",
+    "Lintang",
+    "Namid",
+    "Pollux",
+    "Rasalas",
+    "Regulus",
+    "Samson",
+    "Wolf",
+    "Galexia",
+    "Andromeda",
+    "Ophelia",
+    "Titania",
+    "Portia",
+    "Venus",
+    "Pandora",
+    "Phoebe",
+    "Halley",
+    "Astrid",
+    "Miranda",
+    "Juliet",
+    "Bianca",
+    "Aurora",
+    "Ariel",
+    "Elara",
+    "Luna",
+    "Cordelia",
+    "Calypso",
+    "Callisto",
+    "Cressida",
+    "Aina",
+    "Alcmene",
+    "Amaris",
+    "Arianrhod",
+    "Arpina",
+    "Aylin",
+    "Aysu",
+    "Aysun",
+    "Belinda",
+    "Bellatrix",
+    "Carina",
+    "Cassini",
+    "Chandra",
+    "Chara",
+    "Charon",
+    "Crescent",
+    "Cynthia",
+    "Despina",
+    "Diana",
+    "Dione",
+    "Eris",
+    "Flora",
+    "Gaia",
+    "Galatea",
+    "Hala",
+    "Helene",
+    "Helia",
+    "Hilda",
+    "Hoshi",
+    "Indu",
+    "Jaci",
+    "Kamaria",
+    "Larissa",
+    "Leda",
+    "Lucine",
+    "Maha",
+    "Mahina",
+    "Mahtab",
+    "Mona",
+    "Neoma",
+    "Nevaeh",
+    "Nokomis",
+    "Pensri",
+    "Rhea",
+    "Thebe",
+    "Larissa",
+    "Rosalind",
+    "Soleil",
+    "Solstice",
+    "Solveig",
+    "Thalassa",
+    "Titania",
+    "Vesta",
+    "Zelenia",
+    "Cassiopeia",
+    "Lyra",
+    "Vega",
+    "Libra",
+    "Estella",
+    "Alya",
+    "Alula",
+    "Nova",
+    "Adhara",
+    "Alcyone",
+    "Alpha",
+    "Amalthea",
+    "Aquarius",
+    "Ascella",
+    "Astra",
+    "Capella",
+    "Celestia",
+    "Electra",
+    "Esther",
+    "Etoile",
+    "Europa",
+    "Gomeisa",
+    "Juno",
+    "Maia",
+    "Nashira",
+    "Norma",
+    "Polaris",
+    "Starling",
+    "Zaniah"
+];
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fbCJI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "PlanetType", ()=>PlanetType);
+parcelHelpers.export(exports, "Composition", ()=>Composition);
+parcelHelpers.export(exports, "Resource", ()=>Resource);
+let PlanetType;
+(function(PlanetType) {
+    PlanetType["GASGIANT"] = "gasGiant";
+    PlanetType["ICEGIANT"] = "iceGiant";
+    PlanetType["GASEOUS"] = "gaseous";
+    PlanetType["TERRESTRIAL"] = "terrestrial";
+    PlanetType["DWARFPLANET"] = "dwarfPlanet";
+})(PlanetType || (PlanetType = {}));
+let Composition;
+(function(Composition) {
+    Composition["ORGANIC"] = "organic";
+    Composition["SCILLICATE"] = "scillicate";
+    Composition["DESERT"] = "desert";
+    Composition["GAS"] = "gas";
+    Composition["ICE"] = "ice";
+    Composition["LAVA"] = "lava";
+    Composition["OCEAN"] = "ocean";
+    Composition["ROCKY"] = "rocky";
+})(Composition || (Composition = {}));
+let Resource;
+(function(Resource) {
+    Resource["DISCOVERY"] = "discovery";
+    Resource["ENERGY"] = "energy";
+    Resource["FUEL"] = "fuel";
+    Resource["LIFE"] = "life";
+    Resource["METAL"] = "metal";
+    Resource["RUINS"] = "ruins";
+})(Resource || (Resource = {}));
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cei1n":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function NameGenerator(nameList) {
+    let randomIndex = Math.floor(Math.random() * nameList.length);
+    let randomNumber = Math.floor(Math.random() * 5);
+    let randomSuffix = Math.random().toString().slice(2, randomNumber + 1);
+    if (randomNumber > 1) return `${nameList[randomIndex]}-${randomSuffix}`;
+    return nameList[randomIndex];
+}
+exports.default = NameGenerator;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8MrB1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+var _randomEnumKey = require("./RandomEnumKey");
+var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
+function PlanetaryCompositionGenerator(type) {
+    const composition = [];
+    function generator(filteredComposition) {
+        var randomTotal = Math.floor(Math.random() * (filteredComposition.length - 1) + 1);
+        let randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
+        for(randomTotal; randomTotal--;){
+            filteredComposition = Object.values(filteredComposition).filter((a)=>a != filteredComposition[randomIndex]);
+            randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
+            composition.push(filteredComposition[randomIndex]);
+        }
+    }
+    switch(type){
+        case (0, _planet.PlanetType).GASGIANT:
+            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).ROCKY && a != (0, _planet.Composition).DESERT && a != (0, _planet.Composition).LAVA && a != (0, _planet.Composition).OCEAN);
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
+            break;
+        case (0, _planet.PlanetType).ICEGIANT:
+            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).DESERT);
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).ICE)) composition.push((0, _planet.Composition).ICE);
+            break;
+        case (0, _planet.PlanetType).GASEOUS:
+            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).OCEAN && a != (0, _planet.Composition).DESERT);
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
+            break;
+        case (0, _planet.PlanetType).TERRESTRIAL:
+            var filteredComposition = Object.values((0, _planet.Composition));
+            generator(filteredComposition);
+            if (!composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) composition.push((0, _planet.Composition).SCILLICATE);
+            break;
+        case (0, _planet.PlanetType).DWARFPLANET:
+            var filteredComposition = Object.values((0, _planet.Composition));
+            generator(filteredComposition);
+            break;
+        default:
+            break;
+    }
+    return composition.sort();
+}
+exports.default = PlanetaryCompositionGenerator;
+
+},{"../models/planets/Planet":"fbCJI","./RandomEnumKey":"d89k0","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bsEZP":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+function TemperatureGenerator(composition) {
+    var maxTemp = 1000;
+    var maxLavaTemp = 1500;
+    var maxIceTemp = 273;
+    var maxOrganicTemp = 323;
+    var minTemp = 50;
+    var minLavaTemp = 700;
+    var minimumTemp = 10;
+    var temperature = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp);
+    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && !composition.some((a)=>a === (0, _planet.Composition).ICE) && !composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
+        temperature = Math.floor(Math.random() * (maxLavaTemp - minLavaTemp) + minLavaTemp);
+        return temperature;
+    }
+    if (composition.some((a)=>a === (0, _planet.Composition).ICE)) {
+        temperature = Math.floor(Math.random() * (maxIceTemp - minimumTemp) + minimumTemp);
+        return temperature;
+    }
+    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
+        temperature = Math.floor(Math.random() * (maxOrganicTemp - minimumTemp) + minimumTemp);
+        return temperature;
+    } else return temperature;
+}
+exports.default = TemperatureGenerator;
+
+},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7rum1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+function ResourceGeneartor(composition, planetAmount) {
+    const resources = [];
+    var randomTotal = Math.floor(Math.random() * (planetAmount - 1) + 1);
+    if (composition.some((a)=>a === (0, _planet.Composition).GAS) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) resources.push((0, _planet.Resource).FUEL);
+    if (composition.some((a)=>a === (0, _planet.Composition).ROCKY) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE) && composition.some((a)=>a !== (0, _planet.Composition).GAS)) resources.push((0, _planet.Resource).METAL);
+    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC && composition.some((a)=>a === (0, _planet.Composition).OCEAN))) resources.push((0, _planet.Resource).LIFE);
+    if (composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) resources.push((0, _planet.Resource).RUINS);
+    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && composition.some((a)=>a === (0, _planet.Composition).GAS) || composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ROCKY)) resources.push((0, _planet.Resource).ENERGY);
+    if (resources.length < 1) resources.push((0, _planet.Resource).DISCOVERY);
+    return resources.sort();
+}
+exports.default = ResourceGeneartor;
+
+},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1rcyi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+function StabilityGenerator(planet) {
+    var stability = 0;
+    var maxGasGiantHp = 350;
+    var maxIcePlanetHp = 250;
+    var maxPlanetHp = 200;
+    var maxDwarfHp = 100;
+    var minGasGiantHp = 200;
+    var minIcePlanetHp = 150;
+    var minPlanetHp = 100;
+    var minDwarfHp = 50;
+    function stabilityOutput(min, max) {
+        let randomNumber = Math.floor(Math.random() * (max - min) + min);
+        return Math.ceil(randomNumber / 10) * 10;
+    }
+    switch(planet){
+        case (0, _planet.PlanetType).GASGIANT:
+            stability = stabilityOutput(minGasGiantHp, maxGasGiantHp);
+            break;
+        case (0, _planet.PlanetType).ICEGIANT:
+            stability = stabilityOutput(minIcePlanetHp, maxIcePlanetHp);
+            break;
+        case (0, _planet.PlanetType).GASEOUS:
+        case (0, _planet.PlanetType).TERRESTRIAL:
+            stability = stabilityOutput(minPlanetHp, maxPlanetHp);
+            break;
+        case (0, _planet.PlanetType).DWARFPLANET:
+            stability = stabilityOutput(minDwarfHp, maxDwarfHp);
+            break;
+        default:
+            break;
+    }
+    return stability;
+}
+exports.default = StabilityGenerator;
+
+},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iu5Bi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useAppDispatch", ()=>useAppDispatch);
+parcelHelpers.export(exports, "useAppSelector", ()=>useAppSelector);
+var _reactRedux = require("react-redux");
+const useAppDispatch = (0, _reactRedux.useDispatch);
+const useAppSelector = (0, _reactRedux.useSelector);
+
+},{"react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d2BvN":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DeckSlice", ()=>DeckSlice);
+parcelHelpers.export(exports, "drawCards", ()=>drawCards);
 var _toolkit = require("@reduxjs/toolkit");
-var _deckSlice = require("./slices/DeckSlice");
-var _deckSliceDefault = parcelHelpers.interopDefault(_deckSlice);
-var _playerSlice = require("./slices/PlayerSlice");
-var _playerSliceDefault = parcelHelpers.interopDefault(_playerSlice);
-const store = (0, _toolkit.configureStore)({
-    reducer: {
-        player: (0, _playerSliceDefault.default),
-        deck: (0, _deckSliceDefault.default)
+var _planetGenerator = require("../../generators/PlanetGenerator");
+var _planetGeneratorDefault = parcelHelpers.interopDefault(_planetGenerator);
+const DeckSlice = (0, _toolkit.createSlice)({
+    name: "Deck",
+    initialState: {
+        deck: (0, _planetGeneratorDefault.default)(100),
+        drawnStack: []
+    },
+    reducers: {
+        drawCards: {
+            reducer: (state, action)=>{
+                let pointer = 0;
+                action.payload.forEach((number, index)=>{
+                    pointer = !index ? number : number - 1;
+                    state.drawnStack.push(state.deck[pointer]);
+                    state.deck = state.deck.filter((card)=>{
+                        return card !== state.deck[pointer];
+                    });
+                });
+            },
+            prepare: (selectedIndecies)=>{
+                return {
+                    payload: selectedIndecies
+                };
+            }
+        }
     }
 });
+const { drawCards  } = DeckSlice.actions;
+exports.default = DeckSlice.reducer;
 
-},{"@reduxjs/toolkit":"lL1Ef","./slices/DeckSlice":"d2BvN","./slices/PlayerSlice":"cMhzB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lL1Ef":[function(require,module,exports) {
+},{"@reduxjs/toolkit":"lL1Ef","../../generators/PlanetGenerator":"4BayG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lL1Ef":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "MiddlewareArray", ()=>MiddlewareArray);
@@ -40455,476 +41412,7 @@ var thunk = createThunkMiddleware(); // Attach the factory function so users can
 thunk.withExtraArgument = createThunkMiddleware;
 exports.default = thunk;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d2BvN":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "DeckSlice", ()=>DeckSlice);
-parcelHelpers.export(exports, "drawCards", ()=>drawCards);
-var _toolkit = require("@reduxjs/toolkit");
-var _planetGenerator = require("../../generators/PlanetGenerator");
-var _planetGeneratorDefault = parcelHelpers.interopDefault(_planetGenerator);
-const DeckSlice = (0, _toolkit.createSlice)({
-    name: "Deck",
-    initialState: {
-        deck: (0, _planetGeneratorDefault.default)(100),
-        drawnStack: []
-    },
-    reducers: {
-        drawCards: {
-            reducer: (state, action)=>{
-                let pointer = 0;
-                action.payload.forEach((number, index)=>{
-                    pointer = !index ? number : number - 1;
-                    state.drawnStack.push(state.deck[pointer]);
-                    state.deck = state.deck.filter((card)=>{
-                        return card !== state.deck[pointer];
-                    });
-                });
-            },
-            prepare: (selectedIndecies)=>{
-                return {
-                    payload: selectedIndecies
-                };
-            }
-        }
-    }
-});
-const { drawCards  } = DeckSlice.actions;
-exports.default = DeckSlice.reducer;
-
-},{"@reduxjs/toolkit":"lL1Ef","../../generators/PlanetGenerator":"4BayG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4BayG":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _randomEnumKey = require("./RandomEnumKey");
-var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
-var _planetNames = require("../models/planets/PlanetNames");
-var _planet = require("../models/planets/Planet");
-var _nameGenerator = require("./NameGenerator");
-var _nameGeneratorDefault = parcelHelpers.interopDefault(_nameGenerator);
-var _planetaryCompositionGenerator = require("./PlanetaryCompositionGenerator");
-var _planetaryCompositionGeneratorDefault = parcelHelpers.interopDefault(_planetaryCompositionGenerator);
-var _temperatureGenerator = require("./TemperatureGenerator");
-var _temperatureGeneratorDefault = parcelHelpers.interopDefault(_temperatureGenerator);
-var _resourceGenerator = require("./ResourceGenerator");
-var _resourceGeneratorDefault = parcelHelpers.interopDefault(_resourceGenerator);
-var _stabilityGenerator = require("./StabilityGenerator");
-var _stabilityGeneratorDefault = parcelHelpers.interopDefault(_stabilityGenerator);
-function PlanetGenerator(planetAmount) {
-    const PlanetList = [];
-    for(var i = 0; i < planetAmount; i++){
-        const generatedPlanetType = (0, _planet.PlanetType)[(0, _randomEnumKeyDefault.default)((0, _planet.PlanetType))];
-        const generatedComposition = (0, _planetaryCompositionGeneratorDefault.default)(generatedPlanetType);
-        let newPlanet = {
-            name: (0, _nameGeneratorDefault.default)((0, _planetNames.planetNames)),
-            temperature: (0, _temperatureGeneratorDefault.default)(generatedComposition),
-            type: generatedPlanetType,
-            composition: generatedComposition,
-            resources: (0, _resourceGeneratorDefault.default)(generatedComposition, planetAmount),
-            stability: (0, _stabilityGeneratorDefault.default)(generatedPlanetType)
-        };
-        PlanetList.push(newPlanet);
-    }
-    return PlanetList;
-}
-exports.default = PlanetGenerator;
-
-},{"./RandomEnumKey":"d89k0","../models/planets/PlanetNames":"7Ll3g","../models/planets/Planet":"fbCJI","./NameGenerator":"cei1n","./PlanetaryCompositionGenerator":"8MrB1","./TemperatureGenerator":"bsEZP","./ResourceGenerator":"7rum1","./StabilityGenerator":"1rcyi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d89k0":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-function randomEnumKey(enumObj) {
-    let keys = Object.keys(enumObj);
-    let enumKey = keys[Math.floor(Math.random() * keys.length)];
-    return enumKey;
-}
-exports.default = randomEnumKey;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7Ll3g":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "planetNames", ()=>planetNames);
-const planetNames = [
-    "Apollo",
-    "Saros",
-    "Phoenix",
-    "Cosmos",
-    "Ceilo",
-    "Comet",
-    "Meteor",
-    "Phoebus",
-    "Sky",
-    "Starr",
-    "Zenith",
-    "Vulcan",
-    "Jupiter",
-    "Mercury",
-    "Aerglo",
-    "Pluto",
-    "Janus",
-    "Mars",
-    "Oberon",
-    "Jericho",
-    "Holmes",
-    "Neptune",
-    "Aelius",
-    "Aku",
-    "Aibek",
-    "Astennu",
-    "Aten",
-    "Arche",
-    "Badar",
-    "Badru",
-    "Blaze",
-    "Chan",
-    "Cupid",
-    "Deimos",
-    "Donati",
-    "Eos",
-    "Hang",
-    "Hesperos",
-    "Hilal",
-    "Iah",
-    "Ilkay",
-    "Io",
-    "Kale",
-    "Koray",
-    "Kuiper",
-    "Mahruk",
-    "Maramma",
-    "Mayank",
-    "Meztli",
-    "Muraco",
-    "Nanna",
-    "Neil",
-    "Pallas",
-    "Proteus",
-    "Pulan",
-    "Purnama",
-    "Qamar",
-    "Saturn",
-    "Sol",
-    "Themis",
-    "Thule",
-    "Titan",
-    "Triton",
-    "Orion",
-    "Aries",
-    "Atlas",
-    "Perseus",
-    "Leo",
-    "Archer",
-    "Sirius",
-    "Castor",
-    "Columba",
-    "Hunter",
-    "Nash",
-    "Rigel",
-    "Solar",
-    "Taurus",
-    "Hercules",
-    "Alioth",
-    "Aster",
-    "Astrophel",
-    "Altair",
-    "Danica",
-    "Draco",
-    "Elio",
-    "Hamal",
-    "Hoku",
-    "Izar",
-    "Lintang",
-    "Namid",
-    "Pollux",
-    "Rasalas",
-    "Regulus",
-    "Samson",
-    "Wolf",
-    "Galexia",
-    "Andromeda",
-    "Ophelia",
-    "Titania",
-    "Portia",
-    "Venus",
-    "Pandora",
-    "Phoebe",
-    "Halley",
-    "Astrid",
-    "Miranda",
-    "Juliet",
-    "Bianca",
-    "Aurora",
-    "Ariel",
-    "Elara",
-    "Luna",
-    "Cordelia",
-    "Calypso",
-    "Callisto",
-    "Cressida",
-    "Aina",
-    "Alcmene",
-    "Amaris",
-    "Arianrhod",
-    "Arpina",
-    "Aylin",
-    "Aysu",
-    "Aysun",
-    "Belinda",
-    "Bellatrix",
-    "Carina",
-    "Cassini",
-    "Chandra",
-    "Chara",
-    "Charon",
-    "Crescent",
-    "Cynthia",
-    "Despina",
-    "Diana",
-    "Dione",
-    "Eris",
-    "Flora",
-    "Gaia",
-    "Galatea",
-    "Hala",
-    "Helene",
-    "Helia",
-    "Hilda",
-    "Hoshi",
-    "Indu",
-    "Jaci",
-    "Kamaria",
-    "Larissa",
-    "Leda",
-    "Lucine",
-    "Maha",
-    "Mahina",
-    "Mahtab",
-    "Mona",
-    "Neoma",
-    "Nevaeh",
-    "Nokomis",
-    "Pensri",
-    "Rhea",
-    "Thebe",
-    "Larissa",
-    "Rosalind",
-    "Soleil",
-    "Solstice",
-    "Solveig",
-    "Thalassa",
-    "Titania",
-    "Vesta",
-    "Zelenia",
-    "Cassiopeia",
-    "Lyra",
-    "Vega",
-    "Libra",
-    "Estella",
-    "Alya",
-    "Alula",
-    "Nova",
-    "Adhara",
-    "Alcyone",
-    "Alpha",
-    "Amalthea",
-    "Aquarius",
-    "Ascella",
-    "Astra",
-    "Capella",
-    "Celestia",
-    "Electra",
-    "Esther",
-    "Etoile",
-    "Europa",
-    "Gomeisa",
-    "Juno",
-    "Maia",
-    "Nashira",
-    "Norma",
-    "Polaris",
-    "Starling",
-    "Zaniah"
-];
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fbCJI":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "PlanetType", ()=>PlanetType);
-parcelHelpers.export(exports, "Composition", ()=>Composition);
-parcelHelpers.export(exports, "Resource", ()=>Resource);
-let PlanetType;
-(function(PlanetType) {
-    PlanetType["GASGIANT"] = "gasGiant";
-    PlanetType["ICEGIANT"] = "iceGiant";
-    PlanetType["GASEOUS"] = "gaseous";
-    PlanetType["TERRESTRIAL"] = "terrestrial";
-    PlanetType["DWARFPLANET"] = "dwarfPlanet";
-})(PlanetType || (PlanetType = {}));
-let Composition;
-(function(Composition) {
-    Composition["ORGANIC"] = "organic";
-    Composition["SCILLICATE"] = "scillicate";
-    Composition["DESERT"] = "desert";
-    Composition["GAS"] = "gas";
-    Composition["ICE"] = "ice";
-    Composition["LAVA"] = "lava";
-    Composition["OCEAN"] = "ocean";
-    Composition["ROCKY"] = "rocky";
-})(Composition || (Composition = {}));
-let Resource;
-(function(Resource) {
-    Resource["DISCOVERY"] = "discovery";
-    Resource["ENERGY"] = "energy";
-    Resource["FUEL"] = "fuel";
-    Resource["LIFE"] = "life";
-    Resource["METAL"] = "metal";
-    Resource["RUINS"] = "ruins";
-})(Resource || (Resource = {}));
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cei1n":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-function NameGenerator(nameList) {
-    let randomIndex = Math.floor(Math.random() * nameList.length);
-    let randomNumber = Math.floor(Math.random() * 5);
-    let randomSuffix = Math.random().toString().slice(2, randomNumber + 1);
-    if (randomNumber > 1) return `${nameList[randomIndex]}-${randomSuffix}`;
-    return nameList[randomIndex];
-}
-exports.default = NameGenerator;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8MrB1":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-var _randomEnumKey = require("./RandomEnumKey");
-var _randomEnumKeyDefault = parcelHelpers.interopDefault(_randomEnumKey);
-function PlanetaryCompositionGenerator(type) {
-    const composition = [];
-    function generator(filteredComposition) {
-        var randomTotal = Math.floor(Math.random() * (filteredComposition.length - 1) + 1);
-        let randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
-        for(randomTotal; randomTotal--;){
-            filteredComposition = Object.values(filteredComposition).filter((a)=>a != filteredComposition[randomIndex]);
-            randomIndex = (0, _randomEnumKeyDefault.default)(filteredComposition);
-            composition.push(filteredComposition[randomIndex]);
-        }
-    }
-    switch(type){
-        case (0, _planet.PlanetType).GASGIANT:
-            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).ROCKY && a != (0, _planet.Composition).DESERT && a != (0, _planet.Composition).LAVA && a != (0, _planet.Composition).OCEAN);
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
-            break;
-        case (0, _planet.PlanetType).ICEGIANT:
-            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).DESERT);
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).ICE)) composition.push((0, _planet.Composition).ICE);
-            break;
-        case (0, _planet.PlanetType).GASEOUS:
-            var filteredComposition = Object.values((0, _planet.Composition)).filter((a)=>a != (0, _planet.Composition).OCEAN && a != (0, _planet.Composition).DESERT);
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).GAS)) composition.push((0, _planet.Composition).GAS);
-            break;
-        case (0, _planet.PlanetType).TERRESTRIAL:
-            var filteredComposition = Object.values((0, _planet.Composition));
-            generator(filteredComposition);
-            if (!composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) composition.push((0, _planet.Composition).SCILLICATE);
-            break;
-        case (0, _planet.PlanetType).DWARFPLANET:
-            var filteredComposition = Object.values((0, _planet.Composition));
-            generator(filteredComposition);
-            break;
-        default:
-            break;
-    }
-    return composition.sort();
-}
-exports.default = PlanetaryCompositionGenerator;
-
-},{"../models/planets/Planet":"fbCJI","./RandomEnumKey":"d89k0","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bsEZP":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-function TemperatureGenerator(composition) {
-    var maxTemp = 1000;
-    var maxLavaTemp = 1500;
-    var maxIceTemp = 273;
-    var maxOrganicTemp = 323;
-    var minTemp = 50;
-    var minLavaTemp = 700;
-    var minimumTemp = 10;
-    var temperature = Math.floor(Math.random() * (maxTemp - minTemp) + minTemp);
-    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && !composition.some((a)=>a === (0, _planet.Composition).ICE) && !composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
-        temperature = Math.floor(Math.random() * (maxLavaTemp - minLavaTemp) + minLavaTemp);
-        return temperature;
-    }
-    if (composition.some((a)=>a === (0, _planet.Composition).ICE)) {
-        temperature = Math.floor(Math.random() * (maxIceTemp - minimumTemp) + minimumTemp);
-        return temperature;
-    }
-    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) {
-        temperature = Math.floor(Math.random() * (maxOrganicTemp - minimumTemp) + minimumTemp);
-        return temperature;
-    } else return temperature;
-}
-exports.default = TemperatureGenerator;
-
-},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7rum1":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-function ResourceGeneartor(composition, planetAmount) {
-    const resources = [];
-    var randomTotal = Math.floor(Math.random() * (planetAmount - 1) + 1);
-    if (composition.some((a)=>a === (0, _planet.Composition).GAS) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) resources.push((0, _planet.Resource).FUEL);
-    if (composition.some((a)=>a === (0, _planet.Composition).ROCKY) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE) && composition.some((a)=>a !== (0, _planet.Composition).GAS)) resources.push((0, _planet.Resource).METAL);
-    if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC && composition.some((a)=>a === (0, _planet.Composition).OCEAN))) resources.push((0, _planet.Resource).LIFE);
-    if (composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) resources.push((0, _planet.Resource).RUINS);
-    if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && composition.some((a)=>a === (0, _planet.Composition).GAS) || composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ROCKY)) resources.push((0, _planet.Resource).ENERGY);
-    if (resources.length < 1) resources.push((0, _planet.Resource).DISCOVERY);
-    return resources.sort();
-}
-exports.default = ResourceGeneartor;
-
-},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1rcyi":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _planet = require("../models/planets/Planet");
-function StabilityGenerator(planet) {
-    var stability = 0;
-    var maxGasGiantHp = 350;
-    var maxIcePlanetHp = 250;
-    var maxPlanetHp = 200;
-    var maxDwarfHp = 100;
-    var minGasGiantHp = 200;
-    var minIcePlanetHp = 150;
-    var minPlanetHp = 100;
-    var minDwarfHp = 50;
-    function stabilityOutput(min, max) {
-        let randomNumber = Math.floor(Math.random() * (max - min) + min);
-        return Math.ceil(randomNumber / 10) * 10;
-    }
-    switch(planet){
-        case (0, _planet.PlanetType).GASGIANT:
-            stability = stabilityOutput(minGasGiantHp, maxGasGiantHp);
-            break;
-        case (0, _planet.PlanetType).ICEGIANT:
-            stability = stabilityOutput(minIcePlanetHp, maxIcePlanetHp);
-            break;
-        case (0, _planet.PlanetType).GASEOUS:
-        case (0, _planet.PlanetType).TERRESTRIAL:
-            stability = stabilityOutput(minPlanetHp, maxPlanetHp);
-            break;
-        case (0, _planet.PlanetType).DWARFPLANET:
-            stability = stabilityOutput(minDwarfHp, maxDwarfHp);
-            break;
-        default:
-            break;
-    }
-    return stability;
-}
-exports.default = StabilityGenerator;
-
-},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cMhzB":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cMhzB":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "PlayerSlice", ()=>PlayerSlice);
@@ -40964,6 +41452,269 @@ const PlayerSlice = (0, _toolkit.createSlice)({
 const { addPlanets  } = PlayerSlice.actions;
 exports.default = PlayerSlice.reducer;
 
-},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i5LP7":[function() {},{}]},["1xC6H","hi2Fo","kjLP2"], "kjLP2", "parcelRequirec9a6")
+},{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hDfxY":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$6db5 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$6db5.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _styles = require("./styles");
+var _20Png = require("../../images/planets/gaseous/20.png");
+var _20PngDefault = parcelHelpers.interopDefault(_20Png);
+var _cardResources = require("./resources/CardResources");
+var _cardResourcesDefault = parcelHelpers.interopDefault(_cardResources);
+function Card(props) {
+    const { planet  } = props;
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.GameCard), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CardImage), {
+                src: (0, _20PngDefault.default)
+            }, void 0, false, {
+                fileName: "components/card/Card.tsx",
+                lineNumber: 16,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CardName), {
+                children: planet.name
+            }, void 0, false, {
+                fileName: "components/card/Card.tsx",
+                lineNumber: 17,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardResourcesDefault.default), {
+                resources: planet.resources
+            }, void 0, false, {
+                fileName: "components/card/Card.tsx",
+                lineNumber: 18,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "components/card/Card.tsx",
+        lineNumber: 15,
+        columnNumber: 5
+    }, this);
+}
+exports.default = Card;
+_c = Card;
+var _c;
+$RefreshReg$(_c, "Card");
+
+  $parcel$ReactRefreshHelpers$6db5.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"7nCum","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../images/planets/gaseous/20.png":"h6r36","./resources/CardResources":"5IM5H"}],"7nCum":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "GameCard", ()=>GameCard);
+parcelHelpers.export(exports, "CardImage", ()=>CardImage);
+parcelHelpers.export(exports, "CardName", ()=>CardName);
+parcelHelpers.export(exports, "CardComposition", ()=>CardComposition);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const GameCard = (0, _styledComponentsDefault.default).div`
+  display: flex;
+  flex-direction: column;
+  width: ${30}rem;
+  height: 45rem;
+  box-shadow: 0 ${0.25}rem ${0.5}rem 0 rgba(0, 0, 0, 0.2);
+`;
+const CardImage = (0, _styledComponentsDefault.default).img`
+  display: flex;
+  height: ${30}rem;
+`;
+const CardName = (0, _styledComponentsDefault.default).div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-family: "Turret Road", cursive;
+  font-size: 1.5rem;
+`;
+const CardComposition = (0, _styledComponentsDefault.default).div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
+
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h6r36":[function(require,module,exports) {
+module.exports = require("7e4474076817ff12").getBundleURL("au4zy") + "20.9611ed76.png" + "?" + Date.now();
+
+},{"7e4474076817ff12":"lgJ39"}],"5IM5H":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$7099 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$7099.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _discoveryPng = require("../../../images/resource/Discovery.png");
+var _discoveryPngDefault = parcelHelpers.interopDefault(_discoveryPng);
+var _energyPng = require("../../../images/resource/Energy.png");
+var _energyPngDefault = parcelHelpers.interopDefault(_energyPng);
+var _fuelPng = require("../../../images/resource/Fuel.png");
+var _fuelPngDefault = parcelHelpers.interopDefault(_fuelPng);
+var _lifePng = require("../../../images/resource/Life.png");
+var _lifePngDefault = parcelHelpers.interopDefault(_lifePng);
+var _metalPng = require("../../../images/resource/Metal.png");
+var _metalPngDefault = parcelHelpers.interopDefault(_metalPng);
+var _ruinsPng = require("../../../images/resource/Ruins.png");
+var _ruinsPngDefault = parcelHelpers.interopDefault(_ruinsPng);
+var _planet = require("../../../models/planets/Planet");
+var _styles = require("./styles");
+function CardResources(props) {
+    const { resources  } = props;
+    const AssignImage = (currentResource)=>{
+        switch(currentResource){
+            case (0, _planet.Resource).DISCOVERY:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _discoveryPngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 21,
+                    columnNumber: 16
+                }, this);
+            case (0, _planet.Resource).ENERGY:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _energyPngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 23,
+                    columnNumber: 16
+                }, this);
+            case (0, _planet.Resource).FUEL:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _fuelPngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 25,
+                    columnNumber: 16
+                }, this);
+            case (0, _planet.Resource).LIFE:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _lifePngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 27,
+                    columnNumber: 16
+                }, this);
+            case (0, _planet.Resource).METAL:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _metalPngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 29,
+                    columnNumber: 16
+                }, this);
+            case (0, _planet.Resource).RUINS:
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceImage), {
+                    src: (0, _ruinsPngDefault.default)
+                }, void 0, false, {
+                    fileName: "components/card/resources/CardResources.tsx",
+                    lineNumber: 31,
+                    columnNumber: 16
+                }, this);
+            default:
+                break;
+        }
+    };
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.ResourceList), {
+        children: resources.map((a)=>{
+            return AssignImage(a);
+        })
+    }, void 0, false, {
+        fileName: "components/card/resources/CardResources.tsx",
+        lineNumber: 38,
+        columnNumber: 5
+    }, this);
+}
+exports.default = CardResources;
+_c = CardResources;
+var _c;
+$RefreshReg$(_c, "CardResources");
+
+  $parcel$ReactRefreshHelpers$7099.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../images/resource/Discovery.png":"feeAW","../../../images/resource/Energy.png":"eqBN8","../../../images/resource/Fuel.png":"4AbgL","../../../images/resource/Life.png":"27v9M","../../../images/resource/Metal.png":"7ziIc","../../../images/resource/Ruins.png":"kucG6","../../../models/planets/Planet":"fbCJI","./styles":"kst05","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"feeAW":[function(require,module,exports) {
+module.exports = require("ec9b4dd54e84bcda").getBundleURL("au4zy") + "Discovery.ebafcd28.png" + "?" + Date.now();
+
+},{"ec9b4dd54e84bcda":"lgJ39"}],"eqBN8":[function(require,module,exports) {
+module.exports = require("2fca978a0d075792").getBundleURL("au4zy") + "Energy.73e6a639.png" + "?" + Date.now();
+
+},{"2fca978a0d075792":"lgJ39"}],"4AbgL":[function(require,module,exports) {
+module.exports = require("92437206810a630d").getBundleURL("au4zy") + "Fuel.8f114fdd.png" + "?" + Date.now();
+
+},{"92437206810a630d":"lgJ39"}],"27v9M":[function(require,module,exports) {
+module.exports = require("dd9fd68f6c1b5bda").getBundleURL("au4zy") + "Life.2827e445.png" + "?" + Date.now();
+
+},{"dd9fd68f6c1b5bda":"lgJ39"}],"7ziIc":[function(require,module,exports) {
+module.exports = require("55cfa454fac04796").getBundleURL("au4zy") + "Metal.a56a790d.png" + "?" + Date.now();
+
+},{"55cfa454fac04796":"lgJ39"}],"kucG6":[function(require,module,exports) {
+module.exports = require("a41601b26ebccf1e").getBundleURL("au4zy") + "Ruins.7634ea7e.png" + "?" + Date.now();
+
+},{"a41601b26ebccf1e":"lgJ39"}],"kst05":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ResourceList", ()=>ResourceList);
+parcelHelpers.export(exports, "ResourceImage", ()=>ResourceImage);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const ResourceList = (0, _styledComponentsDefault.default).div`
+  display: flex;
+  flex-direction: row;
+  height: 200rem;
+  min-width: 100%;
+  flex: 1;
+`;
+const ResourceImage = (0, _styledComponentsDefault.default).img`
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
+`;
+
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e6xLf":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "StyledCardContainer", ()=>StyledCardContainer);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const StyledCardContainer = (0, _styledComponentsDefault.default).div`
+  display: flex;
+  flex-direction: row;
+  min-width: 100%;
+`;
+
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ktNEj":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "store", ()=>store);
+var _toolkit = require("@reduxjs/toolkit");
+var _deckSlice = require("./slices/DeckSlice");
+var _deckSliceDefault = parcelHelpers.interopDefault(_deckSlice);
+var _playerSlice = require("./slices/PlayerSlice");
+var _playerSliceDefault = parcelHelpers.interopDefault(_playerSlice);
+const store = (0, _toolkit.configureStore)({
+    reducer: {
+        player: (0, _playerSliceDefault.default),
+        deck: (0, _deckSliceDefault.default)
+    }
+});
+
+},{"@reduxjs/toolkit":"lL1Ef","./slices/DeckSlice":"d2BvN","./slices/PlayerSlice":"cMhzB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i5LP7":[function() {},{}]},["1xC6H","hi2Fo","kjLP2"], "kjLP2", "parcelRequirec9a6")
 
 //# sourceMappingURL=index.6fa4ea68.js.map

@@ -5,8 +5,9 @@ import {
   CarouselItem,
   StyledCarousel,
 } from "./styles";
-import LifeformCanvas from "../../components/off-canvas/LifeformCanvas";
 import { LifeformList } from "../../models/lifeform/Lifeform";
+import LeftCanvas from "./components/left-canvas/LeftCanvas";
+import RightCanvas from "./components/right-canvas/RightCanvas";
 
 interface SelectScreenProps {}
 
@@ -50,7 +51,12 @@ export default function SelectScreen(props: SelectScreenProps) {
           </CarouselItem>
         ))}
       </StyledCarousel>
-      <LifeformCanvas
+      <LeftCanvas
+        showCanvas={showMenu}
+        onClose={() => setShowMenu(false)}
+        currentLifeForm={getCurrentLifeForm}
+      />
+       <RightCanvas
         showCanvas={showMenu}
         onClose={() => setShowMenu(false)}
         currentLifeForm={getCurrentLifeForm}

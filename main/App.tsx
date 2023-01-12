@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import CardContainer from "../components/card/card-container/CardContainer";
 import { ScreenSwitch } from "../models/screen/Screen";
 import { GameContainer } from "./game-container/styles";
 import SelectScreen from "./select-screen/SelectScreen";
@@ -20,6 +21,7 @@ export default function App() {
           />
         )}
         {screenState === ScreenSwitch.Lifeform && <SelectScreen />}
+        {screenState === ScreenSwitch.CardTest && <CardContainer />}
       </>
     </GameContainer>
   );

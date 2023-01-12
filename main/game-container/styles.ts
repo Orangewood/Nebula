@@ -5,5 +5,5 @@ export const GameContainer = styled.div`
   position: relative;
   min-width: 100%;
   height: 100vh;
-  background-color: #181a1b;
+  background-color: white;
 `;

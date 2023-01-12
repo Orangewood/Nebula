@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Lifeform } from "../../models/lifeform/Lifeform";
-import { LifeformEnum } from "../../models/lifeform/properties/LifeformEnum";
-import { StyledLifeformCanvas } from "./styles";
+import { Lifeform } from "../../../../models/lifeform/Lifeform";
+import { LifeformEnum } from "../../../../models/lifeform/properties/LifeformEnum";
+import { StyledLeftCanvas } from "./styles";
 
-interface LifeformCanvasProps {
+interface LeftCanvasProps {
   showCanvas: boolean;
   onClose: (close: boolean) => void;
   currentLifeForm?: Lifeform;
 }
 
-export default function LifeformCanvas(props: LifeformCanvasProps) {
+export default function LeftCanvas(props: LeftCanvasProps) {
   const { showCanvas, onClose, currentLifeForm } = props;
   const [show, setShow] = useState(false);
 
@@ -27,7 +27,7 @@ export default function LifeformCanvas(props: LifeformCanvasProps) {
 
   return (
     <>
-      <StyledLifeformCanvas
+      <StyledLeftCanvas
         show={show}
         onHide={handleClose}
         scroll={false}
@@ -40,7 +40,7 @@ export default function LifeformCanvas(props: LifeformCanvasProps) {
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>{currentLifeForm?.text}</Offcanvas.Body>
-      </StyledLifeformCanvas>
+      </StyledLeftCanvas>
     </>
   );
 }
