@@ -1,5 +1,5 @@
 export const baseTheme = {
   backgroundColor: "#181a1b",
-  mainColor: "#faf0dd",
+  mainColor: "rgb(241, 214, 163)",
   fontFamily: `"Cinzel Decorative", cursive`,
 };

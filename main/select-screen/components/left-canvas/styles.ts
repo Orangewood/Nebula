@@ -15,13 +15,14 @@ export const LifeformTitle = styled(Offcanvas.Title)`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 20%;
+  height: 15%;
 `;
 export const LifeformInfo = styled(Offcanvas.Body)`
   display: flex;
-  height: 100%;
+  font-size: clamp(1vw, 1.2vw, 1.8vw);;
   border: 1px solid ${(props) => props.theme.mainColor};
-  border-right-style: hidden;
-  border-left-style: hidden;
   font-family: ${(props) => props.theme.fontFamily};
+  margin-right: ${20 / 16}rem;
+  margin-left: ${20 / 16}rem;
+  margin-bottom: ${20 / 16}rem;
 `;

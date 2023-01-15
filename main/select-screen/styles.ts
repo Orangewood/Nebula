@@ -42,6 +42,21 @@ export const StyledCarousel = styled(Carousel)`
       opacity: 0.7;
     }
   }
+
+  .carousel-indicators button {
+    width: ${36 / 16}rem;
+    height: ${10 / 16}rem;
+    border: 1px solid ${(props) => props.theme.backgroundColor};
+    background-color: ${(props) => props.theme.mainColor};
+  }
+
+  .carousel-indicators .active {
+    width: ${36 / 16}rem;
+    height: ${10 / 16}rem;
+    border: 1px solid ${(props) => props.theme.backgroundColor};
+    background-color: ${(props) => props.theme.mainColor} ;
+    color: ${(props) => props.theme.mainColor};
+  }
 `;
 
 export const CarouselItem = styled(Carousel.Item)``;
@@ -60,7 +75,8 @@ export const CarouselButton = styled.button`
   opacity: 0.6;
   height: 10rem;
   width: 30rem;
-  border-radius: 15px 15px 15px;
+  border: 1px solid ${(props) => props.theme.mainColor};
+  border-radius: 15px;
   &:hover {
     opacity: 1;
   }
