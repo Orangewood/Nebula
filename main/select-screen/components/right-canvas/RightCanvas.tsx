@@ -28,7 +28,7 @@ export default function RightCanvas(props: RightCanvasProps) {
   return (
     <>
       <StyledRightCanvas
-        show={show}
+        show
         onHide={handleClose}
         scroll={false}
         backdrop={false}

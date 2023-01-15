@@ -24,9 +24,9 @@ export const StyledCarousel = styled(Carousel)`
     .carousel-control-prev-icon {
       height: 7rem;
       width: 60%;
-      border: 1px solid #faf0dd;
-      border-radius: 15px 15px 15px;
-      background-color: black;
+      border: 1px solid ${(props) => props.theme.mainColor};
+      border-radius: ${15 / 16}rem ${15 / 16}rem ${15 / 16}rem;
+      background-color: ${(props) => props.theme.backgroundColor};
       opacity: 0.7;
     }
   }
@@ -36,9 +36,9 @@ export const StyledCarousel = styled(Carousel)`
     .carousel-control-next-icon {
       height: 7rem;
       width: 60%;
-      border: 1px solid #faf0dd;
-      border-radius: 15px 15px 15px;
-      background-color: black;
+      border: 1px solid ${(props) => props.theme.mainColor};
+      border-radius: ${15 / 16}rem ${15 / 16}rem ${15 / 16}rem;
+      background-color: ${(props) => props.theme.backgroundColor};
       opacity: 0.7;
     }
   }
@@ -48,15 +48,15 @@ export const CarouselItem = styled(Carousel.Item)``;
 
 export const CarouselCaption = styled(Carousel.Caption)`
   font-size: 4vw;
-  font-family: "Cinzel Decorative", cursive;
-  color: #faf0dd;
+  font-family: ${(props) => props.theme.fontFamily};
+  color: ${(props) => props.theme.mainColor};
   display: flex;
   justify-content: center;
 `;
 
 export const CarouselButton = styled.button`
-  background-color: #181a1b;
-  color: #faf0dd;
+  background-color: ${(props) => props.theme.backgroundColor};
+  color: ${(props) => props.theme.mainColor};
   opacity: 0.6;
   height: 10rem;
   width: 30rem;

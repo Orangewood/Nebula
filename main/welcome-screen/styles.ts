@@ -14,36 +14,36 @@ export const HomeLogo = styled.div`
 
 export const NebulaText = styled.span`
   display: flex;
-  color: #faf0dd;
+  color: ${(props) => props.theme.mainColor};
   position: absolute;
   top: 35%;
   left: 50%;
   transform: translate(-50%, -35%);
   z-index: 999;
   font-size: 8vw;
-  font-family: "Cinzel Decorative", cursive;
+  font-family: ${(props) => props.theme.fontFamily};
 `;
 export const PlayButton = styled.button`
   display: flex;
-  color: #faf0dd;
-  background-color: #181a1b;
+  color: ${(props) => props.theme.mainColor};
+  background-color: ${(props) => props.theme.backgroundColor};
   position: absolute;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
   font-size: 2vw;
-  font-family: "Cinzel Decorative", cursive;
+  font-family: ${(props) => props.theme.fontFamily};
   border: none;
   &:hover {
     cursor: pointer;
-    background-color: #181a1b;
+    background-color: ${(props) => props.theme.backgroundColor};
   }
 `;
 
 export const Test = styled.div`
   display: flex;
-  color: #faf0dd;
+  color: ${(props) => props.theme.mainColor};
   position: absolute;
   top: 55%;
   left: 50%;
@@ -54,7 +54,7 @@ export const Test = styled.div`
 
 export const LifeformTextContainer = styled.div`
   display: flex;
-  color: #faf0dd;
+  color: ${(props) => props.theme.mainColor};
   position: absolute;
   top: 40%;
   left: 50%;
@@ -71,5 +71,5 @@ export const LifeformTextContainer = styled.div`
       opacity: 1;
     }
   }
-  font-family: "Cinzel Decorative", cursive;
+  font-family: ${(props) => props.theme.fontFamily};
 `;
