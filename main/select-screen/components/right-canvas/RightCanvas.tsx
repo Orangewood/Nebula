@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Lifeform } from "../../../../models/lifeform/Lifeform";
-import { LifeformEnum } from "../../../../models/lifeform/properties/LifeformEnum";
-import { DescriptionContainer, StyledRightCanvas } from "./styles";
+import { DescriptionContainer, StatsTab, StyledRightCanvas } from "./styles";
 import Tab from "react-bootstrap/Tab";
-import Tabs from "react-bootstrap/Tabs";
+import { Card } from "react-bootstrap";
+import Discovery from "../../../../images/resource/Discovery.png";
+import AttributeCard from "../../../../components/card/attribute-card/AttributeCard";
 
 interface RightCanvasProps {
   showCanvas: boolean;
@@ -36,20 +36,20 @@ export default function RightCanvas(props: RightCanvasProps) {
         backdrop={false}
         placement="end"
       >
-        <Offcanvas.Header>
-          <Tabs
-            defaultActiveKey="profile"
-            id="uncontrolled-tab-example"
-            className="mb-3"
-          >
-            <Tab eventKey="home" title="Stats"></Tab>
-            <Tab eventKey="profile" title="Advantage"></Tab>
-            <Tab eventKey="contact" title="Disadvantage"></Tab>
-          </Tabs>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <DescriptionContainer>{currentLifeForm?.text}</DescriptionContainer>
-        </Offcanvas.Body>
+        <StatsTab
+          defaultActiveKey="stats"
+          id="uncontrolled-tab-example"
+          justify
+        >
+          <Tab eventKey="stats" title="Stats">
+            <DescriptionContainer>
+              <AttributeCard></AttributeCard>
+            </DescriptionContainer>
+          </Tab>
+          <Tab eventKey="profile" title="Advantage"></Tab>
+          <Tab eventKey="contact" title="Disadvantage"></Tab>
+          <Offcanvas.Body></Offcanvas.Body>
+        </StatsTab>
       </StyledRightCanvas>
     </>
   );

@@ -1,3 +1,4 @@
+import { Card } from "react-bootstrap";
 import styled from "styled-components";
 
 export const ResourceList = styled.div`
@@ -8,7 +9,7 @@ export const ResourceList = styled.div`
   flex: 1;
 `;
 
-export const ResourceImage = styled.img`
+export const ResourceImage = styled(Card)`
   display: flex;
   max-width: 100%;
   max-height: 100%;

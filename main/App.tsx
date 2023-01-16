@@ -7,11 +7,12 @@ import { GameContainer } from "./game-container/styles";
 import SelectScreen from "./select-screen/SelectScreen";
 import WelcomeScreen from "./welcome-screen/WelcomeScreen";
 
+const theme = { ...baseTheme };
+
 export default function App() {
   const [screenState, setScreenState] = useState<ScreenSwitch>(
     ScreenSwitch.Lifeform
   );
-  const theme = { ...baseTheme };
 
   return (
     <ThemeProvider theme={theme}>

@@ -28912,12 +28912,12 @@ var _selectScreenDefault = parcelHelpers.interopDefault(_selectScreen);
 var _welcomeScreen = require("./welcome-screen/WelcomeScreen");
 var _welcomeScreenDefault = parcelHelpers.interopDefault(_welcomeScreen);
 var _s = $RefreshSig$();
+const theme = {
+    ...(0, _theme.baseTheme)
+};
 function App() {
     _s();
     const [screenState, setScreenState] = (0, _react.useState)((0, _screen.ScreenSwitch).Lifeform);
-    const theme = {
-        ...(0, _theme.baseTheme)
-    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styledComponents.ThemeProvider), {
         theme: theme,
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.GameContainer), {
@@ -28927,29 +28927,29 @@ function App() {
                         loadLifeformScreen: (screen)=>setScreenState(screen ?? screenState)
                     }, void 0, false, {
                         fileName: "main/App.tsx",
-                        lineNumber: 21,
+                        lineNumber: 22,
                         columnNumber: 13
                     }, this),
                     screenState === (0, _screen.ScreenSwitch).Lifeform && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _selectScreenDefault.default), {}, void 0, false, {
                         fileName: "main/App.tsx",
-                        lineNumber: 27,
+                        lineNumber: 28,
                         columnNumber: 53
                     }, this),
                     screenState === (0, _screen.ScreenSwitch).CardTest && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardContainerDefault.default), {}, void 0, false, {
                         fileName: "main/App.tsx",
-                        lineNumber: 28,
+                        lineNumber: 29,
                         columnNumber: 53
                     }, this)
                 ]
             }, void 0, true)
         }, void 0, false, {
             fileName: "main/App.tsx",
-            lineNumber: 18,
+            lineNumber: 19,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "main/App.tsx",
-        lineNumber: 17,
+        lineNumber: 18,
         columnNumber: 5
     }, this);
 }
@@ -35449,7 +35449,7 @@ const LifeformTitle = (0, _styledComponentsDefault.default)((0, _reactBootstrap.
 `;
 const LifeformInfo = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Offcanvas).Body)`
   display: flex;
-  font-size: clamp(1vw, 1.2vw, 1.8vw);;
+  font-size: 1vw;;
   border: 1px solid ${(props)=>props.theme.mainColor};
   font-family: ${(props)=>props.theme.fontFamily};
   margin-right: ${1.25}rem;
@@ -35714,7 +35714,140 @@ var _toggleButtonGroupDefault = parcelHelpers.interopDefault(_toggleButtonGroup)
 var _tooltip = require("./Tooltip");
 var _tooltipDefault = parcelHelpers.interopDefault(_tooltip);
 
-},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./Alert":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":false,"./ButtonGroup":false,"./ButtonToolbar":false,"./Card":false,"./CardImg":false,"./CardGroup":false,"./Carousel":"bsGhm","./CarouselItem":"9A3DI","./CloseButton":"1wmVl","./Col":false,"./Collapse":false,"./Dropdown":false,"./DropdownButton":false,"./Fade":"aH18S","./Form":false,"./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Container":false,"./Image":false,"./Figure":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":false,"./ModalDialog":false,"./ModalHeader":false,"./ModalFooter":false,"./ModalTitle":false,"./Nav":"cXyL2","./Navbar":false,"./NavbarBrand":false,"./NavDropdown":false,"./NavItem":"ew05W","./NavLink":"7geL8","./Offcanvas":"eC3RS","./OffcanvasHeader":"a6xAh","./OffcanvasTitle":"77qdX","./OffcanvasBody":"fX7Bo","./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverHeader":false,"./PopoverBody":false,"./ProgressBar":false,"./Ratio":false,"./Row":false,"./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":"kfiWM","./TabContainer":"hkO95","./TabContent":"fQxYB","./Table":false,"./TabPane":"4jWis","./Tabs":"cq1ML","./ThemeProvider":"dVixI","./Toast":false,"./ToastBody":false,"./ToastHeader":false,"./ToastContainer":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1wmVl":[function(require,module,exports) {
+},{"./Accordion":false,"./AccordionContext":false,"./AccordionCollapse":false,"./AccordionButton":false,"./Alert":false,"./Anchor":false,"./Badge":false,"./Breadcrumb":false,"./BreadcrumbItem":false,"./Button":false,"./ButtonGroup":false,"./ButtonToolbar":false,"./Card":"lAynp","./CardImg":"1reTi","./CardGroup":false,"./Carousel":"bsGhm","./CarouselItem":"9A3DI","./CloseButton":"1wmVl","./Col":false,"./Collapse":false,"./Dropdown":false,"./DropdownButton":false,"./Fade":"aH18S","./Form":false,"./FormControl":false,"./FormCheck":false,"./FormFloating":false,"./FloatingLabel":false,"./FormGroup":false,"./FormLabel":false,"./FormText":false,"./FormSelect":false,"./Container":false,"./Image":false,"./Figure":false,"./InputGroup":false,"./ListGroup":false,"./ListGroupItem":false,"./Modal":false,"./ModalBody":false,"./ModalDialog":false,"./ModalHeader":false,"./ModalFooter":false,"./ModalTitle":false,"./Nav":"cXyL2","./Navbar":false,"./NavbarBrand":false,"./NavDropdown":false,"./NavItem":"ew05W","./NavLink":"7geL8","./Offcanvas":"eC3RS","./OffcanvasHeader":"a6xAh","./OffcanvasTitle":"77qdX","./OffcanvasBody":"fX7Bo","./Overlay":false,"./OverlayTrigger":false,"./PageItem":false,"./Pagination":false,"./Placeholder":false,"./PlaceholderButton":false,"./Popover":false,"./PopoverHeader":false,"./PopoverBody":false,"./ProgressBar":false,"./Ratio":false,"./Row":false,"./Spinner":false,"./SplitButton":false,"./SSRProvider":false,"./Stack":false,"./Tab":"kfiWM","./TabContainer":"hkO95","./TabContent":"fQxYB","./Table":false,"./TabPane":"4jWis","./Tabs":"cq1ML","./ThemeProvider":"dVixI","./Toast":false,"./ToastBody":false,"./ToastHeader":false,"./ToastContainer":false,"./ToggleButton":false,"./ToggleButtonGroup":false,"./Tooltip":false,"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lAynp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _themeProvider = require("./ThemeProvider");
+var _createWithBsPrefix = require("./createWithBsPrefix");
+var _createWithBsPrefixDefault = parcelHelpers.interopDefault(_createWithBsPrefix);
+var _divWithClassName = require("./divWithClassName");
+var _divWithClassNameDefault = parcelHelpers.interopDefault(_divWithClassName);
+var _cardImg = require("./CardImg");
+var _cardImgDefault = parcelHelpers.interopDefault(_cardImg);
+var _cardHeader = require("./CardHeader");
+var _cardHeaderDefault = parcelHelpers.interopDefault(_cardHeader);
+var _jsxRuntime = require("react/jsx-runtime");
+const DivStyledAsH5 = (0, _divWithClassNameDefault.default)("h5");
+const DivStyledAsH6 = (0, _divWithClassNameDefault.default)("h6");
+const CardBody = (0, _createWithBsPrefixDefault.default)("card-body");
+const CardTitle = (0, _createWithBsPrefixDefault.default)("card-title", {
+    Component: DivStyledAsH5
+});
+const CardSubtitle = (0, _createWithBsPrefixDefault.default)("card-subtitle", {
+    Component: DivStyledAsH6
+});
+const CardLink = (0, _createWithBsPrefixDefault.default)("card-link", {
+    Component: "a"
+});
+const CardText = (0, _createWithBsPrefixDefault.default)("card-text", {
+    Component: "p"
+});
+const CardFooter = (0, _createWithBsPrefixDefault.default)("card-footer");
+const CardImgOverlay = (0, _createWithBsPrefixDefault.default)("card-img-overlay");
+const defaultProps = {
+    body: false
+};
+const Card = /*#__PURE__*/ _react.forwardRef(({ bsPrefix , className , bg , text , border , body , children , // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = "div" , ...props }, ref)=>{
+    const prefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        ...props,
+        className: (0, _classnamesDefault.default)(className, prefix, bg && `bg-${bg}`, text && `text-${text}`, border && `border-${border}`),
+        children: body ? /*#__PURE__*/ (0, _jsxRuntime.jsx)(CardBody, {
+            children: children
+        }) : children
+    });
+});
+Card.displayName = "Card";
+Card.defaultProps = defaultProps;
+exports.default = Object.assign(Card, {
+    Img: (0, _cardImgDefault.default),
+    Title: CardTitle,
+    Subtitle: CardSubtitle,
+    Body: CardBody,
+    Link: CardLink,
+    Text: CardText,
+    Header: (0, _cardHeaderDefault.default),
+    Footer: CardFooter,
+    ImgOverlay: CardImgOverlay
+});
+
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./createWithBsPrefix":"itt7e","./divWithClassName":"eDg7t","./CardImg":"1reTi","./CardHeader":"dXnnx","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eDg7t":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _jsxRuntime = require("react/jsx-runtime");
+exports.default = (className)=>/*#__PURE__*/ _react.forwardRef((p, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
+            ...p,
+            ref: ref,
+            className: (0, _classnamesDefault.default)(p.className, className)
+        }));
+
+},{"react":"21dqq","classnames":"jocGM","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1reTi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _themeProvider = require("./ThemeProvider");
+var _jsxRuntime = require("react/jsx-runtime");
+const CardImg = /*#__PURE__*/ _react.forwardRef(// Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+({ bsPrefix , className , variant , as: Component = "img" , ...props }, ref)=>{
+    const prefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-img");
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+        ref: ref,
+        className: (0, _classnamesDefault.default)(variant ? `${prefix}-${variant}` : prefix, className),
+        ...props
+    });
+});
+CardImg.displayName = "CardImg";
+exports.default = CardImg;
+
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dXnnx":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _classnames = require("classnames");
+var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
+var _react = require("react");
+var _themeProvider = require("./ThemeProvider");
+var _cardHeaderContext = require("./CardHeaderContext");
+var _cardHeaderContextDefault = parcelHelpers.interopDefault(_cardHeaderContext);
+var _jsxRuntime = require("react/jsx-runtime");
+const CardHeader = /*#__PURE__*/ _react.forwardRef(({ bsPrefix , className , // Need to define the default "as" during prop destructuring to be compatible with styled-components github.com/react-bootstrap/react-bootstrap/issues/3595
+as: Component = "div" , ...props }, ref)=>{
+    const prefix = (0, _themeProvider.useBootstrapPrefix)(bsPrefix, "card-header");
+    const contextValue = (0, _react.useMemo)(()=>({
+            cardHeaderBsPrefix: prefix
+        }), [
+        prefix
+    ]);
+    return /*#__PURE__*/ (0, _jsxRuntime.jsx)((0, _cardHeaderContextDefault.default).Provider, {
+        value: contextValue,
+        children: /*#__PURE__*/ (0, _jsxRuntime.jsx)(Component, {
+            ref: ref,
+            ...props,
+            className: (0, _classnamesDefault.default)(className, prefix)
+        })
+    });
+});
+CardHeader.displayName = "CardHeader";
+exports.default = CardHeader;
+
+},{"classnames":"jocGM","react":"21dqq","./ThemeProvider":"dVixI","./CardHeaderContext":"36cNB","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"36cNB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+const context = /*#__PURE__*/ _react.createContext(null);
+context.displayName = "CardHeaderContext";
+exports.default = context;
+
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1wmVl":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _propTypes = require("prop-types");
@@ -36221,14 +36354,6 @@ var _react = require("react");
 // TODO: check
 const context = /*#__PURE__*/ _react.createContext(null);
 context.displayName = "NavbarContext";
-exports.default = context;
-
-},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"36cNB":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-const context = /*#__PURE__*/ _react.createContext(null);
-context.displayName = "CardHeaderContext";
 exports.default = context;
 
 },{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ew05W":[function(require,module,exports) {
@@ -37124,20 +37249,7 @@ exports.default = (0, _createWithBsPrefixDefault.default)("offcanvas-title", {
     Component: DivStyledAsH5
 });
 
-},{"./createWithBsPrefix":"itt7e","./divWithClassName":"eDg7t","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eDg7t":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _react = require("react");
-var _classnames = require("classnames");
-var _classnamesDefault = parcelHelpers.interopDefault(_classnames);
-var _jsxRuntime = require("react/jsx-runtime");
-exports.default = (className)=>/*#__PURE__*/ _react.forwardRef((p, ref)=>/*#__PURE__*/ (0, _jsxRuntime.jsx)("div", {
-            ...p,
-            ref: ref,
-            className: (0, _classnamesDefault.default)(p.className, className)
-        }));
-
-},{"react":"21dqq","classnames":"jocGM","react/jsx-runtime":"6AEwr","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lr1Yp":[function(require,module,exports) {
+},{"./createWithBsPrefix":"itt7e","./divWithClassName":"eDg7t","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lr1Yp":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "getSharedManager", ()=>getSharedManager);
@@ -37755,8 +37867,8 @@ var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
 var _styles = require("./styles");
 var _tab = require("react-bootstrap/Tab");
 var _tabDefault = parcelHelpers.interopDefault(_tab);
-var _tabs = require("react-bootstrap/Tabs");
-var _tabsDefault = parcelHelpers.interopDefault(_tabs);
+var _attributeCard = require("../../../../components/card/attribute-card/AttributeCard");
+var _attributeCardDefault = parcelHelpers.interopDefault(_attributeCard);
 var _s = $RefreshSig$();
 function RightCanvas(props) {
     _s();
@@ -37779,63 +37891,58 @@ function RightCanvas(props) {
             scroll: false,
             backdrop: false,
             placement: "end",
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Header, {
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabsDefault.default), {
-                        defaultActiveKey: "profile",
-                        id: "uncontrolled-tab-example",
-                        className: "mb-3",
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
-                                eventKey: "home",
-                                title: "Stats"
-                            }, void 0, false, {
-                                fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                                lineNumber: 45,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
-                                eventKey: "profile",
-                                title: "Advantage"
-                            }, void 0, false, {
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StatsTab), {
+                defaultActiveKey: "stats",
+                id: "uncontrolled-tab-example",
+                justify: true,
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
+                        eventKey: "stats",
+                        title: "Stats",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.DescriptionContainer), {
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _attributeCardDefault.default), {}, void 0, false, {
                                 fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
                                 lineNumber: 46,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
-                                eventKey: "contact",
-                                title: "Disadvantage"
-                            }, void 0, false, {
-                                fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                                lineNumber: 47,
-                                columnNumber: 13
+                                columnNumber: 15
                             }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                        lineNumber: 40,
-                        columnNumber: 11
-                    }, this)
-                }, void 0, false, {
-                    fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                    lineNumber: 39,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {
-                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.DescriptionContainer), {
-                        children: currentLifeForm?.text
+                        }, void 0, false, {
+                            fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+                            lineNumber: 45,
+                            columnNumber: 13
+                        }, this)
                     }, void 0, false, {
+                        fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+                        lineNumber: 44,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
+                        eventKey: "profile",
+                        title: "Advantage"
+                    }, void 0, false, {
+                        fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+                        lineNumber: 49,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
+                        eventKey: "contact",
+                        title: "Disadvantage"
+                    }, void 0, false, {
+                        fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+                        lineNumber: 50,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {}, void 0, false, {
                         fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
                         lineNumber: 51,
                         columnNumber: 11
                     }, this)
-                }, void 0, false, {
-                    fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                    lineNumber: 50,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
+                ]
+            }, void 0, true, {
+                fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+                lineNumber: 39,
+                columnNumber: 9
+            }, this)
+        }, void 0, false, {
             fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
             lineNumber: 32,
             columnNumber: 7
@@ -37853,14 +37960,17 @@ $RefreshReg$(_c, "RightCanvas");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Offcanvas":"eC3RS","./styles":"bg4Ud","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Tab":"kfiWM","react-bootstrap/Tabs":"cq1ML"}],"bg4Ud":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"bg4Ud","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Offcanvas":"eC3RS","react-bootstrap/Tab":"kfiWM","../../../../components/card/attribute-card/AttributeCard":"hAKVe"}],"bg4Ud":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "StyledRightCanvas", ()=>StyledRightCanvas);
 parcelHelpers.export(exports, "DescriptionContainer", ()=>DescriptionContainer);
+parcelHelpers.export(exports, "StatsTab", ()=>StatsTab);
 var _reactBootstrap = require("react-bootstrap");
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+var _tabs = require("react-bootstrap/Tabs");
+var _tabsDefault = parcelHelpers.interopDefault(_tabs);
 const StyledRightCanvas = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Offcanvas))`
   display: flex;
   width: 25% !important;
@@ -37871,6 +37981,143 @@ const StyledRightCanvas = (0, _styledComponentsDefault.default)((0, _reactBootst
 const DescriptionContainer = (0, _styledComponentsDefault.default).div`
   display: flex;
   width: 100%;
+`;
+const StatsTab = (0, _styledComponentsDefault.default)((0, _tabsDefault.default))`
+  color: ${(props)=>props.theme.mainColor};
+  font-family: ${(props)=>props.theme.fontFamily};
+  font-size: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 15%;
+  border: none;
+
+  .nav-tabs {
+    &:hover {
+      border-color: ${(props)=>props.theme.mainColor};
+    }
+  }
+  .nav-link.active {
+    border-color: ${(props)=>props.theme.mainColor};
+    background-color: ${(props)=>props.theme.backgroundColor};
+    color: ${(props)=>props.theme.mainColor};
+    border: 1px solid;
+  }
+  .nav-link {
+    color: ${(props)=>props.theme.mainColor};
+    border-color: ${(props)=>props.theme.mainColor};
+    border-left-style: hidden;
+    border-top-style: hidden;
+    border-right-style: hidden;
+
+    &:hover {
+      border-color: ${(props)=>props.theme.mainColor};
+      background-color: ${(props)=>props.theme.backgroundColor};
+      color: ${(props)=>props.theme.mainColor};
+      border: 1px solid;
+    }
+  }
+  button {
+    color: ${(props)=>props.theme.mainColor};
+    &:hover {
+      color: ${(props)=>props.theme.mainColor};
+    }
+  }
+`;
+
+},{"react-bootstrap":"3AD9A","styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react-bootstrap/Tabs":"cq1ML"}],"hAKVe":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$1e97 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$1e97.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
+var _discoveryPng = require("../../../images/resource/Discovery.png");
+var _discoveryPngDefault = parcelHelpers.interopDefault(_discoveryPng);
+var _styles = require("./styles");
+function AttributeCard(props) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledAttributeCard), {
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
+                variant: "top",
+                src: (0, _discoveryPngDefault.default)
+            }, void 0, false, {
+                fileName: "components/card/attribute-card/AttributeCard.tsx",
+                lineNumber: 15,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardBody), {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardTitle), {
+                    children: "+1 Discovery"
+                }, void 0, false, {
+                    fileName: "components/card/attribute-card/AttributeCard.tsx",
+                    lineNumber: 17,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "components/card/attribute-card/AttributeCard.tsx",
+                lineNumber: 16,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "components/card/attribute-card/AttributeCard.tsx",
+        lineNumber: 14,
+        columnNumber: 5
+    }, this);
+}
+exports.default = AttributeCard;
+_c = AttributeCard;
+var _c;
+$RefreshReg$(_c, "AttributeCard");
+
+  $parcel$ReactRefreshHelpers$1e97.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../../../images/resource/Discovery.png":"feeAW","./styles":"5vpWz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"feeAW":[function(require,module,exports) {
+module.exports = require("ec9b4dd54e84bcda").getBundleURL("au4zy") + "Discovery.ebafcd28.png" + "?" + Date.now();
+
+},{"ec9b4dd54e84bcda":"lgJ39"}],"5vpWz":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "StyledAttributeCard", ()=>StyledAttributeCard);
+parcelHelpers.export(exports, "AttributeCardTitle", ()=>AttributeCardTitle);
+parcelHelpers.export(exports, "AttributeCardBody", ()=>AttributeCardBody);
+parcelHelpers.export(exports, "AttributeCardText", ()=>AttributeCardText);
+var _reactBootstrap = require("react-bootstrap");
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const StyledAttributeCard = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Card))`
+  display: flex;
+  width: ${12.5}rem;
+  height: ${16.875}rem;
+  border: 1px solid ${(props)=>props.theme.mainColor};
+`;
+const AttributeCardTitle = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Card).Title)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props)=>props.theme.backgroundColor};
+  color: ${(props)=>props.theme.mainColor};
+  font-family: ${(props)=>props.theme.fontFamily};
+`;
+const AttributeCardBody = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Card).Body)`
+  background-color: ${(props)=>props.theme.backgroundColor};
+  color: ${(props)=>props.theme.mainColor};
+  font-family: ${(props)=>props.theme.fontFamily};
+`;
+const AttributeCardText = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Card).Text)`
+  background-color: ${(props)=>props.theme.backgroundColor};
+  color: ${(props)=>props.theme.mainColor};
+  font-family: ${(props)=>props.theme.fontFamily};
 `;
 
 },{"react-bootstrap":"3AD9A","styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jmiu7":[function(require,module,exports) {
@@ -42640,10 +42887,7 @@ $RefreshReg$(_c, "CardResources");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../images/resource/Discovery.png":"feeAW","../../../images/resource/Energy.png":"eqBN8","../../../images/resource/Fuel.png":"4AbgL","../../../images/resource/Life.png":"27v9M","../../../images/resource/Metal.png":"7ziIc","../../../images/resource/Ruins.png":"kucG6","../../../models/planets/Planet":"fbCJI","./styles":"kst05","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"feeAW":[function(require,module,exports) {
-module.exports = require("ec9b4dd54e84bcda").getBundleURL("au4zy") + "Discovery.ebafcd28.png" + "?" + Date.now();
-
-},{"ec9b4dd54e84bcda":"lgJ39"}],"eqBN8":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../images/resource/Discovery.png":"feeAW","../../../images/resource/Energy.png":"eqBN8","../../../images/resource/Fuel.png":"4AbgL","../../../images/resource/Life.png":"27v9M","../../../images/resource/Metal.png":"7ziIc","../../../images/resource/Ruins.png":"kucG6","../../../models/planets/Planet":"fbCJI","./styles":"kst05","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eqBN8":[function(require,module,exports) {
 module.exports = require("2fca978a0d075792").getBundleURL("au4zy") + "Energy.73e6a639.png" + "?" + Date.now();
 
 },{"2fca978a0d075792":"lgJ39"}],"4AbgL":[function(require,module,exports) {
@@ -42663,6 +42907,7 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ResourceList", ()=>ResourceList);
 parcelHelpers.export(exports, "ResourceImage", ()=>ResourceImage);
+var _reactBootstrap = require("react-bootstrap");
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const ResourceList = (0, _styledComponentsDefault.default).div`
@@ -42672,13 +42917,13 @@ const ResourceList = (0, _styledComponentsDefault.default).div`
   min-width: 100%;
   flex: 1;
 `;
-const ResourceImage = (0, _styledComponentsDefault.default).img`
+const ResourceImage = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Card))`
   display: flex;
   max-width: 100%;
   max-height: 100%;
 `;
 
-},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"e6xLf":[function(require,module,exports) {
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","react-bootstrap":"3AD9A"}],"e6xLf":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "StyledCardContainer", ()=>StyledCardContainer);

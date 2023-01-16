@@ -19,7 +19,7 @@ export const LifeformTitle = styled(Offcanvas.Title)`
 `;
 export const LifeformInfo = styled(Offcanvas.Body)`
   display: flex;
-  font-size: clamp(1vw, 1.2vw, 1.8vw);;
+  font-size: 1vw;;
   border: 1px solid ${(props) => props.theme.mainColor};
   font-family: ${(props) => props.theme.fontFamily};
   margin-right: ${20 / 16}rem;
