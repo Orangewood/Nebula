@@ -43,7 +43,7 @@ export default function RightCanvas(props: RightCanvasProps) {
         >
           <Tab eventKey="stats" title="Stats">
             <DescriptionContainer>
-              <AttributeCard></AttributeCard>
+              <AttributeCard cardList={[currentLifeForm!]} />
             </DescriptionContainer>
           </Tab>
           <Tab eventKey="profile" title="Advantage"></Tab>

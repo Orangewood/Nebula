@@ -80,5 +80,5 @@ export default function PlayerClass(planetStack: Planet[]) {
     explore: PlayerExplore(currentResearch),
     engineer: PlayerEngineer({ machinery: 5 }),
     production: PlayerProduction(),
-  } as Player;
+  };
 }

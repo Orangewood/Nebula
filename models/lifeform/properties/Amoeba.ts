@@ -8,11 +8,11 @@ import { Lifeform } from "../Lifeform";
 import { LifeformEnum } from "./LifeformEnum";
 
 const AmoebaText = `The Amoeba appears as a primitive lifeform in the complexity of the universe, 
-but afterall, what is more complex than life itself? Organic life will undboutedly claim the Amoeba as 
-an ancestor rather it be millions or billions of years of evolution. Although improbable, There exists 
-one planet where the Amoeba's evolution was stagnant and only produced one Domain. The Amoeba developed 
-a spectacular biofuel resulting in advantages in: energy, biology and chemistry. Having only the ability 
-to reproduce asexually the Amoeba became exceptionally efficient in its survival. `;
+but after all - what is more complex than life itself? Organic life will undboutedly claim the Amoeba as 
+an ancestor after billions of years of evolution. What seems improbable, there exists a planet where the
+Amoeba's evolution produced one Domain. The Amoeba developed a spectacular biofuel resulting in advantages 
+in: energy, biology and chemistry. Having only the ability to reproduce asexually the Amoeba became exceptionally 
+efficient in its survival. `;
 
 export const AmoebaModel: Lifeform = {
   lifeformId: LifeformEnum.Amoeba,

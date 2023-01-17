@@ -34980,11 +34980,11 @@ var _amoebaPng = require("../../../images/lifeform/Amoeba.png");
 var _amoebaPngDefault = parcelHelpers.interopDefault(_amoebaPng);
 var _lifeformEnum = require("./LifeformEnum");
 const AmoebaText = `The Amoeba appears as a primitive lifeform in the complexity of the universe, 
-but afterall, what is more complex than life itself? Organic life will undboutedly claim the Amoeba as 
-an ancestor rather it be millions or billions of years of evolution. Although improbable, There exists 
-one planet where the Amoeba's evolution was stagnant and only produced one Domain. The Amoeba developed 
-a spectacular biofuel resulting in advantages in: energy, biology and chemistry. Having only the ability 
-to reproduce asexually the Amoeba became exceptionally efficient in its survival. `;
+but after all - what is more complex than life itself? Organic life will undboutedly claim the Amoeba as 
+an ancestor after billions of years of evolution. What seems improbable, there exists a planet where the
+Amoeba's evolution produced one Domain. The Amoeba developed a spectacular biofuel resulting in advantages 
+in: energy, biology and chemistry. Having only the ability to reproduce asexually the Amoeba became exceptionally 
+efficient in its survival. `;
 const AmoebaModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Amoeba,
     imgPath: (0, _amoebaPngDefault.default),
@@ -37900,7 +37900,11 @@ function RightCanvas(props) {
                         eventKey: "stats",
                         title: "Stats",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.DescriptionContainer), {
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _attributeCardDefault.default), {}, void 0, false, {
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _attributeCardDefault.default), {
+                                cardList: [
+                                    currentLifeForm
+                                ]
+                            }, void 0, false, {
                                 fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
                                 lineNumber: 46,
                                 columnNumber: 15
@@ -38040,8 +38044,23 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
 var _discoveryPng = require("../../../images/resource/Discovery.png");
 var _discoveryPngDefault = parcelHelpers.interopDefault(_discoveryPng);
+var _lifeform = require("../../../models/lifeform/Lifeform");
 var _styles = require("./styles");
+const CardList = (0, _lifeform.LifeformList).map(_c = (lifeform)=>({
+        resources: lifeform.resources,
+        research: lifeform.research,
+        explore: lifeform.explore,
+        engineer: lifeform.engineer,
+        production: lifeform.production
+    }));
+_c1 = CardList;
 function AttributeCard(props) {
+    // const { cardList } = props;
+    // cardList.forEach((cardType: CardType) => {
+    //   let k: keyof CardType;
+    //   for (k in cardType) {
+    //     let test = cardType[k]
+    // });
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledAttributeCard), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
@@ -38049,7 +38068,7 @@ function AttributeCard(props) {
                 src: (0, _discoveryPngDefault.default)
             }, void 0, false, {
                 fileName: "components/card/attribute-card/AttributeCard.tsx",
-                lineNumber: 15,
+                lineNumber: 39,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardBody), {
@@ -38057,32 +38076,34 @@ function AttributeCard(props) {
                     children: "+1 Discovery"
                 }, void 0, false, {
                     fileName: "components/card/attribute-card/AttributeCard.tsx",
-                    lineNumber: 17,
+                    lineNumber: 41,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "components/card/attribute-card/AttributeCard.tsx",
-                lineNumber: 16,
+                lineNumber: 40,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "components/card/attribute-card/AttributeCard.tsx",
-        lineNumber: 14,
+        lineNumber: 38,
         columnNumber: 5
     }, this);
 }
 exports.default = AttributeCard;
-_c = AttributeCard;
-var _c;
-$RefreshReg$(_c, "AttributeCard");
+_c2 = AttributeCard;
+var _c, _c1, _c2;
+$RefreshReg$(_c, "CardList$LifeformList.map");
+$RefreshReg$(_c1, "CardList");
+$RefreshReg$(_c2, "AttributeCard");
 
   $parcel$ReactRefreshHelpers$1e97.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../../../images/resource/Discovery.png":"feeAW","./styles":"5vpWz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"feeAW":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../../../images/resource/Discovery.png":"feeAW","./styles":"5vpWz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../models/lifeform/Lifeform":"iWBIG"}],"feeAW":[function(require,module,exports) {
 module.exports = require("ec9b4dd54e84bcda").getBundleURL("au4zy") + "Discovery.ebafcd28.png" + "?" + Date.now();
 
 },{"ec9b4dd54e84bcda":"lgJ39"}],"5vpWz":[function(require,module,exports) {
