@@ -44,5 +44,5 @@ export function PlanetStats(
 }
 let planetList = PlanetGenerator(100);
 
-PlanetStats("resources", planetList);
-PlanetStats("composition", planetList);
+console.log(PlanetStats("resources", planetList));
+console.log(PlanetStats("composition", planetList));

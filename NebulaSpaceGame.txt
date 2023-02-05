@@ -33,9 +33,9 @@ Production -
 		Conscript: Amass millitary force.
 	
 Explore - 
-	Perform both by consuming Fuel: 
+	Perform: 
 		Observe/Draw: Allows to peer into deck x (Astronomy level) deep.
-		Move: Moves planet from observe to terraform zone.
+		Move Fuel: Moves planet from observe to terraform zone.
 	
 
 

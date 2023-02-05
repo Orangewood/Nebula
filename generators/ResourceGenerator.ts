@@ -34,7 +34,7 @@ export default function ResourceGeneartor(
 
   if (
     composition.some((a) => a === Composition.DESERT) &&
-    composition.some((a) => a === Composition.ORGANIC)
+    composition.some((a) => a == Composition.ORGANIC)
   ) {
     resources.push(Resource.RUINS);
   }

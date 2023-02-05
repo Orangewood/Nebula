@@ -6,7 +6,7 @@ export default function HarvestTurn(
 ) {
   while (selectHarvest) {
     playerStats.resources = {
-      ...HarvestPlanets(playerStats.currentPlanet),
+      ...HarvestPlanets(playerStats.currentPlanetStack),
       ...playerStats.resources,
     };
     selectHarvest = false;

@@ -38054,42 +38054,60 @@ const CardList = (0, _lifeform.LifeformList).map(_c = (lifeform)=>({
         production: lifeform.production
     }));
 _c1 = CardList;
+const CardTypeValueList = Object.values(CardList[0]);
+const CardTypeKeyList = Object.keys(CardList[0]);
 function AttributeCard(props) {
     // const { cardList } = props;
-    // cardList.forEach((cardType: CardType) => {
-    //   let k: keyof CardType;
-    //   for (k in cardType) {
-    //     let test = cardType[k]
-    // });
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledAttributeCard), {
-        children: [
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
-                variant: "top",
-                src: (0, _discoveryPngDefault.default)
-            }, void 0, false, {
-                fileName: "components/card/attribute-card/AttributeCard.tsx",
-                lineNumber: 39,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardBody), {
-                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardTitle), {
-                    children: "+1 Discovery"
-                }, void 0, false, {
+    let keyList = [];
+    function recursiveIter(obj) {
+        for(var key in obj)if (typeof obj[key] == "object") recursiveIter(obj[key]);
+        else {
+            Object.keys(obj).forEach((key)=>{
+                const capitalizedKey = key.replace(/(^\w|\s\w)/g, (m)=>m.toUpperCase());
+                keyList = [
+                    capitalizedKey,
+                    ...keyList
+                ];
+            });
+            break;
+        }
+        return keyList;
+    }
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: CardList.forEach((card, index)=>{
+            return recursiveIter(CardList[index]).forEach((cardKey)=>{
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledAttributeCard), {
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
+                            variant: "top",
+                            src: (0, _discoveryPngDefault.default)
+                        }, void 0, false, {
+                            fileName: "components/card/attribute-card/AttributeCard.tsx",
+                            lineNumber: 66,
+                            columnNumber: 15
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardBody), {
+                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardTitle), {
+                                children: `+1 ${cardKey}`
+                            }, void 0, false, {
+                                fileName: "components/card/attribute-card/AttributeCard.tsx",
+                                lineNumber: 68,
+                                columnNumber: 17
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "components/card/attribute-card/AttributeCard.tsx",
+                            lineNumber: 67,
+                            columnNumber: 15
+                        }, this)
+                    ]
+                }, void 0, true, {
                     fileName: "components/card/attribute-card/AttributeCard.tsx",
-                    lineNumber: 41,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "components/card/attribute-card/AttributeCard.tsx",
-                lineNumber: 40,
-                columnNumber: 7
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "components/card/attribute-card/AttributeCard.tsx",
-        lineNumber: 38,
-        columnNumber: 5
-    }, this);
+                    lineNumber: 65,
+                    columnNumber: 13
+                }, this);
+            });
+        })
+    }, void 0, false);
 }
 exports.default = AttributeCard;
 _c2 = AttributeCard;
@@ -38788,7 +38806,7 @@ function ResourceGeneartor(composition, planetAmount) {
     if (composition.some((a)=>a === (0, _planet.Composition).GAS) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE)) resources.push((0, _planet.Resource).FUEL);
     if (composition.some((a)=>a === (0, _planet.Composition).ROCKY) && composition.some((a)=>a === (0, _planet.Composition).SCILLICATE) && composition.some((a)=>a !== (0, _planet.Composition).GAS)) resources.push((0, _planet.Resource).METAL);
     if (composition.some((a)=>a === (0, _planet.Composition).ORGANIC && composition.some((a)=>a === (0, _planet.Composition).OCEAN))) resources.push((0, _planet.Resource).LIFE);
-    if (composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ORGANIC)) resources.push((0, _planet.Resource).RUINS);
+    if (composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a == (0, _planet.Composition).ORGANIC)) resources.push((0, _planet.Resource).RUINS);
     if (composition.some((a)=>a === (0, _planet.Composition).LAVA) && composition.some((a)=>a === (0, _planet.Composition).GAS) || composition.some((a)=>a === (0, _planet.Composition).DESERT) && composition.some((a)=>a === (0, _planet.Composition).ROCKY)) resources.push((0, _planet.Resource).ENERGY);
     if (resources.length < 1) resources.push((0, _planet.Resource).DISCOVERY);
     return resources.sort();
