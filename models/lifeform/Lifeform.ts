@@ -18,7 +18,7 @@ export interface Lifeform
   text: string;
 }
 
-export const LifeformList: Lifeform[] = [
+export const lifeformList: Lifeform[] = [
   AmoebaModel,
   AlienModel,
   CephlapodModel,

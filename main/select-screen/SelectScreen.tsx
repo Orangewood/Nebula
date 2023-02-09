@@ -5,7 +5,7 @@ import {
   CarouselItem,
   StyledCarousel,
 } from "./styles";
-import { LifeformList } from "../../models/lifeform/Lifeform";
+import { lifeformList } from "../../models/lifeform/Lifeform";
 import LeftCanvas from "./components/left-canvas/LeftCanvas";
 import RightCanvas from "./components/right-canvas/RightCanvas";
 
@@ -24,7 +24,7 @@ export default function SelectScreen(props: SelectScreenProps) {
     if (showMenu) setShowMenu(false);
   };
 
-  const getCurrentLifeForm = LifeformList.find(
+  const getCurrentLifeForm = lifeformList.find(
     (lifeform) => lifeform.lifeformId === currentLifeFormId
   );
   return (
@@ -36,7 +36,7 @@ export default function SelectScreen(props: SelectScreenProps) {
         touch
         onSlide={handleClickIcon}
       >
-        {LifeformList.map((lifeform) => (
+        {lifeformList.map((lifeform) => (
           <CarouselItem>
             <img
               src={lifeform.imgPath}
@@ -56,7 +56,7 @@ export default function SelectScreen(props: SelectScreenProps) {
         onClose={() => setShowMenu(false)}
         currentLifeForm={getCurrentLifeForm}
       />
-       <RightCanvas
+      <RightCanvas
         showCanvas={showMenu}
         onClose={() => setShowMenu(false)}
         currentLifeForm={getCurrentLifeForm}

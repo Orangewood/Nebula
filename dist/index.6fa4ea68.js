@@ -30452,7 +30452,7 @@ function SelectScreen(props) {
     const handleClickIcon = ()=>{
         if (showMenu) setShowMenu(false);
     };
-    const getCurrentLifeForm = (0, _lifeform.LifeformList).find((lifeform)=>lifeform.lifeformId === currentLifeFormId);
+    const getCurrentLifeForm = (0, _lifeform.lifeformList).find((lifeform)=>lifeform.lifeformId === currentLifeFormId);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledCarousel), {
@@ -30461,7 +30461,7 @@ function SelectScreen(props) {
                 interval: null,
                 touch: true,
                 onSlide: handleClickIcon,
-                children: (0, _lifeform.LifeformList).map((lifeform)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CarouselItem), {
+                children: (0, _lifeform.lifeformList).map((lifeform)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CarouselItem), {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                                 src: lifeform.imgPath,
@@ -30512,7 +30512,7 @@ function SelectScreen(props) {
             }, void 0, false, {
                 fileName: "main/select-screen/SelectScreen.tsx",
                 lineNumber: 59,
-                columnNumber: 8
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true);
@@ -34948,7 +34948,7 @@ exports.default = safeFindDOMNode;
 },{"react-dom":"j6uA9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iWBIG":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "LifeformList", ()=>LifeformList);
+parcelHelpers.export(exports, "lifeformList", ()=>lifeformList);
 var _amoeba = require("./properties/Amoeba");
 var _alien = require("./properties/Alien");
 var _cephlapod = require("./properties/Cephlapod");
@@ -34959,7 +34959,7 @@ var _human = require("./properties/Human");
 var _insect = require("./properties/Insect");
 var _virus = require("./properties/Virus");
 var _tree = require("./properties/Tree");
-const LifeformList = [
+const lifeformList = [
     (0, _amoeba.AmoebaModel),
     (0, _alien.AlienModel),
     (0, _cephlapod.CephlapodModel),
@@ -37864,6 +37864,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _offcanvas = require("react-bootstrap/Offcanvas");
 var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
+var _lifeform = require("../../../../models/lifeform/Lifeform");
 var _styles = require("./styles");
 var _tab = require("react-bootstrap/Tab");
 var _tabDefault = parcelHelpers.interopDefault(_tab);
@@ -37874,6 +37875,36 @@ function RightCanvas(props) {
     _s();
     const { showCanvas , onClose , currentLifeForm  } = props;
     const [show, setShow] = (0, _react.useState)(false);
+    const cardList = (0, _lifeform.lifeformList).map((lifeform)=>({
+            resources: lifeform.resources,
+            research: lifeform.research,
+            explore: lifeform.explore,
+            engineer: lifeform.engineer,
+            production: lifeform.production
+        }));
+    let keyList = [];
+    function recursiveIter(obj) {
+        for(var key in obj)if (typeof obj[key] == "object") recursiveIter(obj[key]);
+        else {
+            Object.keys(obj).forEach((key)=>{
+                const capitalizedKey = key.replace(/(^\w|\s\w)/g, (m)=>m.toUpperCase());
+                keyList = [
+                    capitalizedKey,
+                    ...keyList
+                ];
+            });
+            break;
+        }
+        return keyList;
+    }
+    const currentCardType = {
+        resources: currentLifeForm.resources,
+        research: currentLifeForm.research,
+        explore: currentLifeForm.explore,
+        engineer: currentLifeForm.engineer,
+        production: currentLifeForm.production
+    };
+    const currentKeys = recursiveIter(currentCardType).sort((a, b)=>a.localeCompare(b));
     const handleClose = ()=>{
         setShow(false);
         onClose(true);
@@ -37900,23 +37931,23 @@ function RightCanvas(props) {
                         eventKey: "stats",
                         title: "Stats",
                         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.DescriptionContainer), {
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _attributeCardDefault.default), {
-                                cardList: [
-                                    currentLifeForm
-                                ]
-                            }, void 0, false, {
-                                fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                                lineNumber: 46,
-                                columnNumber: 15
-                            }, this)
+                            children: currentKeys.map((key)=>{
+                                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _attributeCardDefault.default), {
+                                    attributeKey: key
+                                }, void 0, false, {
+                                    fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
+                                    lineNumber: 92,
+                                    columnNumber: 24
+                                }, this);
+                            })
                         }, void 0, false, {
                             fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                            lineNumber: 45,
+                            lineNumber: 90,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                        lineNumber: 44,
+                        lineNumber: 89,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
@@ -37924,7 +37955,7 @@ function RightCanvas(props) {
                         title: "Advantage"
                     }, void 0, false, {
                         fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                        lineNumber: 49,
+                        lineNumber: 96,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
@@ -37932,23 +37963,23 @@ function RightCanvas(props) {
                         title: "Disadvantage"
                     }, void 0, false, {
                         fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                        lineNumber: 50,
+                        lineNumber: 97,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {}, void 0, false, {
                         fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                        lineNumber: 51,
+                        lineNumber: 98,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                lineNumber: 39,
+                lineNumber: 84,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-            lineNumber: 32,
+            lineNumber: 77,
             columnNumber: 7
         }, this)
     }, void 0, false);
@@ -37964,7 +37995,7 @@ $RefreshReg$(_c, "RightCanvas");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"bg4Ud","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Offcanvas":"eC3RS","react-bootstrap/Tab":"kfiWM","../../../../components/card/attribute-card/AttributeCard":"hAKVe"}],"bg4Ud":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"bg4Ud","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Offcanvas":"eC3RS","react-bootstrap/Tab":"kfiWM","../../../../components/card/attribute-card/AttributeCard":"hAKVe","../../../../models/lifeform/Lifeform":"iWBIG"}],"bg4Ud":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "StyledRightCanvas", ()=>StyledRightCanvas);
@@ -37984,7 +38015,10 @@ const StyledRightCanvas = (0, _styledComponentsDefault.default)((0, _reactBootst
 `;
 const DescriptionContainer = (0, _styledComponentsDefault.default).div`
   display: flex;
-  width: 100%;
+  max-width: 100%;
+  flex-direction: column;
+  overflow-y: scroll;
+  max-height: 99vh;
 `;
 const StatsTab = (0, _styledComponentsDefault.default)((0, _tabsDefault.default))`
   color: ${(props)=>props.theme.mainColor};
@@ -37993,7 +38027,7 @@ const StatsTab = (0, _styledComponentsDefault.default)((0, _tabsDefault.default)
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 15%;
+  height: 100%;
   border: none;
 
   .nav-tabs {
@@ -38044,84 +38078,130 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactBootstrap = require("react-bootstrap");
 var _discoveryPng = require("../../../images/resource/Discovery.png");
 var _discoveryPngDefault = parcelHelpers.interopDefault(_discoveryPng);
-var _lifeform = require("../../../models/lifeform/Lifeform");
+var _energyPng = require("../../../images/resource/Energy.png");
+var _energyPngDefault = parcelHelpers.interopDefault(_energyPng);
+var _fuelPng = require("../../../images/resource/Fuel.png");
+var _fuelPngDefault = parcelHelpers.interopDefault(_fuelPng);
+var _lifePng = require("../../../images/resource/Life.png");
+var _lifePngDefault = parcelHelpers.interopDefault(_lifePng);
+var _metalPng = require("../../../images/resource/Metal.png");
+var _metalPngDefault = parcelHelpers.interopDefault(_metalPng);
+var _ruinsPng = require("../../../images/resource/Ruins.png");
+var _ruinsPngDefault = parcelHelpers.interopDefault(_ruinsPng);
+var _physicsPng = require("../../../images/actions/research/Physics.png");
+var _physicsPngDefault = parcelHelpers.interopDefault(_physicsPng);
+var _chemistryPng = require("../../../images/actions/research/Chemistry.png");
+var _chemistryPngDefault = parcelHelpers.interopDefault(_chemistryPng);
+var _astronomyPng = require("../../../images/actions/research/Astronomy.png");
+var _astronomyPngDefault = parcelHelpers.interopDefault(_astronomyPng);
+var _roboticsPng = require("../../../images/actions/research/Robotics.png");
+var _roboticsPngDefault = parcelHelpers.interopDefault(_roboticsPng);
+var _biologyPng = require("../../../images/actions/research/Biology.png");
+var _biologyPngDefault = parcelHelpers.interopDefault(_biologyPng);
+var _machineryPng = require("../../../images/actions/engineer/Machinery.png");
+var _machineryPngDefault = parcelHelpers.interopDefault(_machineryPng);
+var _efficiencyPng = require("../../../images/actions/engineer/Efficiency.png");
+var _efficiencyPngDefault = parcelHelpers.interopDefault(_efficiencyPng);
+var _weaponryPng = require("../../../images/actions/engineer/Weaponry.png");
+var _weaponryPngDefault = parcelHelpers.interopDefault(_weaponryPng);
+var _observePng = require("../../../images/actions/exploration/Observe.png");
+var _observePngDefault = parcelHelpers.interopDefault(_observePng);
+var _movementPng = require("../../../images/actions/exploration/Movement.png");
+var _movementPngDefault = parcelHelpers.interopDefault(_movementPng);
+var _buildPng = require("../../../images/actions/production/Build.png");
+var _buildPngDefault = parcelHelpers.interopDefault(_buildPng);
+var _conscriptPng = require("../../../images/actions/production/Conscript.png");
+var _conscriptPngDefault = parcelHelpers.interopDefault(_conscriptPng);
+var _reproducePng = require("../../../images/actions/production/Reproduce.png");
+var _reproducePngDefault = parcelHelpers.interopDefault(_reproducePng);
 var _styles = require("./styles");
-const CardList = (0, _lifeform.LifeformList).map(_c = (lifeform)=>({
-        resources: lifeform.resources,
-        research: lifeform.research,
-        explore: lifeform.explore,
-        engineer: lifeform.engineer,
-        production: lifeform.production
-    }));
-_c1 = CardList;
-const CardTypeValueList = Object.values(CardList[0]);
-const CardTypeKeyList = Object.keys(CardList[0]);
 function AttributeCard(props) {
-    // const { cardList } = props;
-    let keyList = [];
-    function recursiveIter(obj) {
-        for(var key in obj)if (typeof obj[key] == "object") recursiveIter(obj[key]);
-        else {
-            Object.keys(obj).forEach((key)=>{
-                const capitalizedKey = key.replace(/(^\w|\s\w)/g, (m)=>m.toUpperCase());
-                keyList = [
-                    capitalizedKey,
-                    ...keyList
-                ];
-            });
-            break;
+    const { attributeKey  } = props;
+    const getModule = (key)=>{
+        switch(key){
+            case "Discovery":
+                return 0, _discoveryPngDefault.default;
+            case "Energy":
+                return 0, _energyPngDefault.default;
+            case "Fuel":
+                return 0, _fuelPngDefault.default;
+            case "Life":
+                return 0, _lifePngDefault.default;
+            case "Metal":
+                return 0, _metalPngDefault.default;
+            case "Ruins":
+                return 0, _ruinsPngDefault.default;
+            case "Physics":
+                return 0, _physicsPngDefault.default;
+            case "Chemistry":
+                return 0, _chemistryPngDefault.default;
+            case "Astronomy":
+                return 0, _astronomyPngDefault.default;
+            case "Robotics":
+                return 0, _roboticsPngDefault.default;
+            case "Biology":
+                return 0, _biologyPngDefault.default;
+            case "Machinery":
+                return 0, _machineryPngDefault.default;
+            case "Efficiency":
+                return 0, _efficiencyPngDefault.default;
+            case "Weaponry":
+                return 0, _weaponryPngDefault.default;
+            case "Observe":
+                return 0, _observePngDefault.default;
+            case "Movement":
+                return 0, _movementPngDefault.default;
+            case "Build":
+                return 0, _buildPngDefault.default;
+            case "Conscript":
+                return 0, _conscriptPngDefault.default;
+            case "Reproduce":
+                return 0, _reproducePngDefault.default;
         }
-        return keyList;
-    }
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: CardList.forEach((card, index)=>{
-            return recursiveIter(CardList[index]).forEach((cardKey)=>{
-                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledAttributeCard), {
-                    children: [
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
-                            variant: "top",
-                            src: (0, _discoveryPngDefault.default)
-                        }, void 0, false, {
-                            fileName: "components/card/attribute-card/AttributeCard.tsx",
-                            lineNumber: 66,
-                            columnNumber: 15
-                        }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardBody), {
-                            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardTitle), {
-                                children: `+1 ${cardKey}`
-                            }, void 0, false, {
-                                fileName: "components/card/attribute-card/AttributeCard.tsx",
-                                lineNumber: 68,
-                                columnNumber: 17
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "components/card/attribute-card/AttributeCard.tsx",
-                            lineNumber: 67,
-                            columnNumber: 15
-                        }, this)
-                    ]
-                }, void 0, true, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledAttributeCard), {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card).Img, {
+                    variant: "top",
+                    src: getModule(attributeKey)
+                }, void 0, false, {
                     fileName: "components/card/attribute-card/AttributeCard.tsx",
-                    lineNumber: 65,
-                    columnNumber: 13
-                }, this);
-            });
-        })
+                    lineNumber: 81,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardBody), {
+                    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.AttributeCardTitle), {
+                        children: `+1 ${attributeKey}`
+                    }, void 0, false, {
+                        fileName: "components/card/attribute-card/AttributeCard.tsx",
+                        lineNumber: 83,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "components/card/attribute-card/AttributeCard.tsx",
+                    lineNumber: 82,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "components/card/attribute-card/AttributeCard.tsx",
+            lineNumber: 80,
+            columnNumber: 7
+        }, this)
     }, void 0, false);
 }
 exports.default = AttributeCard;
-_c2 = AttributeCard;
-var _c, _c1, _c2;
-$RefreshReg$(_c, "CardList$LifeformList.map");
-$RefreshReg$(_c1, "CardList");
-$RefreshReg$(_c2, "AttributeCard");
+_c = AttributeCard;
+var _c;
+$RefreshReg$(_c, "AttributeCard");
 
   $parcel$ReactRefreshHelpers$1e97.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../../../images/resource/Discovery.png":"feeAW","./styles":"5vpWz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../models/lifeform/Lifeform":"iWBIG"}],"feeAW":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","../../../images/resource/Discovery.png":"feeAW","./styles":"5vpWz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../../images/resource/Energy.png":"eqBN8","../../../images/resource/Fuel.png":"4AbgL","../../../images/resource/Life.png":"27v9M","../../../images/resource/Metal.png":"7ziIc","../../../images/resource/Ruins.png":"kucG6","../../../images/actions/research/Physics.png":"lC2kY","../../../images/actions/research/Chemistry.png":"6rGix","../../../images/actions/research/Astronomy.png":"6832y","../../../images/actions/research/Robotics.png":"1DyWL","../../../images/actions/research/Biology.png":"6JGo7","../../../images/actions/engineer/Machinery.png":"g9BgT","../../../images/actions/engineer/Efficiency.png":"gzPyc","../../../images/actions/engineer/Weaponry.png":"hU8i5","../../../images/actions/exploration/Observe.png":"boC9y","../../../images/actions/exploration/Movement.png":"fDxRE","../../../images/actions/production/Build.png":"cK0jN","../../../images/actions/production/Conscript.png":"h1FY1","../../../images/actions/production/Reproduce.png":"23HXN"}],"feeAW":[function(require,module,exports) {
 module.exports = require("ec9b4dd54e84bcda").getBundleURL("au4zy") + "Discovery.ebafcd28.png" + "?" + Date.now();
 
 },{"ec9b4dd54e84bcda":"lgJ39"}],"5vpWz":[function(require,module,exports) {
@@ -38136,8 +38216,10 @@ var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const StyledAttributeCard = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Card))`
   display: flex;
-  width: ${12.5}rem;
-  height: ${16.875}rem;
+  /* width: ${12.5}rem; */
+  height: 90%;
+  /* max-width: 100%; */
+  max-width: 100%;
   border: 1px solid ${(props)=>props.theme.mainColor};
 `;
 const AttributeCardTitle = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Card).Title)`
@@ -38147,6 +38229,7 @@ const AttributeCardTitle = (0, _styledComponentsDefault.default)((0, _reactBoots
   background-color: ${(props)=>props.theme.backgroundColor};
   color: ${(props)=>props.theme.mainColor};
   font-family: ${(props)=>props.theme.fontFamily};
+  font-size: 1vw;
 `;
 const AttributeCardBody = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Card).Body)`
   background-color: ${(props)=>props.theme.backgroundColor};
@@ -38159,7 +38242,61 @@ const AttributeCardText = (0, _styledComponentsDefault.default)((0, _reactBootst
   font-family: ${(props)=>props.theme.fontFamily};
 `;
 
-},{"react-bootstrap":"3AD9A","styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jmiu7":[function(require,module,exports) {
+},{"react-bootstrap":"3AD9A","styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eqBN8":[function(require,module,exports) {
+module.exports = require("2fca978a0d075792").getBundleURL("au4zy") + "Energy.73e6a639.png" + "?" + Date.now();
+
+},{"2fca978a0d075792":"lgJ39"}],"4AbgL":[function(require,module,exports) {
+module.exports = require("92437206810a630d").getBundleURL("au4zy") + "Fuel.8f114fdd.png" + "?" + Date.now();
+
+},{"92437206810a630d":"lgJ39"}],"27v9M":[function(require,module,exports) {
+module.exports = require("dd9fd68f6c1b5bda").getBundleURL("au4zy") + "Life.2827e445.png" + "?" + Date.now();
+
+},{"dd9fd68f6c1b5bda":"lgJ39"}],"7ziIc":[function(require,module,exports) {
+module.exports = require("55cfa454fac04796").getBundleURL("au4zy") + "Metal.a56a790d.png" + "?" + Date.now();
+
+},{"55cfa454fac04796":"lgJ39"}],"kucG6":[function(require,module,exports) {
+module.exports = require("a41601b26ebccf1e").getBundleURL("au4zy") + "Ruins.7634ea7e.png" + "?" + Date.now();
+
+},{"a41601b26ebccf1e":"lgJ39"}],"lC2kY":[function(require,module,exports) {
+module.exports = require("7973241f319ded44").getBundleURL("au4zy") + "Physics.ac5f7725.png" + "?" + Date.now();
+
+},{"7973241f319ded44":"lgJ39"}],"6rGix":[function(require,module,exports) {
+module.exports = require("b9354e57de3c84fb").getBundleURL("au4zy") + "Chemistry.fd4a5c6b.png" + "?" + Date.now();
+
+},{"b9354e57de3c84fb":"lgJ39"}],"6832y":[function(require,module,exports) {
+module.exports = require("a1f0b8d5a05ac188").getBundleURL("au4zy") + "Astronomy.a7ad1ce6.png" + "?" + Date.now();
+
+},{"a1f0b8d5a05ac188":"lgJ39"}],"1DyWL":[function(require,module,exports) {
+module.exports = require("1d98a6fc43040c98").getBundleURL("au4zy") + "Robotics.76071d60.png" + "?" + Date.now();
+
+},{"1d98a6fc43040c98":"lgJ39"}],"6JGo7":[function(require,module,exports) {
+module.exports = require("47ed269f92c42551").getBundleURL("au4zy") + "Biology.88927300.png" + "?" + Date.now();
+
+},{"47ed269f92c42551":"lgJ39"}],"g9BgT":[function(require,module,exports) {
+module.exports = require("2cd019f4fba8a70e").getBundleURL("au4zy") + "Machinery.f3999bd9.png" + "?" + Date.now();
+
+},{"2cd019f4fba8a70e":"lgJ39"}],"gzPyc":[function(require,module,exports) {
+module.exports = require("4db2216ac1092d8").getBundleURL("au4zy") + "Efficiency.57abc8e3.png" + "?" + Date.now();
+
+},{"4db2216ac1092d8":"lgJ39"}],"hU8i5":[function(require,module,exports) {
+module.exports = require("e5948a8649b111d8").getBundleURL("au4zy") + "Weaponry.cd4afde0.png" + "?" + Date.now();
+
+},{"e5948a8649b111d8":"lgJ39"}],"boC9y":[function(require,module,exports) {
+module.exports = require("b32ae1e3d7652d1f").getBundleURL("au4zy") + "Observe.9750189e.png" + "?" + Date.now();
+
+},{"b32ae1e3d7652d1f":"lgJ39"}],"fDxRE":[function(require,module,exports) {
+module.exports = require("9c0ef2769623578b").getBundleURL("au4zy") + "Movement.c022fb7c.png" + "?" + Date.now();
+
+},{"9c0ef2769623578b":"lgJ39"}],"cK0jN":[function(require,module,exports) {
+module.exports = require("ef8f3dc3bf820800").getBundleURL("au4zy") + "Build.55f2c076.png" + "?" + Date.now();
+
+},{"ef8f3dc3bf820800":"lgJ39"}],"h1FY1":[function(require,module,exports) {
+module.exports = require("f2681adb90b24f4").getBundleURL("au4zy") + "Conscript.2598bf63.png" + "?" + Date.now();
+
+},{"f2681adb90b24f4":"lgJ39"}],"23HXN":[function(require,module,exports) {
+module.exports = require("cdf6a0d9bb83e3f1").getBundleURL("au4zy") + "Reproduce.b1e01b79.png" + "?" + Date.now();
+
+},{"cdf6a0d9bb83e3f1":"lgJ39"}],"jmiu7":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$a763 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -42926,22 +43063,7 @@ $RefreshReg$(_c, "CardResources");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../images/resource/Discovery.png":"feeAW","../../../images/resource/Energy.png":"eqBN8","../../../images/resource/Fuel.png":"4AbgL","../../../images/resource/Life.png":"27v9M","../../../images/resource/Metal.png":"7ziIc","../../../images/resource/Ruins.png":"kucG6","../../../models/planets/Planet":"fbCJI","./styles":"kst05","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eqBN8":[function(require,module,exports) {
-module.exports = require("2fca978a0d075792").getBundleURL("au4zy") + "Energy.73e6a639.png" + "?" + Date.now();
-
-},{"2fca978a0d075792":"lgJ39"}],"4AbgL":[function(require,module,exports) {
-module.exports = require("92437206810a630d").getBundleURL("au4zy") + "Fuel.8f114fdd.png" + "?" + Date.now();
-
-},{"92437206810a630d":"lgJ39"}],"27v9M":[function(require,module,exports) {
-module.exports = require("dd9fd68f6c1b5bda").getBundleURL("au4zy") + "Life.2827e445.png" + "?" + Date.now();
-
-},{"dd9fd68f6c1b5bda":"lgJ39"}],"7ziIc":[function(require,module,exports) {
-module.exports = require("55cfa454fac04796").getBundleURL("au4zy") + "Metal.a56a790d.png" + "?" + Date.now();
-
-},{"55cfa454fac04796":"lgJ39"}],"kucG6":[function(require,module,exports) {
-module.exports = require("a41601b26ebccf1e").getBundleURL("au4zy") + "Ruins.7634ea7e.png" + "?" + Date.now();
-
-},{"a41601b26ebccf1e":"lgJ39"}],"kst05":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../../images/resource/Discovery.png":"feeAW","../../../images/resource/Energy.png":"eqBN8","../../../images/resource/Fuel.png":"4AbgL","../../../images/resource/Life.png":"27v9M","../../../images/resource/Metal.png":"7ziIc","../../../images/resource/Ruins.png":"kucG6","../../../models/planets/Planet":"fbCJI","./styles":"kst05","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"kst05":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ResourceList", ()=>ResourceList);

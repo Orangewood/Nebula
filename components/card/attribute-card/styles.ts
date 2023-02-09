@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 export const StyledAttributeCard = styled(Card)`
   display: flex;
-  width: ${200 / 16}rem;
-  height: ${270 / 16}rem;
+  /* width: ${200 / 16}rem; */
+  height: 90%;
+  /* max-width: 100%; */
+  max-width: 100%;
   border: 1px solid ${(props) => props.theme.mainColor};
 `;
 
@@ -15,6 +17,7 @@ export const AttributeCardTitle = styled(Card.Title)`
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.mainColor};
   font-family: ${(props) => props.theme.fontFamily};
+  font-size: 1vw;
 `;
 
 export const AttributeCardBody = styled(Card.Body)`
