@@ -40,7 +40,7 @@ export default function SelectScreen(props: SelectScreenProps) {
           <CarouselItem>
             <img
               src={lifeform.imgPath}
-              alt={lifeform.text}
+              alt={lifeform.description}
               key={lifeform.lifeformId}
             />
             <CarouselCaption>
@@ -51,16 +51,8 @@ export default function SelectScreen(props: SelectScreenProps) {
           </CarouselItem>
         ))}
       </StyledCarousel>
-      <LeftCanvas
-        showCanvas={showMenu}
-        onClose={() => setShowMenu(false)}
-        currentLifeForm={getCurrentLifeForm}
-      />
-      <RightCanvas
-        showCanvas={showMenu}
-        onClose={() => setShowMenu(false)}
-        currentLifeForm={getCurrentLifeForm}
-      />
+      <LeftCanvas currentLifeForm={getCurrentLifeForm} />
+      <RightCanvas currentLifeForm={getCurrentLifeForm!} />
     </>
   );
 }

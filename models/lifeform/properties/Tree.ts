@@ -12,10 +12,10 @@ const TreeText = "Tree text here";
 export const TreeModel: Lifeform = {
   lifeformId: LifeformEnum.Tree,
   imgPath: Tree,
-  text: TreeText,
-  resources: { fuel: 1, energy: 1, life: 1 } as HarvestObj,
-  research: { chemistry: 1, biology: 1 } as ResearchObj,
-  explore: {} as ExploreObj,
+  description: TreeText,
+  resources: { fuel: 1, energy: 1, life: 1, discovery: 1 } as HarvestObj,
+  research: { chemistry: 1 } as ResearchObj,
+  explore: { observe: 1 } as ExploreObj,
   engineer: {} as EngineerObj,
-  production: { reproduce: 1 } as ProductionObj,
+  production: {} as ProductionObj,
 };

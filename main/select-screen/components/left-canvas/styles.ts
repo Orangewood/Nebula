@@ -19,10 +19,28 @@ export const LifeformTitle = styled(Offcanvas.Title)`
 `;
 export const LifeformInfo = styled(Offcanvas.Body)`
   display: flex;
-  font-size: 1vw;;
+  font-size: 1vw;
   border: 1px solid ${(props) => props.theme.mainColor};
   font-family: ${(props) => props.theme.fontFamily};
   margin-right: ${20 / 16}rem;
   margin-left: ${20 / 16}rem;
   margin-bottom: ${20 / 16}rem;
+
+  span span {
+    position: relative;
+    animation: move-text 0.5s forwards;
+    opacity: 0;
+  }
+
+  @keyframes move-text {
+    0% {
+      opacity: 0.33;
+    }
+    50% {
+      opacity: 0.67;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;

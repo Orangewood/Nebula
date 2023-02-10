@@ -12,7 +12,7 @@ const VirusText = "Virus text here";
 export const VirusModel: Lifeform = {
   lifeformId: LifeformEnum.Virus,
   imgPath: Virus,
-  text: VirusText,
+  description: VirusText,
   resources: { life: 1 } as HarvestObj,
   research: { biology: 1 } as ResearchObj,
   explore: {} as ExploreObj,

@@ -12,7 +12,7 @@ const HumanText = "Human text here";
 export const HumanModel: Lifeform = {
   lifeformId: LifeformEnum.Human,
   imgPath: Human,
-  text: HumanText,
+  description: HumanText,
   resources: { life: 1 } as HarvestObj,
   research: { biology: 1, chemistry: 1, physics: 1 } as ResearchObj,
   explore: {} as ExploreObj,

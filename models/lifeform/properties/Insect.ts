@@ -12,10 +12,10 @@ const InsectText = "Insect text here";
 export const InsectModel: Lifeform = {
   lifeformId: LifeformEnum.Insect,
   imgPath: Insect,
-  text: InsectText,
-  resources: { life: 1 } as HarvestObj,
-  research: { biology: 1 } as ResearchObj,
+  description: InsectText,
+  resources: { life: 1, energy: 1 } as HarvestObj,
+  research: {} as ResearchObj,
   explore: { movement: 1 } as ExploreObj,
   engineer: { efficiency: 1 } as EngineerObj,
-  production: { conscript: 1 } as ProductionObj,
+  production: { conscript: 1, reproduce: 1 } as ProductionObj,
 };

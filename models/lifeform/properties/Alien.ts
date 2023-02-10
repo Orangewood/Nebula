@@ -18,10 +18,10 @@ const AlienText = `The Alien's primary advantage allows them to inhabit any plan
 export const AlienModel: Lifeform = {
   lifeformId: LifeformEnum.Alien,
   imgPath: Alien,
-  text: AlienText,
+  description: AlienText,
   resources: { life: 1 } as HarvestObj,
-  research: { physics: 1, robotics: 1, biology: 1 } as ResearchObj,
+  research: { physics: 1, robotics: 1 } as ResearchObj,
   explore: { movement: 1 } as ExploreObj,
-  engineer: { weaponry: 1 } as EngineerObj,
+  engineer: { weaponry: 1, machinery: 1 } as EngineerObj,
   production: {} as ProductionObj,
 };

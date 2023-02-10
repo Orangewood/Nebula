@@ -15,7 +15,7 @@ export interface Lifeform
   extends Omit<Player, "playerId" | "currentPlanetStack"> {
   lifeformId: LifeformEnum;
   imgPath: string;
-  text: string;
+  description: string;
 }
 
 export const lifeformList: Lifeform[] = [

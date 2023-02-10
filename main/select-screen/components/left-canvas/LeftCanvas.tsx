@@ -6,38 +6,41 @@ import { LifeformEnum } from "../../../../models/lifeform/properties/LifeformEnu
 import { LifeformInfo, LifeformTitle, StyledLeftCanvas } from "./styles";
 
 interface LeftCanvasProps {
-  showCanvas: boolean;
-  onClose: (close: boolean) => void;
-  currentLifeForm?: Lifeform;
+  currentLifeForm: Lifeform;
 }
 
 export default function LeftCanvas(props: LeftCanvasProps) {
-  const { showCanvas, onClose, currentLifeForm } = props;
-  const [show, setShow] = useState(false);
+  const { currentLifeForm } = props;
 
-  const handleClose = () => {
-    setShow(false);
-    onClose(true);
+  const getText = (currentLifeForm: Lifeform) => {
+    return (
+      <span
+        key={currentLifeForm.lifeformId.toString()}
+        aria-label={currentLifeForm?.lifeformId.toString()}
+        role="article"
+      >
+        {currentLifeForm?.description.split("").map(function (char, index) {
+          return (
+            <span
+              aria-hidden="true"
+              key={index}
+              style={{ animationDelay: `${0.5 + index / 20}` + "s" }}
+            >
+              {char}
+            </span>
+          );
+        })}
+      </span>
+    );
   };
-
-  // opens canvas from select button
-  useEffect(() => {
-    setShow(showCanvas);
-  }, [showCanvas]);
 
   return (
     <>
-      <StyledLeftCanvas
-        show
-        onHide={handleClose}
-        scroll={false}
-        backdrop={false}
-        placement="start"
-      >
+      <StyledLeftCanvas show scroll={false} backdrop={false} placement="start">
         <LifeformTitle>
           {LifeformEnum[currentLifeForm?.lifeformId ?? -1]}
         </LifeformTitle>
-        <LifeformInfo>{currentLifeForm?.text}</LifeformInfo>
+        <LifeformInfo>{getText(currentLifeForm)}</LifeformInfo>
       </StyledLeftCanvas>
     </>
   );

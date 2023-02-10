@@ -1,39 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Lifeform, lifeformList } from "../../../../models/lifeform/Lifeform";
+import { Lifeform } from "../../../../models/lifeform/Lifeform";
 import { DescriptionContainer, StatsTab, StyledRightCanvas } from "./styles";
 import Tab from "react-bootstrap/Tab";
-import { Card } from "react-bootstrap";
-import Discovery from "../../../../images/resource/Discovery.png";
 import AttributeCard from "../../../../components/card/attribute-card/AttributeCard";
-import { HarvestObj } from "../../../../models/actions/harvest/Harvest";
 
 interface RightCanvasProps {
-  showCanvas: boolean;
-  onClose: (close: boolean) => void;
   currentLifeForm: Lifeform;
 }
 
 export type CardType = Omit<Lifeform, "lifeformId" | "imgPath" | "text">;
 
 export default function RightCanvas(props: RightCanvasProps) {
-  const { showCanvas, onClose, currentLifeForm } = props;
-  const [show, setShow] = useState(false);
-
-  const cardList = lifeformList.map(
-    (lifeform: Lifeform) =>
-      ({
-        resources: lifeform.resources,
-        research: lifeform.research,
-        explore: lifeform.explore,
-        engineer: lifeform.engineer,
-        production: lifeform.production,
-      } as CardType)
-  );
+  const { currentLifeForm } = props;
 
   type CardType = Omit<Lifeform, "imgPath" | "text">;
   let keyList: string[] = [];
-
   function recursiveIter(obj: any) {
     for (var key in obj) {
       if (typeof obj[key] == "object") {
@@ -62,29 +44,14 @@ export default function RightCanvas(props: RightCanvasProps) {
     a.localeCompare(b)
   );
 
-  const handleClose = () => {
-    setShow(false);
-    onClose(true);
-  };
-
-  // opens canvas from select button
-  useEffect(() => {
-    setShow(showCanvas);
-  }, [showCanvas]);
-
   return (
     <>
-      <StyledRightCanvas
-        show
-        onHide={handleClose}
-        scroll={false}
-        backdrop={false}
-        placement="end"
-      >
+      <StyledRightCanvas show scroll={false} backdrop={false} placement="end">
         <StatsTab
           defaultActiveKey="stats"
           id="uncontrolled-tab-example"
           justify
+          style={{ height: "auto" }}
         >
           <Tab eventKey="stats" title="Stats">
             <DescriptionContainer>
@@ -93,8 +60,12 @@ export default function RightCanvas(props: RightCanvasProps) {
               })}
             </DescriptionContainer>
           </Tab>
-          <Tab eventKey="profile" title="Advantage"></Tab>
-          <Tab eventKey="contact" title="Disadvantage"></Tab>
+          <Tab eventKey="profile" title="Advantage">
+            Advantage Here
+          </Tab>
+          <Tab eventKey="contact" title="Disadvantage">
+            Disadvantage Here
+          </Tab>
           <Offcanvas.Body></Offcanvas.Body>
         </StatsTab>
       </StyledRightCanvas>

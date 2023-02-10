@@ -12,7 +12,7 @@ const CloudText = "Cloud text here";
 export const CloudModel: Lifeform = {
   lifeformId: LifeformEnum.Cloud,
   imgPath: Cloud,
-  text: CloudText,
+  description: CloudText,
   resources: { life: 1, fuel: 1, metal: 1 } as HarvestObj,
   research: { astronomy: 1, chemistry: 1 } as ResearchObj,
   explore: { movement: 1 } as ExploreObj,

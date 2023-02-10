@@ -2,12 +2,10 @@ import { Card } from "react-bootstrap";
 import styled from "styled-components";
 
 export const StyledAttributeCard = styled(Card)`
-  display: flex;
-  /* width: ${200 / 16}rem; */
-  height: 90%;
-  /* max-width: 100%; */
-  max-width: 100%;
-  border: 1px solid ${(props) => props.theme.mainColor};
+  height: 100%;
+  max-width: 45%;
+  flex: 1 0 50%;
+  border: 2px solid ${(props) => props.theme.mainColor};
 `;
 
 export const AttributeCardTitle = styled(Card.Title)`

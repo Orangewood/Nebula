@@ -30465,7 +30465,7 @@ function SelectScreen(props) {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                                 src: lifeform.imgPath,
-                                alt: lifeform.text
+                                alt: lifeform.description
                             }, lifeform.lifeformId, false, {
                                 fileName: "main/select-screen/SelectScreen.tsx",
                                 lineNumber: 41,
@@ -30497,8 +30497,6 @@ function SelectScreen(props) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _leftCanvasDefault.default), {
-                showCanvas: showMenu,
-                onClose: ()=>setShowMenu(false),
                 currentLifeForm: getCurrentLifeForm
             }, void 0, false, {
                 fileName: "main/select-screen/SelectScreen.tsx",
@@ -30506,12 +30504,10 @@ function SelectScreen(props) {
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rightCanvasDefault.default), {
-                showCanvas: showMenu,
-                onClose: ()=>setShowMenu(false),
                 currentLifeForm: getCurrentLifeForm
             }, void 0, false, {
                 fileName: "main/select-screen/SelectScreen.tsx",
-                lineNumber: 59,
+                lineNumber: 55,
                 columnNumber: 7
             }, this)
         ]
@@ -34988,7 +34984,7 @@ efficient in its survival. `;
 const AmoebaModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Amoeba,
     imgPath: (0, _amoebaPngDefault.default),
-    text: AmoebaText,
+    description: AmoebaText,
     resources: {
         energy: 1,
         life: 1
@@ -35078,20 +35074,20 @@ const AlienText = `The Alien's primary advantage allows them to inhabit any plan
 const AlienModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Alien,
     imgPath: (0, _alienPngDefault.default),
-    text: AlienText,
+    description: AlienText,
     resources: {
         life: 1
     },
     research: {
         physics: 1,
-        robotics: 1,
-        biology: 1
+        robotics: 1
     },
     explore: {
         movement: 1
     },
     engineer: {
-        weaponry: 1
+        weaponry: 1,
+        machinery: 1
     },
     production: {}
 };
@@ -35106,26 +35102,29 @@ parcelHelpers.export(exports, "CephlapodModel", ()=>CephlapodModel);
 var _cephlapodPng = require("../../../images/lifeform/Cephlapod.png");
 var _cephlapodPngDefault = parcelHelpers.interopDefault(_cephlapodPng);
 var _lifeformEnum = require("./LifeformEnum");
-const CephlapodText = "Cephlapod text here";
+const CephlapodText = `The cosmos has seldom produced such a unique intelligence as the Cephlapod. A lifeform of immense curiousity and resilience - 
+  its cunning ability to observe has ensured its unlikely survival.  A vagabond in the universe, the home planet is unkown as this lifeform 
+  can be seen in the interstellar medium. What is known is how quickly it can mimic behavior of others for it's own bennefit. Through the epochs
+  of time the Cephlapod has garnered a keen sense of observation and understanding of space. As luck would have it, the Cephlapod often stumbles upon
+  abandoned shelters before moving to its next destination.`;
 const CephlapodModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Cephlapod,
     imgPath: (0, _cephlapodPngDefault.default),
-    text: CephlapodText,
+    description: CephlapodText,
     resources: {
         life: 1,
-        ruins: 1,
-        fuel: 1
+        ruins: 1
     },
     research: {
-        biology: 1
+        biology: 1,
+        astronomy: 1
     },
     explore: {
-        observe: 1
+        observe: 1,
+        movement: 1
     },
     engineer: {},
-    production: {
-        reproduce: 1
-    }
+    production: {}
 };
 
 },{"../../../images/lifeform/Cephlapod.png":"lnRWk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"lnRWk":[function(require,module,exports) {
@@ -35142,7 +35141,7 @@ const CloudText = "Cloud text here";
 const CloudModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Cloud,
     imgPath: (0, _cloudPngDefault.default),
-    text: CloudText,
+    description: CloudText,
     resources: {
         life: 1,
         fuel: 1,
@@ -35173,7 +35172,7 @@ const FrozenText = "Frozen text here";
 const FrozenModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Frozen,
     imgPath: (0, _frozenPngDefault.default),
-    text: FrozenText,
+    description: FrozenText,
     resources: {
         life: 1,
         fuel: 1,
@@ -35204,22 +35203,21 @@ const FungusText = "Fungus text here";
 const FungusModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Fungus,
     imgPath: (0, _fungusPngDefault.default),
-    text: FungusText,
+    description: FungusText,
     resources: {
         energy: 1,
-        life: 1
+        life: 1,
+        fuel: 1,
+        ruins: 1
     },
     research: {
-        biology: 1,
-        chemistry: 1
+        biology: 1
     },
     explore: {},
     engineer: {
         efficiency: 1
     },
-    production: {
-        build: 1
-    }
+    production: {}
 };
 
 },{"../../../images/lifeform/Fungus.png":"gK1mH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"gK1mH":[function(require,module,exports) {
@@ -35236,7 +35234,7 @@ const HumanText = "Human text here";
 const HumanModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Human,
     imgPath: (0, _humanPngDefault.default),
-    text: HumanText,
+    description: HumanText,
     resources: {
         life: 1
     },
@@ -35268,13 +35266,12 @@ const InsectText = "Insect text here";
 const InsectModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Insect,
     imgPath: (0, _insectPngDefault.default),
-    text: InsectText,
+    description: InsectText,
     resources: {
-        life: 1
+        life: 1,
+        energy: 1
     },
-    research: {
-        biology: 1
-    },
+    research: {},
     explore: {
         movement: 1
     },
@@ -35282,7 +35279,8 @@ const InsectModel = {
         efficiency: 1
     },
     production: {
-        conscript: 1
+        conscript: 1,
+        reproduce: 1
     }
 };
 
@@ -35300,7 +35298,7 @@ const VirusText = "Virus text here";
 const VirusModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Virus,
     imgPath: (0, _virusPngDefault.default),
-    text: VirusText,
+    description: VirusText,
     resources: {
         life: 1
     },
@@ -35332,21 +35330,21 @@ const TreeText = "Tree text here";
 const TreeModel = {
     lifeformId: (0, _lifeformEnum.LifeformEnum).Tree,
     imgPath: (0, _treePngDefault.default),
-    text: TreeText,
+    description: TreeText,
     resources: {
         fuel: 1,
         energy: 1,
-        life: 1
+        life: 1,
+        discovery: 1
     },
     research: {
-        chemistry: 1,
-        biology: 1
+        chemistry: 1
     },
-    explore: {},
+    explore: {
+        observe: 1
+    },
     engineer: {},
-    production: {
-        reproduce: 1
-    }
+    production: {}
 };
 
 },{"../../../images/lifeform/Tree.png":"z6Lj4","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./LifeformEnum":"7CD6C"}],"z6Lj4":[function(require,module,exports) {
@@ -35366,25 +35364,34 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _lifeformEnum = require("../../../../models/lifeform/properties/LifeformEnum");
 var _styles = require("./styles");
-var _s = $RefreshSig$();
 function LeftCanvas(props) {
-    _s();
-    const { showCanvas , onClose , currentLifeForm  } = props;
-    const [show, setShow] = (0, _react.useState)(false);
-    const handleClose = ()=>{
-        setShow(false);
-        onClose(true);
+    const { currentLifeForm  } = props;
+    const getText = (currentLifeForm)=>{
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+            "aria-label": currentLifeForm?.lifeformId.toString(),
+            role: "article",
+            children: currentLifeForm?.description.split("").map(function(char, index) {
+                return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    "aria-hidden": "true",
+                    style: {
+                        animationDelay: `${0.5 + index / 20}` + "s"
+                    },
+                    children: char
+                }, index, false, {
+                    fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
+                    lineNumber: 24,
+                    columnNumber: 13
+                }, this);
+            })
+        }, currentLifeForm.lifeformId.toString(), false, {
+            fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
+            lineNumber: 17,
+            columnNumber: 7
+        }, this);
     };
-    // opens canvas from select button
-    (0, _react.useEffect)(()=>{
-        setShow(showCanvas);
-    }, [
-        showCanvas
-    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledLeftCanvas), {
             show: true,
-            onHide: handleClose,
             scroll: false,
             backdrop: false,
             placement: "start",
@@ -35393,26 +35400,25 @@ function LeftCanvas(props) {
                     children: (0, _lifeformEnum.LifeformEnum)[currentLifeForm?.lifeformId ?? -1]
                 }, void 0, false, {
                     fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
-                    lineNumber: 37,
+                    lineNumber: 40,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.LifeformInfo), {
-                    children: currentLifeForm?.text
+                    children: getText(currentLifeForm)
                 }, void 0, false, {
                     fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
-                    lineNumber: 40,
+                    lineNumber: 43,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
-            lineNumber: 30,
+            lineNumber: 39,
             columnNumber: 7
         }, this)
     }, void 0, false);
 }
 exports.default = LeftCanvas;
-_s(LeftCanvas, "bXBd/WbmO9A8Q7bxaOKZvuJyGc0=");
 _c = LeftCanvas;
 var _c;
 $RefreshReg$(_c, "LeftCanvas");
@@ -35449,12 +35455,30 @@ const LifeformTitle = (0, _styledComponentsDefault.default)((0, _reactBootstrap.
 `;
 const LifeformInfo = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Offcanvas).Body)`
   display: flex;
-  font-size: 1vw;;
+  font-size: 1vw;
   border: 1px solid ${(props)=>props.theme.mainColor};
   font-family: ${(props)=>props.theme.fontFamily};
   margin-right: ${1.25}rem;
   margin-left: ${1.25}rem;
   margin-bottom: ${1.25}rem;
+
+  span span {
+    position: relative;
+    animation: move-text 0.5s forwards;
+    opacity: 0;
+  }
+
+  @keyframes move-text {
+    0% {
+      opacity: 0.33;
+    }
+    50% {
+      opacity: 0.67;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 },{"react-bootstrap":"3AD9A","styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3AD9A":[function(require,module,exports) {
@@ -37864,24 +37888,13 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _offcanvas = require("react-bootstrap/Offcanvas");
 var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
-var _lifeform = require("../../../../models/lifeform/Lifeform");
 var _styles = require("./styles");
 var _tab = require("react-bootstrap/Tab");
 var _tabDefault = parcelHelpers.interopDefault(_tab);
 var _attributeCard = require("../../../../components/card/attribute-card/AttributeCard");
 var _attributeCardDefault = parcelHelpers.interopDefault(_attributeCard);
-var _s = $RefreshSig$();
 function RightCanvas(props) {
-    _s();
-    const { showCanvas , onClose , currentLifeForm  } = props;
-    const [show, setShow] = (0, _react.useState)(false);
-    const cardList = (0, _lifeform.lifeformList).map((lifeform)=>({
-            resources: lifeform.resources,
-            research: lifeform.research,
-            explore: lifeform.explore,
-            engineer: lifeform.engineer,
-            production: lifeform.production
-        }));
+    const { currentLifeForm  } = props;
     let keyList = [];
     function recursiveIter(obj) {
         for(var key in obj)if (typeof obj[key] == "object") recursiveIter(obj[key]);
@@ -37905,20 +37918,9 @@ function RightCanvas(props) {
         production: currentLifeForm.production
     };
     const currentKeys = recursiveIter(currentCardType).sort((a, b)=>a.localeCompare(b));
-    const handleClose = ()=>{
-        setShow(false);
-        onClose(true);
-    };
-    // opens canvas from select button
-    (0, _react.useEffect)(()=>{
-        setShow(showCanvas);
-    }, [
-        showCanvas
-    ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledRightCanvas), {
             show: true,
-            onHide: handleClose,
             scroll: false,
             backdrop: false,
             placement: "end",
@@ -37926,6 +37928,9 @@ function RightCanvas(props) {
                 defaultActiveKey: "stats",
                 id: "uncontrolled-tab-example",
                 justify: true,
+                style: {
+                    height: "auto"
+                },
                 children: [
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
                         eventKey: "stats",
@@ -37936,56 +37941,57 @@ function RightCanvas(props) {
                                     attributeKey: key
                                 }, void 0, false, {
                                     fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                                    lineNumber: 92,
+                                    lineNumber: 59,
                                     columnNumber: 24
                                 }, this);
                             })
                         }, void 0, false, {
                             fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                            lineNumber: 90,
+                            lineNumber: 57,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                        lineNumber: 89,
+                        lineNumber: 56,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
                         eventKey: "profile",
-                        title: "Advantage"
+                        title: "Advantage",
+                        children: "Advantage Here"
                     }, void 0, false, {
                         fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                        lineNumber: 96,
+                        lineNumber: 63,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _tabDefault.default), {
                         eventKey: "contact",
-                        title: "Disadvantage"
+                        title: "Disadvantage",
+                        children: "Disadvantage Here"
                     }, void 0, false, {
                         fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                        lineNumber: 97,
+                        lineNumber: 66,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {}, void 0, false, {
                         fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                        lineNumber: 98,
+                        lineNumber: 69,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-                lineNumber: 84,
+                lineNumber: 50,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "main/select-screen/components/right-canvas/RightCanvas.tsx",
-            lineNumber: 77,
+            lineNumber: 49,
             columnNumber: 7
         }, this)
     }, void 0, false);
 }
 exports.default = RightCanvas;
-_s(RightCanvas, "bXBd/WbmO9A8Q7bxaOKZvuJyGc0=");
 _c = RightCanvas;
 var _c;
 $RefreshReg$(_c, "RightCanvas");
@@ -37995,7 +38001,7 @@ $RefreshReg$(_c, "RightCanvas");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"bg4Ud","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Offcanvas":"eC3RS","react-bootstrap/Tab":"kfiWM","../../../../components/card/attribute-card/AttributeCard":"hAKVe","../../../../models/lifeform/Lifeform":"iWBIG"}],"bg4Ud":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"bg4Ud","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-bootstrap/Offcanvas":"eC3RS","react-bootstrap/Tab":"kfiWM","../../../../components/card/attribute-card/AttributeCard":"hAKVe"}],"bg4Ud":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "StyledRightCanvas", ()=>StyledRightCanvas);
@@ -38015,10 +38021,11 @@ const StyledRightCanvas = (0, _styledComponentsDefault.default)((0, _reactBootst
 `;
 const DescriptionContainer = (0, _styledComponentsDefault.default).div`
   display: flex;
-  max-width: 100%;
-  flex-direction: column;
-  overflow-y: scroll;
-  max-height: 99vh;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  margin-top: 2rem;
 `;
 const StatsTab = (0, _styledComponentsDefault.default)((0, _tabsDefault.default))`
   color: ${(props)=>props.theme.mainColor};
@@ -38215,12 +38222,10 @@ var _reactBootstrap = require("react-bootstrap");
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const StyledAttributeCard = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Card))`
-  display: flex;
-  /* width: ${12.5}rem; */
-  height: 90%;
-  /* max-width: 100%; */
-  max-width: 100%;
-  border: 1px solid ${(props)=>props.theme.mainColor};
+  height: 100%;
+  max-width: 45%;
+  flex: 1 0 50%;
+  border: 2px solid ${(props)=>props.theme.mainColor};
 `;
 const AttributeCardTitle = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Card).Title)`
   display: flex;

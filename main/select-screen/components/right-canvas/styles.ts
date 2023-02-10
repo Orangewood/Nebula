@@ -12,10 +12,11 @@ export const StyledRightCanvas = styled(Offcanvas)`
 
 export const DescriptionContainer = styled.div`
   display: flex;
-  max-width: 100%;
-  flex-direction: column;
-  overflow-y: scroll;
-  max-height: 99vh;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 2rem;
+  column-gap: 2rem;
+  margin-top: 2rem;
 `;
 
 export const StatsTab = styled(Tabs)`

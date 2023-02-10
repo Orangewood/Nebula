@@ -17,7 +17,7 @@ efficient in its survival. `;
 export const AmoebaModel: Lifeform = {
   lifeformId: LifeformEnum.Amoeba,
   imgPath: Amoeba,
-  text: AmoebaText,
+  description: AmoebaText,
   resources: { energy: 1, life: 1 } as HarvestObj,
   research: { biology: 1, chemistry: 1 } as ResearchObj,
   explore: {} as ExploreObj,

@@ -1,5 +1,5 @@
 import PlanetGenerator from "../../generators/PlanetGenerator";
-import { PlanetStats } from "../../stats/Stats";
+import { PlanetStats } from "../../stats/PlanetStats";
 import { Engineer, EngineerObj } from "../actions/engineer/Engineer";
 import { Explore, ExploreObj } from "../actions/explore/Explore";
 import { HarvestObj } from "../actions/harvest/Harvest";
