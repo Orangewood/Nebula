@@ -28907,6 +28907,8 @@ var _cardContainerDefault = parcelHelpers.interopDefault(_cardContainer);
 var _screen = require("../models/screen/Screen");
 var _theme = require("../theme/Theme");
 var _styles = require("./game-container/styles");
+var _mainScreen = require("./main-screen/MainScreen");
+var _mainScreenDefault = parcelHelpers.interopDefault(_mainScreen);
 var _selectScreen = require("./select-screen/SelectScreen");
 var _selectScreenDefault = parcelHelpers.interopDefault(_selectScreen);
 var _welcomeScreen = require("./welcome-screen/WelcomeScreen");
@@ -28927,29 +28929,36 @@ function App() {
                         loadLifeformScreen: (screen)=>setScreenState(screen ?? screenState)
                     }, void 0, false, {
                         fileName: "main/App.tsx",
-                        lineNumber: 22,
+                        lineNumber: 24,
                         columnNumber: 13
                     }, this),
-                    screenState === (0, _screen.ScreenSwitch).Lifeform && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _selectScreenDefault.default), {}, void 0, false, {
+                    screenState === (0, _screen.ScreenSwitch).Lifeform && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _selectScreenDefault.default), {
+                        onLifeformSelect: ()=>setScreenState((0, _screen.ScreenSwitch).MainScreen)
+                    }, void 0, false, {
                         fileName: "main/App.tsx",
-                        lineNumber: 28,
-                        columnNumber: 53
+                        lineNumber: 31,
+                        columnNumber: 13
                     }, this),
                     screenState === (0, _screen.ScreenSwitch).CardTest && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _cardContainerDefault.default), {}, void 0, false, {
                         fileName: "main/App.tsx",
-                        lineNumber: 29,
+                        lineNumber: 35,
                         columnNumber: 53
+                    }, this),
+                    screenState === (0, _screen.ScreenSwitch).MainScreen && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainScreenDefault.default), {}, void 0, false, {
+                        fileName: "main/App.tsx",
+                        lineNumber: 36,
+                        columnNumber: 55
                     }, this)
                 ]
             }, void 0, true)
         }, void 0, false, {
             fileName: "main/App.tsx",
-            lineNumber: 19,
+            lineNumber: 21,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "main/App.tsx",
-        lineNumber: 18,
+        lineNumber: 20,
         columnNumber: 5
     }, this);
 }
@@ -28964,7 +28973,7 @@ $RefreshReg$(_c, "App");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../models/screen/Screen":"7Mijn","./game-container/styles":"7wk2x","./select-screen/SelectScreen":"7tUrQ","./welcome-screen/WelcomeScreen":"jmiu7","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../components/card/card-container/CardContainer":"iziV0","styled-components":"1U3k6","../theme/Theme":"fGKFj"}],"7Mijn":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../models/screen/Screen":"7Mijn","./game-container/styles":"7wk2x","./select-screen/SelectScreen":"7tUrQ","./welcome-screen/WelcomeScreen":"jmiu7","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../components/card/card-container/CardContainer":"iziV0","styled-components":"1U3k6","../theme/Theme":"fGKFj","./main-screen/MainScreen":"b8NoT"}],"7Mijn":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ScreenSwitch", ()=>ScreenSwitch);
@@ -28973,6 +28982,7 @@ let ScreenSwitch;
     ScreenSwitch[ScreenSwitch["Welcome"] = 1] = "Welcome";
     ScreenSwitch[ScreenSwitch["Lifeform"] = 2] = "Lifeform";
     ScreenSwitch[ScreenSwitch["CardTest"] = 3] = "CardTest";
+    ScreenSwitch[ScreenSwitch["MainScreen"] = 4] = "MainScreen";
 })(ScreenSwitch || (ScreenSwitch = {}));
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7wk2x":[function(require,module,exports) {
@@ -30443,16 +30453,21 @@ var _rightCanvasDefault = parcelHelpers.interopDefault(_rightCanvas);
 var _s = $RefreshSig$();
 function SelectScreen(props) {
     _s();
+    const { onLifeformSelect  } = props;
     const [activeStep, setActiveStep] = (0, _react.useState)(0);
-    const [showMenu, setShowMenu] = (0, _react.useState)(false);
+    const [selectedLifeform, setSelectedLifeform] = (0, _react.useState)(null);
     const currentLifeFormId = activeStep + 1;
     const onChange = (currentSlide)=>{
         setActiveStep(currentSlide);
     };
-    const handleClickIcon = ()=>{
-        if (showMenu) setShowMenu(false);
-    };
     const getCurrentLifeForm = (0, _lifeform.lifeformList).find((lifeform)=>lifeform.lifeformId === currentLifeFormId);
+    const handleSelect = (currentLifeform)=>{
+        // todo: error message/disaable, set lifeform with redux
+        console.log("currentLifeform", currentLifeform);
+        if (!currentLifeform) return;
+        setSelectedLifeform(currentLifeform.lifeformId);
+        onLifeformSelect();
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledCarousel), {
@@ -30460,7 +30475,7 @@ function SelectScreen(props) {
                 onSelect: onChange,
                 interval: null,
                 touch: true,
-                onSlide: handleClickIcon,
+                fade: true,
                 children: (0, _lifeform.lifeformList).map((lifeform)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CarouselItem), {
                         children: [
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
@@ -30468,53 +30483,53 @@ function SelectScreen(props) {
                                 alt: lifeform.description
                             }, lifeform.lifeformId, false, {
                                 fileName: "main/select-screen/SelectScreen.tsx",
-                                lineNumber: 41,
+                                lineNumber: 50,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CarouselCaption), {
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.CarouselButton), {
-                                    onClick: ()=>setShowMenu(!showMenu),
+                                    onClick: ()=>handleSelect(),
                                     children: "Select"
                                 }, void 0, false, {
                                     fileName: "main/select-screen/SelectScreen.tsx",
-                                    lineNumber: 47,
+                                    lineNumber: 56,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "main/select-screen/SelectScreen.tsx",
-                                lineNumber: 46,
+                                lineNumber: 55,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "main/select-screen/SelectScreen.tsx",
-                        lineNumber: 40,
+                        lineNumber: 49,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
                 fileName: "main/select-screen/SelectScreen.tsx",
-                lineNumber: 32,
+                lineNumber: 41,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _leftCanvasDefault.default), {
                 currentLifeForm: getCurrentLifeForm
             }, void 0, false, {
                 fileName: "main/select-screen/SelectScreen.tsx",
-                lineNumber: 54,
+                lineNumber: 63,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rightCanvasDefault.default), {
                 currentLifeForm: getCurrentLifeForm
             }, void 0, false, {
                 fileName: "main/select-screen/SelectScreen.tsx",
-                lineNumber: 55,
+                lineNumber: 64,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
 exports.default = SelectScreen;
-_s(SelectScreen, "YHty5dP5R6OLJavT4bo5iDPwWw8=");
+_s(SelectScreen, "7pUkuoIeTAj+MaW9TkIgTVFSgg0=");
 _c = SelectScreen;
 var _c;
 $RefreshReg$(_c, "SelectScreen");
@@ -35374,18 +35389,18 @@ function LeftCanvas(props) {
                 return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                     "aria-hidden": "true",
                     style: {
-                        animationDelay: `${0.5 + index / 20}` + "s"
+                        animationDelay: `${0.5 + index / 500}` + "s"
                     },
                     children: char
                 }, index, false, {
                     fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
-                    lineNumber: 24,
+                    lineNumber: 22,
                     columnNumber: 13
                 }, this);
             })
         }, currentLifeForm.lifeformId.toString(), false, {
             fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
-            lineNumber: 17,
+            lineNumber: 15,
             columnNumber: 7
         }, this);
     };
@@ -35400,20 +35415,20 @@ function LeftCanvas(props) {
                     children: (0, _lifeformEnum.LifeformEnum)[currentLifeForm?.lifeformId ?? -1]
                 }, void 0, false, {
                     fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
-                    lineNumber: 40,
+                    lineNumber: 38,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.LifeformInfo), {
                     children: getText(currentLifeForm)
                 }, void 0, false, {
                     fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
-                    lineNumber: 43,
+                    lineNumber: 41,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "main/select-screen/components/left-canvas/LeftCanvas.tsx",
-            lineNumber: 39,
+            lineNumber: 37,
             columnNumber: 7
         }, this)
     }, void 0, false);
@@ -35464,7 +35479,7 @@ const LifeformInfo = (0, _styledComponentsDefault.default)((0, _reactBootstrap.O
 
   span span {
     position: relative;
-    animation: move-text 0.5s forwards;
+    animation: move-text 2s forwards;
     opacity: 0;
   }
 
@@ -43111,7 +43126,129 @@ const baseTheme = {
     fontFamily: `"Cinzel Decorative", cursive`
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ktNEj":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b8NoT":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$8787 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$8787.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _drawCanvas = require("../../components/offcanvas/DrawCanvas");
+var _drawCanvasDefault = parcelHelpers.interopDefault(_drawCanvas);
+var _styles = require("./styles");
+function MainScreen(props) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.DrawContainer), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _drawCanvasDefault.default), {
+            planetStack: []
+        }, void 0, false, {
+            fileName: "main/main-screen/MainScreen.tsx",
+            lineNumber: 10,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "main/main-screen/MainScreen.tsx",
+        lineNumber: 9,
+        columnNumber: 5
+    }, this);
+}
+exports.default = MainScreen;
+_c = MainScreen;
+var _c;
+$RefreshReg$(_c, "MainScreen");
+
+  $parcel$ReactRefreshHelpers$8787.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../components/offcanvas/DrawCanvas":"l46Pz","./styles":"cmtsL"}],"l46Pz":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$e1fa = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$e1fa.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _styles = require("./styles");
+var _s = $RefreshSig$();
+function DrawCanvas(props) {
+    _s();
+    const [show, setShow] = (0, _react.useState)(false);
+    const handleClose = ()=>setShow(false);
+    const handleShow = ()=>setShow(true);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.StyledDrawCanvas), {
+        scroll: false,
+        backdrop: false,
+        show: true,
+        onHide: handleClose,
+        placement: "bottom",
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.DrawInfo), {
+            children: "asl;kdfjal;ksdjf;alksjdflk;ajsdf;kljasd;lfkjas;ldkfjas;dlkfj"
+        }, void 0, false, {
+            fileName: "components/offcanvas/DrawCanvas.tsx",
+            lineNumber: 22,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "components/offcanvas/DrawCanvas.tsx",
+        lineNumber: 15,
+        columnNumber: 5
+    }, this);
+}
+exports.default = DrawCanvas;
+_s(DrawCanvas, "NKb1ZOdhT+qUsWLXSgjSS2bk2C4=");
+_c = DrawCanvas;
+var _c;
+$RefreshReg$(_c, "DrawCanvas");
+
+  $parcel$ReactRefreshHelpers$e1fa.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"ipA2y","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"ipA2y":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "StyledDrawCanvas", ()=>StyledDrawCanvas);
+parcelHelpers.export(exports, "DrawInfo", ()=>DrawInfo);
+var _reactBootstrap = require("react-bootstrap");
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const StyledDrawCanvas = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Offcanvas))`
+  display: flex;
+  background-color: ${(props)=>props.theme.backgroundColor};
+  color: ${(props)=>props.theme.mainColor};
+  font-family: ${(props)=>props.theme.fontFamily};
+`;
+const DrawInfo = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Offcanvas).Body)`
+  display: flex;
+  font-size: 1vw;
+  border: 1px solid ${(props)=>props.theme.mainColor};
+  font-family: ${(props)=>props.theme.fontFamily};
+`;
+
+},{"react-bootstrap":"3AD9A","styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cmtsL":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DrawContainer", ()=>DrawContainer);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const DrawContainer = (0, _styledComponentsDefault.default).div`
+  display: flex;
+  width: 100%;
+  height: 100%;
+`;
+
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ktNEj":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "store", ()=>store);

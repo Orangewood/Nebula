@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
-import Offcanvas from "react-bootstrap/Offcanvas";
+import React from "react";
 import { Lifeform } from "../../../../models/lifeform/Lifeform";
 import { LifeformEnum } from "../../../../models/lifeform/properties/LifeformEnum";
 import { LifeformInfo, LifeformTitle, StyledLeftCanvas } from "./styles";
@@ -24,7 +22,7 @@ export default function LeftCanvas(props: LeftCanvasProps) {
             <span
               aria-hidden="true"
               key={index}
-              style={{ animationDelay: `${0.5 + index / 20}` + "s" }}
+              style={{ animationDelay: `${0.5 + index / 500}` + "s" }}
             >
               {char}
             </span>

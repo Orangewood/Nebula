@@ -28,7 +28,7 @@ export const LifeformInfo = styled(Offcanvas.Body)`
 
   span span {
     position: relative;
-    animation: move-text 0.5s forwards;
+    animation: move-text 2s forwards;
     opacity: 0;
   }
 

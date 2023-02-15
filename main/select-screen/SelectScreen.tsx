@@ -5,28 +5,37 @@ import {
   CarouselItem,
   StyledCarousel,
 } from "./styles";
-import { lifeformList } from "../../models/lifeform/Lifeform";
+import { Lifeform, lifeformList } from "../../models/lifeform/Lifeform";
 import LeftCanvas from "./components/left-canvas/LeftCanvas";
 import RightCanvas from "./components/right-canvas/RightCanvas";
+import LifeformStats from "../../stats/LifeformStats";
 
-interface SelectScreenProps {}
+interface SelectScreenProps {
+  onLifeformSelect: () => void;
+}
 
 export default function SelectScreen(props: SelectScreenProps) {
+  const { onLifeformSelect } = props;
   const [activeStep, setActiveStep] = useState(0);
-  const [showMenu, setShowMenu] = useState(false);
+  const [selectedLifeform, setSelectedLifeform] = useState<number | null>(null);
   const currentLifeFormId = activeStep + 1;
 
   const onChange = (currentSlide: number) => {
     setActiveStep(currentSlide);
   };
 
-  const handleClickIcon = () => {
-    if (showMenu) setShowMenu(false);
-  };
-
   const getCurrentLifeForm = lifeformList.find(
     (lifeform) => lifeform.lifeformId === currentLifeFormId
   );
+
+  const handleSelect = (currentLifeform?: Lifeform) => {
+    // todo: error message/disaable, set lifeform with redux
+    console.log("currentLifeform", currentLifeform);
+    if (!currentLifeform) return;
+    setSelectedLifeform(currentLifeform.lifeformId);
+    onLifeformSelect();
+  };
+
   return (
     <>
       <StyledCarousel
@@ -34,7 +43,7 @@ export default function SelectScreen(props: SelectScreenProps) {
         onSelect={onChange}
         interval={null}
         touch
-        onSlide={handleClickIcon}
+        fade
       >
         {lifeformList.map((lifeform) => (
           <CarouselItem>
@@ -44,14 +53,14 @@ export default function SelectScreen(props: SelectScreenProps) {
               key={lifeform.lifeformId}
             />
             <CarouselCaption>
-              <CarouselButton onClick={() => setShowMenu(!showMenu)}>
+              <CarouselButton onClick={() => handleSelect()}>
                 Select
               </CarouselButton>
             </CarouselCaption>
           </CarouselItem>
         ))}
       </StyledCarousel>
-      <LeftCanvas currentLifeForm={getCurrentLifeForm} />
+      <LeftCanvas currentLifeForm={getCurrentLifeForm!} />
       <RightCanvas currentLifeForm={getCurrentLifeForm!} />
     </>
   );
