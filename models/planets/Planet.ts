@@ -33,4 +33,5 @@ export interface Planet {
   composition: Composition[];
   resources: Resource[];
   stability: number;
+  image: any;
 }

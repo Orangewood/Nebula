@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Offcanvas } from "react-bootstrap";
 import { Planet } from "../../models/planets/Planet";
-import { DrawInfo, StyledDrawCanvas } from "./styles";
+import { DrawCanvasHeader, DrawInfo, StyledDrawCanvas } from "./styles";
 
 interface DrawCanvasProps {
-  planetStack: Planet[];
+  children: JSX.Element;
 }
 export default function DrawCanvas(props: DrawCanvasProps) {
+  const { children } = props;
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -19,9 +20,7 @@ export default function DrawCanvas(props: DrawCanvasProps) {
       onHide={handleClose}
       placement="bottom"
     >
-      <DrawInfo>
-        asl;kdfjal;ksdjf;alksjdflk;ajsdf;kljasd;lfkjas;ldkfjas;dlkfj
-      </DrawInfo>
+      <DrawInfo>{children}</DrawInfo>
     </StyledDrawCanvas>
   );
 }

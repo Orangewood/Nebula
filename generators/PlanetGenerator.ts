@@ -6,6 +6,7 @@ import PlanetaryCompositionGenerator from "./PlanetaryCompositionGenerator";
 import TemperatureGenerator from "./TemperatureGenerator";
 import ResourceGeneartor from "./ResourceGenerator";
 import StabilityGenerator from "./StabilityGenerator";
+import PlanetImageGenerator from "./PlanetImageGenerator";
 
 export default function PlanetGenerator(planetAmount: number): Planet[] {
   const PlanetList: Planet[] = [];
@@ -22,6 +23,7 @@ export default function PlanetGenerator(planetAmount: number): Planet[] {
       composition: generatedComposition,
       resources: ResourceGeneartor(generatedComposition, planetAmount),
       stability: StabilityGenerator(generatedPlanetType),
+      image: PlanetImageGenerator(generatedPlanetType),
     };
     PlanetList.push(newPlanet);
   }

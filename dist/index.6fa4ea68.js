@@ -28919,7 +28919,7 @@ const theme = {
 };
 function App() {
     _s();
-    const [screenState, setScreenState] = (0, _react.useState)((0, _screen.ScreenSwitch).Lifeform);
+    const [screenState, setScreenState] = (0, _react.useState)((0, _screen.ScreenSwitch).MainScreen);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styledComponents.ThemeProvider), {
         theme: theme,
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.GameContainer), {
@@ -28963,7 +28963,7 @@ function App() {
     }, this);
 }
 exports.default = App;
-_s(App, "BvpRotTM5/ZwYeKiooxEug0W/Ew=");
+_s(App, "Jbse653hTHW8SteNv2VRcQWkHHg=");
 _c = App;
 var _c;
 $RefreshReg$(_c, "App");
@@ -38594,6 +38594,8 @@ var _resourceGenerator = require("./ResourceGenerator");
 var _resourceGeneratorDefault = parcelHelpers.interopDefault(_resourceGenerator);
 var _stabilityGenerator = require("./StabilityGenerator");
 var _stabilityGeneratorDefault = parcelHelpers.interopDefault(_stabilityGenerator);
+var _planetImageGenerator = require("./PlanetImageGenerator");
+var _planetImageGeneratorDefault = parcelHelpers.interopDefault(_planetImageGenerator);
 function PlanetGenerator(planetAmount) {
     const PlanetList = [];
     for(var i = 0; i < planetAmount; i++){
@@ -38605,7 +38607,8 @@ function PlanetGenerator(planetAmount) {
             type: generatedPlanetType,
             composition: generatedComposition,
             resources: (0, _resourceGeneratorDefault.default)(generatedComposition, planetAmount),
-            stability: (0, _stabilityGeneratorDefault.default)(generatedPlanetType)
+            stability: (0, _stabilityGeneratorDefault.default)(generatedPlanetType),
+            image: (0, _planetImageGeneratorDefault.default)(generatedPlanetType)
         };
         PlanetList.push(newPlanet);
     }
@@ -38613,7 +38616,7 @@ function PlanetGenerator(planetAmount) {
 }
 exports.default = PlanetGenerator;
 
-},{"./RandomEnumKey":"d89k0","../models/planets/PlanetNames":"7Ll3g","../models/planets/Planet":"fbCJI","./NameGenerator":"cei1n","./PlanetaryCompositionGenerator":"8MrB1","./TemperatureGenerator":"bsEZP","./ResourceGenerator":"7rum1","./StabilityGenerator":"1rcyi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d89k0":[function(require,module,exports) {
+},{"./RandomEnumKey":"d89k0","../models/planets/PlanetNames":"7Ll3g","../models/planets/Planet":"fbCJI","./NameGenerator":"cei1n","./PlanetaryCompositionGenerator":"8MrB1","./TemperatureGenerator":"bsEZP","./ResourceGenerator":"7rum1","./StabilityGenerator":"1rcyi","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./PlanetImageGenerator":"6I6EX"}],"d89k0":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 function randomEnumKey(enumObj) {
@@ -39009,7 +39012,41 @@ function StabilityGenerator(planet) {
 }
 exports.default = StabilityGenerator;
 
-},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iu5Bi":[function(require,module,exports) {
+},{"../models/planets/Planet":"fbCJI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6I6EX":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _planet = require("../models/planets/Planet");
+const dwarfDir = "../../../images/planets/dwarf-planet";
+const gasGiantDir = "../../../images/planets/gas-giant";
+const gaseousDir = "../../../images/planets/gaseous";
+const iceGiantDir = "../../../images/planets/ice-giant";
+const terrestrialDir = "../../../images/planets/terrestrial";
+function PlanetImageGenerator(planetType) {
+    const getImage = (path)=>{
+        let imagePath = "";
+        // readFileSync((path) => {
+        //   const length = files.length;
+        const randomIndex = Math.floor(Math.random() * 26) + 1;
+        imagePath = `${path}/` + randomIndex + ".png";
+        // });
+        return imagePath.replace(/['"]+/g, "");
+    };
+    switch(planetType){
+        case (0, _planet.PlanetType).DWARFPLANET:
+            return getImage(dwarfDir);
+        case (0, _planet.PlanetType).GASEOUS:
+            return getImage(gasGiantDir);
+        case (0, _planet.PlanetType).GASGIANT:
+            return getImage(gaseousDir);
+        case (0, _planet.PlanetType).ICEGIANT:
+            return getImage(iceGiantDir);
+        case (0, _planet.PlanetType).TERRESTRIAL:
+            return getImage(terrestrialDir);
+    }
+}
+exports.default = PlanetImageGenerator;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../models/planets/Planet":"fbCJI"}],"iu5Bi":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "useAppDispatch", ()=>useAppDispatch);
@@ -39107,8 +39144,8 @@ var _reselect = require("reselect");
 // src/getDefaultMiddleware.ts
 var _reduxThunk = require("redux-thunk");
 var _reduxThunkDefault = parcelHelpers.interopDefault(_reduxThunk);
-var global = arguments[3];
 var process = require("d8948c759ee90c13");
+var global = arguments[3];
 var __extends = undefined && undefined.__extends || function() {
     var extendStatics = function(d, b) {
         extendStatics = Object.setPrototypeOf || ({
@@ -43138,21 +43175,36 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _planetCard = require("../../components/card/planet-card/PlanetCard");
+var _planetCardDefault = parcelHelpers.interopDefault(_planetCard);
 var _drawCanvas = require("../../components/offcanvas/DrawCanvas");
 var _drawCanvasDefault = parcelHelpers.interopDefault(_drawCanvas);
+var _planetGenerator = require("../../generators/PlanetGenerator");
+var _planetGeneratorDefault = parcelHelpers.interopDefault(_planetGenerator);
 var _styles = require("./styles");
+const testPlanets = (0, _planetGeneratorDefault.default)(5);
 function MainScreen(props) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.DrawContainer), {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _drawCanvasDefault.default), {
-            planetStack: []
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                children: testPlanets.map((planet)=>{
+                    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _planetCardDefault.default), {
+                        currentPlanet: planet
+                    }, void 0, false, {
+                        fileName: "main/main-screen/MainScreen.tsx",
+                        lineNumber: 17,
+                        columnNumber: 20
+                    }, this);
+                })
+            }, void 0, false)
         }, void 0, false, {
             fileName: "main/main-screen/MainScreen.tsx",
-            lineNumber: 10,
+            lineNumber: 14,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "main/main-screen/MainScreen.tsx",
-        lineNumber: 9,
+        lineNumber: 13,
         columnNumber: 5
     }, this);
 }
@@ -43166,7 +43218,7 @@ $RefreshReg$(_c, "MainScreen");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../components/offcanvas/DrawCanvas":"l46Pz","./styles":"cmtsL"}],"l46Pz":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../components/offcanvas/DrawCanvas":"l46Pz","./styles":"cmtsL","../../components/card/planet-card/PlanetCard":"9X5We","../../generators/PlanetGenerator":"4BayG"}],"l46Pz":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$e1fa = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -43182,6 +43234,7 @@ var _styles = require("./styles");
 var _s = $RefreshSig$();
 function DrawCanvas(props) {
     _s();
+    const { children  } = props;
     const [show, setShow] = (0, _react.useState)(false);
     const handleClose = ()=>setShow(false);
     const handleShow = ()=>setShow(true);
@@ -43192,15 +43245,15 @@ function DrawCanvas(props) {
         onHide: handleClose,
         placement: "bottom",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.DrawInfo), {
-            children: "asl;kdfjal;ksdjf;alksjdflk;ajsdf;kljasd;lfkjas;ldkfjas;dlkfj"
+            children: children
         }, void 0, false, {
             fileName: "components/offcanvas/DrawCanvas.tsx",
-            lineNumber: 22,
+            lineNumber: 23,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "components/offcanvas/DrawCanvas.tsx",
-        lineNumber: 15,
+        lineNumber: 16,
         columnNumber: 5
     }, this);
 }
@@ -43215,25 +43268,31 @@ $RefreshReg$(_c, "DrawCanvas");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"ipA2y","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"ipA2y":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","./styles":"ipA2y"}],"ipA2y":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "StyledDrawCanvas", ()=>StyledDrawCanvas);
+parcelHelpers.export(exports, "DrawCanvasHeader", ()=>DrawCanvasHeader);
 parcelHelpers.export(exports, "DrawInfo", ()=>DrawInfo);
 var _reactBootstrap = require("react-bootstrap");
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const StyledDrawCanvas = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Offcanvas))`
   display: flex;
-  background-color: ${(props)=>props.theme.backgroundColor};
-  color: ${(props)=>props.theme.mainColor};
-  font-family: ${(props)=>props.theme.fontFamily};
+  height: 55% !important;
+`;
+const DrawCanvasHeader = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Offcanvas).Header)`
+  button {
+    color: ${(props)=>props.theme.mainColor};
+  }
 `;
 const DrawInfo = (0, _styledComponentsDefault.default)((0, _reactBootstrap.Offcanvas).Body)`
   display: flex;
   font-size: 1vw;
-  border: 1px solid ${(props)=>props.theme.mainColor};
   font-family: ${(props)=>props.theme.fontFamily};
+  color: ${(props)=>props.theme.mainColor};
+  border: 1px solid ${(props)=>props.theme.mainColor};
+  background-color: ${(props)=>props.theme.backgroundColor};
 `;
 
 },{"react-bootstrap":"3AD9A","styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cmtsL":[function(require,module,exports) {
@@ -43246,6 +43305,64 @@ const DrawContainer = (0, _styledComponentsDefault.default).div`
   display: flex;
   width: 100%;
   height: 100%;
+`;
+
+},{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9X5We":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$51ca = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$51ca.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _styles = require("./styles");
+const okay = "../../../images/planets/gaseous/22.png";
+function PlanetCard(props) {
+    const { currentPlanet  } = props;
+    //   console.log(currentPlanet.image);
+    //   console.log((currentPlanet.image as string).toString());
+    //   const what = require(`${currentPlanet.image}`);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _styles.PlanetCardContainer), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
+            src: require(okay)
+        }, void 0, false, {
+            fileName: "components/card/planet-card/PlanetCard.tsx",
+            lineNumber: 16,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "components/card/planet-card/PlanetCard.tsx",
+        lineNumber: 15,
+        columnNumber: 5
+    }, this);
+} //https://stackoverflow.com/questions/17446844/dynamic-require-in-requirejs-getting-module-name-has-not-been-loaded-yet-for-c
+exports.default = PlanetCard;
+_c = PlanetCard;
+var _c;
+$RefreshReg$(_c, "PlanetCard");
+
+  $parcel$ReactRefreshHelpers$51ca.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","./styles":"koK1J","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"koK1J":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "PlanetCardContainer", ()=>PlanetCardContainer);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+const PlanetCardContainer = (0, _styledComponentsDefault.default).div`
+  display: flex;
+  min-height: 100%;
+  width: 100%;
+  font-family: ${(props)=>props.theme.fontFamily};
+  color: ${(props)=>props.theme.mainColor};
+  border: 1px solid ${(props)=>props.theme.mainColor};
 `;
 
 },{"styled-components":"1U3k6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ktNEj":[function(require,module,exports) {
