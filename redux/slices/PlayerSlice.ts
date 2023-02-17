@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Planet } from "../../models/planets/Planet";
-import { Player } from "../../models/player/Player";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { Player } from "../../src/models/player/Player";
+import { Planet } from "../../src/models/planets/Planet";
 
 export const PlayerSlice = createSlice({
   name: "Player",

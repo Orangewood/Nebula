@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Planet } from "../../models/planets/Planet";
-import PlanetGenerator from "../../generators/PlanetGenerator";
+import PlanetGenerator from "../../src/generators/PlanetGenerator";
+import { Planet } from "../../src/models/planets/Planet";
 
 interface DeckType {
   deck: Planet[];
