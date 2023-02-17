@@ -3,7 +3,7 @@ export enum LifeformEnum {
     Alien = 2,
     Cephlapod = 3,
     Cloud = 4,
-    Frozen = 5,
+    Medusa = 5,
     Fungus = 6,
     Human = 7,
     Insect = 8,

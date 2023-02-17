@@ -2,7 +2,7 @@ import { AmoebaModel } from "./properties/Amoeba";
 import { AlienModel } from "./properties/Alien";
 import { CephlapodModel } from "./properties/Cephlapod";
 import { CloudModel } from "./properties/Cloud";
-import { FrozenModel } from "./properties/Frozen";
+import { MedusaModel } from "./properties/Medusa";
 import { FungusModel } from "./properties/Fungus";
 import { HumanModel } from "./properties/Human";
 import { InsectModel } from "./properties/Insect";
@@ -23,7 +23,7 @@ export const lifeformList: Lifeform[] = [
   AlienModel,
   CephlapodModel,
   CloudModel,
-  FrozenModel,
+  MedusaModel,
   FungusModel,
   HumanModel,
   InsectModel,
