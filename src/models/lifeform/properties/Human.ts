@@ -12,7 +12,7 @@ developed a wide range of complex societies, from small bands of hunter-gatherer
 They have created remarkable technologies, from simple stone tools to the internet and space travel.
 Despite their many strengths, humans are also known for their flaws and imperfections. They are capable of great cruelty 
 and violence, as well as incredible kindness and compassion. They excel in the research of science but they are 
-threatened and hindered from their dependence of terrestrial planets.`;
+threatened and hindered from their dependence of internal cooperation.`;
 
 export const HumanModel: Lifeform = {
   lifeformId: LifeformEnum.Human,

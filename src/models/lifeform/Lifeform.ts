@@ -10,9 +10,18 @@ import { VirusModel } from "./properties/Virus";
 import { TreeModel } from "./properties/Tree";
 import { Player } from "../player/Player";
 import { LifeformEnum } from "./properties/LifeformEnum";
+import { HarvestObj } from "../actions/harvest/Harvest";
+import { ResearchObj } from "../actions/research/Research";
+import { ExploreObj } from "../actions/explore/Explore";
+import { EngineerObj } from "../actions/engineer/Engineer";
+import { ProductionObj } from "../actions/production/Production";
 
-export interface Lifeform
-  extends Omit<Player, "playerId" | "currentPlanetStack"> {
+export interface Lifeform {
+  resources: HarvestObj;
+  research: ResearchObj;
+  explore: ExploreObj;
+  engineer: EngineerObj;
+  production: ProductionObj;
   lifeformId: LifeformEnum;
   imgPath: string;
   description: string;

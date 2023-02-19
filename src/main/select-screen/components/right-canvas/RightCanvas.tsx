@@ -4,46 +4,28 @@ import { Lifeform } from "../../../../models/lifeform/Lifeform";
 import { DescriptionContainer, StatsTab, StyledRightCanvas } from "./styles";
 import Tab from "react-bootstrap/Tab";
 import AttributeCard from "../../../../components/card/attribute-card/AttributeCard";
+import { ResourceCardType } from "../../../../models/cards/ResourceCard";
+import ResourceCardGenerator from "../../../../generators/lifeform-cards/ResourceCardGenerator";
+import LifeformCardGenerator from "../../../../generators/lifeform-cards/LifeformCardGenerator";
 
 interface RightCanvasProps {
   currentLifeForm: Lifeform;
 }
 
-export type CardType = Omit<Lifeform, "lifeformId" | "imgPath" | "text">;
-
 export default function RightCanvas(props: RightCanvasProps) {
   const { currentLifeForm } = props;
 
-  type CardType = Omit<Lifeform, "imgPath" | "text">;
-  let keyList: string[] = [];
-  function recursiveIter(obj: any) {
-    for (var key in obj) {
-      if (typeof obj[key] == "object") {
-        recursiveIter(obj[key]);
-      } else {
-        Object.keys(obj).forEach((key) => {
-          const capitalizedKey = key.replace(/(^\w|\s\w)/g, (m: string) =>
-            m.toUpperCase()
-          );
-          keyList = [capitalizedKey, ...keyList];
-        });
-        break;
-      }
-    }
-    return keyList;
-  }
-  const currentCardType = {
+  const lifeFormToResourceCardType = {
     resources: currentLifeForm.resources,
     research: currentLifeForm.research,
     explore: currentLifeForm.explore,
     engineer: currentLifeForm.engineer,
     production: currentLifeForm.production,
-  } as CardType;
+  } as ResourceCardType;
 
-  const currentKeys = recursiveIter(currentCardType).sort((a, b) =>
-    a.localeCompare(b)
-  );
-
+  // const currentKeys = recursiveIter(currentCardType).sort((a, b) =>
+  //   a.localeCompare(b)
+  // );
   return (
     <>
       <StyledRightCanvas show scroll={false} backdrop={false} placement="end">
@@ -55,9 +37,7 @@ export default function RightCanvas(props: RightCanvasProps) {
         >
           <Tab eventKey="stats" title="Stats">
             <DescriptionContainer>
-              {currentKeys.map((key) => {
-                return <AttributeCard attributeKey={key} />;
-              })}
+              {<>{LifeformCardGenerator(currentLifeForm)}</>}
             </DescriptionContainer>
           </Tab>
           <Tab eventKey="profile" title="Advantage">
