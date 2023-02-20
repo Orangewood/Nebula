@@ -19,6 +19,7 @@ export default function ResearchCardGenerator(research: Lifeform["research"]) {
             key="Physics"
             attributeKey={researchKey}
             imgPath={Physics}
+            attributeValue={research[researchKey]}
           />
         );
         break;
@@ -28,6 +29,7 @@ export default function ResearchCardGenerator(research: Lifeform["research"]) {
             key="Chemistry"
             attributeKey={researchKey}
             imgPath={Chemistry}
+            attributeValue={research[researchKey]}
           />
         );
         break;
@@ -37,6 +39,7 @@ export default function ResearchCardGenerator(research: Lifeform["research"]) {
             key="Astronomy"
             attributeKey={researchKey}
             imgPath={Astronomy}
+            attributeValue={research[researchKey]}
           />
         );
         break;
@@ -46,6 +49,7 @@ export default function ResearchCardGenerator(research: Lifeform["research"]) {
             key="Robotics"
             attributeKey={researchKey}
             imgPath={Robotics}
+            attributeValue={research[researchKey]}
           />
         );
         break;
@@ -55,6 +59,7 @@ export default function ResearchCardGenerator(research: Lifeform["research"]) {
             key="Biology"
             attributeKey={researchKey}
             imgPath={Biology}
+            attributeValue={research[researchKey]}
           />
         );
         break;

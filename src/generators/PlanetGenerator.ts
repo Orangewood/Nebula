@@ -7,6 +7,7 @@ import TemperatureGenerator from "./TemperatureGenerator";
 import ResourceGeneartor from "./ResourceGenerator";
 import StabilityGenerator from "./StabilityGenerator";
 import PlanetImageGenerator from "./PlanetImageGenerator";
+import { PlanetStats } from "../stats/PlanetStats";
 
 export default function PlanetGenerator(planetAmount: number): Planet[] {
   const PlanetList: Planet[] = [];
@@ -27,5 +28,6 @@ export default function PlanetGenerator(planetAmount: number): Planet[] {
     };
     PlanetList.push(newPlanet);
   }
+  console.log(PlanetStats("type", PlanetList));
   return PlanetList;
 }

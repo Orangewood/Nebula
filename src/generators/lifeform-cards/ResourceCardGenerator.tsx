@@ -14,6 +14,7 @@ export default function ResourceCardGenerator(
   const resourceCards = [];
   let harvestKey: keyof HarvestObj;
   for (harvestKey in resources) {
+    console.log(resources[harvestKey]);
     switch (harvestKey) {
       case "discovery":
         resourceCards.push(
@@ -21,6 +22,7 @@ export default function ResourceCardGenerator(
             key="Discovery"
             attributeKey={harvestKey}
             imgPath={Discovery}
+            attributeValue={resources[harvestKey]}
           />
         );
         break;
@@ -30,17 +32,28 @@ export default function ResourceCardGenerator(
             key="Energy"
             attributeKey={harvestKey}
             imgPath={Energy}
+            attributeValue={resources[harvestKey]}
           />
         );
         break;
       case "fuel":
         resourceCards.push(
-          <AttributeCard key="Fuel" attributeKey={harvestKey} imgPath={Fuel} />
+          <AttributeCard
+            key="Fuel"
+            attributeKey={harvestKey}
+            imgPath={Fuel}
+            attributeValue={resources[harvestKey]}
+          />
         );
         break;
       case "life":
         resourceCards.push(
-          <AttributeCard key="Life" attributeKey={harvestKey} imgPath={Life} />
+          <AttributeCard
+            key="Life"
+            attributeKey={harvestKey}
+            imgPath={Life}
+            attributeValue={resources[harvestKey]}
+          />
         );
         break;
       case "metal":
@@ -49,6 +62,7 @@ export default function ResourceCardGenerator(
             key="Metal"
             attributeKey={harvestKey}
             imgPath={Metal}
+            attributeValue={resources[harvestKey]}
           />
         );
         break;
@@ -58,6 +72,7 @@ export default function ResourceCardGenerator(
             key="Ruins"
             attributeKey={harvestKey}
             imgPath={Ruins}
+            attributeValue={resources[harvestKey]}
           />
         );
         break;

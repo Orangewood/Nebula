@@ -15,6 +15,7 @@ export default function ExploreCardGenerator(explore: Lifeform["explore"]) {
             key="Observe"
             attributeKey={exploreKey}
             imgPath={Observe}
+            attributeValue={explore[exploreKey]}
           />
         );
         break;
@@ -24,6 +25,7 @@ export default function ExploreCardGenerator(explore: Lifeform["explore"]) {
             key="Movement"
             attributeKey={exploreKey}
             imgPath={Movement}
+            attributeValue={explore[exploreKey]}
           />
         );
         break;

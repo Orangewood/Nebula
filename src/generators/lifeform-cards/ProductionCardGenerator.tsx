@@ -18,6 +18,7 @@ export default function ProductionCardGenerator(
             key="Build"
             attributeKey={productionKey}
             imgPath={Build}
+            attributeValue={production[productionKey]}
           />
         );
         break;
@@ -27,6 +28,7 @@ export default function ProductionCardGenerator(
             key="Conscript"
             attributeKey={productionKey}
             imgPath={Conscript}
+            attributeValue={production[productionKey]}
           />
         );
         break;
@@ -36,6 +38,7 @@ export default function ProductionCardGenerator(
             key="Reproduce"
             attributeKey={productionKey}
             imgPath={Reproduce}
+            attributeValue={production[productionKey]}
           />
         );
         break;

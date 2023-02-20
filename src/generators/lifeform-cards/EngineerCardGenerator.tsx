@@ -16,6 +16,7 @@ export default function EngineerCardGenerator(engineer: Lifeform["engineer"]) {
             key="Machinery"
             attributeKey={engineerKey}
             imgPath={Machinery}
+            attributeValue={engineer[engineerKey]}
           />
         );
         break;
@@ -25,6 +26,7 @@ export default function EngineerCardGenerator(engineer: Lifeform["engineer"]) {
             key="Efficiency"
             attributeKey={engineerKey}
             imgPath={Efficiency}
+            attributeValue={engineer[engineerKey]}
           />
         );
         break;
@@ -34,6 +36,7 @@ export default function EngineerCardGenerator(engineer: Lifeform["engineer"]) {
             key="Weaponry"
             attributeKey={engineerKey}
             imgPath={Weaponry}
+            attributeValue={engineer[engineerKey]}
           />
         );
         break;

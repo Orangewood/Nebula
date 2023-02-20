@@ -42,7 +42,3 @@ export function PlanetStats(
     percent: percentData,
   };
 }
-let planetList = PlanetGenerator(100);
-
-console.log(PlanetStats("resources", planetList));
-console.log(PlanetStats("composition", planetList));
