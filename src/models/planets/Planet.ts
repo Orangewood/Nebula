@@ -1,3 +1,5 @@
+import { HarvestObj } from "../actions/harvest/Harvest";
+
 export enum PlanetType {
   GASGIANT = "gasGiant",
   ICEGIANT = "iceGiant",
@@ -31,7 +33,7 @@ export interface Planet {
   temperature: number;
   type: PlanetType;
   composition: Composition[];
-  resources: Resource[];
+  resources: HarvestObj;
   stability: number;
   image: any;
 }

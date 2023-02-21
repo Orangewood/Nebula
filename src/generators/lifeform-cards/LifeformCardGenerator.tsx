@@ -12,7 +12,6 @@ export default function LifeformCardGenerator(currentLifeform: Lifeform) {
   lifeFormCards.push(ExploreCardGenerator(currentLifeform.explore));
   lifeFormCards.push(EngineerCardGenerator(currentLifeform.engineer));
   lifeFormCards.push(ProductionCardGenerator(currentLifeform.production));
-  console.log(lifeFormCards.flat(1));
   return lifeFormCards
     .flat(1)
     .sort((a, b) => a.key!.toString().localeCompare(b.key!.toString()));

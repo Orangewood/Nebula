@@ -1,17 +1,18 @@
+import { HarvestObj } from "../models/actions/harvest/Harvest";
 import { Composition, Resource } from "../models/planets/Planet";
 
 export default function ResourceGeneartor(
   composition: Composition[],
   planetAmount: number
-): Resource[] {
-  const resources: Resource[] = [];
+): HarvestObj {
+  const resources: HarvestObj = {};
   var randomTotal = Math.floor(Math.random() * (planetAmount - 1) + 1);
 
   if (
     composition.some((a) => a === Composition.GAS) &&
     composition.some((a) => a === Composition.SCILLICATE)
   ) {
-    resources.push(Resource.FUEL);
+    resources.fuel = 1;
   }
 
   if (
@@ -19,7 +20,7 @@ export default function ResourceGeneartor(
     composition.some((a) => a === Composition.SCILLICATE) &&
     composition.some((a) => a !== Composition.GAS)
   ) {
-    resources.push(Resource.METAL);
+    resources.metal = 1;
   }
 
   if (
@@ -29,14 +30,14 @@ export default function ResourceGeneartor(
         composition.some((a) => a === Composition.OCEAN)
     )
   ) {
-    resources.push(Resource.LIFE);
+    resources.life = 1;
   }
 
   if (
     composition.some((a) => a === Composition.DESERT) &&
     composition.some((a) => a == Composition.ORGANIC)
   ) {
-    resources.push(Resource.RUINS);
+    resources.ruins = 1;
   }
 
   if (
@@ -45,12 +46,13 @@ export default function ResourceGeneartor(
     (composition.some((a) => a === Composition.DESERT) &&
       composition.some((a) => a === Composition.ROCKY))
   ) {
-    resources.push(Resource.ENERGY);
+    resources.energy = 1;
   }
 
-  if (resources.length < 1) {
-    resources.push(Resource.DISCOVERY);
+  if (Object.keys(resources).length < 1) {
+    // resources.DISCOVERY = 1
+    resources.discovery = 1;
   }
 
-  return resources.sort();
+  return resources;
 }

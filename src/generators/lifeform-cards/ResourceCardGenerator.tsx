@@ -14,7 +14,6 @@ export default function ResourceCardGenerator(
   const resourceCards = [];
   let harvestKey: keyof HarvestObj;
   for (harvestKey in resources) {
-    console.log(resources[harvestKey]);
     switch (harvestKey) {
       case "discovery":
         resourceCards.push(
