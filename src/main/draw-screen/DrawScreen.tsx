@@ -5,10 +5,10 @@ import DrawCanvas from "../../components/offcanvas/DrawCanvas";
 import PlanetGenerator from "../../generators/PlanetGenerator";
 import { DrawContainer } from "./styles";
 
-interface MainScreenProps {}
-const testPlanets = PlanetGenerator(1);
+interface DrawScreenProps {}
+const testPlanets = PlanetGenerator(3);
 
-export default function MainScreen(props: MainScreenProps) {
+export default function DrawScreen(props: DrawScreenProps) {
   return (
     <>
       {testPlanets.map((planet) => {

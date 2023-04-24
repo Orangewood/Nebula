@@ -15,7 +15,7 @@ export const AttributeCardTitle = styled(Card.Title)`
   background-color: ${(props) => props.theme.backgroundColor};
   color: ${(props) => props.theme.mainColor};
   font-family: ${(props) => props.theme.fontFamily};
-  font-size: 1vw;
+  font-size: 2vw;
 `;
 
 export const AttributeCardBody = styled(Card.Body)`

@@ -30,7 +30,6 @@ export default function SelectScreen(props: SelectScreenProps) {
 
   const handleSelect = (currentLifeform?: Lifeform) => {
     // todo: error message/disaable, set lifeform with redux
-    console.log("currentLifeform", currentLifeform);
     if (!currentLifeform) return;
     setSelectedLifeform(currentLifeform.lifeformId);
     onLifeformSelect();

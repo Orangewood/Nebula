@@ -4,10 +4,10 @@ import CardContainer from "./components/card/card-container/CardContainer";
 import { ScreenSwitch } from "./models/screen/Screen";
 import { baseTheme } from "./theme/Theme";
 import { GameContainer } from "./main/game-container/styles";
-import MainScreen from "./main/main-screen/MainScreen";
 import SelectScreen from "./main/select-screen/SelectScreen";
 import TestScreen from "./main/test-screen/TestScreen";
 import WelcomeScreen from "./main/welcome-screen/WelcomeScreen";
+import DrawScreen from "./main/draw-screen/DrawScreen";
 
 const theme = { ...baseTheme };
 
@@ -33,7 +33,7 @@ export default function App() {
             />
           )}
           {screenState === ScreenSwitch.CardTest && <CardContainer />}
-          {screenState === ScreenSwitch.MainScreen && <MainScreen />}
+          {screenState === ScreenSwitch.MainScreen && <DrawScreen />}
         </>
       </GameContainer>
     </ThemeProvider>

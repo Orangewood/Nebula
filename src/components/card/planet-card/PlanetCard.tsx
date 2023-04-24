@@ -1,10 +1,15 @@
+import ResourceCardGenerator from "../../../generators/lifeform-cards/ResourceCardGenerator";
 import { Planet } from "../../../models/planets/Planet";
+import StabilityContainer from "../stability-container/StabilityContainer";
+import TemperatureContainer from "../temperature-container/TemperatureContainer";
 import {
   PlanetCardContainer,
+  PlanetCardHeader,
   PlanetCardImg,
   PlanetResourceContainer,
+  PlanetResourceLeft,
+  PlanetResourceRight,
 } from "./styles";
-import ResourceCardGenerator from "../../../generators/lifeform-cards/ResourceCardGenerator";
 
 interface PlanetCardProps {
   currentPlanet: Planet;
@@ -13,14 +18,34 @@ export default function PlanetCard(props: PlanetCardProps) {
   const { currentPlanet } = props;
   return (
     <PlanetCardContainer>
+      <PlanetCardHeader>{currentPlanet.name}</PlanetCardHeader>
       <PlanetCardImg src={currentPlanet.image} />
       {/* <div>{`Temperature: ${currentPlanet.temperature}`}</div>
       <div>{`Name: ${currentPlanet.name}`}</div>
       <div>{`Type: ${currentPlanet.type}`}</div>
       <div>{`Stability: ${currentPlanet.stability}`}</div> */}
+
       <PlanetResourceContainer>
-        {ResourceCardGenerator(currentPlanet.resources)}
+        {ResourceCardGenerator(currentPlanet.resources)} 
       </PlanetResourceContainer>
     </PlanetCardContainer>
   );
+}
+
+{
+  /* <StabilityContainer planet={currentPlanet} />
+<TemperatureContainer planet={currentPlanet} />
+}
+
+{
+  /* <PlanetResourceLeft> */
+}
+{
+  /* </PlanetResourceLeft> */
+}
+{
+  /* <PlanetResourceRight> */
+}
+{
+  /* </PlanetResourceRight> */
 }
