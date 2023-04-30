@@ -29,3 +29,8 @@ export const AttributeCardText = styled(Card.Text)`
   color: ${(props) => props.theme.mainColor};
   font-family: ${(props) => props.theme.fontFamily};
 `;
+
+export const AttributeCardImage = styled(Card.Img)`
+  display: flex;
+  height: 100%;
+`;

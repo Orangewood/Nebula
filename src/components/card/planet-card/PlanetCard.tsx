@@ -26,15 +26,12 @@ export default function PlanetCard(props: PlanetCardProps) {
       <div>{`Stability: ${currentPlanet.stability}`}</div> */}
 
       <PlanetResourceContainer>
-        {ResourceCardGenerator(currentPlanet.resources)} 
+        {ResourceCardGenerator(currentPlanet.resources)}
+        {/* <StabilityContainer planet={currentPlanet} /> */}
+        {/* <TemperatureContainer planet={currentPlanet} /> */}
       </PlanetResourceContainer>
     </PlanetCardContainer>
   );
-}
-
-{
-  /* <StabilityContainer planet={currentPlanet} />
-<TemperatureContainer planet={currentPlanet} />
 }
 
 {

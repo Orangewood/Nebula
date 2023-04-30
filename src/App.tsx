@@ -13,7 +13,7 @@ const theme = { ...baseTheme };
 
 export default function App() {
   const [screenState, setScreenState] = useState<ScreenSwitch>(
-    ScreenSwitch.MainScreen
+    ScreenSwitch.Lifeform
   );
 
   return (

@@ -22,7 +22,6 @@ export const PlanetCardImg = styled.img`
 export const PlanetResourceContainer = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   width: 100%;
   align-items: center;
   justify-content: center;
