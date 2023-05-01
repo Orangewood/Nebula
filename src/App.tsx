@@ -16,6 +16,10 @@ export default function App() {
     ScreenSwitch.Lifeform
   );
 
+  React.useEffect(() => {
+    console.log(screenState);
+  }, [screenState]);
+
   return (
     <ThemeProvider theme={theme}>
       <GameContainer>
@@ -29,10 +33,12 @@ export default function App() {
           )}
           {screenState === ScreenSwitch.Lifeform && (
             <SelectScreen
-              onLifeformSelect={() => setScreenState(ScreenSwitch.MainScreen)}
+              onLifeformSelect={(screen) =>
+                setScreenState(screen ?? screenState)
+              }
             />
           )}
-          {screenState === ScreenSwitch.CardTest && <CardContainer />}
+          {screenState === ScreenSwitch.CardTest && <DrawScreen />}
           {screenState === ScreenSwitch.MainScreen && <DrawScreen />}
         </>
       </GameContainer>

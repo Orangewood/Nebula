@@ -17,8 +17,8 @@ export default function AttributeCard(props: AttributeCardProps) {
   return (
     <>
       <StyledAttributeCard>
-        {/* <AttributeCardImage variant="top" src={imgPath} /> */}
-        <Card.Img variant="top" src={imgPath} />
+        <AttributeCardImage variant="top" src={imgPath} />
+        {/* <Card.Img variant="top" src={imgPath} /> */}
         <AttributeCardBody>
           <AttributeCardTitle>{`+${attributeValue} ${attributeKey}`}</AttributeCardTitle>
         </AttributeCardBody>

@@ -19,5 +19,6 @@ export const DrawInfo = styled(Offcanvas.Body)`
   color: ${(props) => props.theme.mainColor};
   border: 1px solid ${(props) => props.theme.mainColor};
   background-color: ${(props) => props.theme.backgroundColor};
+  padding: 0;
   width: 100%;
 `;

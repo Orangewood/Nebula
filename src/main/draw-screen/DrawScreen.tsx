@@ -6,23 +6,18 @@ import PlanetGenerator from "../../generators/PlanetGenerator";
 import { DrawContainer } from "./styles";
 
 interface DrawScreenProps {}
-const testPlanets = PlanetGenerator(3);
+const testPlanets = PlanetGenerator(100);
 
 export default function DrawScreen(props: DrawScreenProps) {
   return (
-    <>
-      {testPlanets.map((planet) => {
-        return <PlanetCard currentPlanet={planet} />;
-      })}
-    </>
-    // <DrawContainer>
-    //   <DrawCanvas>
-    //     <>
-    //       {testPlanets.map((planet) => {
-    //         return <PlanetCard currentPlanet={planet} />;
-    //       })}
-    //     </>
-    //   </DrawCanvas>
-    // </DrawContainer>
+    <DrawContainer>
+      <DrawCanvas>
+        <>
+          {testPlanets.map((planet) => {
+            return <PlanetCard currentPlanet={planet} />;
+          })}
+        </>
+      </DrawCanvas>
+    </DrawContainer>
   );
 }

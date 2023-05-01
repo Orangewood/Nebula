@@ -9,9 +9,10 @@ import { Lifeform, lifeformList } from "../../models/lifeform/Lifeform";
 import LeftCanvas from "./components/left-canvas/LeftCanvas";
 import RightCanvas from "./components/right-canvas/RightCanvas";
 import LifeformStats from "../../stats/LifeformStats";
+import { ScreenSwitch } from "../../models/screen/Screen";
 
 interface SelectScreenProps {
-  onLifeformSelect: () => void;
+  onLifeformSelect: (screen: ScreenSwitch | null) => void;
 }
 
 export default function SelectScreen(props: SelectScreenProps) {
@@ -28,11 +29,10 @@ export default function SelectScreen(props: SelectScreenProps) {
     (lifeform) => lifeform.lifeformId === currentLifeFormId
   );
 
-  const handleSelect = (currentLifeform?: Lifeform) => {
-    // todo: error message/disaable, set lifeform with redux
-    if (!currentLifeform) return;
-    setSelectedLifeform(currentLifeform.lifeformId);
-    onLifeformSelect();
+  const handleSelect = () => {
+    // todo: error message/disable, set lifeform with redux
+    setSelectedLifeform(currentLifeFormId);
+    onLifeformSelect(ScreenSwitch.CardTest);
   };
 
   return (
@@ -44,7 +44,7 @@ export default function SelectScreen(props: SelectScreenProps) {
         touch
         fade
       >
-        {lifeformList.map((lifeform) => (
+        {lifeformList.map((lifeform, index) => (
           <CarouselItem>
             <img
               src={lifeform.imgPath}
