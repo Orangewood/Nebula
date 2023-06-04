@@ -7,14 +7,19 @@ import { GameContainer } from "./main/game-container/styles";
 import SelectScreen from "./main/select-screen/SelectScreen";
 import TestScreen from "./main/test-screen/TestScreen";
 import WelcomeScreen from "./main/welcome-screen/WelcomeScreen";
-import DrawScreen from "./main/draw-screen/DrawScreen";
+import DrawScreen from "./main/planet-bank/PlanetBank";
+import PlanetSelectScreen from "./main/select-screen/PlanetSelectScreen";
+import PlanetGenerator from "./generators/PlanetGenerator";
+import { Planet } from "./models/planets/Planet";
 
 const theme = { ...baseTheme };
+const testPlanets = PlanetGenerator(10);
 
 export default function App() {
   const [screenState, setScreenState] = useState<ScreenSwitch>(
-    ScreenSwitch.Lifeform
+    ScreenSwitch.CardTest
   );
+  const [selectedPlanet, setSelectedPlanet] = useState<Planet>();
 
   React.useEffect(() => {
     console.log(screenState);
@@ -38,8 +43,17 @@ export default function App() {
               }
             />
           )}
-          {screenState === ScreenSwitch.CardTest && <DrawScreen />}
-          {screenState === ScreenSwitch.MainScreen && <DrawScreen />}
+          {screenState === ScreenSwitch.CardTest && (
+            <DrawScreen
+              onPlanetClick={(selectedPlanet) => {
+                setScreenState(ScreenSwitch.PlanetScreen);
+                setSelectedPlanet(selectedPlanet);
+              }}
+            />
+          )}
+          {screenState === ScreenSwitch.PlanetScreen && (
+            <PlanetSelectScreen planet={selectedPlanet!} />
+          )}
         </>
       </GameContainer>
     </ThemeProvider>

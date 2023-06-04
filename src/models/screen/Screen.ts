@@ -3,4 +3,5 @@ export enum ScreenSwitch {
   Lifeform = 2,
   CardTest = 3,
   MainScreen = 4,
+  PlanetScreen = 5,
 }

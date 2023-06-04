@@ -44,3 +44,10 @@ export const LifeformInfo = styled(Offcanvas.Body)`
     }
   }
 `;
+
+export const PlanetInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid ${(props) => props.theme.mainColor};
+  height: 100%;
+`;

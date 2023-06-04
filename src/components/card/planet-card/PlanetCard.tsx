@@ -13,11 +13,12 @@ import {
 
 interface PlanetCardProps {
   currentPlanet: Planet;
+  onClick: () => void;
 }
 export default function PlanetCard(props: PlanetCardProps) {
-  const { currentPlanet } = props;
+  const { currentPlanet, onClick } = props;
   return (
-    <PlanetCardContainer>
+    <PlanetCardContainer onClick={onClick}>
       <PlanetCardHeader>{currentPlanet.name}</PlanetCardHeader>
       <PlanetCardImg src={currentPlanet.image} />
       {/* <div>{`Temperature: ${currentPlanet.temperature}`}</div>

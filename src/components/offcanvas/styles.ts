@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StyledDrawCanvas = styled(Offcanvas)`
   display: flex;
-  height: 75% !important;
+  height: 65% !important;
 `;
 
 export const DrawCanvasHeader = styled(Offcanvas.Header)`
