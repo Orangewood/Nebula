@@ -11,13 +11,14 @@ import DrawScreen from "./main/planet-bank/PlanetBank";
 import PlanetSelectScreen from "./main/select-screen/PlanetSelectScreen";
 import PlanetGenerator from "./generators/PlanetGenerator";
 import { Planet } from "./models/planets/Planet";
+import LobbyScreen from "./main/lobby-screen/LobbyScreen";
 
 const theme = { ...baseTheme };
 const testPlanets = PlanetGenerator(10);
 
 export default function App() {
   const [screenState, setScreenState] = useState<ScreenSwitch>(
-    ScreenSwitch.CardTest
+    ScreenSwitch.LobbyScreen
   );
   const [selectedPlanet, setSelectedPlanet] = useState<Planet>();
 
@@ -53,6 +54,9 @@ export default function App() {
           )}
           {screenState === ScreenSwitch.PlanetScreen && (
             <PlanetSelectScreen planet={selectedPlanet!} />
+          )}
+          {screenState === ScreenSwitch.LobbyScreen && (
+            <LobbyScreen players={["player1", "player2", "player3"]} />
           )}
         </>
       </GameContainer>
