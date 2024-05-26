@@ -10,7 +10,8 @@ export function PlanetStats(
   });
 
   let countData = currentPlanetArray.reduce((obj, val) => {
-    if (statType === "composition" || statType === "resources") {
+    // if (statType === "composition" || statType === "resources") {
+    if (statType === "composition") {
       obj[`${val[statType].length}${statType}`] =
         ++obj[`${val[statType].length}${statType}`] || 1;
     }

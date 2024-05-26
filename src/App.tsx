@@ -18,7 +18,7 @@ const testPlanets = PlanetGenerator(10);
 
 export default function App() {
   const [screenState, setScreenState] = useState<ScreenSwitch>(
-    ScreenSwitch.LobbyScreen
+    ScreenSwitch.Welcome
   );
   const [selectedPlanet, setSelectedPlanet] = useState<Planet>();
 
